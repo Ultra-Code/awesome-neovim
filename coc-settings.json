@@ -1,0 +1,33 @@
+{
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                }
+            }
+        }
+    }
+    ,"codeLens.enable": true
+    ,"suggest.enablePreview": true
+    ,"html.enable": true
+    ,"html.format.enable":true
+    ,"python.pythonPath":"/usr/bin/python3"
+    ,"python.linting.enabled":true
+    ,"python.linting.pylintPath":"/usr/bin/pylint"
+    ,"coc.preferences.formatOnSaveFiletypes": ["css", "Markdown","dart"]
+}
