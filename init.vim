@@ -11,11 +11,6 @@ source $HOME/.config/nvim/editor.vim
 source $HOME/.config/nvim/terminal.vim
 
 "===================================================================
-"===                UI CONFIGURATIONS                            ===
-"===================================================================
-source $HOME/.config/nvim/ui.vim
-
-"===================================================================
 "===                MAPPINGS ONFIGURATIONS                       ===
 "===================================================================
 source $HOME/.config/nvim/mapinit.vim
@@ -24,4 +19,9 @@ source $HOME/.config/nvim/mapinit.vim
 "===                PLUGINS CONFIGURATIONS                       ===
 "===================================================================
 source $HOME/.config/nvim/pluginit.vim
+
+"===================================================================
+"===                UI CONFIGURATIONS                            ===
+"===================================================================
+source $HOME/.config/nvim/ui.vim
 

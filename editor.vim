@@ -85,11 +85,11 @@ set incsearch       " highlight search string as search pattern is entered
 
 set hlsearch         "disables last search hilighting
 
-set wildmode=longest,full    " get bash-like tab completions with longest and list
+set wildmode=full    " get bash-like tab completions with longest and list
 
 set number           " Show line numbers
 
-set wrap             " Automatically wrap text that extends beyond the screen length.
+set nowrap             " Automatically wrap text that extends beyond the screen length.
 
 set backspace=indent,eol,start " Fixes common backspace problems
 
@@ -99,7 +99,7 @@ set linebreak     "Break lines at word (requires Wrap lines)
 
 "set showbreak=--     " Wrap-broken line prefix
 
-set textwidth=99      " Line wrap (number of cols)
+set textwidth=80      " Line wrap (number of cols)
 
 set showmatch         " Highlight matching brace
 
@@ -147,3 +147,7 @@ set foldlevel=99
 
 "Enable Tags
 set tags=tags
+
+"Disable default mappings from omni for sql
+let g:omni_sql_no_default_maps = 1
+

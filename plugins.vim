@@ -20,6 +20,9 @@ Plug 'easymotion/vim-easymotion'
 "A commenter for different Language
 Plug 'scrooloose/nerdcommenter'
 
+" === Themes and Colour Scheme ===
+Plug 'rakr/vim-one'
+
 " === Git Plugin ===
 "A vim plugin which shows git diff in the gutter (sign column).
 Plug 'airblade/vim-gitgutter'
@@ -65,22 +68,12 @@ Plug 'natebosch/vim-lsc-dart'
 Plug 'natebosch/vim-lsc'
 
 " == Code Completion Engine ===
-"Deoplete – Code Completion Engine
-"Dark powered asynchronous completion framework for neovim/Vim8
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-"Tabnine
-"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-
 "A #include completion framework for deoplete c/c++
 Plug 'Shougo/neoinclude.vim'
 
 "Coc is an intellisense engine for Vim/Neovim
 "Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-"A code completion engine for c/c++ family of languages in neovim
-"Plug 'ycm-core/YouCompleteMe'
 
 " === Code Snippets Plugins ===
 "For snippets in neovim
@@ -93,6 +86,12 @@ Plug   'honza/vim-snippets'
 " === Syntax Highlighting Engine ===
 "Syntastic is a syntax checking plugin for Vim
  Plug 'scrooloose/syntastic'
+
+ "PEP 8 Checking"
+Plug 'nvie/vim-flake8'
+
+"A collection of language packs for Vim.
+Plug 'sheerun/vim-polyglot'
 
 " === Tag Bar Plugin ===
 "View and search LSP symbols, tags in Vim/NeoVim."

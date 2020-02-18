@@ -26,6 +26,6 @@ let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_always_populate_loc_list = 1
 
 "Syntatic Python Linter Configuration
-let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_exec='python3 -m pylint'
+"let g:syntastic_python_python_exec = 'python3'
+"let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_python_pylint_exec='python3 -m pylint'

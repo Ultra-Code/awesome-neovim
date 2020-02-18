@@ -21,8 +21,11 @@ map <leader>bd :bdelete<cr>
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
+map <leader>bn :bnext<cr>
+map <leader>bp :bprevious<cr>
+map <leader>bf :bfirst<cr>
+map <leader>bl :blast<cr>
+
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>

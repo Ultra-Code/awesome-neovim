@@ -8,7 +8,6 @@ let maplocalleader = "."
 "Source the various mappings
 source   $HOME/.config/nvim/mapping.d/coc_map.vim
 source   $HOME/.config/nvim/mapping.d/fzf_map.vim
-"source   $HOME/.config/nvim/mapping.d/ycm_map.vim
 source   $HOME/.config/nvim/mapping.d/nerdtree_map.vim
 source   $HOME/.config/nvim/mapping.d/ultisnip_map.vim
 source   $HOME/.config/nvim/mapping.d/copy_paste_map.vim
