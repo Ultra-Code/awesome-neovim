@@ -9,7 +9,7 @@ let maplocalleader = "."
 source   $HOME/.config/nvim/mapping.d/coc_map.vim
 source   $HOME/.config/nvim/mapping.d/fzf_map.vim
 source   $HOME/.config/nvim/mapping.d/nerdtree_map.vim
-source   $HOME/.config/nvim/mapping.d/ultisnip_map.vim
+"source   $HOME/.config/nvim/mapping.d/ultisnip_map.vim
 source   $HOME/.config/nvim/mapping.d/copy_paste_map.vim
 source   $HOME/.config/nvim/mapping.d/visual_fnd_replace_map.vim
 source   $HOME/.config/nvim/mapping.d/spellcheck_map.vim

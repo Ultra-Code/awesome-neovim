@@ -78,7 +78,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " === Code Snippets Plugins ===
 "For snippets in neovim
 "Track the engine.
-Plug   'SirVer/ultisnips'
+"Plug   'SirVer/ultisnips'
+"Bootstrap snippets
+Plug 'jvanja/vim-bootstrap4-snippets'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plug   'honza/vim-snippets'
@@ -101,10 +103,12 @@ Plug 'liuchengxu/vista.vim'
 " A Neovim File explorer
 Plug 'preservim/nerdtree'
 
-
 " == Icons == "
 " Glyphs and Icons for neovim
 Plug 'ryanoasis/vim-devicons'
+
+" === DataBase ===
+Plug 'tpope/vim-dadbod'
 
 " Initialize plugin system
 call plug#end()

@@ -4,7 +4,7 @@
 "
 source $HOME/.config/nvim/plugins.vim
 source $HOME/.config/nvim/plugrc.d/coc.vim
-source $HOME/.config/nvim/plugrc.d/snippet.vim
+"source $HOME/.config/nvim/plugrc.d/snippet.vim
 source $HOME/.config/nvim/plugrc.d/markdown_preview.vim
 source $HOME/.config/nvim/plugrc.d/syntastic.vim
 source $HOME/.config/nvim/plugrc.d/neoformat.vim

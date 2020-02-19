@@ -99,7 +99,7 @@ set linebreak     "Break lines at word (requires Wrap lines)
 
 "set showbreak=--     " Wrap-broken line prefix
 
-set textwidth=80      " Line wrap (number of cols)
+set textwidth=88      " Line wrap (number of cols)
 
 set showmatch         " Highlight matching brace
 
