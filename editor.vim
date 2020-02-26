@@ -89,17 +89,15 @@ set wildmode=full    " get bash-like tab completions with longest and list
 
 set number           " Show line numbers
 
-set nowrap             " Automatically wrap text that extends beyond the screen length.
+set wrap             " Automatically wrap text that extends beyond the screen length.
 
 set backspace=indent,eol,start " Fixes common backspace problems
 
 set laststatus=2      " Status bar
 
-set linebreak     "Break lines at word (requires Wrap lines)
+set showbreak=>>>\ \ \    " Wrap-broken line prefix
 
-"set showbreak=--     " Wrap-broken line prefix
-
-set textwidth=88      " Line wrap (number of cols)
+set textwidth=80      " Line wrap (number of cols)
 
 set showmatch         " Highlight matching brace
 
@@ -139,7 +137,8 @@ set history=300       "Set the history size to maximum. by default it is 20
 
 set list          " Display unprintable characters f12 - switches
 
-set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+set listchars=tab:••\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+
 
 " Enable folding
 set foldmethod=indent
@@ -150,4 +149,10 @@ set tags=tags
 
 "Disable default mappings from omni for sql
 let g:omni_sql_no_default_maps = 1
+
+"Remove Trailing whitespaces in specified documents on write of buffer
+"autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> %s/\s\+$//e
+
+"Remove Trailing whitespaces in all files
+autocmd BufWritePre * %s/\s\+$//e
 

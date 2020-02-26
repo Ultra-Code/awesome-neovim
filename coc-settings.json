@@ -1,27 +1,32 @@
-{
-    "languageserver": {
-        "ccls": {
-            "command": "ccls",
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ],
-            "rootPatterns": [
-                ".ccls",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
-            "initializationOptions": {
-                "cache": {
-                    "directory": "/tmp/ccls"
-                }
-            }
-        }
+{ "languageserver": {
+    "clangd-9": {
+      "command": "clangd-9",
+      "args":
+        [
+        "--background-index",
+        "--all-scopes-completion",
+        "--clang-tidy",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu",
+        "--header-insertion-decorators",
+        "--suggest-missing-includes",
+        "-j=3",
+        "--pch-storage=memory",
+        "--pretty"],
+      "rootPatterns":
+        [
+          "compile_flags.txt",
+          "compile_commands.json",
+          ".git/",
+          ".hg/"],
+      "filetypes":
+      [
+          "c",
+          "cpp",
+          "objc",
+          "objcpp"]
     }
+  }
     ,"codeLens.enable": true
     ,"suggest.enablePreview": true
     ,"html.enable": true
@@ -29,8 +34,4 @@
     ,"python.linting.enabled":true
     ,"coc.preferences.formatOnSaveFiletypes": ["css", "Markdown","dart"]
 }
-/*
-    ,"python.pythonPath":"/usr/bin/python3"
-    ,"python.linting.pylintPath":"/usr/bin/pylint"
 
-*/

@@ -62,10 +62,12 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 "Dart language support in vim
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'natebosch/vim-lsc-dart'
 
 " === Language Server Clients ===
-Plug 'natebosch/vim-lsc'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 " == Code Completion Engine ===
 "A #include completion framework for deoplete c/c++
@@ -77,8 +79,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " === Code Snippets Plugins ===
 "For snippets in neovim
-"Track the engine.
-"Plug   'SirVer/ultisnips'
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
 "Bootstrap snippets
 Plug 'jvanja/vim-bootstrap4-snippets'
 

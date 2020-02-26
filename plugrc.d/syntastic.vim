@@ -29,3 +29,6 @@ let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_python_python_exec = 'python3'
 "let g:syntastic_python_checkers = ['pylint']
 "let g:syntastic_python_pylint_exec='python3 -m pylint'
+let g:syntastic_cpp_checkers = ['gcc']
+let g:syntastic_cpp_compiler = 'clang++-9'
+let g:syntastic_cpp_compiler_options = '-std=c++17'

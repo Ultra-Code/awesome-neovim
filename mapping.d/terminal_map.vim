@@ -1,5 +1,5 @@
 " turn terminal to normal mode with escape
-tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>:q<CR>
 
 " open terminal on ctrl+n
 function! OpenTerminal()
