@@ -1,6 +1,6 @@
 { "languageserver": {
-    "clangd-9": {
-      "command": "clangd-9",
+    "clangd-10": {
+      "command": "clangd-10",
       "args":
         [
         "--background-index",
