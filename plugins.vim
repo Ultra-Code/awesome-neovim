@@ -63,12 +63,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 "Dart language support in vim
 Plug 'dart-lang/dart-vim-plugin'
 
-" === Language Server Clients ===
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
 " == Code Completion Engine ===
 
 "Coc is an intellisense engine for Vim/Neovim
