@@ -70,8 +70,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 
 " == Code Completion Engine ===
-"A #include completion framework for deoplete c/c++
-Plug 'Shougo/neoinclude.vim'
 
 "Coc is an intellisense engine for Vim/Neovim
 "Use release branch (Recommend)
@@ -91,9 +89,6 @@ Plug   'honza/vim-snippets'
 " === Syntax Highlighting Engine ===
 "Syntastic is a syntax checking plugin for Vim
  Plug 'scrooloose/syntastic'
-
- "PEP 8 Checking"
-Plug 'nvie/vim-flake8'
 
 "A collection of language packs for Vim.
 Plug 'sheerun/vim-polyglot'
