@@ -26,9 +26,11 @@ let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_always_populate_loc_list = 1
 
 "Syntatic Python Linter Configuration
-"let g:syntastic_python_python_exec = 'python3'
-"let g:syntastic_python_checkers = ['pylint']
-"let g:syntastic_python_pylint_exec='python3 -m pylint'
+let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_exec='python3 -m flake8'
+
+"Syntastic C++ Linter Configuration
 let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_cpp_compiler = 'clang++-9'
 let g:syntastic_cpp_compiler_options = '-std=c++17'
