@@ -130,3 +130,8 @@ for help using the various plugins and extensions
 ```
 
 to view the help pages and instruction manual on the various extensions
+
+>Big ShoutOuts to the Creators of Vim && Neovim
+>Another to all the creators of the various vim and neovim extensions
+>And Last but not the least God Bless The Vim && Neovim Community for this
+>hyperextensible and hackable text editor
