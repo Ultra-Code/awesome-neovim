@@ -15,5 +15,4 @@ source $HOME/.config/nvim/plugrc.d/devicons.vim
 source ~/.config/nvim/plugrc.d/dart_flutter.vim
 source ~/.config/nvim/plugrc.d/prettier.vim
 source ~/.config/nvim/plugrc.d/vista.vim
-"source ~/.config/nvim/plugrc.d/vue_ls.vim
-source ~/.config/nvim/plugrc.d/clang_format.vim
+source ~/.config/nvim/plugrc.d/clang_tools.vim
