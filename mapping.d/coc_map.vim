@@ -43,9 +43,9 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+"nmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
 
 " Using CocList
 " Show all diagnostics
