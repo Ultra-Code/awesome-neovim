@@ -24,11 +24,14 @@ let g:neoformat_nix_nixfmt = {
             \ 'replace': 0,
             \ 'stdin': 1,
             \}
+let g:neoformat_cmakelists_cmakeformat = {
+            \'exe':'cmake-format',
+            \}
 " replace - replace the file, instead of updating buffer (default: 0),
 " stdin - send data to stdin of formatter (default: 0),
 let g:neoformat_enabled_python = ['yapf']
 
 augroup fmt
   autocmd!
-  autocmd BufWritePre *.py,*.nix :Neoformat
+  autocmd BufWritePre *.py,*.nix,CMakeLists.txt :Neoformat
 augroup END
