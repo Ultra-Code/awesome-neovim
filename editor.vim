@@ -97,7 +97,7 @@ set laststatus=2      " Status bar
 
 set showbreak=>>>\ \ \    " Wrap-broken line prefix
 
-set textwidth=80      " Line wrap (number of cols)
+set textwidth=79      " Line wrap (number of cols)
 
 set showmatch         " Highlight matching brace
 
