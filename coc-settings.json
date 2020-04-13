@@ -3,16 +3,14 @@
       "command": "clangd-10",
       "args":
         [
-        "--background-index",
         "--all-scopes-completion",
         "--clang-tidy",
         "--completion-style=detailed",
+        "--background-index",
         "--header-insertion=iwyu",
-        "--header-insertion-decorators",
         "--suggest-missing-includes",
-        "-j=3",
-        "--pch-storage=memory",
-        "--pretty"],
+        "-j=2",
+        ],
       "rootPatterns":
         [
           "compile_flags.txt",
