@@ -63,6 +63,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 "Dart language support in vim
 Plug 'dart-lang/dart-vim-plugin'
 
+"TypeScript Language support in neovim and vim
+
+"TypeScrip Syntax Highlighting
+Plug 'HerringtonDarkholme/yats.vim'
+
 " == Code Completion Engine ===
 
 "Coc is an intellisense engine for Vim/Neovim
