@@ -1,4 +1,4 @@
-# Malpha Awesome Neovim Configuration
+# Awesome Neovim Configuration
 
 This is to make setting up of vim 8 && neovim 0.4 and above easy and a breeze.
 Moving on I will use vim and neovim interchangably because they are very similar
