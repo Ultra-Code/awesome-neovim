@@ -62,6 +62,11 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 ### Neovim
 
+__Note:__ Now the is automatic Vim-Plug installation for all neovim users
+All you have to do is clone the project to `$HOME/.config/nvim/` and open nvim
+and watch some beautiful magic happen . Thanks to @junegunn/vim-plug and all
+colaborators.
+
 #### Unix
 
 ```sh
