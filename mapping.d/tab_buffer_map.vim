@@ -28,11 +28,11 @@ map <leader>bl :blast<cr>
 
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
+map <leader>tnw :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-map <leader>t<leader> :tabnext<cr>
+map <leader>tn :tabnext<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
