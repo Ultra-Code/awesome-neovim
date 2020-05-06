@@ -1,3 +1,9 @@
+" Remap leader key to ,
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+let maplocalleader = "."
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -85,7 +91,7 @@ set incsearch       " highlight search string as search pattern is entered
 
 set hlsearch         "disables last search hilighting
 
-set wildmode=full    " get bash-like tab completions with longest and list
+"set wildmode=full    " get bash-like tab completions with longest and list
 
 set number           " Show line numbers
 
