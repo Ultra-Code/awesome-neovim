@@ -1,4 +1,8 @@
 "The system wide config file is found in /usr/share/nvim/sysinit.vim
+"===================================================================
+"===                 PLUG LOADER                                 ===
+"===================================================================
+source $HOME/.config/nvim/vimplugloader.vim
 
 "===================================================================
 "===                 EDITOR CONFIGURATIONS                       ===
