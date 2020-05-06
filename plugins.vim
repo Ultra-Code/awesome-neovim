@@ -21,7 +21,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdcommenter'
 
 " === Themes and Colour Scheme ===
-Plug 'rakr/vim-one'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
 
 " === Git Plugin ===
 "A vim plugin which shows git diff in the gutter (sign column).
