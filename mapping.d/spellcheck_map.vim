@@ -1,4 +1,5 @@
 " === Spell checking === "
+" For help on spell checking :help spell
 
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
