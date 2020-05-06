@@ -10,6 +10,21 @@ set signcolumn=yes
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+"a more automatic behavior where when cursoring over a word,
+"You see either the diagnostic if it exists, otherwise the documentation
+function! ShowDocIfNoDiagnostic(timer_id)
+  if (coc#util#has_float() == 0)
+    silent call CocActionAsync('doHover')
+  endif
+endfunction
+
+function! s:show_hover_doc()
+  call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
+
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -42,3 +57,22 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+let g:coc_global_extensions = [
+  \ 'coc-ultisnips',
+  \ 'coc-syntax',
+  \ 'coc-snippets',
+  \ 'coc-prettier',
+  \ 'coc-pairs',
+  \ 'coc-json',
+  \ 'coc-eslint',
+  \ 'coc-emoji',
+  \ 'coc-emmet',
+  \ 'coc-yaml',
+  \ 'coc-vetur',
+  \ 'coc-tsserver',
+  \ 'coc-python',
+  \ 'coc-markdownlint',
+  \ 'coc-html',
+  \ 'coc-flutter',
+  \ 'coc-css',
+  \ ]
