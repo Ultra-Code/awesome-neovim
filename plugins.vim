@@ -68,6 +68,9 @@ Plug 'dart-lang/dart-vim-plugin'
 "TypeScrip Syntax Highlighting
 Plug 'HerringtonDarkholme/yats.vim'
 
+"GraphQL This Vim plugin provides GraphQL file detection, syntax highlighting, and indentation.
+Plug 'jparise/vim-graphql'
+
 " == Code Completion Engine ===
 
 "Coc is an intellisense engine for Vim/Neovim
