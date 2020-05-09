@@ -4,6 +4,8 @@ This is to make setting up of vim 8 && neovim 0.4 and above easy and a breeze.
 Moving on I will use vim and neovim interchangably because they are very similar
 under the hood.
 
+![Picture Of My Environment](https://drive.google.com/open?id=112xtA4g-MGwFNYd9svOcCjD0hsAv0Tdj)
+
 ## Requirement
 
 Installation of plugins in neovim or vim requires python support
