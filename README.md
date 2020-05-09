@@ -4,7 +4,7 @@ This is to make setting up of vim 8 && neovim 0.4 and above easy and a breeze.
 Moving on I will use vim and neovim interchangably because they are very similar
 under the hood.
 
-![Picture Of My Environment](https://drive.google.com/open?id=112xtA4g-MGwFNYd9svOcCjD0hsAv0Tdj)
+![Awesome NeoVim](https://github.com/Ultra-Code/nvim/blob/master/assets/AwesomeAndConfigurableNeoVim.png)
 
 ## Requirement
 
