@@ -1,8 +1,8 @@
-{ "languageserver": {
+{
+  "languageserver": {
     "clangd-10": {
       "command": "clangd-10",
-      "args":
-        [
+      "args": [
         "--all-scopes-completion",
         "--clang-tidy",
         "--completion-style=detailed",
@@ -10,28 +10,31 @@
         "--header-insertion=iwyu",
         "--suggest-missing-includes",
         "-j=2"
-        ],
-      "rootPatterns":
-        [
-          "compile_flags.txt",
-          "compile_commands.json",
-          ".git/",
-          ".hg/"],
-      "filetypes":
-      [
-          "c",
-          "cpp",
-          "objc",
-          "objcpp"]
+      ],
+      "rootPatterns": [
+        "compile_flags.txt",
+        "compile_commands.json",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": ["c", "cpp", "objc", "objcpp"]
     }
-  }
-    ,"codeLens.enable": true
-    ,"suggest.enablePreview": true
-    ,"html.enable": true
-    ,"html.format.enable":true
-    ,"python.linting.enabled":true
-    ,"coc.preferences.formatOnSaveFiletypes": ["css", "Markdown","dart","json","typescript","javascript","graphql","vue"]
-    ,"eslint.autoFixOnSave":true
-    ,"prettier.eslintIntegration": true
+  },
+  "codeLens.enable": true,
+  "suggest.enablePreview": true,
+  "html.enable": true,
+  "html.format.enable": true,
+  "python.linting.enabled": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "Markdown",
+    "dart",
+    "json",
+    "typescript",
+    "javascript",
+    "graphql",
+    "vue"
+  ],
+  "eslint.autoFixOnSave": true,
+  "prettier.eslintIntegration": true
 }
-
