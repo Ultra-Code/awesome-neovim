@@ -30,7 +30,7 @@ let g:vista#renderer#enable_icon = 1
 
 " Executive used when opening vista sidebar without specifying it.
 " See all the avaliable executives via `:echo g:vista#executives`.
-let g:vista_default_executive = 'coc'
+"let g:vista_default_executive = 'coc'
 
 " Set the executive for some filetypes explicitly. Use the explicit executive
 " instead of the default one for these filetypes when using `:Vista` without
