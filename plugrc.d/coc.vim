@@ -58,7 +58,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 let g:coc_global_extensions = [
-  \ 'coc-ultisnips',
   \ 'coc-syntax',
   \ 'coc-snippets',
   \ 'coc-prettier',
@@ -75,4 +74,5 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-flutter',
   \ 'coc-css',
+  \ 'coc-db'
   \ ]
