@@ -13,4 +13,3 @@ source   ~/.config/nvim/mapping.d/multi_cursor_map.vim
 source   ~/.config/nvim/mapping.d/folding_map.vim
 source   ~/.config/nvim/mapping.d/dart_map.vim
 source   ~/.config/nvim/mapping.d/terminal_map.vim
-source   ~/.config/nvim/mapping.d/ultisnip_map.vim
