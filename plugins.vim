@@ -81,14 +81,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " === Code Snippets Plugins ===
 "For snippets in neovim
-" Track the engine.
-Plug 'SirVer/ultisnips'
-
 "Bootstrap snippets
 Plug 'jvanja/vim-bootstrap4-snippets'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plug   'honza/vim-snippets'
 
 " === Syntax Highlighting Engine ===
 "Syntastic is a syntax checking plugin for Vim
