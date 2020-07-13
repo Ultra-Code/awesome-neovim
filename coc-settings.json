@@ -36,5 +36,6 @@
     "vue"
   ],
   "eslint.autoFixOnSave": true,
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+  "yaml.format.enable": true
 }
