@@ -106,6 +106,9 @@ Plug 'ryanoasis/vim-devicons'
 " === DataBase ===
 Plug 'tpope/vim-dadbod'
 
+" === Documentation ===
+Plug 'kkoomen/vim-doge'
+
 " Initialize plugin system
 call plug#end()
 

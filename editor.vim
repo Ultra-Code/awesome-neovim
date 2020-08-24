@@ -37,9 +37,6 @@ endif
 \ |   exe "normal! g`\""
 \ | endif
 
-"Sets the shell used for executing OS command"
-set shell=/usr/bin/bash
-
 "Keep a backup copy of a file when overwriting it.This also sets the 'undofile' option, if
 "available.  This will store the multi-level undo information in a file.  The result is
 "that when you change a file, exit Vim, and then edit the file again, you can undo
