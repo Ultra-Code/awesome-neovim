@@ -1,6 +1,10 @@
 "Enable powerline fonts symbols
 let g:airline_powerline_fonts=1
 
+"enable caching of the various syntax highlighting groups.
+"And use :AirlineRefresh to clear the cache
+let g:airline_highlighting_cache = 1
+
 "Set terminal color to 256 colors
 set t_Co=256
 
