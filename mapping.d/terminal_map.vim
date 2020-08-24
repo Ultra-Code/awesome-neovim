@@ -3,7 +3,7 @@ tnoremap <Esc> <C-\><C-n>:q<CR>
 
 " open terminal on ctrl+n
 function! OpenTerminal()
-  split term://bash
+  split term://zsh
   resize 10
 endfunction
 
