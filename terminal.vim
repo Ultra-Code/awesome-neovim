@@ -2,6 +2,5 @@
 set splitright
 set splitbelow
 
-" start terminal in insert mode
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-
+"Always start terminal in insert mode
+autocmd TermOpen * startinsert

@@ -12,13 +12,13 @@
     "endif
 
 if executable('curl')
-    if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    if empty(glob('$XDG_DATA_HOME/nvim/site/autoload/plug.vim'))
         echomsg 'Installing Vim-plug on your system'
-        silent execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs '
+        silent execute '!curl -fLo $XDG_DATA_HOME/nvim/site/autoload/plug.vim --create-dirs '
             \ . 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
         augroup plug_init
             autocmd!
-            autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
+            autocmd VimEnter * PlugInstall --sync | quit |source %
         augroup END
     endif
 else

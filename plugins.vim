@@ -63,7 +63,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " === Language Specific Plugins ===
 
 "Dart language support in vim
-Plug 'dart-lang/dart-vim-plugin'
+"Plug 'dart-lang/dart-vim-plugin'
 
 "TypeScript Language support in neovim and vim
 
@@ -71,7 +71,7 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'HerringtonDarkholme/yats.vim'
 
 "GraphQL This Vim plugin provides GraphQL file detection, syntax highlighting, and indentation.
-Plug 'jparise/vim-graphql'
+"Plug 'jparise/vim-graphql'
 
 " == Code Completion Engine ===
 
@@ -104,10 +104,10 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 
 " === DataBase ===
-Plug 'tpope/vim-dadbod'
+"Plug 'tpope/vim-dadbod'
 
 " === Documentation ===
-Plug 'kkoomen/vim-doge'
+"Plug 'kkoomen/vim-doge'
 
 " Initialize plugin system
 call plug#end()

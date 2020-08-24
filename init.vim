@@ -2,30 +2,30 @@
 "===================================================================
 "===                 PLUG LOADER                                 ===
 "===================================================================
-source $HOME/.config/nvim/vimplugloader.vim
+source $XDG_CONFIG_HOME/nvim/vimplugloader.vim
 
 "===================================================================
 "===                 EDITOR CONFIGURATIONS                       ===
 "===================================================================
-source $HOME/.config/nvim/editor.vim
+source $XDG_CONFIG_HOME/nvim/editor.vim
 
 "===================================================================
 "===                TERMINAL CONFIGURATIONS                      ===
 "===================================================================
-source $HOME/.config/nvim/terminal.vim
+source $XDG_CONFIG_HOME/nvim/terminal.vim
 
 "===================================================================
 "===                MAPPINGS ONFIGURATIONS                       ===
 "===================================================================
-source $HOME/.config/nvim/mapinit.vim
+source $XDG_CONFIG_HOME/nvim/mapinit.vim
 
 "===================================================================
 "===                PLUGINS CONFIGURATIONS                       ===
 "===================================================================
-source $HOME/.config/nvim/pluginit.vim
+source $XDG_CONFIG_HOME/nvim/pluginit.vim
 
 "===================================================================
 "===                UI CONFIGURATIONS                            ===
 "===================================================================
-source $HOME/.config/nvim/ui.vim
+source $XDG_CONFIG_HOME/nvim/ui.vim
 

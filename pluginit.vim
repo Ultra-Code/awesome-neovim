@@ -2,16 +2,16 @@
 "==             PLUGINS INIT                             ==
 "==========================================================
 "
-source ~/.config/nvim/plugins.vim
-source ~/.config/nvim/plugrc.d/coc.vim
-source ~/.config/nvim/plugrc.d/markdown_preview.vim
-source ~/.config/nvim/plugrc.d/syntastic.vim
-source ~/.config/nvim/plugrc.d/neoformat.vim
-source ~/.config/nvim/plugrc.d/multiple_cursor.vim
-source ~/.config/nvim/plugrc.d/nerdtree_git.vim
-source ~/.config/nvim/plugrc.d/airline.vim
-source ~/.config/nvim/plugrc.d/fzf.vim
-source ~/.config/nvim/plugrc.d/devicons.vim
-source ~/.config/nvim/plugrc.d/dart_flutter.vim
-source ~/.config/nvim/plugrc.d/vista.vim
-source ~/.config/nvim/plugrc.d/clang_tools.vim
+source  $XDG_CONFIG_HOME/nvim/plugins.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/coc.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/markdown_preview.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/syntastic.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/neoformat.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/multiple_cursor.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/nerdtree_git.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/airline.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/fzf.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/devicons.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/dart_flutter.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/vista.vim
+source  $XDG_CONFIG_HOME/nvim/plugrc.d/clang_tools.vim
