@@ -1,7 +1,7 @@
 {
   "languageserver": {
     "clangd-10": {
-      "command": "clangd-10",
+      "command": "clangd-11",
       "args": [
         "--all-scopes-completion",
         "--clang-tidy",
