@@ -18,7 +18,7 @@ let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 
 "let g:NERDTreeShowIgnoredStatus = 1
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
