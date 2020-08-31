@@ -1,5 +1,5 @@
 "defalut regex tool
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+"let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Default fzf layout
 " - down / up / left / right
