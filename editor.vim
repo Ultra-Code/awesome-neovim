@@ -21,7 +21,6 @@ filetype plugin indent on
 syntax on
 
 "set assembly language file to use nasm
-let filetype_i = "nasm"
 let g:asmsyntax = "nasm"
 
 "Set clipboard to the + and * registers
@@ -53,15 +52,16 @@ else
 endif
 
 "for vim's swap ; undo and backup organization
-set backupdir=/tmp// "Location for backup of files before editing "
-set directory=/tmp// "The location of swap files ,ie buffers that have not been save ie in memory
-set undodir=/tmp//   "Location for storing undo tree of the edited file"
+set backupdir=/tmp//   "Location for backup of files before editing "
+set directory=/tmp//   "The location of swap files ,ie buffers that have not been save ie in memory
+set undodir=/tmp//     "Location for storing undo tree of the edited file"
+set backupext=.vimbak  "The extension to be used for vim backup files
 
 
 "Do not keep a backup or .swp file. I don't like to have junk
 "files, my source is anyway in cvs/svn/p4/git.
-set backup       " create a backup of the file before editing
-set undofile     " enable undofile , which helps you undo a lot and redo also a lot
+set backup         " create a backup of the file before editing
+set undofile       " enable undofile , which helps you undo a lot and redo also a lot
 set noswapfile     " enable saving unsaved/unwritten files in a *.swp file
 
 set nocompatible   " Use Vim defaults (much better!), Vi is for 70's programmers!
@@ -152,9 +152,6 @@ set tags=tags
 
 "Disable default mappings from omni for sql
 let g:omni_sql_no_default_maps = 1
-
-"Remove Trailing whitespaces in specified documents on write of buffer
-"autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> %s/\s\+$//e
 
 "Remove Trailing whitespaces in all files
 autocmd BufWritePre * %s/\s\+$//e
