@@ -8,12 +8,14 @@ under the hood.
 
 ## Requirement
 
-Installation of plugins in neovim or vim requires python support
-(python 2 or python 3).You can check if your neovim has python support by running
-`:echo has("python3")` and `:echo has("python2")`.
+Installation of plugins in neovim or vim requires `python 3` support
+.You can check if your neovim has python support by running
+`:echo has("python3")`
 
 __Neovim__
-Neovim does not come with python support by default, and additional setup is required.
+Neovim does not come out of the box with python 3 support
+
+>Additional Setup is required for python 3
 
 First install [pynvim](https://github.com/neovim/pynvim)
 
@@ -21,10 +23,11 @@ First install [pynvim](https://github.com/neovim/pynvim)
 python3 -m pip install pynvim
 ```
 
-And add the following configuration in your `.vimrc`
+And add the following configuration in your `$XDG_CONFIG_HOME/nvim/editor.vim` or
+`$HOME/.config/nvim/editor.vim`
 
 ```bash
-let g:python3_host_prog=/path/to/python/executable/
+let g:python3_host_prog=/path/to/python3/executable/on/your/system
 ```
 
 __Vim Plug is A minimalist Vim plugin manager__ as quoted by their site
@@ -65,9 +68,10 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ### Neovim
 
 __Note:__ Now the is automatic Vim-Plug installation for all neovim users
-All you have to do is clone the project to `$HOME/.config/nvim/` and open nvim
-and watch some beautiful magic happen . Thanks to @junegunn/vim-plug and all
-colaborators.
+All you have to do is clone the project to `$HOME/.config/nvim/` or `$XDG_CONFIG_HOME/nvim/`
+and open nvim and watch some beautiful magic happen. __Note__ the evironment variable
+`$XDG_DATA_HOME` must be defined for this to work else you must fallback to using
+the method specifed below. Thanks to @junegunn/vim-plug and all colaborators.
 
 #### Unix
 
@@ -91,7 +95,7 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 ### Install Plugins Using Vim-Plug
 
-move to ~/.config/nvim/ and open the plugins.vim file
+move to `$XDG_CONFIG_HOME/nvim` or `~/.config/nvim/` and open the plugins.vim file
 and run this commands
 
 ```bash
@@ -99,10 +103,12 @@ and run this commands
 
 :PlugInstall  #To install plugins
 
-:PlugUpdate   #To update Vim-Plug
+:PlugUpdate   #To update plugins
+
+:PlugUpgrade  #To upgrade to the latest version of Vim-Plug
 
 :PlugClean    # Comment the plugin you want to remove with '"' then :source %
-              # and run PlugClean
+              # and run PlugClean to remove that commented plugin
 ```
 
 And Assumming you plan to get involved in web developemt then you should
@@ -138,6 +144,14 @@ for help using the various plugins and extensions
 ```
 
 to view the help pages and instruction manual on the various extensions
+
+In addtion to these plugins ,some plugins like Vista have external dependencies
+which have to be installed in other to use them.
+
+```bash
+sudo aptitude install universal-ctags #enable vista to generate source code
+                                      #tags
+```
 
 >>Big ShoutOuts to the Creators of Vim && Neovim.
 >Another to all the creators of the various vim and neovim extensions.
