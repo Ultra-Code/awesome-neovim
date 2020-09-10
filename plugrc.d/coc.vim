@@ -64,7 +64,6 @@ let g:coc_global_extensions = [
   \ 'coc-pairs',
   \ 'coc-json',
   \ 'coc-eslint',
-  \ 'coc-emoji',
   \ 'coc-emmet',
   \ 'coc-yaml',
   \ 'coc-vetur',
@@ -72,7 +71,5 @@ let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-markdownlint',
   \ 'coc-html',
-  \ 'coc-flutter',
   \ 'coc-css',
-  \ 'coc-db'
   \ ]
