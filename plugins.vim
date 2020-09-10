@@ -11,6 +11,7 @@
 call plug#begin('$HOME/.local/share/nvim/plugged')
 
 " === Editor Plugins === "
+
 "Multiple cursor editing
 Plug 'terryma/vim-multiple-cursors'
 
@@ -21,11 +22,13 @@ Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdcommenter'
 
 " === Themes and Colour Scheme ===
+
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 
 " === Git Plugin ===
+
 "A vim plugin which shows git diff in the gutter (sign column).
 Plug 'airblade/vim-gitgutter'
 
@@ -36,39 +39,38 @@ Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " === Satus Line ===
+
 "Status bar plugin
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
 
 " === Source Code Formater ===
+
 "A neoformat plugin for code formating
 Plug 'sbdchd/neoformat'
 
 " === Fuzzy Finder ===
+
 "fzf is a general-purpose command-line fuzzy finder.
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 Plug 'junegunn/fzf', { 'dir': '~/.local/share/nvim/plugged/fzf/', 'do': './install --all' }
-  " Both options are optional. You don't have to install fzf in ~/.fzf
-  " and you don't have to run the install script if you use fzf only in Vim.
+" Both options are optional. You don't have to install fzf in ~/.fzf
+" and you don't have to run the install script if you use fzf only in Vim.
 Plug 'junegunn/fzf.vim'
 
 " === Markdown Plugins ===
+
 "Markdown Syntax Highlighting"
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-"A markdown previewer
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+"A markdown previewer prebuild binary
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 'markdown' }
 
 " === Language Specific Plugins ===
 
 "Dart language support in vim
 "Plug 'dart-lang/dart-vim-plugin'
-
-"TypeScript Language support in neovim and vim
-
-"TypeScrip Syntax Highlighting
-Plug 'HerringtonDarkholme/yats.vim'
 
 "GraphQL This Vim plugin provides GraphQL file detection, syntax highlighting, and indentation.
 "Plug 'jparise/vim-graphql'
@@ -80,34 +82,36 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " === Code Snippets Plugins ===
+
 "For snippets in neovim
 "Bootstrap snippets
 Plug 'jvanja/vim-bootstrap4-snippets'
 
 " === Syntax Highlighting Engine ===
+
 "Syntastic is a syntax checking plugin for Vim
  Plug 'scrooloose/syntastic'
+
+"TypeScript Syntax Highlighting
+Plug 'HerringtonDarkholme/yats.vim'
 
 "A collection of language packs for Vim.
 Plug 'sheerun/vim-polyglot'
 
 " === Tag Bar Plugin ===
+
 "View and search LSP symbols, tags in Vim/NeoVim."
 Plug 'liuchengxu/vista.vim'
 
 " === UI === "
+
 " A Neovim File explorer
 Plug 'preservim/nerdtree'
 
 " == Icons == "
+
 " Glyphs and Icons for neovim
 Plug 'ryanoasis/vim-devicons'
-
-" === DataBase ===
-"Plug 'tpope/vim-dadbod'
-
-" === Documentation ===
-"Plug 'kkoomen/vim-doge'
 
 " Initialize plugin system
 call plug#end()
