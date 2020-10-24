@@ -8,12 +8,12 @@ set background=dark
 "colorscheme evening
 
 "Onedark colorscheme
-"colorscheme onedark
-"let g:airline_theme="onedark"
+colorscheme onedark
+let g:airline_theme="onedark"
 
 "Gruvbox colorscheme
-colorscheme gruvbox
-let g:airline_theme="gruvbox"
+"colorscheme gruvbox
+"let g:airline_theme="gruvbox"
 
 "Afterglow colorscheme
 "colorscheme afterglow
