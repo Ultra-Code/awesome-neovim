@@ -1,6 +1,6 @@
 {
   "languageserver": {
-    "clangd-10": {
+    "clangd": {
       "command": "clangd-11",
       "args": [
         "--all-scopes-completion",
@@ -9,7 +9,7 @@
         "--background-index",
         "--header-insertion=iwyu",
         "--suggest-missing-includes",
-        "-j=2"
+        "-j=4"
       ],
       "rootPatterns": [
         "compile_flags.txt",
@@ -17,7 +17,7 @@
         ".git/",
         ".hg/"
       ],
-      "filetypes": ["c", "cpp", "objc", "objcpp"]
+      "filetypes": ["c", "cpp", "c++", "cxx", "cc", "h", "hpp", "h++", "hxx"]
     },
     "cmake": {
       "command": "cmake-language-server",
@@ -45,5 +45,11 @@
   ],
   "eslint.autoFixOnSave": true,
   "prettier.eslintIntegration": true,
-  "yaml.format.enable": true
+  "yaml.format.enable": true,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "wxss.validate": false,
+  "stylelintplus.autoFixOnSave": true,
+  "stylelintplus.validateOnSave": true
 }
