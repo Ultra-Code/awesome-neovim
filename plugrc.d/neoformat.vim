@@ -33,5 +33,5 @@ let g:neoformat_enabled_python = ['yapf']
 
 augroup fmt
   autocmd!
-  autocmd BufWritePre *.py,*.nix,CMakeLists.txt :Neoformat
+  autocmd BufWritePre *.py,*.nix,CMakeLists.txt undojoin | Neoformat
 augroup END
