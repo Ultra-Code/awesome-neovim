@@ -10,6 +10,16 @@ set signcolumn=yes
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
 "a more automatic behavior where when cursoring over a word,
 "You see either the diagnostic if it exists, otherwise the documentation
 function! ShowDocIfNoDiagnostic(timer_id)
@@ -24,14 +34,6 @@ endfunction
 
 autocmd CursorHoldI * :call <SID>show_hover_doc()
 autocmd CursorHold * :call <SID>show_hover_doc()
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -72,4 +74,5 @@ let g:coc_global_extensions = [
   \ 'coc-markdownlint',
   \ 'coc-html',
   \ 'coc-css',
+  \'coc-stylelintplus'
   \ ]
