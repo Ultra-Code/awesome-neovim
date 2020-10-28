@@ -23,7 +23,7 @@ endfunction
 "a more automatic behavior where when cursoring over a word,
 "You see either the diagnostic if it exists, otherwise the documentation
 function! ShowDocIfNoDiagnostic(timer_id)
-  if (coc#util#has_float() == 0)
+  if (coc#float#has_float() == 0)
     silent call CocActionAsync('doHover')
   endif
 endfunction
