@@ -69,11 +69,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 " === Language Specific Plugins ===
 
-"Dart language support in vim
-"Plug 'dart-lang/dart-vim-plugin'
-
-"GraphQL This Vim plugin provides GraphQL file detection, syntax highlighting, and indentation.
-"Plug 'jparise/vim-graphql'
 
 " == Code Completion Engine ===
 
@@ -83,9 +78,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " === Code Snippets Plugins ===
 
-"For snippets in neovim
-"Bootstrap snippets
-Plug 'jvanja/vim-bootstrap4-snippets'
 
 " === Syntax Highlighting Engine ===
 
