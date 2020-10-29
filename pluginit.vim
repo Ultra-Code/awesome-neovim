@@ -12,6 +12,5 @@ source  $XDG_CONFIG_HOME/nvim/plugrc.d/nerdtree_git.vim
 source  $XDG_CONFIG_HOME/nvim/plugrc.d/airline.vim
 source  $XDG_CONFIG_HOME/nvim/plugrc.d/fzf.vim
 source  $XDG_CONFIG_HOME/nvim/plugrc.d/devicons.vim
-source  $XDG_CONFIG_HOME/nvim/plugrc.d/dart_flutter.vim
 source  $XDG_CONFIG_HOME/nvim/plugrc.d/vista.vim
 source  $XDG_CONFIG_HOME/nvim/plugrc.d/clang_tools.vim

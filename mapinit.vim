@@ -11,5 +11,4 @@ source   $XDG_CONFIG_HOME/nvim/mapping.d/markdown_preview_map.vim
 source   $XDG_CONFIG_HOME/nvim/mapping.d/highlighting_map.vim
 source   $XDG_CONFIG_HOME/nvim/mapping.d/multi_cursor_map.vim
 source   $XDG_CONFIG_HOME/nvim/mapping.d/folding_map.vim
-source   $XDG_CONFIG_HOME/nvim/mapping.d/dart_map.vim
 source   $XDG_CONFIG_HOME/nvim/mapping.d/terminal_map.vim
