@@ -47,3 +47,4 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr><cr>
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
+nmap <C-[> :pop<cr>
