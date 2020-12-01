@@ -17,7 +17,7 @@
         ".git/",
         ".hg/"
       ],
-      "filetypes": ["c", "cpp", "c++", "cxx", "cc", "h", "hpp", "h++", "hxx"]
+      "filetypes": ["c", "h", "cpp", "hpp", "cxx", "hxx", "tpp", "txx"]
     },
     "cmake": {
       "command": "cmake-language-server",
