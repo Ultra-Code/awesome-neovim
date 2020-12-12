@@ -11,7 +11,6 @@ set ffs=unix,dos,mac
 set encoding=UTF-8
 
 " == Python provider configurations == "
-let g:python_host_prog='/usr/bin/python2'
 let g:python3_host_prog='/usr/bin/python3'
 
 "enable loading the plugin files for specific file types
@@ -80,15 +79,13 @@ set bs=2            " allow backspacing over everything in insert mode
 set hidden          " This option allows you to switch between multiple buffers
                     "without saving a changed buffer
 
-set mouse=a         " Automatically enable mouse usage
+set mouse=""        " Automatically enable mouse usage
 
 set mousehide       " Hide the mouse pointer while typing.
 
 set incsearch       " highlight search string as search pattern is entered
 
 set hlsearch         "disables last search hilighting
-
-"set wildmode=full    " get bash-like tab completions with longest and list
 
 set number           " Show line numbers
 
@@ -136,7 +133,7 @@ set cmdheight=2       "Command line height
 
 set autowriteall      "Auto-write all file changes
 
-set history=300       "Set the history size to maximum. by default it is 20
+set history=10000       "Set the history size to maximum. by default it is 20
 
 set list          " Display unprintable characters f12 - switches
 
@@ -149,9 +146,6 @@ set foldlevel=99
 
 "Enable Tags
 set tags=tags
-
-"Disable default mappings from omni for sql
-let g:omni_sql_no_default_maps = 1
 
 "Remove Trailing whitespaces in all files
 autocmd BufWritePre * %s/\s\+$//e
