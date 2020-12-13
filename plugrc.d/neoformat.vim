@@ -31,7 +31,10 @@ let g:neoformat_cmakelists_cmakeformat = {
 " stdin - send data to stdin of formatter (default: 0),
 let g:neoformat_enabled_python = ['yapf']
 
+"Haskell code formatter
+let g:neoformat_enabled_haskell= ['hindent']
+
 augroup fmt
   autocmd!
-  autocmd BufWritePre *.py,*.nix,CMakeLists.txt undojoin | Neoformat
+  autocmd BufWritePre *.hs,*.py,*.nix,CMakeLists.txt | Neoformat
 augroup END
