@@ -22,9 +22,10 @@ syntax on
 "set assembly language file to use nasm
 let g:asmsyntax = "nasm"
 
-"Set clipboard to the + and * registers
+"Set clipboard to the +  registers only
+"if you want to use the * also add ,unnamed
 if has('clipboard')
-     set clipboard+=unnamedplus,unnamed
+     set clipboard+=unnamedplus
 endif
 
 "Restore cursor to file position in previous editing session
@@ -69,8 +70,6 @@ set expandtab      " always expands tab to spaces. It is good when peers use dif
 
 set wildmenu       "Display completion matches in a status line.  That is when you type <Tab>
                    "and there is more than one match.
-
-set termguicolors  "Set true colours in terminal
 
 set completeopt=menuone,preview,noinsert " Don't let autocomplete affect usual typing habits
 
