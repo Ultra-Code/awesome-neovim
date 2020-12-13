@@ -1,10 +1,10 @@
 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
+set updatetime=100
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
-" always show signcolumns
+" always merge signcolumn and number column into one
 set signcolumn=yes
 
 " Use K to show documentation in preview window
@@ -29,23 +29,15 @@ function! ShowDocIfNoDiagnostic(timer_id)
 endfunction
 
 function! s:show_hover_doc()
-  call timer_start(500, 'ShowDocIfNoDiagnostic')
+  call timer_start(3000, 'ShowDocIfNoDiagnostic')
 endfunction
 
-autocmd CursorHoldI * :call <SID>show_hover_doc()
-autocmd CursorHold * :call <SID>show_hover_doc()
+"autocmd CursorHoldI * :call <SID>show_hover_doc()
+"autocmd CursorHold * :call <SID>show_hover_doc()
 
-" Highlight symbol under cursor on CursorHold
+" Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  "autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
+autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
