@@ -1,3 +1,3 @@
 "Perform SyntasticCheck
-nnoremap <F4> :SyntasticCheck<CR> :lopen<CR>
-nnoremap <F5> :SyntasticCheck<CR> :lclose<CR>
+nnoremap <F5> :SyntasticCheck<CR> :lopen<CR>
+nnoremap <F6> :SyntasticCheck<CR> :lclose<CR>
