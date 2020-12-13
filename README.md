@@ -35,47 +35,30 @@ __Vim Plug is A minimalist Vim plugin manager__ as quoted by their site
 
 ### Installation of Vim-Plug
 
-[Download plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
-and put it in the "autoload" directory.
+#### _NOTE_
 
-### Vim
+_Now the is automatic Vim-Plug installation for all neovim and vim users
+You can automate the process by putting the following commands in your Vim configuration
+file as suggested [here][auto]. and open nvim and watch some beautiful magic happen.
+___This is a one time activity so after vim-plug has been istalled you can
+remove these commands from your config.
+The $MYVIMRC is an environment variable that should point to your init.vim file
+for neovim users and .vimrc file for vim users___ ._
 
-#### Unix
+__Note for neovim users__
+_On linux the path for the plugin is `$XDG_DATA_HOME/nvim/site/autoload/plug.vim`
+if the evironment variable `$XDG_DATA_HOME` is defined __else__ use the default
+`'~/.local/share/nvim/site/autoload/plug.vim` for this to work_
 
-```sh
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
-
-You can automate the process by putting the command in your Vim configuration
-file as suggested [here][auto].
+__Thanks to @junegunn/vim-plug and all colaborators.__
 
 [auto]: https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
 
-##### Windows (PowerShell)
-
-```powershell
-md ~\vimfiles\autoload
-$uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-(New-Object Net.WebClient).DownloadFile(
-  $uri,
-  $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(
-    "~\vimfiles\autoload\plug.vim"
-  )
-)
-```
-
 ### Neovim
-
-__Note:__ Now the is automatic Vim-Plug installation for all neovim users
-All you have to do is clone the project to `$HOME/.config/nvim/` or `$XDG_CONFIG_HOME/nvim/`
-and open nvim and watch some beautiful magic happen. __Note__ the evironment variable
-`$XDG_DATA_HOME` must be defined for this to work else you must fallback to using
-the method specifed below. Thanks to @junegunn/vim-plug and all colaborators.
 
 #### Unix
 
-```sh
+```zsh
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
@@ -89,6 +72,28 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   $uri,
   $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(
     "~\AppData\Local\nvim\autoload\plug.vim"
+  )
+)
+```
+
+### Vim
+
+#### Unix
+
+```bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+##### Windows (PowerShell)
+
+```powershell
+md ~\vimfiles\autoload
+$uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+(New-Object Net.WebClient).DownloadFile(
+  $uri,
+  $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(
+    "~\vimfiles\autoload\plug.vim"
   )
 )
 ```
@@ -111,6 +116,18 @@ and run this commands
               # and run PlugClean to remove that commented plugin
 ```
 
+For modern c/c++ developemt
+
+```bash
+sudo aptitude install gcc ccls cppcheck
+#Note: When using another build system like build2 you will need to dry run
+#your build system and pipe the output to compiledb to generate compile_commands.json
+# eg. $ b -vn clean update |& compiledb
+sudo aptitude install clangd clang-format clang-tidy clang # don't forget to
+#generate a compile_commands.json file using cmake with 'cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+#in your project directory OR
+```
+
 And Assumming you plan to get involved in web developemt then you should
 insllall the following plugins
 
@@ -122,19 +139,18 @@ insllall the following plugins
 there are a lot of other extentions you can install for the coc.nvim language
 server client [Coc.nvim](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions)
 
+`Note to change the plugins that are automatically installed by coc.nvim edit
+the plugrc.d/coc.vim's global_extension variable with your desired plugins`
+
+```vim
+let g:coc_global_extensions=[]
+```
+
 for python
 
 ```bash
 :CocInstall coc-python
 pip3 install flake8 yapf # For linting and formatting
-```
-
-for c/c++
-
-```bash
-sudo aptitude install clangd clang-format clang-tidy clang # don't forget to
-#generate a compile_commands.json file using cmake with 'cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-#in your project directory
 ```
 
 for help using the various plugins and extensions
@@ -149,8 +165,7 @@ In addtion to these plugins ,some plugins like Vista have external dependencies
 which have to be installed in other to use them.
 
 ```bash
-sudo aptitude install universal-ctags #enable vista to generate source code
-                                      #tags
+sudo aptitude install universal-ctags # enable vista to generate source code tags
 ```
 
 >>Big ShoutOuts to the Creators of Vim && Neovim.
