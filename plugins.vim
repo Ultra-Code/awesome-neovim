@@ -15,9 +15,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 "Multiple cursor editing
 Plug 'terryma/vim-multiple-cursors'
 
-" EasyMotion provides a mush simpler way to use motions in vim
-Plug 'easymotion/vim-easymotion'
-
 "A commenter for different Language
 Plug 'scrooloose/nerdcommenter'
 
@@ -32,9 +29,6 @@ Plug 'morhetz/gruvbox'
 "A vim plugin which shows git diff in the gutter (sign column).
 Plug 'airblade/vim-gitgutter'
 
-"A git wrapper
-Plug 'tpope/vim-fugitive'
-
 "A plugin of NERDTree showing git status flags
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -42,7 +36,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 "Status bar plugin
  Plug 'vim-airline/vim-airline'
- Plug 'vim-airline/vim-airline-themes'
 
 " === Source Code Formater ===
 
@@ -82,12 +75,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " === Syntax Highlighting Engine ===
 
 "Syntastic is a syntax checking plugin for Vim
- Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
-"TypeScript Syntax Highlighting
-Plug 'HerringtonDarkholme/yats.vim'
-
-"A collection of language packs for Vim.
+"A collection of language syntax packs for Vim.
 Plug 'sheerun/vim-polyglot'
 
 " === Tag Bar Plugin ===
@@ -103,7 +93,7 @@ Plug 'preservim/nerdtree'
 " == Icons == "
 
 " Glyphs and Icons for neovim
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 
 " Initialize plugin system
 call plug#end()
