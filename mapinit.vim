@@ -9,6 +9,5 @@ source   $XDG_CONFIG_HOME/nvim/mapping.d/tab_buffer_map.vim
 source   $XDG_CONFIG_HOME/nvim/mapping.d/syntastic_map.vim
 source   $XDG_CONFIG_HOME/nvim/mapping.d/markdown_preview_map.vim
 source   $XDG_CONFIG_HOME/nvim/mapping.d/highlighting_map.vim
-source   $XDG_CONFIG_HOME/nvim/mapping.d/multi_cursor_map.vim
 source   $XDG_CONFIG_HOME/nvim/mapping.d/folding_map.vim
 source   $XDG_CONFIG_HOME/nvim/mapping.d/terminal_map.vim
