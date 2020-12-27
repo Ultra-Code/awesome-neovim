@@ -78,7 +78,7 @@ set bs=2            " allow backspacing over everything in insert mode
 set hidden          " This option allows you to switch between multiple buffers
                     "without saving a changed buffer
 
-set mouse=""        " Automatically enable mouse usage
+set mouse=a         "Automatically enable mouse usage
 
 set mousehide       " Hide the mouse pointer while typing.
 
