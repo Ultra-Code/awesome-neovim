@@ -1,6 +1,6 @@
 {
   "languageserver": {
-    /*    "clangd": {
+    "clangd": {
       "command": "clangd",
       "args": [
         "--all-scopes-completion",
@@ -18,7 +18,7 @@
         ".hg/"
       ],
       "filetypes": ["c", "h", "cpp", "hpp", "cxx", "hxx", "tpp", "txx"]
-    },*/
+    } /*
     "ccls": {
       "command": "ccls",
       "filetypes": [
@@ -35,7 +35,6 @@
         "t++"
       ],
       "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-      "args": ["--log-file=.ccls-cache/log", "-v=1"],
       "initializationOptions": {
         "cache": {
           "directory": ".ccls-cache"
@@ -45,7 +44,7 @@
         },
         "index": { "threads": 4 }
       }
-    },
+    },*/,
     "cmake": {
       "command": "cmake-language-server",
       "filetypes": ["cmake"],
@@ -68,7 +67,10 @@
     }
   },
   "codeLens.enable": true,
+  "diagnostic.virtualText": true,
   "suggest.enablePreview": true,
+  "suggest.enablePreselect": true,
+  "suggest.triggerAfterInsertEnter": true,
   "html.enable": true,
   "html.format.enable": true,
   "python.linting.enabled": true,
@@ -84,11 +86,5 @@
   ],
   "eslint.autoFixOnSave": true,
   "prettier.eslintIntegration": true,
-  "yaml.format.enable": true,
-  "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
-  "wxss.validate": false,
-  "stylelintplus.autoFixOnSave": true,
-  "stylelintplus.validateOnSave": true
+  "yaml.format.enable": true
 }
