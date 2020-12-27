@@ -3,9 +3,10 @@
     "clangd": {
       "command": "clangd",
       "args": [
-        "--all-scopes-completion",
+        "--all-scopes-completion=true",
         "--clang-tidy",
-        "--completion-style=detailed",
+        "--completion-style=bundled",
+        "--cross-file-rename",
         "--background-index",
         "--header-insertion=iwyu",
         "--suggest-missing-includes",
@@ -68,6 +69,7 @@
   },
   "codeLens.enable": true,
   "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
   "suggest.enablePreview": true,
   "suggest.enablePreselect": true,
   "suggest.triggerAfterInsertEnter": true,
