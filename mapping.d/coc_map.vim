@@ -29,7 +29,7 @@ nmap <silent> ]d <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gr <Plug>(coc-references-used)
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -46,13 +46,22 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <leader>a  <Plug>(coc-codeaction-line)
+nmap <leader>a  <Plug>(coc-codeaction-line)
 
 " Remap for do codeAction of current line
 nmap <leader>ac <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
+
+"Do command from codeLens of current line
+nmap <leader>cdl <Plug>(coc-codelens-action)
+
+"Open refactor window for refactor of current symbol.
+nmap <leader>r <Plug>(coc-refactor)
+
+"Open link under cursor
+nmap <leader>ol <Plug>(coc-openlink)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 " Note coc#float#scroll works on neovim >= 0.4.3 or vim >= 8.2.0750
@@ -69,8 +78,7 @@ endif
 " Requires 'textDocument/selectionRange' support of language server.
 " Use <C-s> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+nmap <silent> <S-s> <Plug>(coc-range-select-backword)
 
 " Using CocList
 " Show all diagnostics
