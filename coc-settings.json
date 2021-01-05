@@ -10,6 +10,7 @@
         "--background-index",
         "--header-insertion=iwyu",
         "--suggest-missing-includes",
+        "--recovery-ast",
         "-j=4"
       ],
       "rootPatterns": [
