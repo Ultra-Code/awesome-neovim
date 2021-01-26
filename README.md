@@ -4,7 +4,22 @@ This is to make setting up of vim 8 && neovim 0.4 and above easy and a breeze.
 Moving on I will use vim and neovim interchangably because they are very similar
 under the hood.
 
-![Awesome NeoVim](https://github.com/Ultra-Code/nvim/blob/master/assets/AwesomeAndConfigurableNeoVim.png)
+## Awesome NeoVim with C++
+
+Supports the following
+
+- clang , gcc compilers
+- clang-tidy linter
+- clang-format formater
+- clangd lsp server with coc.nvim lsp client
+- cppcheck and clang-check static anlysis
+- autocompletion,documentation and all other features supported by clangd and
+    coc.nvim
+![Awesome-NeoVim with C++](https://github.com/Ultra-Code/awesome-neovim/blob/master/assets/AwesomeNeovimForC%2B%2B.png)
+
+## Awesome Neovim for Ts with Vue
+
+![Awesome NeoVim with Ts and Vue](https://github.com/Ultra-Code/nvim/blob/master/assets/AwesomeAndConfigurableNeoVim.png)
 
 ## Requirement
 
