@@ -11,7 +11,6 @@ let g:syntastic_python_flake8_args = ""
 "Syntastic C++ Linter Configuration
 let g:syntastic_aggregate_errors = 1 "display all errors from all checkers together"
 let g:syntastic_cpp_checkers = ['cppcheck']
-let g:syntastic_cpp_clang_check_args="--extra-arg='-std=c++20'"
 "checker args
 let g:syntastic_cpp_cppcheck_args="--enable=warning,style,performance,portability,information,missingInclude --inconclusive --force -j 4 --template=gcc --language=c++"
 let g:syntastic_cpp_compiler = 'g++'
