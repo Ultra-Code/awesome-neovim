@@ -1,4 +1,4 @@
-"Enable terminal colors 256
+"Enable true colours in terminal
 set termguicolors
 
 "Set the background color of nvim
