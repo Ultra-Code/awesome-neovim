@@ -8,13 +8,13 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+"<CR> to confirm completion, use: carriage return (Enter)
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+
 function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-"Note: the `coc-snippets` extension is required for this to work.
-let g:coc_snippet_next = '<tab>'
 
 " Use `[d` and `]d` to navigate diagnostics
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
@@ -92,4 +92,3 @@ nnoremap <silent> <space>n  :<C-u>CocNext<CR>
 nnoremap <silent> <space>p  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>r  :<C-u>CocListResume<CR>
-
