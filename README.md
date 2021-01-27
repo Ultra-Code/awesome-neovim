@@ -13,13 +13,29 @@ Supports the following
 - clang-format formater
 - clangd lsp server with coc.nvim lsp client
 - cppcheck and clang-check static anlysis
+- All build systems build2 , cmake , meason ++
 - autocompletion,documentation and all other features supported by clangd and
     coc.nvim
 ![Awesome-NeoVim with C++](https://github.com/Ultra-Code/awesome-neovim/blob/master/assets/AwesomeNeovimForC%2B%2B.png)
 
 ## Awesome Neovim for Ts with Vue
 
+Supports the following and more ....
+
+- Node v12+
+- eslint linter
+- pretteir formatter
+- Tsserver with coc.nvim
+- autocompletion,documentation and all other features supported by tsserver and
+    coc.nvim
+
 ![Awesome NeoVim with Ts and Vue](https://github.com/Ultra-Code/nvim/blob/master/assets/AwesomeAndConfigurableNeoVim.png)
+
+>__NOTE__ the languages supported out of the box are
+>c++,c,cmake,python3,js,html5+,css3+,ts,vue,haskell,markdown,json
+>__But__ support for other languages can easily be add by using it required
+[lsp's](https://github.com/neoclide/coc.nvim/wiki/Language-servers)
+>and [coc-extentions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions)
 
 ## Requirement
 
