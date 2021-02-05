@@ -19,7 +19,8 @@
         ".git/",
         ".hg/"
       ],
-      "filetypes": ["c", "h", "cpp", "hpp", "cxx", "hxx", "tpp", "txx"]
+      "filetypes": ["c", "h", "cpp", "hpp", "cxx", "hxx", "tpp",
+        "txx","mpp","mxx"]
     } /*
     "ccls": {
       "command": "ccls",
