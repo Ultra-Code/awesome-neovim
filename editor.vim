@@ -102,9 +102,9 @@ set showmatch         " Highlight matching brace
 
 set complete+=kspell  "text complete with CTRL-N or CTRL-P
 
-"set spell        " Enable spell-checking
+"set spell             " Enable spell-checking
 
-set spelllang=en_us
+set spelllang=es_mx,en_us " Enable spell checking for espanol y ingles"
 
 set visualbell     "Use visual bell (no beeping)
 
