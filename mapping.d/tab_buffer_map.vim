@@ -33,6 +33,8 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>tn :tabnext<cr>
 map <leader>tp :tabprevious<cr>
+map <leader>tf :tabfirst<cr>
+map <leader>t :tabnext  "pass a positive or negative argument to the command to move by that step"
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
