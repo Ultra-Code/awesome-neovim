@@ -5,7 +5,7 @@
       "args": [
         "--all-scopes-completion=true",
         "--clang-tidy",
-        "--completion-style=bundled",
+        "--completion-style=detailed",
         "--cross-file-rename",
         "--background-index",
         "--header-insertion=iwyu",
@@ -14,40 +14,12 @@
         "-j=4"
       ],
       "rootPatterns": [
-        "compile_flags.txt",
         "compile_commands.json",
-        ".git/",
-        ".hg/"
+        ".git/"
       ],
       "filetypes": ["c", "h", "cpp", "hpp", "cxx", "hxx", "tpp",
         "txx","mpp","mxx"]
-    } /*
-    "ccls": {
-      "command": "ccls",
-      "filetypes": [
-        "c",
-        "cpp",
-        "cxx",
-        "c++",
-        "h",
-        "hpp",
-        "hxx",
-        "h++",
-        "tpp",
-        "txx",
-        "t++"
-      ],
-      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-      "initializationOptions": {
-        "cache": {
-          "directory": ".ccls-cache"
-        },
-        "client": {
-          "snippetSupport": true
-        },
-        "index": { "threads": 4 }
-      }
-    },*/,
+    },
     "cmake": {
       "command": "cmake-language-server",
       "filetypes": ["cmake"],
