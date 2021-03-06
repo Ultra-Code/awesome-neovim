@@ -45,11 +45,7 @@ Plug 'sbdchd/neoformat'
 " === Fuzzy Finder ===
 
 "fzf is a general-purpose command-line fuzzy finder.
-" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
-Plug 'junegunn/fzf', { 'dir': '~/.local/share/nvim/plugged/fzf/', 'do': './install --all' }
-" Both options are optional. You don't have to install fzf in ~/.fzf
-" and you don't have to run the install script if you use fzf only in Vim.
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " === Markdown Plugins ===
 
