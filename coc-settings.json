@@ -3,15 +3,10 @@
     "clangd": {
       "command": "clangd",
       "args": [
-        "--all-scopes-completion=true",
         "--clang-tidy",
-        "--completion-style=detailed",
-        "--cross-file-rename",
-        "--background-index",
-        "--header-insertion=iwyu",
-        "--suggest-missing-includes",
-        "--recovery-ast",
-        "-j=4"
+        "--completion-style=bundled",
+        "-j=4",
+        "--malloc-trim"
       ],
       "rootPatterns": [
         "compile_commands.json",
