@@ -25,7 +25,7 @@ endfunction
 nmap <silent> <F5> :call ClangCheck()<CR><CR>
 
 function! Formatonsave()
-  let l:formatdiff = 1
+  let l:lines = "all"
   py3f /usr/share/vim/addons/syntax/clang-format.py
 endfunction
 
