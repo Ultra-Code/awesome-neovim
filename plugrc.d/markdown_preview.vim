@@ -1,36 +1,4 @@
-"    let g:mkdp_path_to_chrome = ""
-    "" Path to the chrome or the command to open chrome (or other modern browsers).
-    "" If set, g:mkdp_browserfunc would be ignored.
-
-    "let g:mkdp_browserfunc = 'MKDP_browserfunc_default'
-    "" Callback Vim function to open browser, the only parameter is the url to open.
-
-    "let g:mkdp_auto_start = 0
-    "" Set to 1, Vim will open the preview window on entering the Markdown
-    "" buffer.
-
-    "let g:mkdp_auto_open = 0
-    "" Set to 1, Vim will automatically open the preview window when you edit a
-    "" Markdown file.
-
-    "let g:mkdp_auto_close = 1
-    "" Set to 1, Vim will automatically close the current preview window when
-    "" switching from one Markdown buffer to another.
-
-    "let g:mkdp_refresh_slow = 0
-    "" Set to 1, Vim will just refresh Markdown when saving the buffer or
-    "" leaving from insert mode. With default 0, it will automatically refresh
-    "" Markdown as you edit or move the cursor.
-
-    "let g:mkdp_command_for_global = 0
-    "" Set to 1, the MarkdownPreview command can be used for all files,
-    "" by default it can only be used in Markdown files.
-
-    "let g:mkdp_open_to_the_world = 0
-    "" Set to 1, the preview server will be available to others in your network.
-    "" By default, the server only listens on localhost (127.0.0.1).
-
-    " set to 1, nvim will open the preview window after entering the markdown buffer
+" set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
 let g:mkdp_auto_start = 0
 
@@ -86,6 +54,8 @@ let g:mkdp_browserfunc = ''
 "   relative: mean the cursor position alway show at the relative positon of the preview page
 " hide_yaml_meta: if hide yaml metadata, default is 1
 " sequence_diagrams: js-sequence-diagrams options
+" content_editable: if enable content editable for preview page, default: v:false
+" disable_filename: if disable filename header for preview page, default: 0
 let g:mkdp_preview_options = {
     \ 'mkit': {},
     \ 'katex': {},
@@ -95,13 +65,17 @@ let g:mkdp_preview_options = {
     \ 'sync_scroll_type': 'middle',
     \ 'hide_yaml_meta': 1,
     \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {}
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0
     \ }
 
 " use a custom markdown style must be absolute path
+" like '/Users/username/markdown.css' or expand('~/markdown.css')
 let g:mkdp_markdown_css = ''
 
 " use a custom highlight style must absolute path
+" like '/Users/username/highlight.css' or expand('~/highlight.css')
 let g:mkdp_highlight_css = ''
 
 " use a custom port to start server or random for empty
@@ -111,3 +85,6 @@ let g:mkdp_port = ''
 " ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
 
+" recognized filetypes
+" these filetypes will have MarkdownPreview... commands
+let g:mkdp_filetypes = ['markdown']
