@@ -54,7 +54,10 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 "A markdown previewer prebuild binary
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 'markdown' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+"Pandoc Markdown
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " === Language Specific Plugins ===
 
