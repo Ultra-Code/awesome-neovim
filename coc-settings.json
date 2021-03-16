@@ -4,7 +4,6 @@
       "command": "clangd",
       "args": [
         "--clang-tidy",
-        "--completion-style=bundled",
         "-j=4",
         "--malloc-trim"
       ],
@@ -45,6 +44,7 @@
   "html.enable": true,
   "html.format.enable": true,
   "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "Markdown",
