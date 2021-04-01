@@ -59,6 +59,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 "Pandoc Markdown
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
+"Vim Wiki
+Plug 'vimwiki/vimwiki'
+
 " === Language Specific Plugins ===
 
 
