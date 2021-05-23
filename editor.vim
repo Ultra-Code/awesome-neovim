@@ -20,7 +20,7 @@ filetype plugin indent on
 syntax on
 
 "set assembly language file to use nasm
-let g:asmsyntax = "nasm"
+let g:asmsyntax = "asm"
 
 "Set clipboard to the +  registers only
 "if you want to use the * also add ,unnamed
