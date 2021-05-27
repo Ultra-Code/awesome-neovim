@@ -9,3 +9,7 @@ augroup END
 augroup build2_syntax
     au! BufNewFile,BufFilePre,BufRead buildfile set filetype=make
 augroup END
+
+augroup asmfiletypes
+  autocmd! BufRead,BufNewFile *.s,*.asm set filetype=asm
+augroup END
