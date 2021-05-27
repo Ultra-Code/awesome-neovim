@@ -3,8 +3,9 @@
     "clangd": {
       "command": "clangd",
       "args": [
+        "--query-driver=/usr/bin/g++",
         "--clang-tidy",
-        "-j=4",
+        "-j=5",
         "--malloc-trim"
       ],
       "rootPatterns": [
