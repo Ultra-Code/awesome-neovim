@@ -58,5 +58,8 @@
   ],
   "eslint.autoFixOnSave": true,
   "prettier.eslintIntegration": true,
-  "yaml.format.enable": true
+  "yaml.format.enable": true,
+  "coc.source.emoji.filetypes":[
+    "markdown","vimwiki"
+  ]
 }
