@@ -11,6 +11,13 @@ root_dir = lsp.util.root_pattern("compile_commands.json", ".git"),
 }
 
 lsp.hls.setup{capabilities=capabilities;}
+require'lspconfig'.zls.setup
+{
+    cmd={"zls"},
+    filetypes = {"zig","zir"},
+    capabilities=capabilities;
+    root_dir = lsp.util.root_pattern("zls.json", ".git")
+}
 require('lspsaga').init_lsp_saga()
  cfg = {
   bind = true, -- This is mandatory, otherwise border config won't get registered.
