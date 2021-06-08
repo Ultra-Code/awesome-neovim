@@ -28,11 +28,6 @@
   set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
-  -- Document Highlight on CursorHold(I)
-    vim.cmd [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-    vim.cmd [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-    vim.cmd [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
-
 -- lsp provider to find the cursor word definition and reference
 vim.cmd[[
     nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
