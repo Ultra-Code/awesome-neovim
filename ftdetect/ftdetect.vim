@@ -13,3 +13,7 @@ augroup END
 augroup asmfiletypes
   autocmd! BufRead,BufNewFile *.s,*.asm set filetype=asm
 augroup END
+
+augroup zigfile
+    autocmd! BufRead,BufNewFile *.zig set filetype=zig
+augroup END
