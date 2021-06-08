@@ -1,12 +1,3 @@
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=100
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always merge signcolumn and number column into one
-set signcolumn=yes
-
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 

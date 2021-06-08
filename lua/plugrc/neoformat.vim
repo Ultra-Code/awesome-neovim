@@ -18,6 +18,11 @@ let g:neoformat_python_yapf = {
             \ 'valid_exit_codes': [0, 23],
             \ 'no_append': 1,
             \ }
+let g:neoformat_cpp_clangformat={
+            \ 'exe':'clang-format',
+            \ 'args': ['-style=file'],
+            \ 'stdin':1,
+            \}
 let g:neoformat_nix_nixfmt = {
             \ 'exe': 'nixfmt',
             \ 'args': ["--width=80" ,"--check"],
@@ -33,6 +38,8 @@ let g:neoformat_enabled_python = ['yapf']
 
 "Haskell code formatter
 let g:neoformat_enabled_haskell= ['hindent']
+
+let g:neofomat_enabled_cpp=['clangformat']
 
 augroup fmt
   autocmd!
