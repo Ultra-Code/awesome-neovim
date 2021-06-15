@@ -2,8 +2,11 @@
 vim.cmd[[set splitright]]
 vim.cmd[[set splitbelow]]
 
---hide line numbers in terminal windows
-vim.cmd[[au BufEnter term://* setlocal nonumber]]
-
---Always start terminal in insert mode
-vim.cmd[[autocmd TermOpen * startinsert]]
+vim.cmd [[
+  augroup Terminal
+    autocmd!
+    au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>:q<cr>
+    au TermOpen * startinsert
+    au TermOpen * set nonumber
+  augroup end
+]]
