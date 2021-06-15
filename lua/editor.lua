@@ -36,11 +36,11 @@ end
 --Restore cursor to file position in previous editing session
 --This autocommand jumps to the last known position in a file
 --just after opening it, if the '-- mark is set: >
---[[vim.call[[
-:au BufReadPost *
-\ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-\ |   exe "normal! g`\""
-\ | endif
+cmd[[
+augroup restore_cursor
+  autocmd!
+  autocmd BufReadPost * call setpos(".", getpos("'\""))
+augroup END
 ]]
 
 --Keep a backup copy of a file when overwriting it.This also sets the 'undofile' option, if
@@ -87,7 +87,7 @@ cmd[[set expandtab]]     -- always expands tab to spaces. It is good when peers 
 cmd[[set wildmenu]]      --Display completion matches in a status line.  That is when you type <Tab>
                    --and there is more than one match.
 
-cmd[[set completeopt=menuone,noselect]] -- Don't let autocomplete affect usual typing habits
+cmd[[set completeopt=menuone,preview,noselect]] -- Don't let autocomplete affect usual typing habits
 
 cmd[[set bs=2]]           -- allow backspacing over everything in insert mode
 
