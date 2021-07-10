@@ -3,7 +3,7 @@ local lsp=require('lspconfig')
  signature_cfg = {
   bind = true, -- This is mandatory, otherwise border config won't get registered.
                -- If you want to hook lspsaga or other signature handler, pls set to false
-  doc_lines = 18,-- will show two lines of comment/doc
+  doc_lines = 9,-- will show two lines of comment/doc
                  --(if there are more than two lines in doc, will be truncated);
                  -- set to 0 if you DO NOT want any API comments be shown
                  -- This setting only take effect in insert mode,
@@ -23,7 +23,7 @@ local lsp=require('lspconfig')
   max_width = 120, -- max_width of signature floating_window,
     --line will be wrapped if exceed max_width
   handler_opts = {
-    border = "single"   -- double, single, shadow, none
+    border = "shadow"   -- double, single, shadow, none
   },
 }
 
@@ -38,14 +38,15 @@ local on_attach = function(client,buffer)
     local opts = {noremap = true, silent = true}
 
 -- Set some keybinds conditional on server capabilities
-    if client.resolved_capabilities.document_formatting == true then
+    if client.resolved_capabilities.document_formatting then
         set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    elseif client.resolved_capabilities.document_range_formatting == true then
-        set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    end
+    if client.resolved_capabilities.document_range_formatting then
+        set_keymap("v", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
      -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight ==true then
+    if client.resolved_capabilities.document_highlight then
         -- lsp highlight element under cursor
         vim.cmd[[
         highlight link LspReferenceText WildMenu
@@ -61,7 +62,7 @@ local on_attach = function(client,buffer)
    end
 
     -- client.resolved_capabilities.type_definition =false
-    if client.resolved_capabilities.type_definition == true then
+    if client.resolved_capabilities.type_definition then
         set_keymap('n', '<leader>dt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     end
 
@@ -88,4 +89,4 @@ require'lspconfig'.zls.setup
     on_attach=on_attach,
     root_dir = lsp.util.root_pattern("zls.json", ".git")
 }
-require('lspsaga').init_lsp_saga()
+require('lspsaga').init_lsp_saga{}
