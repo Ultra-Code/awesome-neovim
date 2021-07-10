@@ -63,11 +63,7 @@ require 'paq-nvim' {
 
 
 -- == LSP Client ===
-
---Coc is an intellisense engine for Vim/Neovim
---Use release branch (Recommend)
-{'neoclide/coc.nvim', branch='release',opt=true};
---
+--Nvim LSP client
 {'neovim/nvim-lspconfig'};
 --A light-weight lsp plugin
 {'glepnir/lspsaga.nvim'};
