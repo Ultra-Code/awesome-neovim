@@ -85,7 +85,7 @@ require 'paq-nvim' {
 {'windwp/nvim-autopairs'};
 
 -- === Code Snippets Plugins ===
-{"hrsh7th/vim-vsnip"};
+{"L3MON4D3/LuaSnip"};
 
 --Snippets collection for a set of different
 --programming languages for faster development.
@@ -99,6 +99,7 @@ require 'paq-nvim' {
 
 --View and search LSP symbols, tags in Vim/NeoVim.--
 {'liuchengxu/vista.vim',opt=true};
+{'simrat39/symbols-outline.nvim'};
 
 -- === UI === --
 -- A Neovim File explorer
