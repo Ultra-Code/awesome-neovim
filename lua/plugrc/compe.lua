@@ -16,14 +16,14 @@ require'compe'.setup {
     path = true;
     buffer = true;
     calc = true;
+    luasnip = true;
     nvim_lsp = true;
     nvim_lua = true;
-    vsnip = true;
-    ultisnips = true;
-    spell = true;
+    vsnip = false;
+    ultisnips = false;
+    spell = false;
     tags = true;
-    snippets_nvim = true;
-    treesitter = true;
+    treesitter = false;
   };
 }
 vim.cmd[[highlight link CompeDocumentation NormalFloat]]
