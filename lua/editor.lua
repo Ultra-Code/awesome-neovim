@@ -10,11 +10,6 @@ local fn=vim.fn
 
 g.mapleader = ','
 
--- Use Unix as the standard file type
-cmd[[set ffs=unix,dos,mac]]
-
-cmd[[set encoding=UTF-8]]
-
 -- == Python provider configurations == --
 g.python3_host_prog='/usr/bin/python3'
 
@@ -22,7 +17,7 @@ g.python3_host_prog='/usr/bin/python3'
 cmd[[filetype plugin indent on]]
 
 --Switch on syntax highlighting.
-cmd[[syntax on]]
+o.syntax = 'on'
 
 --set assembly language file to use nasm
 g.asmsyntax = 'asm'
@@ -30,7 +25,8 @@ g.asmsyntax = 'asm'
 --Set clipboard to the +  registers only
 --if you want to use the * also add ,unnamed
 if fn.has('clipboard') == 1 then
-     cmd[[set clipboard+=unnamedplus]]
+     -- cmd[[set clipboard+=unnamedplus]]
+     o.clipboard = 'unnamed,unnamedplus'
 end
 
 --Restore cursor to file position in previous editing session
@@ -48,119 +44,116 @@ augroup END
 --that when you change a file, exit Vim, and then edit the file again, you can undo
 --the changes made previously.
 if fn.has('vms')==1 then
-    cmd[[set nobackup]]
+    o.backup = false
 else
-    cmd[[set backup]]
-    if fn.has('persistent_undo')==1 then
-        cmd[[set undofile]]
-        cmd[[set undolevels=30000]]
-        cmd[[set undoreload=30000]]
+-- create a backup of the file before editing
+    o.backup = true
+    if fn.has('persistent_undo') == 1 then
+-- enable undofile , which helps you undo a lot and redo also a lot
+        o.undofile = true
+        o.undolevels = 30000
+        o.undoreload = 30000
     end
 end
 
 --for vim's swap ; undo and backup organization
-cmd[[set backupdir=/tmp//]]  --Location for backup of files before editing --
-cmd[[set directory=/tmp//]]  --The location of swap files ,ie buffers that have not been save ie in memory
-cmd[[set undodir=/tmp//]]    --Location for storing undo tree of the edited file--
-cmd[[set backupext=.vimbak]] --The extension to be used for vim backup files
+--Location for backup of files before editing --
+o.backupdir = '/tmp/'
+--The location of swap files ,ie buffers that have not been save ie in memory
+o.directory = '/tmp/'
+--Location for storing undo tree of the edited file--
+o.undodir = '/tmp/'
+--The extension to be used for vim backup files
+o.backupext = '.vimbak'
 
 -- You will have bad experience for diagnostic messages when it's default 4000.
-cmd[[set updatetime=100]]
+o.updatetime = 100
 
 -- don't give |ins-completion-menu| messages.
-cmd[[set shortmess+=c]]
+o.shortmess = 'c'
 
 -- always merge signcolumn and number column into one
-cmd[[set signcolumn=yes]]
+o.signcolumn = 'yes'
 
+-- enable saving unsaved/unwritten files in a *.swp file
+o.swapfile = false
 
---Do not keep a backup or .swp file. I don't like to have junk
---files, my source is anyway in cvs/svn/p4/git.
-cmd[[set backup]]        -- create a backup of the file before editing
-cmd[[set undofile]]      -- enable undofile , which helps you undo a lot and redo also a lot
-cmd[[set noswapfile]]    -- enable saving unsaved/unwritten files in a *.swp file
+-- always expands tab to spaces. It is good when peers use different editor.
+o.expandtab = true
 
-cmd[[set nocompatible]]  -- Use Vim defaults (much better!), Vi is for 70's programmers!
+-- Don't let autocomplete affect usual typing habits
+o.completeopt = 'menuone,noselect'
 
-cmd[[set expandtab]]     -- always expands tab to spaces. It is good when peers use different editor.
+-- This option allows you to switch between multiple buffers
+o.hidden = true              --without saving a changed buffer
 
-cmd[[set wildmenu]]      --Display completion matches in a status line.  That is when you type <Tab>
-                   --and there is more than one match.
+--Automatically enable mouse usage
+o.mouse = 'a'
 
-cmd[[set completeopt=menuone,noselect]] -- Don't let autocomplete affect usual typing habits
+-- Show line numbers
+o.number = true
 
-cmd[[set bs=2]]           -- allow backspacing over everything in insert mode
+-- Wrap-broken line prefix
+o.showbreak = [[>>>\ \ \]]
 
-cmd[[set hidden]]         -- This option allows you to switch between multiple buffers
-                    --without saving a changed buffer
+-- Line wrap (number of cols)
+o.textwidth = 79
 
-cmd[[set mouse=a]]        --Automatically enable mouse usage
+-- Highlight matching brace
+o.showmatch = true
 
-cmd[[set mousehide]]       -- Hide the mouse pointer while typing.
+--text complete with CTRL-N or CTRL-P
+o.complete = 'kspell'
 
-cmd[[set incsearch]]       -- highlight search string as search pattern is entered
+-- Enable spell checking for espanol y ingles--
+o.spelllang = 'es_mx,en_us'
 
-cmd[[set hlsearch]]         --disables last search hilighting
+--Use visual bell (no beeping)
+o.visualbell = true
 
-cmd[[set number]]           -- Show line numbers
+--Always case-insensitie
+o.ignorecase = true
 
-cmd[[set wrap]]             -- Automatically wrap text that extends beyond the screen length.
+-- Enable smart-case search
+o.smartcase = true
 
-cmd[[set backspace=indent,eol,start]] -- Fixes common backspace problems
+--case insensitive auto completion
+o.wildignorecase = true
 
-cmd[[set laststatus=2]]      -- Status bar
+-- Number of auto-indent spaces
+o.shiftwidth = 4
 
-cmd[[set showbreak=>>>\ \ \]]    -- Wrap-broken line prefix
+-- Enable smart-indent
+o.smartindent = true
 
-cmd[[set textwidth=79]]      -- Line wrap (number of cols)
+-- Number of spaces per Tab
+o.softtabstop = 4
 
-cmd[[set showmatch]]         -- Highlight matching brace
+-- Prompt confirmation dialogs
+o.confirm = true
 
-cmd[[set complete+=kspell]]  --text complete with CTRL-N or CTRL-P
+-- Show row and column ruler information
+o.ruler = true
 
---set spell             -- Enable spell-checking
+--Command line height
+o.cmdheight = 2
 
-cmd[[set spelllang=es_mx,en_us]] -- Enable spell checking for espanol y ingles--
+--Auto-write all file changes
+o.autowriteall = true
 
-cmd[[set visualbell]]     --Use visual bell (no beeping)
+--Set the history size to maximum. by default it is 20
+o.history = 10000
 
-cmd[[set ignorecase]]      --Always case-insensitie
+-- Display unprintable characters f12 - switches
+o.list = true
 
-cmd[[set smartcase]]     -- Enable smart-case search
-
-cmd[[set autoindent]]      -- Auto-indent new lines
-
-cmd[[set wildignorecase]]    --case insensitive auto completion
-
-cmd[[set shiftwidth=4]]      -- Number of auto-indent spaces
-
-cmd[[set smartindent]]      -- Enable smart-indent
-
-cmd[[set smarttab]]      -- Enable smart-tabs
-
-cmd[[set softtabstop=4]]     -- Number of spaces per Tab
-
-cmd[[set confirm]]      -- Prompt confirmation dialogs
-
-cmd[[set ruler]]             -- Show row and column ruler information
-
-cmd[[set cmdheight=2]]       --Command line height
-
-cmd[[set autowriteall]]      --Auto-write all file changes
-
-cmd[[set history=10000]]       --Set the history size to maximum. by default it is 20
-
-cmd[[set list]]          -- Display unprintable characters f12 - switches
-
-cmd[[set listchars=tab:••\ ,trail:•,extends:»,precedes:« ]] -- Unprintable chars mapping
-
+-- Unprintable chars mapping
+o.listchars = [[tab:••,trail:•,extends:»,precedes:«]]
 
 -- Enable folding
-cmd[[set foldmethod=indent]]
-cmd[[set foldlevel=99]]
+o.foldmethod = 'indent'
 
---Enable Tags
-cmd[[set tags=tags]]
+o.foldlevel = 99
 
 --Remove Trailing whitespaces in all files
 cmd[[autocmd BufWritePre * %s/\s\+$//e]]
