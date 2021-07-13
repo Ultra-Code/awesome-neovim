@@ -56,13 +56,19 @@ else
     end
 end
 
+--Incremental live completion
+o.inccommand = "nosplit"
+
 --for vim's swap ; undo and backup organization
 --Location for backup of files before editing --
 o.backupdir = '/tmp/'
+
 --The location of swap files ,ie buffers that have not been save ie in memory
 o.directory = '/tmp/'
+
 --Location for storing undo tree of the edited file--
 o.undodir = '/tmp/'
+
 --The extension to be used for vim backup files
 o.backupext = '.vimbak'
 
