@@ -101,7 +101,6 @@ require 'paq-nvim' {
 
 --View and search LSP symbols, tags in Vim/NeoVim.--
 {'liuchengxu/vista.vim',opt=true};
-{'simrat39/symbols-outline.nvim'};
 
 -- === UI === --
 -- A Neovim File explorer
