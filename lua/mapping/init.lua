@@ -12,7 +12,6 @@ cmd[["source   $XDG_CONFIG_HOME/nvim/lua/mapping/markdown_preview_map.vim]]
 cmd[[source   $XDG_CONFIG_HOME/nvim/lua/mapping/highlighting_map.vim]]
 cmd[[source   $XDG_CONFIG_HOME/nvim/lua/mapping/folding_map.vim]]
 cmd[[source   $XDG_CONFIG_HOME/nvim/lua/mapping/terminal_map.vim]]
-cmd[[source   $XDG_CONFIG_HOME/nvim/lua/mapping/vsnip.vim]]
 require('mapping/compe')
 require('mapping/lspconfig')
 require('mapping/autopairs')
