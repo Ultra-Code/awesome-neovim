@@ -97,7 +97,7 @@ local function setup_servers()
         if server == "efm" then
             config.init_options = efm_settings.init_options;
             config.settings = efm_settings.settings;
-            config.filetypes = {"lua"}
+            config.filetypes = efm_settings.filetypes
         end
 
         require'lspconfig'[server].setup(config);
