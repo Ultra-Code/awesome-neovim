@@ -1,5 +1,5 @@
 local saga_cfg = {
-    -- max_preview_lines = 10, -- preview lines of lsp_finder and definition preview
+    use_saga_diagnostic_sign = false,
     finder_action_keys = {
         open = 'o',
         vsplit = 'v',
