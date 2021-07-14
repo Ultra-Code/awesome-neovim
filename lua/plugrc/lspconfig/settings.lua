@@ -17,17 +17,49 @@ settings.lua_settings = {
             library = vim.api.nvim_get_runtime_file('', true)
         }
     }
-};
+}
+
+local linters = {}
+
+linters.cppcheck = {
+    cpp = {
+        lintCommand = 'cppcheck --enable=warning,style,performance,portability,information,missingInclude --inconclusive -j 4 --template=gcc --language=c++ ${INPUT}',
+        lintStdin = true,
+        lintFormats = {'%f:%l:%c: %m'},
+        lintIgnoreExitCode = true
+    },
+    c = {
+        lintCommand = 'cppcheck --enable=warning,style,performance,portability,information,missingInclude --inconclusive -j 4 --template=gcc --language=c ${INPUT}',
+        lintStdin = true,
+        lintFormats = {'%f:%l:%c: %m'},
+        lintIgnoreExitCode = true
+    }
+}
+
+local formatters = {}
+
+formatters.lua_format = {formatCommand = "lua-format -i", formatStdin = true}
 
 settings.efm_settings = {
-    init_options = {documentFormatting = true},
+    log_level = 0,
+    log_file = '/tmp/efm.log',
+    init_options = {
+        documentFormatting = true,
+        codeAction = true,
+        hover = true,
+        documentSymbol = true,
+        completion = false
+    },
+    filetypes = {"lua", "cpp", "c"},
     settings = {
         rootMarkers = {".git/"},
         languages = {
-            lua = {{formatCommand = "lua-format -i", formatStdin = true}}
+            lua = {formatters.lua_format},
+            cpp = {linters.cppcheck.cpp},
+            c = {linters.cppcheck.c}
         }
     }
-};
+}
 
 settings.clangd_setting = {
     cmd = {
@@ -35,6 +67,6 @@ settings.clangd_setting = {
         "--malloc-trim"
     },
     filetypes = {"c", "cpp"} -- we don't want objective-c and objective-cpp!
-};
+}
 
 return settings
