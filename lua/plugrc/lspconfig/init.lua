@@ -1,8 +1,10 @@
 local signature_cfg = require('plugrc/lspconfig/signature')
+local saga_cfg = require('plugrc/lspconfig/saga')
+
 local on_attach = function(client, buffer)
 
     require'lsp_signature'.on_attach(signature_cfg)
-    require('lspsaga').init_lsp_saga {}
+    require('lspsaga').init_lsp_saga(saga_cfg)
 
     local function set_keymap(...) vim.api.nvim_buf_set_keymap(buffer, ...) end
 
