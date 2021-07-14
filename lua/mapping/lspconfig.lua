@@ -65,12 +65,7 @@ vim.cmd [[nnoremap <silent><leader>scd <cmd>lua require'lspsaga.diagnostic'.show
 -- show line diagnostic
 vim.cmd [[nnoremap <silent><leader>sld <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>]]
 
-vim.cmd [[
-augroup show_diagnostics
-autocmd! * <buffer>
-autocmd CursorHold <buffer> lua require'lspsaga.diagnostic'.show_line_diagnostics()
-augroup END
-]]
+vim.cmd [[autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()]]
 
 -- float terminal also you can pass the cli command in open_float_terminal function
 vim.cmd [[nnoremap <silent> <A-t> <cmd>lua require('lspsaga.floaterm').open_float_terminal()<CR> ]]
