@@ -32,11 +32,6 @@ require 'paq-nvim' {
 -- A snazzy buffer line (with minimal tab integration) for Neovim
 {'akinsho/nvim-bufferline.lua'};
 
--- === Source Code Formater ===
-
---A neoformat plugin for code formating
-{'sbdchd/neoformat',opt=true};
-
 -- === Fuzzy Finder ===
 -- a highly extendable fuzzy finder over lists
 -- for Find, Filter, Preview, Pick
@@ -92,10 +87,6 @@ require 'paq-nvim' {
 --Snippets collection for a set of different
 --programming languages for faster development.
 {"rafamadriz/friendly-snippets"};
-
--- === Syntax Highlighting Engine ===
---Asynchronous linting and make framework
-{'neomake/neomake'};
 
 -- === Tag Bar Plugin ===
 
