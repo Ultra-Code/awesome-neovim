@@ -1,6 +1,4 @@
 local o=vim.o
-local wo=vim.wo
-local bo=vim.bo
 local g=vim.g
 local cmd=vim.cmd
 local fn=vim.fn
@@ -25,8 +23,7 @@ g.asmsyntax = 'asm'
 --Set clipboard to the +  registers only
 --if you want to use the * also add ,unnamed
 if fn.has('clipboard') == 1 then
-     -- cmd[[set clipboard+=unnamedplus]]
-     o.clipboard = 'unnamed,unnamedplus'
+     vim.opt.clipboard:append('unnamed,unnamedplus')
 end
 
 --Restore cursor to file position in previous editing session
