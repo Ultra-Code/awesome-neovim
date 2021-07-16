@@ -1,2 +1,3 @@
-" Use <C-L> to clear the highlighting of :set hlsearch.
-nnoremap <leader>hl  :nohl<CR>
+require('utils')
+-- Use <leader>l to clear the highlighting of :set hlsearch.
+map('n', '<leader>hl', ':nohl<CR>')
