@@ -1,7 +1,8 @@
 local M = {}
 
+--   漣        ﱮ
 M.icons = {
-    Class = " ",
+    Class = " ",
     Color = " ",
     Constant = " ",
     Constructor = " ",
@@ -9,7 +10,7 @@ M.icons = {
     EnumMember = " ",
     Field = " ",
     File = " ",
-    Folder = " ",
+    Folder = " ",
     Function = " ",
     Interface = "ﰮ ",
     Keyword = " ",
@@ -18,10 +19,10 @@ M.icons = {
     Property = " ",
     Snippet = "﬌ ",
     Struct = " ",
-    Text = " ",
+    Text = " ",
     Unit = " ",
     Value = " ",
-    Variable = " "
+    Variable = "﬚ "
 }
 
 function M.completion_kinds()
@@ -30,11 +31,12 @@ function M.completion_kinds()
 end
 
 function M.sign_column_diagnostic_symbols()
+--    --  --   ﯧ   --    ﯦ
     local signs = {
-        Error = " ",
-        Warning = " ",
-        Hint = " ",
-        Information = " "
+        Error = " ",
+        Warning = " ",
+        Hint = " ",
+        Information = " "
     }
     for type, icon in pairs(signs) do
         local hl = "LspDiagnosticsSign" .. type
