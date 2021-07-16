@@ -1,11 +1,10 @@
 -- open new split panes to right and below
-vim.cmd[[set splitright]]
-vim.cmd[[set splitbelow]]
-
+vim.go.splitright = true
+vim.go.splitbelow = true
 vim.cmd [[
   augroup Terminal
     autocmd!
-    au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>:q<cr>
+    au TermOpen * tnoremap <buffer> <c-q> <c-\><c-n>:bd!<cr>
     au TermOpen * startinsert
     au TermOpen * set nonumber
   augroup end
