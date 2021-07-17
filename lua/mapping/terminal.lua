@@ -11,4 +11,4 @@ function _G.OpenTerminal()
 end
 
 -- Mapping to open terminal emulator in nvim
-map('n', '<c-t>', ':call v:lua.OpenTerminal()<CR>')
+map('n', '<m-t>', ':call v:lua.OpenTerminal()<CR>')
