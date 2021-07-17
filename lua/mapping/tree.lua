@@ -1,8 +1,7 @@
-local map=vim.api.nvim_set_keymap
-local option={nnoremap=tree}
+require('utils')
 
-map('n','<leader>n',':NvimTreeToggle<CR>',option)
-map('n','<leader>r',':NvimTreeRefresh<CR>',option)
+map('n','<leader>n',':NvimTreeToggle<CR>')
+map('n','<leader>r',':NvimTreeRefresh<CR>')
 --map('n','<leader>tf',':NvimTreeFindFile<CR>',option)
 
 -- NvimTreeOpen and NvimTreeClose are also available if you need them
