@@ -1,7 +1,8 @@
-local opt = {silent = true, noremap = true}
-vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>TroubleToggle<cr>",opt)
-vim.api.nvim_set_keymap("n", "<leader>tw", "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>",opt)
-vim.api.nvim_set_keymap("n", "<leader>td", "<cmd>TroubleToggle lsp_document_diagnostics<cr>",opt)
-vim.api.nvim_set_keymap("n", "<leader>tl", "<cmd>TroubleToggle loclist<cr>",opt)
-vim.api.nvim_set_keymap("n", "<leader>tq", "<cmd>TroubleToggle quickfix<cr>",opt)
-vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>TroubleToggle lsp_references<cr>",opt)
+require('utils')
+local opt = {silent = true}
+map("n", "<leader>tt", "<cmd>packadd trouble.nvim<cr>|<cmd>TroubleToggle<cr>",opt)
+map("n", "<leader>tw", "<cmd>packadd trouble.nvim<cr>|<cmd>TroubleToggle lsp_workspace_diagnostics<cr>",opt)
+map("n", "<leader>td", "<cmd>packadd trouble.nvim<cr>|<cmd>TroubleToggle lsp_document_diagnostics<cr>",opt)
+map("n", "<leader>tl", "<cmd>packadd trouble.nvim<cr>|<cmd>TroubleToggle loclist<cr>",opt)
+map("n", "<leader>tq", "<cmd>packadd trouble.nvim<cr>|<cmd>TroubleToggle quickfix<cr>",opt)
+map("n", "<leader>tr", "<cmd>packadd trouble.nvim<cr>|<cmd>TroubleToggle lsp_references<cr>",opt)
