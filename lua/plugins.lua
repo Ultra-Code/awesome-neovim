@@ -13,7 +13,7 @@ require 'paq-nvim' {
 {'savq/paq-nvim'};
 -- === Editor Plugins === --
 --A commenter for different Language
-{'b3nj5m1n/kommentary'};
+{'b3nj5m1n/kommentary',opt=true};
 
 -- === Themes and Colour Scheme ===
 {'navarasu/onedark.nvim'};
@@ -35,9 +35,9 @@ require 'paq-nvim' {
 -- === Fuzzy Finder ===
 -- a highly extendable fuzzy finder over lists
 -- for Find, Filter, Preview, Pick
-{'nvim-lua/popup.nvim'};
+{'nvim-lua/popup.nvim',opt=true};
 {'nvim-lua/plenary.nvim'};
-{'nvim-telescope/telescope.nvim'};
+{'nvim-telescope/telescope.nvim',opt=true};
 
 -- === Syntax Plugins ===
 --Nvim Treesitter configurations and abstraction layer
@@ -52,7 +52,7 @@ require 'paq-nvim' {
 
 
 --Vim Wiki
-{'vimwiki/vimwiki',opt=true};
+{'vimwiki/vimwiki',branch="dev",opt=true};
 
 -- === Language Specific Plugins ===
 
@@ -69,7 +69,7 @@ require 'paq-nvim' {
 -- A pretty diagnostics, references, telescope
 -- results, quickfix and location
 -- list to help you solve all the trouble your code is causing
-{'folke/trouble.nvim'};
+{'folke/trouble.nvim',opt=true};
 
 --displays a popup with possible key bindings
 --of the command you started typing
@@ -95,7 +95,7 @@ require 'paq-nvim' {
 
 -- === UI === --
 -- A Neovim File explorer
-{'kyazdani42/nvim-tree.lua'};
+{'kyazdani42/nvim-tree.lua',opt=true};
 
 -- == Icons == --
 
