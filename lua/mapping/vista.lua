@@ -1,1 +1,2 @@
-vim.api.nvim_set_keymap('n','<leader>vt','<cmd>Vista!! <cr>',{silent=true})
+require('utils')
+map('n','<leader>vt','<cmd>packadd vista.vim<cr>|<cmd>Vista!!<cr>',{silent=true})
