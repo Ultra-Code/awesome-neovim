@@ -10,24 +10,48 @@ local GitStatus = {
     Ignored = '☒',
     Unknown = "?"
 }
+local nvim_tree_icons = {
+    default = '',
+    symlink = '',
+    git = {
+        unstaged = "✗",
+        staged = "✓",
+        unmerged = "",
+        renamed = "➜",
+        untracked = "★",
+        deleted = "",
+        ignored = "◌"
+    },
+    folder = {
+        arrow_open = "",
+        arrow_closed = "",
+        default = "",
+        open = "",
+        empty = "",
+        empty_open = "",
+        symlink = "",
+        symlink_open = ""
+    },
+    lsp = {hint = "", info = "", warning = "", error = ""}
+}
 
 require('gitsigns').setup {
     signs = {
         add = {
             hl = 'GitSignsAdd',
-            text = "✚",
+            text = GitStatus.Clean,
             numhl = 'GitSignsAddNr',
             linehl = 'GitSignsAddLn'
         },
         change = {
             hl = 'GitSignsChange',
-            text = "✹",
+            text = GitStatus.Modified,
             numhl = 'GitSignsChangeNr',
             linehl = 'GitSignsChangeLn'
         },
         delete = {
             hl = 'GitSignsDelete',
-            text = "✖",
+            text = GitStatus.Dirty,
             numhl = 'GitSignsDeleteNr',
             linehl = 'GitSignsDeleteLn'
         },
@@ -44,7 +68,7 @@ require('gitsigns').setup {
             linehl = 'GitSignsChangeLn'
         }
     },
-    numhl = false,
+    numhl = true,
     linehl = false,
     keymaps = {
         -- Default keymap options
