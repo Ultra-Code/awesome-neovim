@@ -53,6 +53,9 @@ else
     end
 end
 
+--Don't redraw screen when executing macros,registers or untyped commands
+o.lazyredraw = true
+
 --Incremental live completion
 o.inccommand = "nosplit"
 
