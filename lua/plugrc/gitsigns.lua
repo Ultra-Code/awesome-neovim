@@ -10,6 +10,7 @@ local GitStatus = {
     Ignored = '☒',
     Unknown = "?"
 }
+
 local nvim_tree_icons = {
     default = '',
     symlink = '',
@@ -35,23 +36,23 @@ local nvim_tree_icons = {
     lsp = {hint = "", info = "", warning = "", error = ""}
 }
 
-require('gitsigns').setup {
+require('gitsigns').setup({
     signs = {
         add = {
             hl = 'GitSignsAdd',
-            text = GitStatus.Clean,
+            text = "✔︎",
             numhl = 'GitSignsAddNr',
             linehl = 'GitSignsAddLn'
         },
         change = {
             hl = 'GitSignsChange',
-            text = GitStatus.Modified,
+            text = "✹",
             numhl = 'GitSignsChangeNr',
             linehl = 'GitSignsChangeLn'
         },
         delete = {
             hl = 'GitSignsDelete',
-            text = GitStatus.Dirty,
+            text = "✗",
             numhl = 'GitSignsDeleteNr',
             linehl = 'GitSignsDeleteLn'
         },
@@ -107,4 +108,4 @@ require('gitsigns').setup {
     word_diff = false,
     use_decoration_api = true,
     use_internal_diff = true -- If luajit is present
-}
+})
