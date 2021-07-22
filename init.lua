@@ -1,4 +1,9 @@
 -- The system wide config file is found in /usr/share/nvim/sysinit.vim
+-- ===================================================================
+-- ===                FILETYPE CONFIGURATIONS                      ===
+-- ===================================================================
+require('ftdetect')
+require('ftplugin')
 
 -- ===================================================================
 -- ===                 EDITOR CONFIGURATIONS                       ===
@@ -25,11 +30,6 @@ require('lazy')
 -- ===                MAPPINGS ONFIGURATIONS                       ===
 -- ===================================================================
 require('mapping')
-
--- ===================================================================
--- ===                FILETYPE CONFIGURATIONS                      ===
--- ===================================================================
-vim.cmd[[source $XDG_CONFIG_HOME/nvim/ftdetect/ftdetect.vim]]
 
 -- ===================================================================
 -- ===                TERMINAL CONFIGURATIONS                      ===
