@@ -1,3 +1,4 @@
+vim.cmd [[
 augroup detectfiletypes
   autocmd! BufRead,BufNewFile *.mxx,*.mpp,*.txx,*.tpp setfiletype cpp
 augroup END
@@ -17,3 +18,4 @@ augroup END
 augroup zigfile
     autocmd! BufRead,BufNewFile *.zig set filetype=zig
 augroup END
+]]
