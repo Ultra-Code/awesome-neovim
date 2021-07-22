@@ -48,7 +48,7 @@ require 'paq-nvim' {
 
 -- === Preview Plugin ===
 --A markdown previewer prebuild binary
-{'npxbr/glow.nvim',branch="main",run = ":GlowInstall",opt=true};
+{'npxbr/glow.nvim',branch="main",run = ":GlowInstall"};
 
 
 --Vim Wiki
