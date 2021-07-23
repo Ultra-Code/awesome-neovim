@@ -4,7 +4,7 @@ local on_attach = function(client, buffer)
     local builtin_lsp = require('plugrc/lspconfig/config')
     builtin_lsp.completion_kinds()
     builtin_lsp.sign_column_diagnostic_symbols()
-    builtin_lsp.disable_virtual_text()
+    builtin_lsp.display_diagnostics_sources()
 
     require'lsp_signature'.on_attach(signature_cfg)
     require('lspsaga').init_lsp_saga(saga_cfg)
@@ -103,6 +103,10 @@ local function setup_servers()
             config.init_options = efm_settings.init_options;
             config.settings = efm_settings.settings;
             config.filetypes = efm_settings.filetypes
+        end
+
+        if server == "tailwindcss" then
+            config.filetypes = {"html", "css", "vue", "scss"}
         end
 
         require'lspconfig'[server].setup(config);
