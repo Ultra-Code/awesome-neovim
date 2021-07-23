@@ -36,27 +36,65 @@ linters.cppcheck = {
     }
 }
 
+linters.eslint = {
+    lintCommand = 'eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}',
+    lintStdin = true,
+    lintFormats = {"%f(%l,%c): %rror %m"},
+    lintIgnoreExitCode = true
+}
+
 local formatters = {}
 
 formatters.lua_format = {formatCommand = "lua-format -i", formatStdin = true}
 
+formatters.prettier = {
+    css = {
+        formatCommand = "prettier ${--tab-width:tabWidth} ${--single-quote:singleQuote} --parser css",
+        formatStdin = true
+    },
+    json = {
+        formatCommand = "prettier ${--tab-width:tabWidth} --parser json",
+        formatStdin = true
+    },
+    scss = {
+        formatCommand = "prettier --parser scss --stdin-filepath ${INPUT}",
+        formatStdin = true
+    },
+    markdown = {
+        formatCommand = "prettier --parser markdown --stdin-filepath ${INPUT}",
+        formatStdin = true
+    },
+    yaml = {
+        formatCommand = "prettier --parser yaml --stdin-filepath ${INPUT}",
+        formatStdin = true
+    }
+}
+
 settings.efm_settings = {
-    log_level = 0,
-    log_file = '/tmp/efm.log',
     init_options = {
         documentFormatting = true,
         codeAction = true,
         hover = true,
-        documentSymbol = true,
+        documentSymbol = false,
         completion = false
     },
-    filetypes = {"lua", "cpp", "c"},
+    filetypes = {
+        "lua", "cpp", "c", "json", "css", "yaml", "markdown", "scss",
+        "javascript", "typescript"
+    },
     settings = {
         rootMarkers = {".git/"},
         languages = {
             lua = {formatters.lua_format},
             cpp = {linters.cppcheck.cpp},
-            c = {linters.cppcheck.c}
+            c = {linters.cppcheck.c},
+            css = {formatters.prettier.css},
+            scss = {formatters.prettier.scss},
+            json = {formatters.prettier.json, linters.eslint},
+            yaml = {formatters.prettier.yaml},
+            markdown = {formatters.prettier.markdown},
+            javascript = {linters.eslint},
+            typescript = {linters.eslint}
         }
     }
 }
