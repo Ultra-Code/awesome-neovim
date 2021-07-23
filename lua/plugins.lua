@@ -84,10 +84,6 @@ require 'paq-nvim' {
 -- === Code Snippets Plugins ===
 {"L3MON4D3/LuaSnip"};
 
---Snippets collection for a set of different
---programming languages for faster development.
-{"rafamadriz/friendly-snippets"};
-
 -- === Tag Bar Plugin ===
 
 --View and search LSP symbols, tags in Vim/NeoVim.--
