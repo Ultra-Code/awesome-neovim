@@ -21,8 +21,10 @@ require'compe'.setup {
     spell = false;
     nvim_lua = true;
     tags = false;
-    g=7;
     treesitter = false;
+    nvim_lsp = true;
+    vsnip = false;
+    emoji = true;
   };
 }
 vim.cmd[[highlight link CompeDocumentation NormalFloat]]
