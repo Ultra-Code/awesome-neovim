@@ -17,8 +17,11 @@ local on_attach = function(client, buffer)
 
     local opts = {noremap = true, silent = true}
 
-    if client.name == "efm" and vim.fn.getbufvar(buffer, '&filetype') == 'cpp' then
-        client.resolved_capabilities.document_formatting = false
+    if client.name == "efm" then
+        if vim.fn.getbufvar(buffer, '&filetype') == 'cpp' or 'javascript' or
+            'typescript' then
+            client.resolved_capabilities.document_formatting = false
+        end
     end
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
