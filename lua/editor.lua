@@ -1,7 +1,7 @@
-local o=vim.o
-local g=vim.g
-local cmd=vim.cmd
-local fn=vim.fn
+local o = vim.o
+local g = vim.g
+local cmd = vim.cmd
+local fn = vim.fn
 -- Remap leader key to ,
 -- With a map leader it's possible to do extra key combinations
 -- like <leader>w saves the current file
@@ -9,67 +9,71 @@ local fn=vim.fn
 g.mapleader = ','
 
 -- == Python provider configurations == --
-g.python3_host_prog='/usr/bin/python3'
+g.python3_host_prog = '/usr/bin/python3'
 
---enable loading the plugin files for specific file types
-cmd[[filetype plugin indent on]]
+-- enable loading the plugin files for specific file types
+cmd [[filetype plugin indent on]]
 
---Switch on syntax highlighting.
+-- Switch on syntax highlighting.
 o.syntax = 'on'
 
---set assembly language file to use nasm
+-- set assembly language file to use nasm
 g.asmsyntax = 'asm'
 
---Set clipboard to the +  registers only
---if you want to use the * also add ,unnamed
-if fn.has('clipboard') == 1 then
-     vim.opt.clipboard:append('unnamed,unnamedplus')
-end
+-- Set clipboard to the +  registers only
+-- if you want to use the * also add ,unnamed
+if fn.has('clipboard') == 1 then vim.opt.clipboard:append('unnamed,unnamedplus') end
 
---Restore cursor to file position in previous editing session
---This autocommand jumps to the last known position in a file
---just after opening it, if the '-- mark is set: >
-cmd[[
+-- Restore cursor to file position in previous editing session
+-- This autocommand jumps to the last known position in a file
+-- just after opening it, if the '-- mark is set: >
+cmd [[
 augroup restore_cursor
   autocmd!
   autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
 ]]
 
---Keep a backup copy of a file when overwriting it.This also sets the 'undofile' option, if
---available.  This will store the multi-level undo information in a file.  The result is
---that when you change a file, exit Vim, and then edit the file again, you can undo
---the changes made previously.
-if fn.has('vms')==1 then
+-- Keep a backup copy of a file when overwriting it.This also sets the 'undofile' option, if
+-- available.  This will store the multi-level undo information in a file.  The result is
+-- that when you change a file, exit Vim, and then edit the file again, you can undo
+-- the changes made previously.
+if fn.has('vms') == 1 then
     o.backup = false
 else
--- create a backup of the file before editing
+    -- create a backup of the file before editing
     o.backup = true
     if fn.has('persistent_undo') == 1 then
--- enable undofile , which helps you undo a lot and redo also a lot
+        -- enable undofile , which helps you undo a lot and redo also a lot
         o.undofile = true
         o.undolevels = 30000
         o.undoreload = 30000
     end
 end
 
---Don't redraw screen when executing macros,registers or untyped commands
+-- Don't redraw screen when executing macros,registers or untyped commands
 o.lazyredraw = true
 
---Incremental live completion
+-- enable tree style view
+g.netrw_liststyle = 3
+
+-- Disable top banner can be switched with I
+g.netrw_banner = 0
+
+-- Incremental live completion
 o.inccommand = "nosplit"
 
---for vim's swap ; undo and backup organization
---Location for backup of files before editing --
+-- for vim's swap ; undo and backup organization
+-- Location for backup of files before editing --
 o.backupdir = '/tmp/'
 
---The location of swap files ,ie buffers that have not been save ie in memory
+-- The location of swap files ,ie buffers that have not been save ie in memory
 o.directory = '/tmp/'
 
---Location for storing undo tree of the edited file--
+-- Location for storing undo tree of the edited file--
 o.undodir = '/tmp/'
 
---The extension to be used for vim backup files
+-- The extension to be used for vim backup files
 o.backupext = '.vimbak'
 
 -- You will have bad experience for diagnostic messages when it's default 4000.
@@ -91,9 +95,9 @@ o.expandtab = true
 o.completeopt = 'menuone,noselect'
 
 -- This option allows you to switch between multiple buffers
-o.hidden = true              --without saving a changed buffer
+o.hidden = true -- without saving a changed buffer
 
---Automatically enable mouse usage
+-- Automatically enable mouse usage
 o.mouse = 'a'
 
 -- Show line numbers
@@ -108,22 +112,22 @@ o.textwidth = 79
 -- Highlight matching brace
 o.showmatch = true
 
---text complete with CTRL-N or CTRL-P
+-- text complete with CTRL-N or CTRL-P
 o.complete = 'kspell'
 
 -- Enable spell checking for espanol y ingles--
 o.spelllang = 'es_mx,en_us'
 
---Use visual bell (no beeping)
+-- Use visual bell (no beeping)
 o.visualbell = true
 
---Always case-insensitie
+-- Always case-insensitie
 o.ignorecase = true
 
 -- Enable smart-case search
 o.smartcase = true
 
---case insensitive auto completion
+-- case insensitive auto completion
 o.wildignorecase = true
 
 -- Number of auto-indent spaces
@@ -141,13 +145,13 @@ o.confirm = true
 -- Show row and column ruler information
 o.ruler = true
 
---Command line height
+-- Command line height
 o.cmdheight = 2
 
---Auto-write all file changes
+-- Auto-write all file changes
 o.autowriteall = true
 
---Set the history size to maximum. by default it is 20
+-- Set the history size to maximum. by default it is 20
 o.history = 10000
 
 -- Display unprintable characters f12 - switches
@@ -161,5 +165,5 @@ o.foldmethod = 'indent'
 
 o.foldlevel = 99
 
---Remove Trailing whitespaces in all files
-cmd[[autocmd BufWritePre * %s/\s\+$//e]]
+-- Remove Trailing whitespaces in all files
+cmd [[autocmd BufWritePre * %s/\s\+$//e]]
