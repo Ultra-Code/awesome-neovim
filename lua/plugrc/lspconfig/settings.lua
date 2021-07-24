@@ -49,11 +49,11 @@ formatters.lua_format = {formatCommand = "lua-format -i", formatStdin = true}
 
 formatters.prettier = {
     css = {
-        formatCommand = "prettier ${--tab-width:tabWidth} ${--single-quote:singleQuote} --parser css",
+        formatCommand = "prettier --parser css --stdin-filepath ${INPUT}",
         formatStdin = true
     },
     json = {
-        formatCommand = "prettier ${--tab-width:tabWidth} --parser json",
+        formatCommand = "prettier --parser json --stdin-filepath ${INPUT}",
         formatStdin = true
     },
     scss = {
@@ -75,8 +75,8 @@ settings.efm_settings = {
         documentFormatting = true,
         codeAction = true,
         hover = true,
-        documentSymbol = false,
-        completion = false
+        documentSymbol = true,
+        completion = true
     },
     filetypes = {
         "lua", "cpp", "c", "json", "css", "yaml", "markdown", "scss",
