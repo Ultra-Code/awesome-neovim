@@ -17,8 +17,12 @@ local on_attach = function(client, buffer)
 
     local opts = {noremap = true, silent = true}
 
+    if client.name == "efm" and vim.fn.getbufvar(buffer, '&filetype') == 'cpp' then
+        client.resolved_capabilities.document_formatting = false
+    end
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
+        print(vim.inspect(client))
         set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>",
                    opts)
     end
@@ -51,15 +55,11 @@ local on_attach = function(client, buffer)
 
 end
 
-local settings = require('plugrc.lspconfig.settings')
-local lua_settings = settings.lua_settings
-local efm_settings = settings.efm_settings
-local clangd_setting = settings.clangd_setting
-
 -- config that activates keymaps and enables snippet support
 local function make_config()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.signatureHelp.contextSupport = true
     return {
         -- enable snippet support
         capabilities = capabilities,
@@ -87,6 +87,11 @@ local function setup_servers()
     else
         servers = local_lsp_servers
     end
+
+    local settings = require('plugrc.lspconfig.settings')
+    local lua_settings = settings.lua_settings
+    local efm_settings = settings.efm_settings
+    local clangd_setting = settings.clangd_setting
 
     for _, server in pairs(servers) do
         local config = make_config()
