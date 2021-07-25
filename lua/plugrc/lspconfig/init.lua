@@ -1,7 +1,24 @@
+local disable_conflicting_formatters = function(client, buffer)
+    local buffer_filetype = vim.fn.getbufvar(buffer, '&filetype')
+
+    local efm_disabled_files = buffer_filetype == 'cpp' or buffer_filetype ==
+                                   'javascript' or buffer_filetype ==
+                                   'typescript'
+
+    if client.name == "efm" and efm_disabled_files then
+        client.resolved_capabilities.document_formatting = false
+    end
+
+    if client.name == "html" then
+        client.resolved_capabilities.document_formatting = false
+    end
+end
+
 local on_attach = function(client, buffer)
     local signature_cfg = require('plugrc/lspconfig/signature')
     local saga_cfg = require('plugrc/lspconfig/saga')
     local builtin_lsp = require('plugrc/lspconfig/config')
+
     builtin_lsp.completion_kinds()
     builtin_lsp.sign_column_diagnostic_symbols()
     builtin_lsp.display_diagnostics_sources()
@@ -17,17 +34,14 @@ local on_attach = function(client, buffer)
 
     local opts = {noremap = true, silent = true}
 
-    if client.name == "efm" then
-        if vim.fn.getbufvar(buffer, '&filetype') == 'cpp' or 'javascript' or
-            'typescript' then
-            client.resolved_capabilities.document_formatting = false
-        end
-    end
+    disable_conflicting_formatters(client, buffer)
+
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
         set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>",
                    opts)
     end
+
     if client.resolved_capabilities.document_range_formatting then
         set_keymap("v", "<leader>lf",
                    "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
@@ -60,8 +74,10 @@ end
 -- config that activates keymaps and enables snippet support
 local function make_config()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.signatureHelp.contextSupport = true
+
     return {
         -- enable snippet support
         capabilities = capabilities,
@@ -126,5 +142,6 @@ setup_servers()
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
 require'lspinstall'.post_install_hook = function()
     setup_servers() -- reload installed servers
+
     vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end

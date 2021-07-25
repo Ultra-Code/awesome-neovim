@@ -28,6 +28,7 @@ linters.cppcheck = {
         lintFormats = {'%f:%l:%c: %m'},
         lintIgnoreExitCode = true
     },
+
     c = {
         lintCommand = 'cppcheck --enable=warning,style,performance,portability,information,missingInclude --inconclusive -j 4 --template=gcc --language=c ${INPUT}',
         lintStdin = true,
@@ -48,26 +49,8 @@ local formatters = {}
 formatters.lua_format = {formatCommand = "lua-format -i", formatStdin = true}
 
 formatters.prettier = {
-    css = {
-        formatCommand = "prettier --parser css --stdin-filepath ${INPUT}",
+        formatCommand = "prettier --stdin-filepath ${INPUT}",
         formatStdin = true
-    },
-    json = {
-        formatCommand = "prettier --parser json --stdin-filepath ${INPUT}",
-        formatStdin = true
-    },
-    scss = {
-        formatCommand = "prettier --parser scss --stdin-filepath ${INPUT}",
-        formatStdin = true
-    },
-    markdown = {
-        formatCommand = "prettier --parser markdown --stdin-filepath ${INPUT}",
-        formatStdin = true
-    },
-    yaml = {
-        formatCommand = "prettier --parser yaml --stdin-filepath ${INPUT}",
-        formatStdin = true
-    }
 }
 
 settings.efm_settings = {
@@ -78,23 +61,27 @@ settings.efm_settings = {
         documentSymbol = true,
         completion = true
     },
+
     filetypes = {
-        "lua", "cpp", "c", "json", "css", "yaml", "markdown", "scss",
-        "javascript", "typescript"
+        "lua", "cpp", "c", "css", "scss", "json","yaml", "markdown",
+        "javascript", "typescript","html","vue"
     },
+
     settings = {
         rootMarkers = {".git/"},
         languages = {
             lua = {formatters.lua_format},
             cpp = {linters.cppcheck.cpp},
             c = {linters.cppcheck.c},
-            css = {formatters.prettier.css},
-            scss = {formatters.prettier.scss},
-            json = {formatters.prettier.json, linters.eslint},
-            yaml = {formatters.prettier.yaml},
-            markdown = {formatters.prettier.markdown},
+            css = {formatters.prettier},
+            scss = {formatters.prettier},
+            json = {formatters.prettier},
+            yaml = {formatters.prettier},
+            markdown = {formatters.prettier},
             javascript = {linters.eslint},
-            typescript = {linters.eslint}
+            typescript = {linters.eslint},
+            html = {formatters.prettier},
+            vue = {formatters.prettier}
         }
     }
 }
