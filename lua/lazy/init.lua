@@ -1,4 +1,3 @@
-require('lazy/tree')
 require('lazy/telescope')
 require('lazy/trouble')
 require('lazy/vista')

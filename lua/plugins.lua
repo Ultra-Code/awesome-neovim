@@ -91,7 +91,7 @@ require 'paq-nvim' {
 
 -- === UI === --
 -- A Neovim File explorer
-{'kyazdani42/nvim-tree.lua',opt=true};
+{'kyazdani42/nvim-tree.lua'};
 
 -- == Icons == --
 
