@@ -18,4 +18,8 @@ augroup END
 augroup zigfile
     autocmd! BufRead,BufNewFile *.zig set filetype=zig
 augroup END
+
+augroup nixfile
+    autocmd! BufRead,BufNewFile *.nix set filetype=nix
+augroup END
 ]]
