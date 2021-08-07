@@ -64,7 +64,7 @@ settings.efm_settings = {
 
     filetypes = {
         "lua", "cpp", "c", "css", "scss", "json","yaml", "markdown",
-        "javascript", "typescript","html","vue"
+        "javascript", "typescript"
     },
 
     settings = {
@@ -80,8 +80,6 @@ settings.efm_settings = {
             markdown = {formatters.prettier},
             javascript = {linters.eslint},
             typescript = {linters.eslint},
-            html = {formatters.prettier},
-            vue = {formatters.prettier}
         }
     }
 }

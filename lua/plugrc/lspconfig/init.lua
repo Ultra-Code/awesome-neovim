@@ -8,10 +8,6 @@ local disable_conflicting_formatters = function(client, buffer)
     if client.name == "efm" and efm_disabled_files then
         client.resolved_capabilities.document_formatting = false
     end
-
-    if client.name == "html" then
-        client.resolved_capabilities.document_formatting = false
-    end
 end
 
 local on_attach = function(client, buffer)
