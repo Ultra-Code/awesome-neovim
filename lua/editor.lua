@@ -1,7 +1,7 @@
-local o = vim.o
-local g = vim.g
-local cmd = vim.cmd
-local fn = vim.fn
+local o = vim.opt -- editor options
+local g = vim.g -- Global editor variables
+local cmd = vim.cmd -- exectue vimscript in lua
+local fn = vim.fn -- invoke vim-functions in lua
 -- Remap leader key to ,
 -- With a map leader it's possible to do extra key combinations
 -- like <leader>w saves the current file
@@ -22,7 +22,9 @@ g.asmsyntax = 'asm'
 
 -- Set clipboard to the +  registers only
 -- if you want to use the * also add ,unnamed
-if fn.has('clipboard') == 1 then vim.opt.clipboard:append('unnamed,unnamedplus') end
+if fn.has('clipboard') == 1 then
+    vim.opt.clipboard:append({'unnamed', 'unnamedplus'})
+end
 
 -- Restore cursor to file position in previous editing session
 -- This autocommand jumps to the last known position in a file
@@ -92,7 +94,7 @@ o.swapfile = false
 o.expandtab = true
 
 -- Don't let autocomplete affect usual typing habits
-o.completeopt = 'menuone,noselect'
+o.completeopt = {'menuone', 'noselect'}
 
 -- This option allows you to switch between multiple buffers
 o.hidden = true -- without saving a changed buffer
@@ -116,7 +118,7 @@ o.showmatch = true
 o.complete = 'kspell'
 
 -- Enable spell checking for espanol y ingles--
-o.spelllang = 'es_mx,en_us'
+o.spelllang = {'es_mx', 'en_us'}
 
 -- Use visual bell (no beeping)
 o.visualbell = true
@@ -158,7 +160,7 @@ o.history = 10000
 o.list = true
 
 -- Unprintable chars mapping
-o.listchars = [[tab:••,trail:•,extends:»,precedes:«]]
+o.listchars = {tab = '••', trail = '•', extends = '»', precedes = '«'}
 
 -- Enable folding
 o.foldmethod = 'indent'
