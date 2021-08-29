@@ -22,7 +22,7 @@ g.asmsyntax = 'asm'
 
 -- Set clipboard to the +  registers only
 -- if you want to use the * also add ,unnamed
-if fn.has('clipboard') == 1 then vim.opt.clipboard:append('unnamed,unnamedplus') end
+if fn.has('clipboard') == 1 then vim.opt.clipboard:append('unnamed') end
 
 -- Restore cursor to file position in previous editing session
 -- This autocommand jumps to the last known position in a file
