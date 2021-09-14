@@ -106,6 +106,9 @@ o.number = true
 -- Wrap-broken line prefix
 o.showbreak = [[>>>\ \ \]]
 
+-- enable line wrap
+o.wrap = true
+
 -- Line wrap (number of cols)
 o.textwidth = 79
 
