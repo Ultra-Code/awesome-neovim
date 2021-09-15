@@ -60,8 +60,6 @@ require 'paq-nvim' {
 -- == LSP Client ===
 --Nvim LSP client
 {'neovim/nvim-lspconfig'};
--- Install lsp's
-{'kabouzeid/nvim-lspinstall'};
 --A light-weight lsp plugin
 {'glepnir/lspsaga.nvim'};
 --Show function signature when you type
