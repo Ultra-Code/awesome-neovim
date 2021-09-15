@@ -22,12 +22,14 @@ M.icons = {
     Text = " ",
     Unit = " ",
     Value = " ",
-    Variable = "﬚ "
+    Variable = "﬚ ",
 }
 
 function M.completion_kinds()
     local kinds = vim.lsp.protocol.CompletionItemKind
-    for i, kind in ipairs(kinds) do kinds[i] = M.icons[kind] or kind end
+    for i, kind in ipairs(kinds) do
+        kinds[i] = M.icons[kind] or kind
+    end
 end
 
 function M.sign_column_diagnostic_symbols()
@@ -36,22 +38,24 @@ function M.sign_column_diagnostic_symbols()
         Error = " ",
         Warning = " ",
         Hint = " ",
-        Information = " "
+        Information = " ",
     }
     for type, icon in pairs(signs) do
         local hl = "LspDiagnosticsSign" .. type
-        vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 end
 
 function M.disable_virtual_text()
-    vim.lsp.handlers["textDocument/publishDiagnostics"] =
-        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics,
+        {
             virtual_text = false,
             update_in_insert = false,
             signs = true,
-            underline = true
-        })
+            underline = true,
+        }
+    )
 end
 function M.display_diagnostics_sources()
     vim.lsp.handlers["textDocument/publishDiagnostics"] =
@@ -60,23 +64,30 @@ function M.display_diagnostics_sources()
                 virtual_text = false,
                 update_in_insert = false,
                 signs = true,
-                underline = true
+                underline = true,
             }
             local uri = params.uri
             local bufnr = vim.uri_to_bufnr(uri)
 
-            if not bufnr then return end
+            if not bufnr then
+                return
+            end
 
             local diagnostics = params.diagnostics
 
             for i, v in ipairs(diagnostics) do
-                diagnostics[i].message =
-                    string.format("%s: %s", v.source, v.message)
+                diagnostics[i].message = string.format(
+                    "%s: %s",
+                    v.source,
+                    v.message
+                )
             end
 
             vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
 
-            if not vim.api.nvim_buf_is_loaded(bufnr) then return end
+            if not vim.api.nvim_buf_is_loaded(bufnr) then
+                return
+            end
 
             vim.lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
         end
