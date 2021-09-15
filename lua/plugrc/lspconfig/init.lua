@@ -1,9 +1,9 @@
 local disable_conflicting_formatters = function(client, buffer)
-    local buffer_filetype = vim.fn.getbufvar(buffer, '&filetype')
+    local buffer_filetype = vim.fn.getbufvar(buffer, "&filetype")
 
-    local efm_disabled_files = buffer_filetype == 'cpp' or buffer_filetype ==
-                                   'javascript' or buffer_filetype ==
-                                   'typescript'
+    local efm_disabled_files = buffer_filetype == "cpp"
+        or buffer_filetype == "javascript"
+        or buffer_filetype == "typescript"
 
     if client.name == "efm" and efm_disabled_files then
         client.resolved_capabilities.document_formatting = false
@@ -11,42 +11,54 @@ local disable_conflicting_formatters = function(client, buffer)
 end
 
 local on_attach = function(client, buffer)
-    local signature_cfg = require('plugrc/lspconfig/signature')
-    local saga_cfg = require('plugrc/lspconfig/saga')
-    local builtin_lsp = require('plugrc/lspconfig/config')
+    local signature_cfg = require("plugrc/lspconfig/signature")
+    local saga_cfg = require("plugrc/lspconfig/saga")
+    local builtin_lsp = require("plugrc/lspconfig/config")
 
     builtin_lsp.completion_kinds()
     builtin_lsp.sign_column_diagnostic_symbols()
     builtin_lsp.display_diagnostics_sources()
 
-    require'lsp_signature'.on_attach(signature_cfg)
-    require('lspsaga').init_lsp_saga(saga_cfg)
+    require("lsp_signature").on_attach(signature_cfg)
+    require("lspsaga").init_lsp_saga(saga_cfg)
 
-    local function set_keymap(...) vim.api.nvim_buf_set_keymap(buffer, ...) end
+    local function set_keymap(...)
+        vim.api.nvim_buf_set_keymap(buffer, ...)
+    end
 
-    local function set_option(...) vim.api.nvim_buf_set_option(buffer, ...) end
+    local function set_option(...)
+        vim.api.nvim_buf_set_option(buffer, ...)
+    end
 
-    set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    local opts = {noremap = true, silent = true}
+    local opts = { noremap = true, silent = true }
 
     disable_conflicting_formatters(client, buffer)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
-        set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>",
-                   opts)
+        set_keymap(
+            "n",
+            "<leader>lf",
+            "<cmd>lua vim.lsp.buf.formatting()<CR>",
+            opts
+        )
     end
 
     if client.resolved_capabilities.document_range_formatting then
-        set_keymap("v", "<leader>lf",
-                   "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+        set_keymap(
+            "v",
+            "<leader>lf",
+            "<cmd>lua vim.lsp.buf.range_formatting()<CR>",
+            opts
+        )
     end
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
         -- lsp highlight element under cursor
-        vim.cmd [[
+        vim.cmd([[
         highlight link LspReferenceText WildMenu
         highlight LspReferenceRead gui=italic guifg=#232326 guibg=#c49060 "Uses IncSearch hi-grp
         highlight LspReferenceWrite gui=bold guifg=#232326 guibg=#e2c792 "Uses Search hi-grp
@@ -56,15 +68,18 @@ local on_attach = function(client, buffer)
         autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
-        ]]
+        ]])
     end
 
     -- client.resolved_capabilities.type_definition =false
     if client.resolved_capabilities.type_definition then
-        set_keymap('n', '<leader>dt',
-                   '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+        set_keymap(
+            "n",
+            "<leader>dt",
+            "<cmd>lua vim.lsp.buf.type_definition()<CR>",
+            opts
+        )
     end
-
 end
 
 -- config that activates keymaps and enables snippet support
@@ -80,64 +95,56 @@ local function make_config()
         -- map buffer local keybindings when the language server attaches
         on_attach = on_attach,
 
-        rootdir = vim.loop.cwd
+        -- rootdir = vim.loop.cwd
     }
 end
 
-local local_lsp_servers = {'clangd', 'hls', 'zls', 'efm'}
-
 -- lsp-install
 local function setup_servers()
-    require'lspinstall'.setup()
+    local lsp_servers = {
+        "sumneko_lua",
+        "ccls",
+        "cssls",
+        "html",
+        "jsonls",
+        "tailwindcss",
+        "tsserver",
+        "volar",
+        "zls",
+        "efm",
+    }
 
-    -- get all installed servers
-    -- html ,css,lua,tailwindcss,vue,typescript
-    local servers = require'lspinstall'.installed_servers()
-    -- ... and add manually installed servers
-    if servers then
-        for _, local_server in pairs(local_lsp_servers) do
-            table.insert(servers, local_server)
-        end
-    else
-        servers = local_lsp_servers
-    end
+    local settings = require("plugrc.lspconfig.settings")
 
-    local settings = require('plugrc.lspconfig.settings')
-    local lua_settings = settings.lua_settings
-    local efm_settings = settings.efm_settings
-    local clangd_setting = settings.clangd_setting
-
-    for _, server in pairs(servers) do
+    for _, server in pairs(lsp_servers) do
         local config = make_config()
 
         -- language specific config
-        if server == "clangd" then
-            config.cmd = clangd_setting.cmd
-            config.filetypes = clangd_setting.filetypes
+        if server == "ccls" then
+            local ccls = settings.ccls_settings
+            config.init_options = ccls.init_options
+            config.filetypes = ccls.filetypes
         end
 
-        if server == "lua" then config.settings = lua_settings; end
+        if server == "sumneko_lua" then
+            local lua_settings = settings.lua_settings
+            config.cmd = lua_settings.cmd
+            config.settings = lua_settings.settings
+        end
 
         if server == "efm" then
-            config.init_options = efm_settings.init_options;
-            config.settings = efm_settings.settings;
+            local efm_settings = settings.efm_settings
+            config.init_options = efm_settings.init_options
+            config.settings = efm_settings.settings
             config.filetypes = efm_settings.filetypes
         end
 
         if server == "tailwindcss" then
-            config.filetypes = {"html", "css", "vue", "scss"}
+            config.filetypes = { "html", "css", "vue", "scss" }
         end
 
-        require'lspconfig'[server].setup(config);
+        require("lspconfig")[server].setup(config)
     end
-
 end
 
 setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function()
-    setup_servers() -- reload installed servers
-
-    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
