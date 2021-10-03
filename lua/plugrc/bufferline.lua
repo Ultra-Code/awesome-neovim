@@ -1,8 +1,8 @@
 require('bufferline').setup {
   options = {
-    numbers =  "buffer_id", --| "ordinal" | "none" | "both",
-    number_style = "none", -- | "superscript" | "" | { "none", "subscript" }, -- buffer_id at index 1, ordinal at index 2
-    mappings = false, --| true ,
+    numbers = function(opts)
+    return string.format('%s|%s', opts.id, opts.raise(opts.ordinal))
+    end,
     max_name_length = 18,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
     tab_size = 18,
