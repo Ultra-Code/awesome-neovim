@@ -11,16 +11,18 @@ local disable_conflicting_formatters = function(client, buffer)
 end
 
 local on_attach = function(client, buffer)
-    local signature_cfg = require("plugrc/lspconfig/signature")
-    local saga_cfg = require("plugrc/lspconfig/saga")
     local builtin_lsp = require("plugrc/lspconfig/config")
 
     builtin_lsp.completion_kinds()
     builtin_lsp.sign_column_diagnostic_symbols()
-    builtin_lsp.display_diagnostics_sources()
+    builtin_lsp.disable_virtual_text()
+    --builtin_lsp.display_diagnostics_sources()
 
+    --local saga_cfg = require("plugrc/lspconfig/saga")
+    --require("lspsaga").init_lsp_saga(saga_cfg)
+
+    local signature_cfg = require("plugrc/lspconfig/signature")
     require("lsp_signature").on_attach(signature_cfg)
-    require("lspsaga").init_lsp_saga(saga_cfg)
 
     local function set_keymap(...)
         vim.api.nvim_buf_set_keymap(buffer, ...)
@@ -85,6 +87,8 @@ end
 -- config that activates keymaps and enables snippet support
 local function make_config()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+    capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.signatureHelp.contextSupport = true
