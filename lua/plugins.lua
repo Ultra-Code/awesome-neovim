@@ -69,14 +69,21 @@ require("paq-nvim")({
     { "folke/which-key.nvim" },
 
     -- == Auto Completions Engine ==
-    "hrsh7th/nvim-cmp", -- Autocompletion plugin
-    "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+    { "hrsh7th/nvim-cmp" }, -- Autocompletion plugin
+    -- Completion Sources --
+    "hrsh7th/cmp-nvim-lsp", -- nvim-cmp source for neovim builtin LSP client
+    "hrsh7th/cmp-path", --nvim-cmp source for path
+    "hrsh7th/cmp-buffer", --nvim-cmp source for buffer words
+    "hrsh7th/cmp-nvim-lua", --nvim-cmp source for nvim lua
+    "hrsh7th/cmp-emoji", --nvim-cmp source for emoji
+    "f3fora/cmp-spell", --spell source for nvim-cmp based on vim's spellsuggest
 
     -- Auto pairs
     { "windwp/nvim-autopairs" },
 
     -- === Code Snippets Plugins ===
     { "L3MON4D3/LuaSnip" },
+    "saadparwaiz1/cmp_luasnip", --luasnip completion source for nvim-cmp
 
     -- === Tag Bar Plugin ===
 
