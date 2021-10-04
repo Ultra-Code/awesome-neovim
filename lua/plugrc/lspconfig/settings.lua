@@ -120,7 +120,6 @@ settings.ccls_settings = {
     {
         filetypes = { "c", "cpp" },
         init_options = {
-            compilationDatabaseDirectory = vim.loop.cwd,
             index = {
                 threads = 0,
             },
