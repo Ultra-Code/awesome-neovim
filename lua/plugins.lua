@@ -43,13 +43,9 @@ require 'paq-nvim' {
 --Nvim Treesitter configurations and abstraction layer
 {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'};
 
---Pandoc Markdown Syntax Highlighting--
-{'vim-pandoc/vim-pandoc-syntax',opt=true};
-
 -- === Preview Plugin ===
 --A markdown previewer prebuild binary
 {'npxbr/glow.nvim',branch="main",run = ":GlowInstall"};
-
 
 --Vim Wiki
 {'vimwiki/vimwiki',branch="dev",opt=true};
@@ -61,7 +57,7 @@ require 'paq-nvim' {
 --Nvim LSP client
 {'neovim/nvim-lspconfig'};
 --A light-weight lsp plugin
-{'glepnir/lspsaga.nvim'};
+{'tami5/lspsaga.nvim'};
 --Show function signature when you type
 {'ray-x/lsp_signature.nvim'};
 -- A pretty diagnostics, references, telescope
