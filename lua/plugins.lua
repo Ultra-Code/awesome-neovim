@@ -85,10 +85,10 @@ require("paq-nvim")({
     { "L3MON4D3/LuaSnip" },
     "saadparwaiz1/cmp_luasnip", --luasnip completion source for nvim-cmp
 
-    -- === Tag Bar Plugin ===
+    -- === LSP symbols ===
 
     --View and search LSP symbols, tags in Vim/NeoVim.--
-    { "liuchengxu/vista.vim", opt = true },
+    { "simrat39/symbols-outline.nvim", opt = true },
 
     -- === UI === --
     -- A Neovim File explorer
