@@ -1,6 +1,5 @@
 require('lazy/telescope')
 require('lazy/trouble')
 require('lazy/kommentary')
-require('lazy/vimwiki')
 require('lazy/glow')
 require('lazy/symbols')
