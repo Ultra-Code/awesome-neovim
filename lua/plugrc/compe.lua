@@ -35,7 +35,7 @@ cmp.setup({
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if vim.fn.pumvisible() == 1 then
-                t "<C-n>"
+                t("<C-n>")
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             elseif has_words_before() then
@@ -50,7 +50,7 @@ cmp.setup({
 
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if vim.fn.pumvisible() == 1 then
-                t "<C-p>"
+                t("<C-p>")
             elseif luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
@@ -69,6 +69,7 @@ cmp.setup({
         { name = "nvim_lua" },
         { name = "emoji" },
         { name = "spell" },
+        { name = "neorg" },
     },
 })
 --vim.cmd[[highlight link CompeDocumentation NormalFloat]]
