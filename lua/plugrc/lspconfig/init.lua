@@ -125,14 +125,15 @@ local function setup_servers()
     local null_ls = require("null-ls")
     local sources = {
         null_ls.builtins.formatting.eslint,
-        null_ls.builtins.diagnostics.eslint.with({
-            diagnostics_format = "[#{c}] #{m} (#{s})",
-        }),
+        null_ls.builtins.diagnostics.eslint,
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.stylua,
     }
 
-    null_ls.config({ sources = sources })
+    null_ls.config({
+        diagnostics_format = "(#{s}) #{m}",
+        sources = sources,
+    })
 
     for _, server in pairs(lsp_servers) do
         local config = make_config()
