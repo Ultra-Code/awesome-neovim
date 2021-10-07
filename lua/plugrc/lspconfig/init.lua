@@ -1,21 +1,22 @@
 local disable_conflicting_formatters = function(client, buffer)
     local buffer_filetype = vim.fn.getbufvar(buffer, "&filetype")
 
-    local efm_disabled_files = buffer_filetype == "cpp"
+    local disabled_files = buffer_filetype == "cpp"
         or buffer_filetype == "javascript"
         or buffer_filetype == "typescript"
 
-    if client.name == "efm" and efm_disabled_files then
+    if client.name == "null-ls" and disabled_files then
         client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
     end
 end
 
 local on_attach = function(client, buffer)
     local builtin_lsp = require("plugrc/lspconfig/config")
 
-    builtin_lsp.completion_kinds()
-    builtin_lsp.sign_column_diagnostic_symbols()
-    builtin_lsp.disable_virtual_text()
+    --builtin_lsp.completion_kinds()
+    --builtin_lsp.sign_column_diagnostic_symbols()
+    --builtin_lsp.disable_virtual_text()
     --builtin_lsp.display_diagnostics_sources()
 
     --local saga_cfg = require("plugrc/lspconfig/saga")
@@ -45,6 +46,9 @@ local on_attach = function(client, buffer)
             "<leader>lf",
             "<cmd>lua vim.lsp.buf.formatting()<CR>",
             opts
+        )
+        vim.cmd(
+            "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
         )
     end
 
@@ -107,7 +111,7 @@ end
 local function setup_servers()
     local lsp_servers = {
         "sumneko_lua",
-        "ccls",
+        "clangd",
         "cssls",
         "html",
         "jsonls",
@@ -115,19 +119,30 @@ local function setup_servers()
         "tsserver",
         "volar",
         "zls",
-        "efm",
+        "null-ls",
     }
 
-    local settings = require("plugrc.lspconfig.settings")
+    local null_ls = require("null-ls")
+    local sources = {
+        null_ls.builtins.formatting.eslint,
+        null_ls.builtins.diagnostics.eslint.with({
+            diagnostics_format = "[#{c}] #{m} (#{s})",
+        }),
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.stylua,
+    }
+
+    null_ls.config({ sources = sources })
 
     for _, server in pairs(lsp_servers) do
         local config = make_config()
+        local settings = require("plugrc.lspconfig.settings")
 
         -- language specific config
-        if server == "ccls" then
-            local ccls = settings.ccls_settings
-            config.init_options = ccls.init_options
-            config.filetypes = ccls.filetypes
+        if server == "clangd" then
+            local clangd_settings = settings.clangd_setting
+            config.cmd = clangd_settings.cmd
+            config.filetypes = clangd_settings.filetypes
         end
 
         if server == "sumneko_lua" then
@@ -135,18 +150,6 @@ local function setup_servers()
             config.cmd = lua_settings.cmd
             config.settings = lua_settings.settings
         end
-
-        if server == "efm" then
-            local efm_settings = settings.efm_settings
-            config.init_options = efm_settings.init_options
-            config.settings = efm_settings.settings
-            config.filetypes = efm_settings.filetypes
-        end
-
-        if server == "tailwindcss" then
-            config.filetypes = { "html", "css", "vue", "scss" }
-        end
-
         require("lspconfig")[server].setup(config)
     end
 end

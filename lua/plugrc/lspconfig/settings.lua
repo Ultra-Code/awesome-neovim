@@ -31,79 +31,42 @@ settings.lua_settings = {
     },
 }
 
-local linters = {}
+local null_ls = require("null-ls")
+local helpers = require("null-ls.helpers")
 
-linters.cppcheck = {
-    cpp = {
-        lintCommand = "cppcheck --enable=warning,style,performance,portability,information,missingInclude --inconclusive -j 4 --template=gcc --language=c++ ${INPUT}",
-        lintStdin = true,
-        lintFormats = { "%f:%l:%c: %m" },
-        lintIgnoreExitCode = true,
-    },
-
-    c = {
-        lintCommand = "cppcheck --enable=warning,style,performance,portability,information,missingInclude --inconclusive -j 4 --template=gcc --language=c ${INPUT}",
-        lintStdin = true,
-        lintFormats = { "%f:%l:%c: %m" },
-        lintIgnoreExitCode = true,
-    },
-}
-
-linters.eslint = {
-    lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
-    lintStdin = true,
-    lintFormats = { "%f(%l,%c): %rror %m" },
-    lintIgnoreExitCode = true,
-}
-
-local formatters = {}
-
-formatters.lua_format = { formatCommand = "lua-format -i", formatStdin = true }
-formatters.stylua = { formatCommand = "stylua -", formatStdin = true }
-
-formatters.prettier = {
-    formatCommand = "prettier --stdin-filepath ${INPUT}",
-    formatStdin = true,
-}
-
-settings.efm_settings = {
-    init_options = {
-        documentFormatting = true,
-        codeAction = true,
-        hover = true,
-        documentSymbol = true,
-        completion = true,
-    },
-
-    filetypes = {
-        "lua",
-        "cpp",
-        "c",
-        "css",
-        "scss",
-        "json",
-        "yaml",
-        "markdown",
-        "javascript",
-        "typescript",
-    },
-
-    settings = {
-        rootMarkers = { ".git/" },
-        languages = {
-            lua = { formatters.stylua },
-            cpp = { linters.cppcheck.cpp },
-            c = { linters.cppcheck.c },
-            css = { formatters.prettier },
-            scss = { formatters.prettier },
-            json = { formatters.prettier },
-            yaml = { formatters.prettier },
-            markdown = { formatters.prettier },
-            javascript = { linters.eslint },
-            typescript = { linters.eslint },
+settings.cppcheck = {
+    method = null_ls.methods.DIAGNOSTICS,
+    filetypes = { "cpp", "c" },
+    -- null_ls.generator creates an async source
+    -- that spawns the command with the given arguments and options
+    generator = null_ls.generator({
+        command = "cppcheck",
+        args = {
+            "--enable=warning,style,performance,portability,information,missingInclude",
+            "--inconclusive",
+            "-j 4",
+            "--template=gcc",
+            "$FILENAME",
         },
-    },
+        to_stdin = true,
+        from_stderr = true,
+        -- choose an output format (raw, json, or line)
+        format = "line",
+        -- use helpers to parse the output from string matchers,
+        -- or parse it manually with a function
+        on_output = helpers.diagnostics.from_pattern(
+            [[(%d+):(%d+): (%w+): (.*)]], -- (%[(%w+)%])?
+            { "row", "col", "severity", "message" }, -- "code"
+            {
+                severities = {
+                    note = helpers.diagnostics.severities["information"],
+                },
+            }
+        ),
+    }),
 }
+--info = h.diagnostics.severities["information"],
+null_ls.register({ name = "cppcheck", sources = { settings.cppcheck } })
 
 settings.clangd_setting = {
     cmd = {
@@ -114,24 +77,6 @@ settings.clangd_setting = {
         "--malloc-trim",
     },
     filetypes = { "c", "cpp" }, -- we don't want objective-c and objective-cpp!
-}
-
-settings.ccls_settings = {
-    {
-        filetypes = { "c", "cpp" },
-        init_options = {
-            index = {
-                threads = 0,
-            },
-            cache = {
-                directory = ".ccls-cache",
-            },
-            clang = {
-                excludeArgs = { "-frounding-math" },
-                extraArgs = {},
-            },
-        },
-    },
 }
 
 return settings
