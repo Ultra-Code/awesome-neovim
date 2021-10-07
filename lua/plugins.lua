@@ -58,6 +58,10 @@ require("paq-nvim")({
     -- list to help you solve all the trouble your code is causing
     { "folke/trouble.nvim", opt = true },
 
+    --Use Neovim as a language server to inject LSP diagnostics, code actions,
+    --and more via Lua
+    {"jose-elias-alvarez/null-ls.nvim"},
+
     -- displays a popup with possible key bindings
     -- of the command you started typing
     { "folke/which-key.nvim" },
