@@ -47,9 +47,6 @@ local on_attach = function(client, buffer)
             "<cmd>lua vim.lsp.buf.formatting()<CR>",
             opts
         )
-        vim.cmd(
-            "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
-        )
     end
 
     if client.resolved_capabilities.document_range_formatting then
