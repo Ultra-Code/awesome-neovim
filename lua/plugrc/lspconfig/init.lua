@@ -128,7 +128,9 @@ local function setup_servers()
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.code_actions.gitsigns,
         null_ls.builtins.diagnostics.shellcheck,
-        null_ls.builtins.diagnostics.cppcheck,
+        null_ls.builtins.diagnostics.cppcheck.with({
+            extra_args = { "--inconclusive" },
+        }),
     }
 
     null_ls.config({
