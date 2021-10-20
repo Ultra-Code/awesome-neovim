@@ -120,6 +120,7 @@ local function setup_servers()
         "volar",
         "zls",
         "null-ls",
+        "bashls",
     }
 
     local null_ls = require("null-ls")
