@@ -51,46 +51,11 @@ function M.disable_virtual_text()
         vim.lsp.diagnostic.on_publish_diagnostics,
         {
             virtual_text = false,
-            update_in_insert = false,
+            update_in_insert = true,
             signs = true,
             underline = true,
         }
     )
-end
-function M.display_diagnostics_sources()
-    vim.lsp.handlers["textDocument/publishDiagnostics"] =
-        function(_, _, params, client_id, _)
-            local config = { -- your config
-                virtual_text = false,
-                update_in_insert = false,
-                signs = true,
-                underline = true,
-            }
-            local uri = params.uri
-            local bufnr = vim.uri_to_bufnr(uri)
-
-            if not bufnr then
-                return
-            end
-
-            local diagnostics = params.diagnostics
-
-            for i, v in ipairs(diagnostics) do
-                diagnostics[i].message = string.format(
-                    "%s: %s",
-                    v.source,
-                    v.message
-                )
-            end
-
-            vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
-
-            if not vim.api.nvim_buf_is_loaded(bufnr) then
-                return
-            end
-
-            vim.lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
-        end
 end
 
 return M
