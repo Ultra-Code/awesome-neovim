@@ -1,4 +1,4 @@
-local GitStatus = {
+--[[ local GitStatus = {
     Modified = "✹",
     Staged = "✚",
     Untracked = "✭",
@@ -131,4 +131,5 @@ require("gitsigns").setup({
     update_debounce = 100,
     status_formatter = nil, -- Use default
     use_internal_diff = true, -- If luajit is present
-})
+}) ]]
+require("gitsigns").setup()
