@@ -2,10 +2,13 @@
 vim.o.termguicolors = true
 
 -- Onedark colorscheme
-vim.g.onedark_style = 'deep' --darker,default,cool ,deep,warm,warmer
+--vim.g.onedark_style = 'deep' --darker,default,cool ,deep,warm,warmer
 
-require('onedark').setup()
+--require('onedark').setup()
+-- For dark theme
+vim.g.vscode_style = "dark"
 
+vim.cmd[[colorscheme vscode]]
 -- status line
 require('plugrc/lualine')
 

@@ -17,6 +17,7 @@ require("paq-nvim")({
 
     -- === Themes and Colour Scheme ===
     { "navarasu/onedark.nvim" },
+    { "Mofiqul/vscode.nvim" },
 
     -- === Git Plugin ===
     -- A vim plugin which shows git diff in the gutter (sign column).
@@ -60,7 +61,7 @@ require("paq-nvim")({
 
     --Use Neovim as a language server to inject LSP diagnostics, code actions,
     --and more via Lua
-    {"jose-elias-alvarez/null-ls.nvim"},
+    { "jose-elias-alvarez/null-ls.nvim" },
 
     -- displays a popup with possible key bindings
     -- of the command you started typing
