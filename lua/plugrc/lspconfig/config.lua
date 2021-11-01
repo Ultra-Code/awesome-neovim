@@ -46,7 +46,7 @@ function M.sign_column_diagnostic_symbols()
     end
 end
 
-function M.disable_virtual_text()
+function M.customise_diagnostics()
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics,
         {
