@@ -12,16 +12,6 @@ local disable_conflicting_formatters = function(client, buffer)
 end
 
 local on_attach = function(client, buffer)
-    local builtin_lsp = require("plugrc/lspconfig/config")
-
-    --builtin_lsp.completion_kinds()
-    --builtin_lsp.sign_column_diagnostic_symbols()
-    --builtin_lsp.disable_virtual_text()
-    --builtin_lsp.display_diagnostics_sources()
-
-    --local saga_cfg = require("plugrc/lspconfig/saga")
-    --require("lspsaga").init_lsp_saga(saga_cfg)
-
     local signature_cfg = require("plugrc/lspconfig/signature")
     require("lsp_signature").on_attach(signature_cfg)
 
