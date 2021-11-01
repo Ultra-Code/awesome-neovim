@@ -40,46 +40,11 @@ local on_attach = function(client, buffer)
     disable_conflicting_formatters(client, buffer)
 
     -- Set some keybinds conditional on server capabilities
-    if client.resolved_capabilities.document_formatting then
-        set_keymap(
-            "n",
-            "<leader>lf",
-            "<cmd>lua vim.lsp.buf.formatting()<CR>",
-            opts
-        )
-    end
-
     if client.resolved_capabilities.document_range_formatting then
         set_keymap(
             "v",
             "<leader>lf",
             "<cmd>lua vim.lsp.buf.range_formatting()<CR>",
-            opts
-        )
-    end
-
-    -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
-        -- lsp highlight element under cursor
-        vim.cmd([[
-        highlight link LspReferenceText WildMenu
-        highlight LspReferenceRead gui=italic guifg=#232326 guibg=#c49060 "Uses IncSearch hi-grp
-        highlight LspReferenceWrite gui=bold guifg=#232326 guibg=#e2c792 "Uses Search hi-grp
-        augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-        ]])
-    end
-
-    -- client.resolved_capabilities.type_definition =false
-    if client.resolved_capabilities.type_definition then
-        set_keymap(
-            "n",
-            "<leader>dt",
-            "<cmd>lua vim.lsp.buf.type_definition()<CR>",
             opts
         )
     end
@@ -126,7 +91,9 @@ local function setup_servers()
         null_ls.builtins.code_actions.gitsigns,
         null_ls.builtins.diagnostics.shellcheck,
         null_ls.builtins.diagnostics.cppcheck.with({
-            extra_args = { "--inconclusive" },
+            extra_args = {
+                "--inconclusive",
+            },
         }),
     }
 
