@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
 augroup detectfiletypes
   autocmd! BufRead,BufNewFile *.mxx,*.mpp,*.txx,*.tpp setfiletype cpp
 augroup END
@@ -22,4 +22,8 @@ augroup END
 augroup nixfile
     autocmd! BufRead,BufNewFile *.nix set filetype=nix
 augroup END
-]]
+
+augroup glsl
+    autocmd! BufNewFile,BufRead *.vert,*.tesc,*.tese,*.geom,*.frag,*.comp,*.glsl set ft=glsl
+augroup END
+]])
