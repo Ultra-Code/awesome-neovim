@@ -13,7 +13,7 @@ require("paq-nvim")({
 
     -- === Editor Plugins === --
     -- A commenter for different Language
-    { "b3nj5m1n/kommentary", opt = true },
+    { "numToStr/Comment.nvim" },
 
     -- === Themes and Colour Scheme ===
     { "navarasu/onedark.nvim" },
