@@ -1,205 +1,157 @@
 # Awesome Neovim Configuration
 
-This is to make setting up of vim 8 && neovim 0.4 and above easy and a breeze.
-Moving on I will use vim and neovim interchangably because they are very similar
-under the hood.
+This is to make setting up of neovim >= 0.5 a breeze.
+# NOTE : for vim >= 8 checkout [vim 8 branch]()
 
 ## Awesome NeoVim with C++
 
 Supports the following
-
-- clang , gcc compilers
-- clang-tidy linter
-- clang-format formater
-- clangd lsp server with coc.nvim lsp client
-- cppcheck and clang-check static anlysis
-- All build systems build2 , cmake , meason ++
-- autocompletion,documentation and all other features supported by clangd and
-    coc.nvim
+- zig, c , c++ compilers
+- linters and static analysis through null-ls
+- formatters using neovim builtin lsp
+- lsp server with nvim-lspconfig lsp client
+- Any build system
+- Treesitter syntax highlighting
+- autocompletion,documentation and all other features supported by any lsp
+  server you configure
 ![Awesome-NeoVim with C++](https://github.com/Ultra-Code/awesome-neovim/blob/master/assets/AwesomeNeovimForC%2B%2B.png)
 
-## Awesome Neovim for Ts with Vue
-
-Supports the following and more ....
-
-- Node v12+
-- eslint linter
-- pretteir formatter
-- Tsserver with coc.nvim
-- autocompletion,documentation and all other features supported by tsserver and
-    coc.nvim
-
-![Awesome NeoVim with Ts and Vue](https://github.com/Ultra-Code/nvim/blob/master/assets/AwesomeAndConfigurableNeoVim.png)
-
 >__NOTE__ the languages supported out of the box are
->c++,c,cmake,python3,js,html5+,css3+,ts,vue,haskell,markdown,json
+> zig , c++ , c , lua , js , ts , html5+ , css3+ , vue , markdown , json , glsl , nix
 >__But__ support for other languages can easily be add by using it required
-[lsp's](https://github.com/neoclide/coc.nvim/wiki/Language-servers)
->and [coc-extentions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions)
+[lsp server configuration](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)
+and installing the server and other accompaning tools for development like linters , static analysers, formatter
 
 ## Requirement
 
-Installation of plugins in neovim or vim requires `python 3` support
-.You can check if your neovim has python support by running
-`:echo has("python3")`
+Unlike the [vim branch]() with neovim >= 0.5 most plugings written in lua and don't depend on python or node
+But if you decide to use a plugin that rely's on any of these you would have to install them but I recommend
+you find their lua equivalent. Chances are that it will be faster (due to luajit) and more well
+intergrated with neovim >= 0.5
 
 __Neovim__
-Neovim does not come out of the box with python 3 support
+Neovim does come out of the box with luajit and treesitter support
 
->Additional Setup is required for python 3
-
-First install [pynvim](https://github.com/neovim/pynvim)
-
-```bash
-python3 -m pip install pynvim
+## Repo structure
+```text
+    📂 ~/.config/nvim
+    ├── 📂 lua
+    │  └── 📂 lazy
+    │  │   ├──  glow.lua
+    │  │   ├──  init.lua
+    │  │   ├──  symbols.lua
+    │  │   ├──  telescope.lua
+    │  │   └──  trouble.lua
+    │  └── 📂 mapping
+    │  │   ├──  highlighting.lua
+    │  │   ├──  init.lua
+    │  │   ├──  lspconfig.lua
+    │  │   ├──  spellcheck.lua
+    │  │   ├──  tab_buffer.lua
+    │  │   ├──  terminal.lua
+    │  │   └──  tree.lua
+    │  └── 📂 plugrc
+    │  │   └── 📂 lspconfig
+    │  │   ├──  autopairs.lua
+    │  │   ├──  bufferline.lua
+    │  │   ├──  compe.lua
+    │  │   ├──  gitsigns.lua
+    │  │   ├──  init.lua
+    │  │   ├──  lualine.lua
+    │  │   ├──  neorg.lua
+    │  │   ├──  tree.lua
+    │  │   ├──  treesitter.lua
+    │  │   └──  whichkey.lua
+    │  ├──   editor.lua
+    │  ├──   plugins.lua
+    │  ├──   terminal.lua
+    │  ├──   ui.lua
+    │  └──   utils.lua
+    ├──  README.md
+    ├──  LICENSE
+    └──  init.lua
 ```
+All lazy loading plugins are in `lua/lazy` while all key mappings are in
+`lua/mapping`. Configuration for plugins are in `lua/plugrc`.
+`lua/editor` contains editor configuration.
+`lua/plugins` contains the list of all plugins
+`lua/terminal` contains configuration for neovim builtin terminal
+`lua/ui` contains tabline , statusline and treesitter configuration
+`lua/utils` contain some resuable functions
 
-And add the following configuration in your `$XDG_CONFIG_HOME/nvim/editor.vim` or
-`$HOME/.config/nvim/editor.vim`
+To use this awesome configuration clone this repo into `$XDG_CONFIG_HOME/nvim` or `$HOME/.config/nvim`
 
-```bash
-let g:python3_host_prog=/path/to/python3/executable/on/your/system
-```
+__Paq is a Neovim package manager written in Lua.__ as quoted by their site
+[Paq](https://github.com/savq/paq-nvim)
 
-__Vim Plug is A minimalist Vim plugin manager__ as quoted by their site
-[Vim-Plug](https://github.com/junegunn/vim-plug)
-
-### Installation of Vim-Plug
-
-#### _NOTE_
-
-_Now the is automatic Vim-Plug installation for all neovim and vim users
-You can automate the process by putting the following commands in your Vim configuration
-file as suggested [here][auto]. and open nvim and watch some beautiful magic happen.
-___This is a one time activity so after vim-plug has been istalled you can
-remove these commands from your config.
-The $MYVIMRC is an environment variable that should point to your init.vim file
-for neovim users and .vimrc file for vim users___ ._
-
-__Note for neovim users__
-_On linux the path for the plugin is `$XDG_DATA_HOME/nvim/site/autoload/plug.vim`
-if the evironment variable `$XDG_DATA_HOME` is defined __else__ use the default
-`'~/.local/share/nvim/site/autoload/plug.vim` for this to work_
-
-__Thanks to @junegunn/vim-plug and all colaborators.__
-
-[auto]: https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+### Installation of Paq
 
 ### Neovim
 
 #### Unix
 
 ```zsh
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+git clone --depth=1 https://github.com/savq/paq-nvim.git \
+    "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
 ```
 
 ##### Windows (PowerShell)
 
 ```powershell
-md ~\AppData\Local\nvim\autoload
-$uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-(New-Object Net.WebClient).DownloadFile(
-  $uri,
-  $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(
-    "~\AppData\Local\nvim\autoload\plug.vim"
-  )
-)
+git clone https://github.com/savq/paq-nvim.git "$env:LOCALAPPDATA\nvim-data\site\pack\paqs\start\paq-nvim"
 ```
 
-### Vim
+#### _NOTE_
 
-#### Unix
+_There is automatic Paq installation for all neovim.
+You can automate the process by putting the following commands in your neovim lua configuration
+file as suggested [here][auto]. and open nvim and watch some beautiful magic happen.
+___This is a one time activity so after Paq has been istalled you can
+remove these commands from your config.___ ._
 
-```bash
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
+__Thanks to @savq/paq-nvim and all colaborators.__
 
-##### Windows (PowerShell)
+[auto]: https://github.com/savq/paq-nvim#bootstrapping
 
-```powershell
-md ~\vimfiles\autoload
-$uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-(New-Object Net.WebClient).DownloadFile(
-  $uri,
-  $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(
-    "~\vimfiles\autoload\plug.vim"
-  )
-)
-```
+### Install Plugins Using Paq
 
-### Install Plugins Using Vim-Plug
-
-move to `$XDG_CONFIG_HOME/nvim` or `~/.config/nvim/` and open the plugins.vim file
+move to `$XDG_CONFIG_HOME/nvim` or `~/.config/nvim/` and open the plugins.lua file
 and run this commands
 
-```bash
-:source %     # To cause init.vim to update itself
+```zsh
+:luafile %    # To cause lua to update cache of the file
 
-:PlugInstall  #To install plugins
+:PaqInstall   #Install all packages listed in your configuration
 
-:PlugUpdate   #To update plugins
+:PaqUpdate    #Update all packages already on your system
 
-:PlugUpgrade  #To upgrade to the latest version of Vim-Plug
+:PaqClean     #Comment or remove the plugin you want to remove from plugins.lua
+              #then :luafile % and run PaqClean to remove that commented/removed plugin
 
-:PlugClean    # Comment the plugin you want to remove with '"' then :source %
-              # and run PlugClean to remove that commented plugin
+:PaqSync      #Execute the three operations listed above
 ```
 
 For modern c/c++ developemt
 
-```bash
-sudo aptitude install gcc ccls cppcheck
+```zsh
+Debian Linux - sudo aptitude install clang clang-tidy clang-format clangd cppcheck
+Arch Linux   - sudo pacman -S clang lldb cppcheck
 #Note: When using another build system like build2 you will need to dry run
 #your build system and pipe the output to compiledb to generate compile_commands.json
 # eg. $ b -vn clean update |& compiledb
-sudo aptitude install clangd clang-format clang-tidy clang # don't forget to
-#generate a compile_commands.json file using cmake with 'cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-#in your project directory OR
-```
-
-And Assumming you plan to get involved in web developemt then you should
-insllall the following plugins
-
-```bash
-:CocInstall coc-vetur coc-highlight
-:CocInstall coc-json coc-tsserver coc-html coc-css coc-markdownlint
-```
-
-there are a lot of other extentions you can install for the coc.nvim language
-server client [Coc.nvim](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions)
-
-`Note to change the plugins that are automatically installed by coc.nvim edit
-the plugrc.d/coc.vim's global_extension variable with your desired plugins`
-
-```vim
-let g:coc_global_extensions=[]
-```
-
-for python
-
-```bash
-:CocInstall coc-python
-pip3 install flake8 yapf # For linting and formatting
+#For cmake generate a compile_commands.json file using cmake with 'cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+#in your project directory
 ```
 
 for help using the various plugins and extensions
 
-```bash
+```zsh
 :help local-addtions
 ```
 
 to view the help pages and instruction manual on the various extensions
 
-In addtion to these plugins ,some plugins like Vista have external dependencies
-which have to be installed in other to use them.
-
-```bash
-sudo aptitude install universal-ctags # enable vista to generate source code tags
-```
-
->>Big ShoutOuts to the Creators of Vim && Neovim.
->Another to all the creators of the various vim and neovim extensions.
+>>Big ShoutOuts to the Creators of Neovim.
+>Another to all the creators of the various neovim extensions.
 >And Last but not the least __God Bless The Vim && Neovim Community for this
 >hyperextensible and hackable text editor__
