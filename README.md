@@ -91,12 +91,9 @@ Neovim does come out of the box with luajit and treesitter support
 
 To use this awesome configuration clone this repo into `$XDG_CONFIG_HOME/nvim` or `$HOME/.config/nvim`
 
-__Paq is a Neovim package manager written in Lua.__ as quoted by their site
-[Paq](https://github.com/savq/paq-nvim)
+## Installation of Paq
 
-### Installation of Paq
-
-### Neovim
+__Paq is a Neovim package manager written in Lua.__ as quoted by their site [Paq](https://github.com/savq/paq-nvim)
 
 #### Unix
 
