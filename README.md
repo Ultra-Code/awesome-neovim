@@ -14,6 +14,7 @@ Supports the following
 - Treesitter syntax highlighting
 - autocompletion,documentation and all other features supported by any lsp
   server you configure
+
 ![Awesome-NeoVim with C++](https://github.com/Ultra-Code/awesome-neovim/blob/master/assets/AwesomeNeovimWithC%2B%2B.png)
 
 >__NOTE__ the languages supported out of the box are
@@ -71,13 +72,22 @@ Neovim does come out of the box with luajit and treesitter support
     ├──  LICENSE
     └──  init.lua
 ```
-All lazy loading plugins are in `lua/lazy` while all key mappings are in
-`lua/mapping`. Configuration for plugins are in `lua/plugrc`.
-`lua/editor` contains editor configuration.
-`lua/plugins` contains the list of all plugins
-`lua/terminal` contains configuration for neovim builtin terminal
-`lua/ui` contains tabline , statusline and treesitter configuration
-`lua/utils` contain some resuable functions
+
+`lua/lazy` directory contains file for lazy loading of plugins
+
+`lua/mapping` directory contains all key mappings
+
+`lua/plugrc` directory contains configuration for plugins
+
+`lua/editor` file contains neovim editor configuration.
+
+`lua/plugins` file contains the list of all plugins
+
+`lua/terminal` file contains configuration for neovim builtin terminal
+
+`lua/ui` file contains tabline , statusline and treesitter configuration
+
+`lua/utils` file contains some resuable functions
 
 To use this awesome configuration clone this repo into `$XDG_CONFIG_HOME/nvim` or `$HOME/.config/nvim`
 
