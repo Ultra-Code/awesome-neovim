@@ -43,7 +43,7 @@ require("paq-nvim")({
 
     -- === Preview Plugin ===
     -- A markdown previewer prebuild binary
-    { "npxbr/glow.nvim", branch = "main", run = ":GlowInstall" },
+    { "ellisonleao/glow.nvim" },
 
     -- === Note Taking Plugin ===
     { "vhyrro/neorg", branch = "unstable" }, -- neovim note taking tool
