@@ -14,7 +14,7 @@ Supports the following
 - Treesitter syntax highlighting
 - autocompletion,documentation and all other features supported by any lsp
   server you configure
-![Awesome-NeoVim with C++](https://github.com/Ultra-Code/awesome-neovim/blob/master/assets/AwesomeNeovimForC%2B%2B.png)
+![Awesome-NeoVim with C++](https://github.com/Ultra-Code/awesome-neovim/blob/master/assets/AwesomeNeovimWithC%2B%2B.png)
 
 >__NOTE__ the languages supported out of the box are
 > zig , c++ , c , lua , js , ts , html5+ , css3+ , vue , markdown , json , glsl , nix
