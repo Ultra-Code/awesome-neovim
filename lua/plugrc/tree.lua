@@ -1,6 +1,5 @@
 local g = vim.g
 
-g.nvim_tree_gitignore = 1 -- 0 by default
 g.nvim_tree_quit_on_open = 1 -- 0 by default, closes the tree when you open a file
 g.nvim_tree_highlight_opened_files = 1 -- 0 by default, will enable folder and file icon highlight for opened files/directories.
 --g.nvim_tree_disable_window_picker = 1 --0 by default, will disable the window picker.
@@ -49,6 +48,10 @@ require("nvim-tree").setup({
         cmd = nil,
         -- the command arguments as a list
         args = {},
+    },
+    git = {
+        enable = true,
+        ignore = true,
     },
     view = {
         -- width of the window, can be either a number (columns) or a string in `%`
@@ -102,6 +105,7 @@ require("nvim-tree").setup({
         },
     },
     filters = {
+        --hide_dotfiles
         dotfiles = false,
         custom = {},
     },
