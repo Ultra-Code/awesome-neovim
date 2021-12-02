@@ -12,7 +12,15 @@ local disable_conflicting_formatters = function(client, buffer)
 end
 
 local on_attach = function(client, buffer)
-    local signature_cfg = require("plugrc/lspconfig/signature")
+    vim.diagnostic.config({
+        virtual_text = false,
+        float = { scope = "line", severity_sort = true, source = "if_many" },
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
+    })
+    local signature_cfg = require("plugrc.lspconfig.signature")
     require("lsp_signature").on_attach(signature_cfg)
 
     local function set_keymap(...)
