@@ -1,12 +1,9 @@
 -- ============================================================================ --
 -- ===                               PLUGINS                                === --
 -- ============================================================================ --
--- PLUG INS FOR NEOVIM
+-- PLUGINS FOR NEOVIM
 -- Specify a directory for plugins
----For Neovim: ~/.local/share/nvim/plugged
--- To make config resuable system wide use absolute path instead eg.
--- /home/$USER/.local/share/nvim/plugged
----Avoid using standard Vim directory names like 'plugin'
+---For Neovim: ~/.local/share/nvim/site/pack/
 require("paq-nvim")({
 
     { "savq/paq-nvim" },
@@ -51,8 +48,8 @@ require("paq-nvim")({
     -- === Language Specific Plugins ===
     -- == LSP Client ===
     -- Nvim LSP client
-    { "neovim/nvim-lspconfig" }, -- A light-weight lsp plugin
-    { "tami5/lspsaga.nvim" }, -- Show function signature when you type
+    { "neovim/nvim-lspconfig" },
+    -- Show function signature when you type
     { "ray-x/lsp_signature.nvim" },
     -- A pretty diagnostics, references, telescope
     -- results, quickfix and location
