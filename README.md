@@ -1,6 +1,6 @@
 # Awesome Neovim Configuration
 
-This is to make setting up of neovim >= 0.5 a breeze.
+This is to make setting up of neovim >= 0.6 a breeze.
 ### NOTE : for vim >= 8 checkout [vim branch](https://github.com/Ultra-Code/awesome-neovim/tree/vim)
 
 ## Awesome NeoVim with C++
@@ -25,10 +25,10 @@ and installing the server and other accompaning tools for development like linte
 
 ## Requirement
 
-Unlike the [vim branch]() with neovim >= 0.5 most plugings written in lua and don't depend on python or node
+Unlike the [vim branch]() with neovim >= 0.6 most plugings written in lua and don't depend on python or node
 But if you decide to use a plugin that rely's on any of these you would have to install them but I recommend
 you find their lua equivalent. Chances are that it will be faster (due to luajit) and more well
-intergrated with neovim >= 0.5
+intergrated with neovim >= 0.6
 
 __Neovim__
 Neovim does come out of the box with luajit and treesitter support
