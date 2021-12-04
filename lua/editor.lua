@@ -6,44 +6,46 @@ local fn = vim.fn -- invoke vim-functions in lua
 -- With a map leader it's possible to do extra key combinations
 -- like <leader>w saves the current file
 
-g.mapleader = ','
+g.mapleader = ","
 
 -- == Python provider configurations == --
-g.python3_host_prog = '/usr/bin/python3'
+g.python3_host_prog = "/usr/bin/python3"
 
 -- enable loading the plugin files for specific file types
-cmd [[filetype plugin indent on]]
+cmd([[filetype plugin indent on]])
 
 -- Switch on syntax highlighting.
-o.syntax = 'on'
+o.syntax = "on"
 
 -- set assembly language file to use nasm
-g.asmsyntax = 'asm'
+g.asmsyntax = "asm"
 
 -- Set clipboard to the +  registers only
 -- if you want to use the * also add ,unnamed
-if fn.has('clipboard') == 1 then vim.opt.clipboard:append('unnamed') end
+if fn.has("clipboard") == 1 then
+    vim.opt.clipboard:append("unnamed")
+end
 
 -- Restore cursor to file position in previous editing session
 -- This autocommand jumps to the last known position in a file
 -- just after opening it, if the '-- mark is set: >
-cmd [[
+cmd([[
 augroup restore_cursor
   autocmd!
   autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
-]]
+]])
 
 -- Keep a backup copy of a file when overwriting it.This also sets the 'undofile' option, if
 -- available.  This will store the multi-level undo information in a file.  The result is
 -- that when you change a file, exit Vim, and then edit the file again, you can undo
 -- the changes made previously.
-if fn.has('vms') == 1 then
+if fn.has("vms") == 1 then
     o.backup = false
 else
     -- create a backup of the file before editing
     o.backup = true
-    if fn.has('persistent_undo') == 1 then
+    if fn.has("persistent_undo") == 1 then
         -- enable undofile , which helps you undo a lot and redo also a lot
         o.undofile = true
         o.undolevels = 30000
@@ -65,25 +67,25 @@ o.inccommand = "nosplit"
 
 -- for vim's swap ; undo and backup organization
 -- Location for backup of files before editing --
-o.backupdir = '/tmp/'
+o.backupdir = "/tmp/"
 
 -- The location of swap files ,ie buffers that have not been save ie in memory
-o.directory = '/tmp/'
+o.directory = "/tmp/"
 
 -- Location for storing undo tree of the edited file--
-o.undodir = '/tmp/'
+o.undodir = "/tmp/"
 
 -- The extension to be used for vim backup files
-o.backupext = '.vimbak'
+o.backupext = ".vimbak"
 
 -- You will have bad experience for diagnostic messages when it's default 4000.
 o.updatetime = 100
 
 -- don't give |ins-completion-menu| messages.
-o.shortmess = 'c'
+o.shortmess = "c"
 
 -- always merge signcolumn and number column into one
-o.signcolumn = 'yes'
+o.signcolumn = "yes"
 
 -- enable saving unsaved/unwritten files in a *.swp file
 o.swapfile = false
@@ -92,13 +94,13 @@ o.swapfile = false
 o.expandtab = true
 
 -- Don't let autocomplete affect usual typing habits
-o.completeopt = 'menuone,noselect'
+o.completeopt = "menuone,noselect"
 
 -- This option allows you to switch between multiple buffers
 o.hidden = true -- without saving a changed buffer
 
 -- Automatically enable mouse usage
-o.mouse = 'a'
+o.mouse = "a"
 
 -- Show line numbers
 o.number = true
@@ -110,16 +112,16 @@ o.showbreak = [[>>>\ \ \]]
 o.wrap = true
 
 -- Line wrap (number of cols)
-o.textwidth = 79
+o.textwidth = 117
 
 -- Highlight matching brace
 o.showmatch = true
 
 -- text complete with CTRL-N or CTRL-P
-o.complete = 'kspell'
+o.complete = "kspell"
 
 -- Enable spell checking for espanol y ingles--
-o.spelllang = 'es_us,en_us'
+o.spelllang = "es_us,en_us"
 
 -- Use visual bell (no beeping)
 o.visualbell = true
@@ -161,12 +163,12 @@ o.history = 10000
 o.list = true
 
 -- Unprintable chars mapping
-o.listchars = {tab = '••', trail = '•', extends = '»', precedes = '«'}
+o.listchars = { tab = "••", trail = "•", extends = "»", precedes = "«" }
 
 -- Enable folding
-o.foldmethod = 'indent'
+o.foldmethod = "indent"
 
 o.foldlevel = 99
 
 -- Remove Trailing whitespaces in all files
-cmd [[autocmd BufWritePre * %s/\s\+$//e]]
+cmd([[autocmd BufWritePre * %s/\s\+$//e]])
