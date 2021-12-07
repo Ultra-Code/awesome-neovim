@@ -15,18 +15,15 @@ map("n", "<A-j>", "<C-w>j")
 map("n", "<A-k>", "<C-w>k")
 map("n", "<A-l>", "<C-w>l")
 
--- Close the current buffer
 local opt = { noremap = false }
-map("", "<leader>bd", ":bdelete<cr>", opt)
-
--- Close all the buffers
-map("", "<leader>ba", ":bufdo bd<cr>", opt)
-
-map("", "<leader>bn", ":bnext<cr>", opt)
-map("", "<leader>bp", ":bprevious<cr>", opt)
-map("", "<leader>bf", ":bfirst<cr>", opt)
-map("", "<leader>bl", ":blast<cr>", opt)
-map("n", "<leader>blp", ":BufferLinePick<CR>", {
+map("", "<leader>bd", ":bdelete<cr>", opt) -- Close the current buffer
+map("", "<leader>bda", ":bufdo bd<cr>", opt) -- Close all the buffers
+map("", "<leader>bf", ":bnext<cr>", opt) -- move forward to the next buffer in the buffer list
+map("", "<leader>bb", ":bprevious<cr>", opt) -- move back to the previous buffer in the buffer list
+map("", "<leader>bp", ":b#<cr>", opt) -- move to the last visited buffer
+map("", "<leader>b1", ":bfirst<cr>", opt) -- move to the first buffer in the buffer list
+map("", "<leader>b9", ":blast<cr>", opt) -- move to the last buffer in the buffer list
+map("n", "<leader>bs", ":BufferLinePick<CR>", { -- pick a buffer from the buffer list
     noremap = true,
     silent = true,
 })
