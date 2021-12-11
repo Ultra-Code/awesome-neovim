@@ -4,7 +4,7 @@
 -- PLUGINS FOR NEOVIM
 -- Specify a directory for plugins
 ---For Neovim: ~/.local/share/nvim/site/pack/
-require("paq-nvim")({
+require("paq")({
 
     { "savq/paq-nvim" },
 
