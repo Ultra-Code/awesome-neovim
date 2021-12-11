@@ -56,4 +56,6 @@ set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 set_keymap("n", "<space>sh", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil,{})]])
+vim.cmd(
+    [[autocmd CursorHold * lua vim.diagnostic.open_float(nil,{focus=false})]]
+)
