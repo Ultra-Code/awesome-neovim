@@ -8,9 +8,6 @@ local fn = vim.fn -- invoke vim-functions in lua
 
 g.mapleader = ","
 
--- == Python provider configurations == --
-g.python3_host_prog = "/usr/bin/python3"
-
 -- enable loading the plugin files for specific file types
 cmd([[filetype plugin indent on]])
 
