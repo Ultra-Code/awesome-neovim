@@ -14,7 +14,6 @@ require("paq")({
 
     -- === Themes and Colour Scheme ===
     { "navarasu/onedark.nvim" },
-    { "Mofiqul/vscode.nvim" },
 
     -- === Git Plugin ===
     -- A vim plugin which shows git diff in the gutter (sign column).
