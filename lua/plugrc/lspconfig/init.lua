@@ -79,24 +79,22 @@ local function setup_servers()
         "tsserver",
         "volar",
         "zls",
-        "null-ls",
         "bashls",
     }
 
     local null_ls = require("null-ls")
-    local sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.diagnostics.shellcheck,
-        null_ls.builtins.diagnostics.cppcheck.with({
-            extra_args = {
-                "--inconclusive",
-            },
-        }),
-    }
 
-    null_ls.config({
-        diagnostics_format = "(#{s}) #{m}",
-        sources = sources,
+    null_ls.setup({
+        diagnostics_format = "#{m} (#{s})",
+        sources = {
+            null_ls.builtins.formatting.stylua,
+            null_ls.builtins.diagnostics.shellcheck,
+            null_ls.builtins.diagnostics.cppcheck.with({
+                extra_args = {
+                    "--inconclusive",
+                },
+            }),
+        },
     })
 
     for _, server in pairs(lsp_servers) do
