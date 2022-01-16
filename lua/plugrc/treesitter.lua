@@ -8,6 +8,22 @@ parser_configs.norg = {
     },
 }
 
+parser_configs.norg_meta = {
+    install_info = {
+        url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
+        files = { "src/parser.c" },
+        branch = "main",
+    },
+}
+
+parser_configs.norg_table = {
+    install_info = {
+        url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
+        files = { "src/parser.c" },
+        branch = "main",
+    },
+}
+
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "cpp",
@@ -15,14 +31,15 @@ require("nvim-treesitter.configs").setup({
         "nix",
         "comment",
         "json5",
-        "haskell",
         "lua",
         "vue",
         "typescript",
         "scss",
         "html",
         "norg",
-        "glsl"
+        "norg_meta",
+        "norg_table",
+        "glsl",
     },
     -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     ignore_install = {}, -- List of parsers to ignore installing
