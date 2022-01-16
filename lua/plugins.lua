@@ -43,7 +43,7 @@ require("paq")({
     { "ellisonleao/glow.nvim" },
 
     -- === Note Taking Plugin ===
-    { "vhyrro/neorg", branch = "unstable" }, -- neovim note taking tool
+    { "nvim-neorg/neorg" }, -- neovim note taking tool
 
     -- === Language Specific Plugins ===
     -- == LSP Client ===
