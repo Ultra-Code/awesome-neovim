@@ -35,7 +35,7 @@ require("paq")({
 
     -- === Syntax Plugins ===
     -- Nvim Treesitter configurations and abstraction layer
-    { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+    { "nvim-treesitter/nvim-treesitter", run = "TSUpdate" },
 
     -- === Preview Plugin ===
     -- A markdown previewer prebuild binary
