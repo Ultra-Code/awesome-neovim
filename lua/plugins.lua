@@ -38,9 +38,6 @@ require("paq")({
     { "nvim-treesitter/nvim-treesitter", run = "TSUpdate" },
 
     -- === Preview Plugin ===
-    -- A markdown previewer prebuild binary
-    { "ellisonleao/glow.nvim" },
-
     -- === Note Taking Plugin ===
     { "nvim-neorg/neorg" }, -- neovim note taking tool
 
