@@ -88,7 +88,6 @@ local function setup_servers()
         diagnostics_format = "#{m} (#{s})",
         sources = {
             null_ls.builtins.formatting.stylua,
-            null_ls.builtins.diagnostics.shellcheck,
             null_ls.builtins.diagnostics.cppcheck.with({
                 extra_args = {
                     "--inconclusive",

@@ -1,9 +1,11 @@
 --Enable true colours in terminal
 vim.o.termguicolors = true
 
+vim.o.background = "dark"
+
 -- Onedark colorscheme
 require("onedark").setup({
-    style = "dark", -- dark, darker, cool, deep, warm, warmer, light
+    style = "deep", -- dark, darker, cool, deep, warm, warmer, light
 })
 
 require("onedark").load()

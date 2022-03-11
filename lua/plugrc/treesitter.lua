@@ -22,7 +22,7 @@ require("nvim-treesitter.configs").setup({
         "zig",
         "nix",
         "comment",
-        "json5",
+        "jsonc",
         "lua",
         "vue",
         "typescript",
@@ -31,6 +31,7 @@ require("nvim-treesitter.configs").setup({
         "norg",
         "norg_table",
         "glsl",
+        "vim",
     },
     -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     ignore_install = {}, -- List of parsers to ignore installing
