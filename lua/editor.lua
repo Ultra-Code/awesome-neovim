@@ -49,7 +49,9 @@ o.backupcopy = "auto"
 -- if a directory ends in two path separators "//", the swap file name will be built from
 -- the complete path to the file with all path separators changed to percent '%' signs.
 -- This will ensure file name uniqueness in the backup directory.
-o.backupdir = "$XDG_DATA_HOME/nvim/backup//,/tmp//"
+local dirprefix = vim.env.XDG_DATA_HOME or fn.expand("~/.local/share")
+
+o.backupdir = { dirprefix .. "/nvim/backup//", "/tmp//" }
 
 -- The extension to be used for vim backup files
 o.backupext = ".vimbak"
@@ -58,7 +60,7 @@ o.backupext = ".vimbak"
 o.swapfile = true
 
 -- The location of swap files ,ie buffers that have not been save ie in memory
-o.directory = "$XDG_DATA_HOME/nvim/swap//,/tmp//"
+o.directory = { dirprefix .. "/nvim/swap//", "/tmp//" }
 
 -- saves undo history to an undo file when writing a buffer to a file, and restores undo
 -- history from the same file on buffer read.
@@ -68,7 +70,7 @@ o.undofile = true
 o.undolevels = 30000
 
 -- Location for storing undo tree of the edited file--
-o.undodir = "$XDG_DATA_HOME/nvim/undo//,/tmp//"
+o.undodir = { dirprefix .. "/nvim/undo//", "/tmp//" }
 
 -- Don't redraw screen when executing macros,registers or untyped commands
 o.lazyredraw = true
