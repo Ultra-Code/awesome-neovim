@@ -33,27 +33,48 @@ augroup restore_cursor
 augroup END
 ]])
 
--- Keep a backup copy of a file when overwriting it.This also sets the 'undofile' option, if
--- available.  This will store the multi-level undo information in a file.  The result is
--- that when you change a file, exit Vim, and then edit the file again, you can undo
--- the changes made previously.
-if fn.has("vms") == 1 then
-    o.backup = false
-else
-    -- create a backup of the file before editing
-    o.backup = true
-    if fn.has("persistent_undo") == 1 then
-        -- enable undofile , which helps you undo a lot and redo also a lot
-        o.undofile = true
-        o.undolevels = 30000
-        o.undoreload = 30000
-    end
-end
+-- Show line numbers
+o.number = true
+
+-- Show the line number relative to the line with the cursor in front of each line.
+o.relativenumber = true
+
+--If you write to an existing file (but do not append) a backup of the original file is made.
+o.backup = true
+
+-- tells neovim how backups are done
+o.backupcopy = "auto"
+
+-- List of directories for the backup file
+-- if a directory ends in two path separators "//", the swap file name will be built from
+-- the complete path to the file with all path separators changed to percent '%' signs.
+-- This will ensure file name uniqueness in the backup directory.
+o.backupdir = "$XDG_DATA_HOME/nvim/backup//,/tmp//"
+
+-- The extension to be used for vim backup files
+o.backupext = ".vimbak"
+
+-- enable saving unsaved/unwritten files in a *.swp file
+o.swapfile = true
+
+-- The location of swap files ,ie buffers that have not been save ie in memory
+o.directory = "$XDG_DATA_HOME/nvim/swap//,/tmp//"
+
+-- saves undo history to an undo file when writing a buffer to a file, and restores undo
+-- history from the same file on buffer read.
+o.undofile = true
+
+-- Maximum number of changes that can be undone.
+o.undolevels = 30000
+
+-- Location for storing undo tree of the edited file--
+o.undodir = "$XDG_DATA_HOME/nvim/undo//,/tmp//"
 
 -- Don't redraw screen when executing macros,registers or untyped commands
 o.lazyredraw = true
 
 -- enable tree style view
+--
 g.netrw_liststyle = 3
 
 -- Disable top banner can be switched with I
@@ -61,19 +82,6 @@ g.netrw_banner = 0
 
 -- Incremental live completion
 o.inccommand = "nosplit"
-
--- for vim's swap ; undo and backup organization
--- Location for backup of files before editing --
-o.backupdir = "/tmp/"
-
--- The location of swap files ,ie buffers that have not been save ie in memory
-o.directory = "/tmp/"
-
--- Location for storing undo tree of the edited file--
-o.undodir = "/tmp/"
-
--- The extension to be used for vim backup files
-o.backupext = ".vimbak"
 
 -- You will have bad experience for diagnostic messages when it's default 4000.
 o.updatetime = 100
@@ -83,9 +91,6 @@ o.shortmess = "c"
 
 -- always merge signcolumn and number column into one
 o.signcolumn = "yes"
-
--- enable saving unsaved/unwritten files in a *.swp file
-o.swapfile = false
 
 -- always expands tab to spaces. It is good when peers use different editor.
 o.expandtab = true
@@ -98,9 +103,6 @@ o.hidden = true -- without saving a changed buffer
 
 -- Automatically enable mouse usage
 o.mouse = "a"
-
--- Show line numbers
-o.number = true
 
 -- Wrap-broken line prefix
 o.showbreak = [[>>>\ \ \]]
