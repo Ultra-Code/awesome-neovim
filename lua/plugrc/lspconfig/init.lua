@@ -55,7 +55,6 @@ local function make_config()
     capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
-    capabilities.textDocument.signatureHelp.contextSupport = true
 
     return {
         -- enable snippet support
