@@ -5,7 +5,9 @@ require('utils')
 -- Pressing ,ts will toggle and untoggle spell checking
 -- toggle to alternate configuration of spellcheck
 local opt = {noremap = false}
-map('', '<leader>ts', ':setlocal spell!<cr>', opt)
+map('', '<leader>st', '<cmd>set spell!<cr>', opt)
+
+-- Use Ctrl-x s to activate spell suggestions in insert mood
 
 -- Shortcuts using <leader>
 -- next spellcheck iteam
@@ -21,4 +23,4 @@ map('', '<leader>usg', 'ugz', opt)
 -- undo marking of word as wrong
 map('', '<leader>usw', 'uwz', opt)
 -- check for suggestions for the underlined word
-map('', '<leader>sc', '=z', opt)
+map('', '<leader>sc', 'z=', opt)

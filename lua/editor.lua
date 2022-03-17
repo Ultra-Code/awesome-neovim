@@ -1,21 +1,12 @@
 local o = vim.opt -- editor options
 local g = vim.g -- Global editor variables
-local cmd = vim.cmd -- exectue vimscript in lua
+local cmd = vim.cmd -- execute vimscript in lua
 local fn = vim.fn -- invoke vim-functions in lua
 -- Remap leader key to ,
 -- With a map leader it's possible to do extra key combinations
 -- like <leader>w saves the current file
 
 g.mapleader = ","
-
--- enable loading the plugin files for specific file types
-cmd([[filetype plugin indent on]])
-
--- Switch on syntax highlighting.
-o.syntax = "on"
-
--- set assembly language file to use nasm
-g.asmsyntax = "asm"
 
 -- Set clipboard to the +  registers only
 -- if you want to use the * also add ,unnamed
@@ -75,13 +66,6 @@ o.undodir = { dirprefix .. "/nvim/undo//", "/tmp//" }
 -- Don't redraw screen when executing macros,registers or untyped commands
 o.lazyredraw = true
 
--- enable tree style view
---
-g.netrw_liststyle = 3
-
--- Disable top banner can be switched with I
-g.netrw_banner = 0
-
 -- Incremental live completion
 o.inccommand = "nosplit"
 
@@ -91,7 +75,7 @@ o.updatetime = 100
 -- don't give |ins-completion-menu| messages.
 o.shortmess = "c"
 
--- always merge signcolumn and number column into one
+-- always merge sign column and number column into one
 o.signcolumn = "yes"
 
 -- always expands tab to spaces. It is good when peers use different editor.
@@ -121,13 +105,20 @@ o.showmatch = true
 -- text complete with CTRL-N or CTRL-P
 o.complete = "kspell"
 
--- Enable spell checking for espanol y ingles--
-o.spelllang = "es_us,en_us"
+-- Enable spell checking for español y ingles--
+o.spelllang = "en,es"
+
+-- Show best nine spell checking candidates at most
+o.spellsuggest = "best,9"
+
+-- When a word is CamelCased, assume "Cased" is a separate word: every upper-case character
+-- in a word that comes after a lower case character indicates the start of a new word.
+o.spelloptions = "camel"
 
 -- Use visual bell (no beeping)
 o.visualbell = true
 
--- Always case-insensitie
+-- Always case-insensitive
 o.ignorecase = true
 
 -- Enable smart-case search
