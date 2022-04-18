@@ -1,13 +1,19 @@
 local disable_conflicting_formatters = function(client, buffer)
-    local buffer_filetype = vim.fn.getbufvar(buffer, "&filetype")
-
-    local disabled_files = buffer_filetype == "cpp"
-        or buffer_filetype == "javascript"
-        or buffer_filetype == "typescript"
-
-    if client.name == "null-ls" and disabled_files then
+    if client.name == "sumneko_lua" then
         client.resolved_capabilities.document_formatting = false
         client.resolved_capabilities.document_range_formatting = false
+        return
+    end
+
+    local buffer_filetype = vim.fn.getbufvar(buffer, "&filetype")
+
+    local null_disabled_ft = buffer_filetype == "javascript"
+        or buffer_filetype == "typescript"
+
+    if client.name == "null-ls" and null_disabled_ft then
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        return
     end
 end
 
