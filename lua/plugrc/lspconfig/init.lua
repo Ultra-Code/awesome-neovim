@@ -92,6 +92,7 @@ local function setup_servers()
                     "--inconclusive",
                 },
             }),
+            null_ls.builtins.diagnostics.zsh,
         },
     })
 

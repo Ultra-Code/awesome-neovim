@@ -25,7 +25,7 @@ require("paq")({
     { "hoob3rt/lualine.nvim" },
     -- Tabline
     -- A snazzy buffer line (with minimal tab integration) for Neovim
-    { "akinsho/nvim-bufferline.lua" },
+    { "akinsho/bufferline.nvim" },
 
     -- === Fuzzy Finder ===
     -- a highly extendable fuzzy finder over lists
@@ -35,7 +35,7 @@ require("paq")({
 
     -- === Syntax Plugins ===
     -- Nvim Treesitter configurations and abstraction layer
-    { "nvim-treesitter/nvim-treesitter", run = "TSUpdate" },
+    { "nvim-treesitter/nvim-treesitter", run = ":lua vim.cmd('TSUpdate')" },
 
     -- === Preview Plugin ===
     -- === Note Taking Plugin ===
