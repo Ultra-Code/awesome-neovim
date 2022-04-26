@@ -1,22 +1,3 @@
-local disable_conflicting_formatters = function(client, buffer)
-    if client.name == "sumneko_lua" then
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        return
-    end
-
-    local buffer_filetype = vim.fn.getbufvar(buffer, "&filetype")
-
-    local null_disabled_ft = buffer_filetype == "javascript"
-        or buffer_filetype == "typescript"
-
-    if client.name == "null-ls" and null_disabled_ft then
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        return
-    end
-end
-
 local on_attach = function(client, buffer)
     vim.diagnostic.config({
         virtual_text = false,
@@ -40,8 +21,6 @@ local on_attach = function(client, buffer)
     set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     local opts = { noremap = true, silent = true }
-
-    disable_conflicting_formatters(client, buffer)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_range_formatting then
