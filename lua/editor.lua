@@ -164,3 +164,9 @@ o.foldlevel = 99
 
 -- Remove Trailing whitespaces in all files
 cmd([[autocmd BufWritePre * %s/\s\+$//e]])
+
+-- automatically show diagnostics on current line
+cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil,{focus=false})]])
+
+--  format files on save
+cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_seq_sync()]])

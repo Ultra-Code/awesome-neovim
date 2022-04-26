@@ -26,6 +26,3 @@ map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 map("n", "<space>sh", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-vim.cmd(
-    [[autocmd CursorHold * lua vim.diagnostic.open_float(nil,{focus=false})]]
-)
