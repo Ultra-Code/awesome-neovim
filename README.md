@@ -54,19 +54,20 @@ Neovim does come out of the box with luajit and treesitter support
     │  └── 📂 plugrc
     │  │   └── 📂 lspconfig
     │  │   ├──  autopairs.lua
-    │  │   ├──  bufferline.lua
     │  │   ├──  compe.lua
     │  │   ├──  gitsigns.lua
     │  │   ├──  init.lua
-    │  │   ├──  lualine.lua
     │  │   ├──  neorg.lua
     │  │   ├──  tree.lua
-    │  │   ├──  treesitter.lua
     │  │   └──  whichkey.lua
     │  ├──   editor.lua
     │  ├──   plugins.lua
     │  ├──   terminal.lua
-    │  ├──   ui.lua
+    │  └── 📂 ui.lua
+    │  │   ├──  init.lua
+    │  │   ├──  bufferline.lua
+    │  │   ├──  lualine.lua
+    │  │   └──  treesitter.lua
     │  └──   utils.lua
     ├──  README.md
     ├──  LICENSE
