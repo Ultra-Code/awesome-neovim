@@ -11,10 +11,10 @@ require("onedark").setup({
 require("onedark").load()
 
 -- status line
-require("plugrc/lualine")
+require("ui/lualine")
 
 -- buffer line
-require("plugrc/bufferline")
+require("ui/bufferline")
 
 -- Treesitter syntax highlighting
-require("plugrc/treesitter")
+require("ui/treesitter")
