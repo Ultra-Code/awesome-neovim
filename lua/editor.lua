@@ -30,19 +30,11 @@ o.number = true
 -- Show the line number relative to the line with the cursor in front of each line.
 o.relativenumber = true
 
---If you write to an existing file (but do not append) a backup of the original file is made.
-o.backup = true
+--Make a backup before overwriting a file.  The backup is removed after the file was successfully written
+o.writebackup = true
 
 -- tells neovim how backups are done
 o.backupcopy = "auto"
-
--- List of directories for the backup file
--- if a directory ends in two path separators "//", the swap file name will be built from
--- the complete path to the file with all path separators changed to percent '%' signs.
--- This will ensure file name uniqueness in the backup directory.
-local dirprefix = vim.env.XDG_DATA_HOME or fn.expand("~/.local/share")
-
-o.backupdir = { dirprefix .. "/nvim/backup//", "/tmp//" }
 
 -- The extension to be used for vim backup files
 o.backupext = ".vimbak"
@@ -50,18 +42,12 @@ o.backupext = ".vimbak"
 -- enable saving unsaved/unwritten files in a *.swp file
 o.swapfile = true
 
--- The location of swap files ,ie buffers that have not been save ie in memory
-o.directory = { dirprefix .. "/nvim/swap//", "/tmp//" }
-
 -- saves undo history to an undo file when writing a buffer to a file, and restores undo
 -- history from the same file on buffer read.
 o.undofile = true
 
 -- Maximum number of changes that can be undone.
 o.undolevels = 30000
-
--- Location for storing undo tree of the edited file--
-o.undodir = { dirprefix .. "/nvim/undo//", "/tmp//" }
 
 -- Don't redraw screen when executing macros,registers or untyped commands
 o.lazyredraw = true

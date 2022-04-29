@@ -13,7 +13,7 @@ require("neorg").setup({
                 -- Define your workspaces here!
                 workspaces = {
                     -- You can give it any name and any directory, get creative!
-                    notes = "~/neorg",
+                    notes = "~/.local/neorg",
                 },
             },
         },
