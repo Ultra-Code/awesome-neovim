@@ -35,7 +35,12 @@ require("paq")({
 
     -- === Syntax Plugins ===
     -- Nvim Treesitter configurations and abstraction layer
-    { "nvim-treesitter/nvim-treesitter", run = ":lua vim.cmd('TSUpdate')" },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            vim.cmd("TSUpdate")
+        end,
+    },
 
     -- === Preview Plugin ===
     -- === Note Taking Plugin ===
