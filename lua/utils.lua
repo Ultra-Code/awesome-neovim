@@ -1,18 +1,6 @@
 function _G.map(mode, lhs, rhs, opts)
-    local options = { noremap = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
-local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
-
-function _G.opt(scope, key, value)
-    scopes[scope][key] = value
-    if scope ~= "o" then
-        scopes["o"][key] = value
-    end
+    opts = opts or {}
+    vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 function _G.dump(...)
@@ -21,13 +9,36 @@ function _G.dump(...)
     return ...
 end
 
--- escape termcode and keycode in lua for use in mapping expressions
-function _G.t(str)
-    -- Adjust boolean arguments as needed
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
+function _G.reload()
+    for name, _ in pairs(package.loaded) do
+        if name:match("^lazy")
+            or name:match("^mapping")
+            or name:match("^plugrc")
+            or name:match("^ui")
+            or name:match("^editor")
+            or name:match("^plugins")
+            or name:match("^syntax")
+            or name:match("^terminal")
+            or name:match("^utils")
+        then
+            package.loaded[name] = nil
+        end
+    end
+
+    dofile(vim.env.MYVIMRC)
+    vim.notify("\nNvim configuration reloaded!", vim.log.levels.INFO)
 end
 
-function _G.reload(module, parent_directory)
-    local reload_module = require("plenary.reload").reload_module
-    reload_module(module, parent_directory)
+function _G.reloadModule(module)
+    for name, _ in pairs(package.loaded) do
+        if name:match("^" .. module) then
+            package.loaded[name] = nil
+            require(name)
+        end
+    end
+
+    vim.notify(
+        "Nvim module " .. module .. " configuration reloaded!",
+        vim.log.levels.INFO
+    )
 end
