@@ -49,4 +49,9 @@ vim.g.symbols_outline = {
     },
 }
 require("utils")
-map( "n", "<leader>so", "<cmd>packadd symbols-outline.nvim<cr>|<cmd>SymbolsOutline<cr>", { silent = true })
+map(
+    "n",
+    "<leader>so",
+    "<cmd>packadd symbols-outline.nvim<cr>|<cmd>SymbolsOutline<cr>",
+    { silent = true }
+)

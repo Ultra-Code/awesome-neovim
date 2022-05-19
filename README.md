@@ -1,6 +1,6 @@
 # Awesome Neovim Configuration
 
-This is to make setting up of neovim >= 0.6 a breeze.
+This is to make setting up of neovim >= 0.7 a breeze.
 ### NOTE : for vim >= 8 checkout [vim branch](https://github.com/Ultra-Code/awesome-neovim/tree/vim)
 
 ## Awesome NeoVim with C++
