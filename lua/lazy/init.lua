@@ -1,2 +1,2 @@
-require('lazy/telescope')
-require('lazy/symbols')
+require("lazy.telescope")
+require("lazy.symbols")
