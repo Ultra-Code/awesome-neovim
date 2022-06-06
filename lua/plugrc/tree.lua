@@ -1,7 +1,5 @@
 local g = vim.g
 
-g.nvim_tree_highlight_opened_files = 1 -- 0 by default, will enable folder and file icon highlight for opened files/directories.
-
 require("nvim-tree").setup({
     -- disables netrw completely
     disable_netrw = true,
@@ -55,6 +53,12 @@ require("nvim-tree").setup({
         enable = true,
         -- ignore files based on `.gitignore`
         ignore = true,
+    },
+    renderer = {
+        --Enable file highlight for git attributes using `NvimTreeGit*` highlight groups.
+        highlight_git = true,
+        --Highlight icons and/or names for opened files.
+        highlight_opened_files = "all",
     },
     -- window / buffer setup
     view = {
