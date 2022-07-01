@@ -3,12 +3,8 @@ vim.o.termguicolors = true
 
 vim.o.background = "dark"
 
--- Onedark colorscheme
-require("onedark").setup({
-    style = "deep", -- dark, darker, cool, deep, warm, warmer, light
-})
-
-require("onedark").load()
+-- colour scheme
+require("ui.onedark")
 
 -- status line
 require("ui.lualine")
