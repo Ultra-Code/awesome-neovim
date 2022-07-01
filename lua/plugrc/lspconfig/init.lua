@@ -7,8 +7,6 @@ local on_attach = function(client, buffer)
         update_in_insert = false,
         severity_sort = true,
     })
-    local signature_cfg = require("plugrc.lspconfig.signature")
-    require("lsp_signature").on_attach(signature_cfg)
 
     local function set_keymap(...)
         vim.api.nvim_buf_set_keymap(buffer, ...)
@@ -80,6 +78,9 @@ local function setup_servers()
             null_ls.builtins.diagnostics.zsh,
         },
     })
+
+    local signature_cfg = require("plugrc.lspconfig.signature")
+    require("lsp_signature").setup(signature_cfg)
 
     for _, server in pairs(lsp_servers) do
         local config = make_config()

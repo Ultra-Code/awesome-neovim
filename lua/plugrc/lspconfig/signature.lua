@@ -17,7 +17,7 @@ local signature_cfg = {
     hi_parameter = "Search", -- how your parameter will be highlight
     max_height = 18, -- max height of signature floating_window,
     -- if content is more than max_height, you can scroll down to view the hiding contents
-    max_width = 90, -- max_width of signature floating_window,
+    max_width = 117, -- max_width of signature floating_window,
     -- line will be wrapped if exceed max_width
     handler_opts = {
         border = "shadow", -- double, single, shadow, none
