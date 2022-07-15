@@ -1,14 +1,12 @@
 require("utils")
--- turn terminal to normal mode with escape
--- tnoremap <Esc> <C-\><C-n>:q<CR>
-
--- open terminal on ctrl+n
-function _G.OpenTerminal()
+-- Mapping to open terminal emulator in nvim
+-- open terminal on alt+t
+map("n", "<M-t>", function()
     vim.cmd([[
         split term://zsh
         resize 10
     ]])
-end
+end)
 
--- Mapping to open terminal emulator in nvim
-map("n", "<m-t>", "<cmd>lua OpenTerminal()<CR>")
+-- mapping to close terminal emulator
+map("t", "<M-t>", [[<C-\><C-n>:bd!<CR>]])
