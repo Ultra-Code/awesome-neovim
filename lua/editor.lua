@@ -1,11 +1,12 @@
 local o = vim.opt -- editor options
 local g = vim.g -- Global editor variables
-local cmd = vim.cmd -- execute vimscript in lua
 local fn = vim.fn -- invoke vim-functions in lua
+local autogroup = vim.api.nvim_create_augroup -- create autocmd group
+local autocmd = vim.api.nvim_create_autocmd -- create autocmd
+
 -- Remap leader key to ,
 -- With a map leader it's possible to do extra key combinations
 -- like <leader>w saves the current file
-
 g.mapleader = ","
 
 -- Set clipboard to the +  registers only
@@ -17,12 +18,12 @@ end
 -- Restore cursor to file position in previous editing session
 -- This autocommand jumps to the last known position in a file
 -- just after opening it, if the '-- mark is set: >
-cmd([[
-augroup restore_cursor
-  autocmd!
-  autocmd BufReadPost * call setpos(".", getpos("'\""))
-augroup END
-]])
+local RetoreCursorPosition = autogroup("RetoreCursorPosition", { clear = true })
+autocmd({ "BufReadPost" }, {
+    group = RetoreCursorPosition,
+    pattern = { "*" },
+    command = [[call setpos(".", getpos("'\""))]],
+})
 
 -- Show line numbers
 o.number = true
@@ -149,10 +150,16 @@ o.foldmethod = "indent"
 o.foldlevel = 99
 
 -- Remove Trailing whitespaces in all files
-cmd([[autocmd BufWritePre * %s/\s\+$//e]])
+autocmd({ "BufWritePre" }, { pattern = { "*" }, command = [[%s/\s\+$//e]] })
 
 -- automatically show diagnostics on current line
-cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil,{focus=false})]])
+autocmd({ "CursorHold" }, {
+    pattern = { "*" },
+    command = "lua vim.diagnostic.open_float(nil,{focus=false})",
+})
 
 --  format files on save
-cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_seq_sync()]])
+autocmd(
+    { "BufWritePre" },
+    { pattern = { "*" }, command = "lua vim.lsp.buf.formatting_seq_sync()" }
+)
