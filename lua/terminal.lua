@@ -12,8 +12,8 @@ autocmd({ "TermOpen" }, {
     group = Terminal,
     pattern = { "*" },
     callback = function()
-        vim.cmd([[ startinsert ]])
         vim.wo.number = false
         vim.wo.relativenumber = false
+        vim.api.nvim_command("startinsert")
     end,
 })

@@ -1,13 +1,15 @@
-local o = vim.opt -- editor options
-local g = vim.g -- Global editor variables
+local o = vim.o -- set editor global-local editor options
+local wo = vim.wo -- set window-local editor options
+local bo = vim.bo -- set buffer-local editor options
+local g = vim.go -- set global editor editor options
 local fn = vim.fn -- invoke vim-functions in lua
 local autogroup = vim.api.nvim_create_augroup -- create autocmd group
 local autocmd = vim.api.nvim_create_autocmd -- create autocmd
 
 -- Remap leader key to ,
 -- With a map leader it's possible to do extra key combinations
--- like <leader>w saves the current file
-g.mapleader = ","
+--  vim.g sets editor global variables
+vim.g.mapleader = ","
 
 -- Set clipboard to the +  registers only
 -- if you want to use the * also add ,unnamed
@@ -26,128 +28,120 @@ autocmd({ "BufReadPost" }, {
 })
 
 -- Show line numbers
-o.number = true
+wo.number = true
 
 -- Show the line number relative to the line with the cursor in front of each line.
-o.relativenumber = true
+wo.relativenumber = true
 
 --Make a backup before overwriting a file.  The backup is removed after the file was successfully written
-o.writebackup = true
+g.writebackup = true
 
 -- tells neovim how backups are done
 o.backupcopy = "auto"
 
 -- The extension to be used for vim backup files
-o.backupext = ".vimbak"
+g.backupext = ".vimbak"
 
 -- enable saving unsaved/unwritten files in a *.swp file
-o.swapfile = true
+bo.swapfile = true
 
 -- saves undo history to an undo file when writing a buffer to a file, and restores undo
 -- history from the same file on buffer read.
-o.undofile = true
+bo.undofile = true
 
 -- Maximum number of changes that can be undone.
 o.undolevels = 30000
 
 -- Don't redraw screen when executing macros,registers or untyped commands
-o.lazyredraw = true
-
--- Incremental live completion
-o.inccommand = "nosplit"
+g.lazyredraw = true
 
 -- You will have bad experience for diagnostic messages when it's default 4000.
-o.updatetime = 100
+g.updatetime = 100
 
 -- don't give |ins-completion-menu| messages.
-o.shortmess = "c"
+g.shortmess = "c"
 
 -- always merge sign column and number column into one
-o.signcolumn = "yes"
+wo.signcolumn = "yes"
 
 -- always expands tab to spaces. It is good when peers use different editor.
-o.expandtab = true
+bo.expandtab = true
 
 -- Don't let autocomplete affect usual typing habits
-o.completeopt = "menuone,noselect"
+vim.opt_global.completeopt = { "menuone", "noselect" }
 
 -- This option allows you to switch between multiple buffers
-o.hidden = true -- without saving a changed buffer
+g.hidden = true -- without saving a changed buffer
 
 -- Automatically enable mouse usage
-o.mouse = "a"
+g.mouse = "a"
 
 -- Wrap-broken line prefix
 o.showbreak = [[>>>\ \ \]]
 
 -- enable line wrap
-o.wrap = true
+wo.wrap = true
 
 -- Line wrap (number of cols)
-o.textwidth = 117
+bo.textwidth = 117
 
 -- Highlight matching brace
-o.showmatch = true
+g.showmatch = true
 
+-- TODO: improve completions by using k{dict} and s{tsr} .:h 'complete'
 -- text complete with CTRL-N or CTRL-P
-o.complete = "kspell"
+bo.complete = "kspell"
 
 -- Enable spell checking for español y ingles--
-o.spelllang = "en" --"en,es"
+bo.spelllang = "en" --"en,es"
 
 -- Show best nine spell checking candidates at most
-o.spellsuggest = "best,9"
+vim.opt_global.spellsuggest = { "best", "9" }
 
 -- When a word is CamelCased, assume "Cased" is a separate word: every upper-case character
 -- in a word that comes after a lower case character indicates the start of a new word.
-o.spelloptions = "camel"
+bo.spelloptions = "camel"
 
 -- Use visual bell (no beeping)
-o.visualbell = true
+g.visualbell = true
 
 -- Always case-insensitive
-o.ignorecase = true
+g.ignorecase = true
 
 -- Enable smart-case search
-o.smartcase = true
+g.smartcase = true
 
 -- case insensitive auto completion
-o.wildignorecase = true
+g.wildignorecase = true
 
 -- Number of auto-indent spaces
-o.shiftwidth = 4
+bo.shiftwidth = 4
 
 -- Enable smart-indent
-o.smartindent = true
+bo.smartindent = true
 
 -- Number of spaces per Tab
-o.softtabstop = 4
+bo.softtabstop = 4
 
 -- Prompt confirmation dialogs
-o.confirm = true
-
--- Show row and column ruler information
-o.ruler = true
+g.confirm = true
 
 -- Command line height
-o.cmdheight = 2
+g.cmdheight = 2
 
 -- Auto-write all file changes
-o.autowriteall = true
-
--- Set the history size to maximum. by default it is 20
-o.history = 10000
+g.autowriteall = true
 
 -- Display unprintable characters f12 - switches
 o.list = true
 
 -- Unprintable chars mapping
-o.listchars = { tab = "••", trail = "•", extends = "»", precedes = "«" }
+vim.opt.listchars = { tab = "••", trail = "•", extends = "»", precedes = "«" }
 
 -- Enable folding
-o.foldmethod = "indent"
+wo.foldmethod = "indent"
 
-o.foldlevel = 99
+wo.foldlevel = 99
 
 -- Remove Trailing whitespaces in all files
 autocmd({ "BufWritePre" }, { pattern = { "*" }, command = [[%s/\s\+$//e]] })
