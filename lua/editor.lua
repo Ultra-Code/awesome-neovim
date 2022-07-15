@@ -92,7 +92,7 @@ o.showmatch = true
 o.complete = "kspell"
 
 -- Enable spell checking for español y ingles--
-o.spelllang = "en,es"
+o.spelllang = "en" --"en,es"
 
 -- Show best nine spell checking candidates at most
 o.spellsuggest = "best,9"
