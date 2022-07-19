@@ -8,10 +8,11 @@ local has_words_before = function()
     end
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0
-        and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
-                :sub(col, col)
-                :match("%s")
-            == nil
+        and vim.api
+        .nvim_buf_get_lines(0, line - 1, line, true)[1]
+        :sub(col, col)
+        :match("%s")
+        == nil
 end
 
 local kind_icons = {
@@ -52,11 +53,7 @@ cmp.setup({
     formatting = {
         format = function(entry, vim_item)
             -- Kind icons
-            vim_item.kind = string.format(
-                "%s",
-                kind_icons[vim_item.kind],
-                vim_item.kind
-            ) -- This concatonates the icons with the name of the item kind
+            vim_item.kind = string.format("%s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
             -- Source
             vim_item.menu = ({
                 buffer = "[Buffer]",
@@ -71,7 +68,7 @@ cmp.setup({
             return vim_item
         end,
     },
-    mapping = {
+    mapping = cmp.mapping.preset.insert({
         ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -109,8 +106,8 @@ cmp.setup({
             "i",
             "s",
         }),
-    },
-    sources = {
+    }),
+    sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "luasnip" },
@@ -118,6 +115,21 @@ cmp.setup({
         { name = "nvim_lua" },
         { name = "emoji" },
         { name = "neorg" },
-        { name = "spell" },
-    },
+    }),
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline("/", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = "buffer" },
+    }),
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = "path" },
+    }),
 })
