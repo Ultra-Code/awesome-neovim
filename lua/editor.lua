@@ -34,7 +34,16 @@ wo.number = true
 wo.relativenumber = true
 
 --Make a backup before overwriting a file.  The backup is removed after the file was successfully written
+-- unless the 'backup' option is also on.
 g.writebackup = true
+
+--Make a backup before overwriting a file.  Leave it around after the file has been successfully written.
+--this make sure you alway have a backup of a file around,meaning in cases where there is no swapfile
+--to recover from you can use the backup file directly
+g.backup = true
+
+--List of directories for the backup file
+vim.opt_global.backupdir = { "/tmp//" }
 
 -- tells neovim how backups are done
 o.backupcopy = "auto"
@@ -63,9 +72,6 @@ g.shortmess = "c"
 
 -- always merge sign column and number column into one
 wo.signcolumn = "yes"
-
--- always expands tab to spaces. It is good when peers use different editor.
-bo.expandtab = true
 
 -- Don't let autocomplete affect usual typing habits
 vim.opt_global.completeopt = { "menuone", "noselect" }
@@ -114,14 +120,20 @@ g.smartcase = true
 -- case insensitive auto completion
 g.wildignorecase = true
 
+--Set 'tabstop' and 'shiftwidth' to whatever you prefer and use 'expandtab'.
+--This way you will always insert spaces.  The formatting will never be messed up when 'tabstop' is changed.
+--Number of spaces that a <Tab> in the file counts for
+bo.tabstop = 4
+
 -- Number of auto-indent spaces
 bo.shiftwidth = 4
 
--- Enable smart-indent
-bo.smartindent = true
-
 -- Number of spaces per Tab
-bo.softtabstop = 4
+-- When 'softtabstop' is negative, the value of 'shiftwidth' is used.
+bo.softtabstop = -1
+
+-- always expands tab to spaces. It is good when peers use different editor.
+bo.expandtab = true
 
 -- Prompt confirmation dialogs
 g.confirm = true
@@ -133,7 +145,7 @@ g.cmdheight = 2
 g.autowriteall = true
 
 -- Display unprintable characters f12 - switches
-o.list = true
+wo.list = true
 
 -- Unprintable chars mapping
 vim.opt.listchars = { tab = "••", trail = "•", extends = "»", precedes = "«" }
