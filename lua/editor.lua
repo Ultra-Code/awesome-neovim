@@ -1,6 +1,5 @@
 local o = vim.o -- set editor global-local editor options
 local wo = vim.wo -- set window-local editor options
-local bo = vim.bo -- set buffer-local editor options
 local g = vim.go -- set global editor editor options
 local fn = vim.fn -- invoke vim-functions in lua
 local autogroup = vim.api.nvim_create_augroup -- create autocmd group
@@ -52,11 +51,11 @@ o.backupcopy = "auto"
 g.backupext = ".vimbak"
 
 -- enable saving unsaved/unwritten files in a *.swp file
-bo.swapfile = true
+o.swapfile = true
 
 -- saves undo history to an undo file when writing a buffer to a file, and restores undo
 -- history from the same file on buffer read.
-bo.undofile = true
+o.undofile = true
 
 -- Maximum number of changes that can be undone.
 o.undolevels = 30000
@@ -89,24 +88,24 @@ o.showbreak = [[>>>\ \ \]]
 wo.wrap = true
 
 -- Line wrap (number of cols)
-bo.textwidth = 117
+o.textwidth = 117
 
 -- Highlight matching brace
 g.showmatch = true
 
 -- TODO: improve completions by using k{dict} and s{tsr} .:h 'complete'
 -- text complete with CTRL-N or CTRL-P
-bo.complete = "kspell"
+o.complete = "kspell"
 
 -- Enable spell checking for español y ingles--
-bo.spelllang = "en" --"en,es"
+o.spelllang = "en" --"en,es"
 
 -- Show best nine spell checking candidates at most
 vim.opt_global.spellsuggest = { "best", "9" }
 
 -- When a word is CamelCased, assume "Cased" is a separate word: every upper-case character
 -- in a word that comes after a lower case character indicates the start of a new word.
-bo.spelloptions = "camel"
+o.spelloptions = "camel"
 
 -- Use visual bell (no beeping)
 g.visualbell = true
@@ -123,17 +122,17 @@ g.wildignorecase = true
 --Set 'tabstop' and 'shiftwidth' to whatever you prefer and use 'expandtab'.
 --This way you will always insert spaces.  The formatting will never be messed up when 'tabstop' is changed.
 --Number of spaces that a <Tab> in the file counts for
-bo.tabstop = 4
+o.tabstop = 4
 
 -- Number of auto-indent spaces
-bo.shiftwidth = 4
+o.shiftwidth = 4
 
 -- Number of spaces per Tab
 -- When 'softtabstop' is negative, the value of 'shiftwidth' is used.
-bo.softtabstop = -1
+o.softtabstop = -1
 
 -- always expands tab to spaces. It is good when peers use different editor.
-bo.expandtab = true
+o.expandtab = true
 
 -- Prompt confirmation dialogs
 g.confirm = true
