@@ -25,10 +25,10 @@ and installing the server and other accompaning tools for development like linte
 
 ## Requirement
 
-Unlike the [vim branch]() with neovim >= 0.6 most plugings written in lua and don't depend on python or node
+Unlike the [vim branch]() with neovim >= 0.7 most plugings written in lua and don't depend on python or node
 But if you decide to use a plugin that rely's on any of these you would have to install them but I recommend
 you find their lua equivalent. Chances are that it will be faster (due to luajit) and more well
-intergrated with neovim >= 0.6
+intergrated with neovim >= 0.7
 
 __Neovim__
 Neovim does come out of the box with luajit and treesitter support
@@ -38,12 +38,12 @@ Neovim does come out of the box with luajit and treesitter support
     📂 ~/.config/nvim
     ├── 📂 lua
     │  └── 📂 lazy
-    │  │   ├──  glow.lua
     │  │   ├──  init.lua
     │  │   ├──  symbols.lua
     │  │   ├──  telescope.lua
     │  │   └──  trouble.lua
     │  └── 📂 mapping
+    │  │   ├──  editor.lua
     │  │   ├──  highlighting.lua
     │  │   ├──  init.lua
     │  │   ├──  lspconfig.lua
@@ -60,14 +60,16 @@ Neovim does come out of the box with luajit and treesitter support
     │  │   ├──  neorg.lua
     │  │   ├──  tree.lua
     │  │   └──  whichkey.lua
-    │  ├──   editor.lua
-    │  ├──   plugins.lua
-    │  ├──   terminal.lua
     │  └── 📂 ui.lua
     │  │   ├──  init.lua
     │  │   ├──  bufferline.lua
     │  │   ├──  lualine.lua
+    │  │   ├──  onedark.lua
     │  │   └──  treesitter.lua
+    │  ├──   editor.lua
+    │  ├──   plugins.lua
+    │  ├──   syntax.lua
+    │  ├──   terminal.lua
     │  └──   utils.lua
     ├──  README.md
     ├──  LICENSE
@@ -80,13 +82,15 @@ Neovim does come out of the box with luajit and treesitter support
 
 `lua/plugrc` directory contains configuration for plugins
 
+`lua/ui` directory contains tabline , statusline and treesitter configuration
+
 `lua/editor` file contains neovim editor configuration.
 
 `lua/plugins` file contains the list of all plugins
 
-`lua/terminal` file contains configuration for neovim builtin terminal
+`lua/syntax` file contains syntax|highlighting commands
 
-`lua/ui` file contains tabline , statusline and treesitter configuration
+`lua/terminal` file contains configuration for neovim builtin terminal
 
 `lua/utils` file contains some resuable functions
 
