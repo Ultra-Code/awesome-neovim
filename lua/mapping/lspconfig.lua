@@ -11,12 +11,7 @@ map("n", "<space>gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 map("n", "<space>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 -- set_keymap("n", "<space>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 map("n", "<space>gr", "<cmd>Trouble lsp_references<cr>", opts)
-map(
-    "n",
-    "<space>lw",
-    "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-    opts
-)
+map("n", "<space>lw", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 map("n", "<space>td", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
