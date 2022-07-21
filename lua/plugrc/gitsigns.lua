@@ -1,6 +1,21 @@
 require("utils")
 
 require("gitsigns").setup({
+    signcolumn         = true, -- Toggle with `:Gitsigns toggle_signs`
+    numhl              = false, -- Toggle with `:Gitsigns toggle_numhl`
+    linehl             = false, -- Toggle with `:Gitsigns toggle_linehl`
+    word_diff          = true, -- Toggle with `:Gitsigns toggle_word_diff`
+    current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+
+    preview_config = {
+        -- Options passed to nvim_open_win
+        border = 'shadow',
+        style = 'minimal',
+        relative = 'cursor',
+        row = 0,
+        col = 1
+    },
+
     on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
         local opts = { buffer = bufnr }
