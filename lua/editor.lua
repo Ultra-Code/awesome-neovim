@@ -158,9 +158,17 @@ wo.foldlevel = 99
 autocmd({ "BufWritePre" }, { pattern = { "*" }, command = [[%s/\s\+$//e]] })
 
 -- automatically show diagnostics on current line
-autocmd({ "CursorHold" }, {
-    pattern = { "*" },
-    command = "lua vim.diagnostic.open_float(nil,{focus=false})",
+autocmd("CursorHold", {
+    callback = function()
+        local opts = {
+            focusable = false,
+            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+            border = "shadow",
+            source = "if_many",
+            severity_sort = true,
+        }
+        vim.diagnostic.open_float(nil, opts)
+    end
 })
 
 --  format files on save
