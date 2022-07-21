@@ -4,7 +4,7 @@ require("utils")
 map("n", "<M-t>", function()
     vim.cmd([[
         split term://zsh
-        resize 10
+        resize 15
     ]])
 end)
 

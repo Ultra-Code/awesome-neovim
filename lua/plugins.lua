@@ -55,7 +55,7 @@ require("paq")({
     -- A pretty diagnostics, references, telescope
     -- results, quickfix and location
     -- list to help you solve all the trouble your code is causing
-    { "folke/trouble.nvim" },
+    { "folke/trouble.nvim", opt = true },
 
     --Use Neovim as a language server to inject LSP diagnostics, code actions,
     --and more via Lua
