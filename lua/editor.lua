@@ -81,9 +81,6 @@ g.hidden = true -- without saving a changed buffer
 -- Automatically enable mouse usage
 g.mouse = "a"
 
--- Wrap-broken line prefix
-o.showbreak = [[>>>\ \ \]]
-
 -- enable line wrap
 wo.wrap = true
 

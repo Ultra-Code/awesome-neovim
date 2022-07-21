@@ -15,3 +15,30 @@ map("v", "<leader>p", [[m`"_dP``]], opt)
 -- delete content without clobbering registers
 map("n", "<leader>d", [["_dd]], opt)
 map("v", "<leader>d", [["_d]], opt)
+
+-- reload/source current file
+map("n", "<leader>r", function()
+    vim.cmd([[luafile %]])
+    print("reloaded " .. vim.fn.expand("%"))
+end)
+
+-- reload a particular module
+map("n", "<leader>rm", function()
+    local module_name = vim.fn.input({
+        prompt = "\nEnter the name of the module you want to reload\n:",
+        completion = "file"
+    })
+    if module_name == "" then
+        return
+    else
+        reload(module_name)
+        vim.notify("!Reloaded Nvim Module " .. module_name .. ".lua!", vim.log.levels.INFO)
+    end
+
+end)
+
+-- reload all nvim configuration modules
+map("n", "<leader>ra", function()
+    reloadAllModules()
+    vim.notify("!Reloaded All Nvim Modules!", vim.log.levels.INFO)
+end)

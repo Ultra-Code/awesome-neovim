@@ -9,7 +9,7 @@ function _G.dump(...)
     return ...
 end
 
-function _G.reload()
+function _G.reloadAllModules()
     for name, _ in pairs(package.loaded) do
         if name:match("^lazy")
             or name:match("^mapping")
@@ -26,19 +26,14 @@ function _G.reload()
     end
 
     dofile(vim.env.MYVIMRC)
-    vim.notify("\nNvim configuration reloaded!", vim.log.levels.INFO)
 end
 
-function _G.reloadModule(module)
+function _G.reload(module)
     for name, _ in pairs(package.loaded) do
         if name:match("^" .. module) then
             package.loaded[name] = nil
             require(name)
+            return
         end
     end
-
-    vim.notify(
-        "Nvim module " .. module .. " configuration reloaded!",
-        vim.log.levels.INFO
-    )
 end

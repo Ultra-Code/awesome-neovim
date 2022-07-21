@@ -90,11 +90,3 @@ map("n", "<leader>rs",
         telescopesetup()
         return require('telescope.builtin').resume()
     end, opt)
-
---Lists Picker
---Lists Lua modules and reload them on <cr>.
-map("n", "<leader>r",
-    function()
-        telescopesetup()
-        return require('telescope.builtin').reloader()
-    end, opt)
