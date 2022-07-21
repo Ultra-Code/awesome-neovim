@@ -15,6 +15,9 @@ local function telescopesetup()
                 i = {
                     ["<C-[>"] = actions.close
                 },
+                n = {
+                    ["<C-[>"] = actions.close
+                },
             },
             vimgrep_arguments = {
                 -- "grep", "--extended-regexp", "--color=never", "--with-filename", "--line-number", "-b", -- grep doesn't support a `--column` option :(

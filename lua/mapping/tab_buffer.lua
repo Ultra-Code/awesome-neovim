@@ -31,7 +31,7 @@ map("n", "<leader>bs", "<cmd>BufferLinePick<CR>", vim.tbl_extend("force", opt, {
 map("n", "<leader>bc", "<cmd>BufferLinePickClose<CR>", vim.tbl_extend("force", opt, { remap = false, silent = true, }))
 
 -- Useful mappings for managing tabs
-map(mode, "<leader>tnw", "<cmd>tabnew<cr>", opt)
+map(mode, "<leader>tw", "<cmd>tabnew<cr>", opt)
 map(mode, "<leader>to", "<cmd>tabonly<cr>", opt)
 map(mode, "<leader>tc", "<cmd>tabclose<cr>", opt)
 map(mode, "<leader>tm", "<cmd>tabmove", opt)
