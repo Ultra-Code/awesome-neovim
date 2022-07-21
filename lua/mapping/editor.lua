@@ -16,6 +16,9 @@ map("v", "<leader>p", [[m`"_dP``]], opt)
 map("n", "<leader>d", [["_dd]], opt)
 map("v", "<leader>d", [["_d]], opt)
 
+-- Switch CWD to the directory of the open buffer
+map({ "n", "v", "o" }, "<leader>cd", "<cmd>cd %:p:h<cr>:pwd<cr>", opt)
+
 -- reload/source current file
 map("n", "<leader>r", function()
     vim.cmd([[luafile %]])
