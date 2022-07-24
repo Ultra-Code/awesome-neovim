@@ -18,17 +18,17 @@ map("n", "<A-l>", "<C-w>l")
 local opt = { remap = true }
 local mode = { "n", "v", "o" }
 map(mode, "<leader>bd", "<cmd>bdelete<cr>", opt) -- Close the current buffer
-map(mode, "<leader>bda", "<cmd>bufdo bd<cr>", opt) -- Close all the buffers
-map(mode, "<leader>bf", "<cmd>bnext<cr>", opt) -- move forward to the next buffer in the buffer list
-map(mode, "<leader>bb", "<cmd>bprevious<cr>", opt) -- move back to the previous buffer in the buffer list
+map(mode, "<leader>ba", "<cmd>bufdo bd<cr>", opt) -- Close all the buffers
+map(mode, "]b", "<cmd>bnext<cr>", opt) -- move forward to the next buffer in the buffer list
+map(mode, "[b", "<cmd>bprevious<cr>", opt) -- move back to the previous buffer in the buffer list
 map(mode, "<leader>bp", "<cmd>b#<cr>", opt) -- move to the last visited buffer
 map(mode, "<leader>b1", "<cmd>bfirst<cr>", opt) -- move to the first buffer in the buffer list
 map(mode, "<leader>b9", "<cmd>blast<cr>", opt) -- move to the last buffer in the buffer list
 
 -- pick a buffer to view from the buffer list
-map("n", "<leader>bs", "<cmd>BufferLinePick<CR>", vim.tbl_extend("force", opt, { remap = false, silent = true, }))
+map("n", "<leader>bs", "<cmd>BufferLinePick<CR>", { silent = true, })
 -- pick a buffer to closes from the buffer list
-map("n", "<leader>bc", "<cmd>BufferLinePickClose<CR>", vim.tbl_extend("force", opt, { remap = false, silent = true, }))
+map("n", "<leader>bc", "<cmd>BufferLinePickClose<CR>", { silent = true, })
 
 -- Useful mappings for managing tabs
 map(mode, "<leader>tw", "<cmd>tabnew<cr>", opt)
