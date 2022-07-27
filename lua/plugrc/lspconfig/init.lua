@@ -38,6 +38,8 @@ local function make_config()
     capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
+    -- fix for multiple different client offset_encodings detected for buffer
+    capabilities.offsetEncoding = { "utf-16" }
 
     return {
         -- enable snippet support
