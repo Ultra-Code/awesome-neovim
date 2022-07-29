@@ -34,7 +34,7 @@ settings.lua_settings = {
 settings.clangd_setting = {
     cmd = {
         "clangd",
-        "--query-driver=/usr/bin/g++",
+        "--query-driver=/usr/bin/clang++",
         "--clang-tidy",
         "-j=5",
         "--malloc-trim",
