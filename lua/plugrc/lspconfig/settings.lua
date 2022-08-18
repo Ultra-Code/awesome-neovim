@@ -38,6 +38,7 @@ settings.clangd_setting = {
         "--clang-tidy",
         "-j=5",
         "--malloc-trim",
+        "--offset-encoding=utf-16"
     },
     filetypes = { "c", "cpp" }, -- we don't want objective-c and objective-cpp!
 }

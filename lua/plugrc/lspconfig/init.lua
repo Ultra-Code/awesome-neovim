@@ -38,8 +38,6 @@ local function make_config()
     capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
-    -- fix for multiple different client offset_encodings detected for buffer
-    capabilities.offsetEncoding = { "utf-16" }
 
     return {
         -- enable snippet support
@@ -66,20 +64,6 @@ local function setup_servers()
         "bashls",
     }
 
-    local null_ls = require("null-ls")
-
-    null_ls.setup({
-        diagnostics_format = "#{m} (#{s})",
-        sources = {
-            null_ls.builtins.diagnostics.cppcheck.with({
-                extra_args = {
-                    "--inconclusive",
-                },
-            }),
-            null_ls.builtins.diagnostics.zsh,
-        },
-    })
-
     local signature_cfg = require("plugrc.lspconfig.signature")
     require("lsp_signature").setup(signature_cfg)
 
@@ -101,6 +85,21 @@ local function setup_servers()
         end
         require("lspconfig")[server].setup(config)
     end
+
+    local null_ls = require("null-ls")
+
+    null_ls.setup({
+        diagnostics_format = "#{m} (#{s})",
+        sources = {
+            null_ls.builtins.diagnostics.cppcheck.with({
+                extra_args = {
+                    "--inconclusive",
+                },
+            }),
+            null_ls.builtins.diagnostics.zsh,
+        },
+    })
+
 end
 
 setup_servers()
