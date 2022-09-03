@@ -6,7 +6,9 @@ local opt = { remap = true }
 map("v", "//", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opt)
 
 -- Map ESC to jk
-map("i", "jk", "<ESC>", { remap = false })
+map({ "i", "v" }, "jk", "<ESC>", { remap = false })
+-- Disable ESC
+map({ "i", "v" }, "<ESC>", "<NOP>", { remap = false })
 
 -- idea |copy_history:| keypress to extract search properly from history without \V
 map("n", "B", "m`0i<CR><ESC>``i", opt) -- J(join) B(BackJoin): move text after cursor to next line
