@@ -21,7 +21,7 @@ local on_attach = function(client, buffer)
     local opts = { noremap = true, silent = true }
 
     -- Set some keybinds conditional on server capabilities
-    if client.resolved_capabilities.document_range_formatting then
+    if client.server_capabilities.document_range_formatting then
         set_keymap(
             "v",
             "<leader>lf",
