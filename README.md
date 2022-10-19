@@ -24,11 +24,11 @@ and installing the server and other accompaning tools for development like linte
 
 ## Requirement
 
-Unlike the [vim branch]() with neovim >= 0.8 most plugings written in lua and don't depend on python or node
+With neovim >= 0.8 most plugings are written in lua and don't depend on python or node
 But if you decide to use a plugin that rely's on any of these you would have to install them but I recommend
 you find their lua equivalent. Chances are that it will be faster (due to luajit) and more well
 intergrated with neovim >= 0.8
-Neovim does come out of the box with luajit and treesitter support
+Neovim comes out of the box with luajit and treesitter support
 
 ## Repo structure
 ```text
