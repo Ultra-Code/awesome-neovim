@@ -4,9 +4,7 @@ function _G.map(mode, lhs, rhs, opts)
 end
 
 function _G.dump(...)
-    local objects = vim.tbl_map(vim.inspect, { ... })
-    print(unpack(objects))
-    return ...
+    vim.pretty_print(...);
 end
 
 function _G.reloadAllModules()

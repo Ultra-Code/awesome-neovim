@@ -80,3 +80,10 @@ map("n", "<leader>tq",
         troublesetup()
         vim.cmd([[Trouble quickfix]])
     end, opt)
+
+map("n", "<leader>tr",
+    function()
+        troublesetup();
+        vim.cmd([[Trouble lsp_references]])
+    end
+    , opt)
