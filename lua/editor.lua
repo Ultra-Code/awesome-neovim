@@ -9,6 +9,7 @@ local autocmd = vim.api.nvim_create_autocmd -- create autocmd
 -- With a map leader it's possible to do extra key combinations
 --  vim.g sets editor global variables
 vim.g.mapleader = ","
+vim.g.maplocalleader = ";"
 
 -- Set clipboard to the +  registers only
 -- if you want to use the * also add ,unnamed
@@ -169,7 +170,7 @@ autocmd("CursorHold", {
 })
 
 --  format files on save
-autocmd(
-    { "BufWritePre" },
-    { pattern = { "*" }, command = "lua vim.lsp.buf.formatting_seq_sync()" }
-)
+-- autocmd(
+--     { "BufWritePre" },
+--     { pattern = { "*" }, command = "lua vim.lsp.buf.format()" }
+-- )
