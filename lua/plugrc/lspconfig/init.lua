@@ -1,4 +1,5 @@
 local on_attach = function(client, buffer)
+    _ = client;
     vim.diagnostic.config({
         virtual_text = false,
         float = { scope = "line", severity_sort = true, source = "if_many" },
@@ -8,34 +9,18 @@ local on_attach = function(client, buffer)
         severity_sort = true,
     })
 
-    local function set_keymap(...)
-        vim.api.nvim_buf_set_keymap(buffer, ...)
-    end
-
     local function set_option(...)
         vim.api.nvim_buf_set_option(buffer, ...)
     end
 
     set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-    local opts = { noremap = true, silent = true }
-
-    -- Set some keybinds conditional on server capabilities
-    if client.server_capabilities.document_range_formatting then
-        set_keymap(
-            "v",
-            "<leader>lf",
-            "<cmd>lua vim.lsp.buf.range_formatting()<CR>",
-            opts
-        )
-    end
 end
 
 -- config that activates keymaps and enables snippet support
 local function make_config()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-    capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+    capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -44,8 +29,6 @@ local function make_config()
         capabilities = capabilities,
         -- map buffer local keybindings when the language server attaches
         on_attach = on_attach,
-
-        -- rootdir = vim.loop.cwd
     }
 end
 
