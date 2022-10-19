@@ -2,13 +2,16 @@ require("utils")
 
 local opt = { remap = true }
 
+-- Use <leader>hl to clear the highlighting of :set hlsearch.
+map("n", "<leader>hl", "<cmd>nohl<CR>")
+
 -- search selected region on current line
 map("v", "//", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opt)
 
--- Map ESC to jk
-map({ "i", "v" }, "jk", "<ESC>", { remap = false })
 -- Disable ESC
 map({ "i", "v" }, "<ESC>", "<NOP>", { remap = false })
+-- Map ESC to ;;
+map({ "i", "v" }, ";;", "<ESC>", { remap = false, nowait = true, buffer = true })
 
 -- idea |copy_history:| keypress to extract search properly from history without \V
 map("n", "B", "m`0i<CR><ESC>``i", opt) -- J(join) B(BackJoin): move text after cursor to next line

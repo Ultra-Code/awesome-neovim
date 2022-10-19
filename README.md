@@ -41,7 +41,6 @@ Neovim does come out of the box with luajit and treesitter support
     │  │   └──  trouble.lua
     │  └── 📂 mapping
     │  │   ├──  editor.lua
-    │  │   ├──  highlighting.lua
     │  │   ├──  init.lua
     │  │   ├──  lspconfig.lua
     │  │   ├──  spellcheck.lua
