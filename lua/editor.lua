@@ -136,7 +136,7 @@ o.expandtab = true
 g.confirm = true
 
 -- Command line height
-g.cmdheight = 2
+g.cmdheight = 1
 
 -- Auto-write all file changes
 g.autowriteall = true

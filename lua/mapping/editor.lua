@@ -8,10 +8,8 @@ map("n", "<leader>hl", "<cmd>nohl<CR>")
 -- search selected region on current line
 map("v", "//", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opt)
 
--- Disable ESC
-map({ "i", "v" }, "<ESC>", "<NOP>", { remap = false })
--- Map ESC to ;;
-map({ "i", "v" }, ";;", "<ESC>", { remap = false, nowait = true, buffer = true })
+-- Map jk to ESC
+map({ "i", "v" }, "jk", "<ESC>", { remap = false, nowait = true})
 
 -- idea |copy_history:| keypress to extract search properly from history without \V
 map("n", "B", "m`0i<CR><ESC>``i", opt) -- J(join) B(BackJoin): move text after cursor to next line
