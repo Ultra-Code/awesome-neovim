@@ -14,7 +14,7 @@ vim.g.maplocalleader = ";"
 -- Set clipboard to the +  registers only
 -- if you want to use the * also add ,unnamed
 if fn.has("clipboard") == 1 then
-    vim.opt.clipboard:append("unnamedplus")
+    vim.opt.clipboard:append({"unnamedplus"})
 end
 
 -- Restore cursor to file position in previous editing session
@@ -104,6 +104,9 @@ vim.opt_global.spellsuggest = { "best", "9" }
 -- When a word is CamelCased, assume "Cased" is a separate word: every upper-case character
 -- in a word that comes after a lower case character indicates the start of a new word.
 o.spelloptions = "camel"
+
+-- make diff mode always open in vertical split
+ vim.opt_global.diffopt:append({"vertical"})
 
 -- Use visual bell (no beeping)
 g.visualbell = true

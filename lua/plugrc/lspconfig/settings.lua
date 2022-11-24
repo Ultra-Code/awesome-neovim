@@ -26,6 +26,9 @@ settings.lua_settings = {
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file("", true),
+                -- This feature causes the lsp to use the "environment emulation" feature to suggest
+                -- applying a library/framework when a certain keyword or filename has been found
+                checkThirdParty = false,
             },
         },
     },
