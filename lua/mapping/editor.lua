@@ -9,7 +9,7 @@ map("n", "<leader>hl", "<cmd>nohl<CR>")
 map("v", "//", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opt)
 
 -- Map jk to ESC
-map({ "i", "v" }, "jk", "<ESC>", { remap = false, nowait = true})
+map({ "i", "v" }, "jk", "<ESC>", { remap = false, nowait = true })
 
 -- idea |copy_history:| keypress to extract search properly from history without \V
 map("n", "B", "m`0i<CR><ESC>``i", opt) -- J(join) B(BackJoin): move text after cursor to next line
@@ -25,29 +25,41 @@ map("v", "<leader>d", [["_d]], opt)
 -- Switch CWD to the directory of the open buffer
 map({ "n", "v", "o" }, "<leader>cd", "<cmd>cd %:p:h<cr>:pwd<cr>", opt)
 
--- reload/source current file
-map("n", "<leader>r", function()
-    vim.cmd([[luafile %]])
-    print("reloaded " .. vim.fn.expand("%"))
-end)
+-- maybe make below a filetype plugin
+local autocmd = vim.api.nvim_create_autocmd
+autocmd({ "BufEnter", "BufWinEnter" }, {
+    pattern = { "*.lua" },
+    callback = function(ev)
+        _ = ev
+        -- :help api-autocmd
+        -- nvim_create_autocmd's callback receives a table argument with fields
+        -- ev = {id,event,group?,match,buf,file,data(arbituary data)}
 
--- reload a particular module
-map("n", "<leader>rm", function()
-    local module_name = vim.fn.input({
-        prompt = "\nEnter the name of the module you want to reload\n:",
-        completion = "file"
-    })
-    if module_name == "" then
-        return
-    else
-        reload(module_name)
-        vim.notify("!Reloaded Nvim Module " .. module_name .. ".lua!", vim.log.levels.INFO)
+        -- reload/source current file
+        map("n", "<leader>r", function()
+            vim.cmd([[luafile %]])
+            print("reloaded " .. vim.fn.expand("%"))
+        end, { buffer = true })
+
+        -- reload a particular module
+        map("n", "<leader>rm", function()
+            local module_name = vim.fn.input({
+                prompt = "\nEnter the name of the module you want to reload\n:",
+                completion = "file"
+            })
+            if module_name == "" then
+                return
+            else
+                reload(module_name)
+                vim.notify("!Reloaded Nvim Module " .. module_name .. ".lua!", vim.log.levels.INFO)
+            end
+
+        end, { buffer = true })
+
+        -- reload all nvim configuration modules
+        map("n", "<leader>ra", function()
+            reloadAllModules()
+            vim.notify("!Reloaded All Nvim Modules!", vim.log.levels.INFO)
+        end, { buffer = true })
     end
-
-end)
-
--- reload all nvim configuration modules
-map("n", "<leader>ra", function()
-    reloadAllModules()
-    vim.notify("!Reloaded All Nvim Modules!", vim.log.levels.INFO)
-end)
+})
