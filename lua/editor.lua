@@ -8,13 +8,13 @@ local autocmd = vim.api.nvim_create_autocmd -- create autocmd
 -- Remap leader key to ,
 -- With a map leader it's possible to do extra key combinations
 --  vim.g sets editor global variables
-vim.g.mapleader = ","
-vim.g.maplocalleader = ";"
+vim.g.mapleader = [[ ]]
+vim.g.maplocalleader = [[\]]
 
 -- Set clipboard to the +  registers only
 -- if you want to use the * also add ,unnamed
 if fn.has("clipboard") == 1 then
-    vim.opt.clipboard:append({"unnamedplus"})
+    vim.opt.clipboard:append({ "unnamedplus" })
 end
 
 -- Restore cursor to file position in previous editing session
@@ -106,7 +106,7 @@ vim.opt_global.spellsuggest = { "best", "9" }
 o.spelloptions = "camel"
 
 -- make diff mode always open in vertical split
- vim.opt_global.diffopt:append({"vertical"})
+vim.opt_global.diffopt:append({ "vertical" })
 
 -- Use visual bell (no beeping)
 g.visualbell = true
