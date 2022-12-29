@@ -3,7 +3,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 -- map the following keys after the language server attaches to a buffer
 -- See `:help vim.lsp.*` for documentation on any of the below functions
-autocmd('LspAttach', {
+autocmd({ 'LspAttach' }, {
     callback = function(args)
         local opts = { buffer = args.buf }
 
@@ -67,11 +67,10 @@ autocmd('LspAttach', {
             map("n", "<localleader>eh", enable_highlight, opts)
         end
         if client.server_capabilities.documentSymbolProvider then
-            map("n", "<localleader>lds", vim.lsp.buf.document_symbol, opts)
+            map("n", "<localleader>ds", vim.lsp.buf.document_symbol, opts)
         end
         if client.server_capabilities.codeActionProvider then
-            map("n", "<localleader>ca", vim.lsp.buf.code_action, opts)
-            map("v", "<localleader>ca", vim.lsp.buf.range_code_action, opts)
+            map({ "n", "v" }, "<localleader>ca", vim.lsp.buf.code_action, opts)
         end
         if client.server_capabilities.documentFormattingProvider then
             map("n", "<localleader>f", function()
@@ -91,7 +90,7 @@ autocmd('LspAttach', {
             map("n", "<localleader>co", vim.lsp.buf.outgoing_calls, opts)
         end
         if client.server_capabilities.workspaceSymbolProvider then
-            map("n", "<localleader>lws", vim.lsp.buf.workspace_symbol, opts)
+            map("n", "<localleader>ws", vim.lsp.buf.workspace_symbol, opts)
         end
 
         map("n", "[d", vim.diagnostic.goto_prev, opts)
@@ -99,7 +98,7 @@ autocmd('LspAttach', {
         map("n", "<localleader>sl", vim.diagnostic.setloclist, opts)
         map('n', '<localleader>of', vim.diagnostic.open_float, opts)
 
-        map("n", "<localleader>lw", function()
+        map("n", "<localleader>wf", function()
             vim.pretty_print(vim.lsp.buf.list_workspace_folders())
         end, opts)
         map("n", "<localleader>rd", function()
