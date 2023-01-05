@@ -67,6 +67,9 @@ g.lazyredraw = true
 -- You will have bad experience for diagnostic messages when it's default 4000.
 g.updatetime = 100
 
+-- Time in milliseconds to wait for a mapped sequence to complete.
+g.timeoutlen = 500
+
 -- don't give |ins-completion-menu| messages.
 g.shortmess = "c"
 
