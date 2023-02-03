@@ -174,9 +174,3 @@ autocmd("CursorHold", {
         vim.diagnostic.open_float(nil, opts)
     end
 })
-
---  format files on save
--- autocmd(
---     { "BufWritePre" },
---     { pattern = { "*" }, command = "lua vim.lsp.buf.format()" }
--- )

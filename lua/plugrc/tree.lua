@@ -5,17 +5,6 @@ require("nvim-tree").setup({
     disable_netrw = true,
     -- hijack netrw window on startup
     hijack_netrw = true,
-    -- open tree when running this setup function and the
-    -- current buffer is a directory, is empty or is unnamed.
-    open_on_setup = false,
-    --will automatically open the tree when running setup if
-    --startup buffer is a file. File window will be focused. File will be found if
-    --update_focused_file.enable is set.
-    open_on_setup_file = false,
-    -- will ignore the buffer, when deciding to open the tree on setup
-    ignore_buffer_on_setup = false,
-    -- will not open on setup if the filetype is in this list
-    ignore_ft_on_setup = { ".git", "node_modules", ".cache" },
     --  reload the explorer every time a buffer is written to
     auto_reload_on_write = true,
     -- opens the tree when changing/opening a new tab if the tree was previously opened
