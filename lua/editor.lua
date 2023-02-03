@@ -174,3 +174,28 @@ autocmd("CursorHold", {
         vim.diagnostic.open_float(nil, opts)
     end
 })
+
+local open_nvimtree_for_nonamebuf_and_directory = function(data)
+    -- buffer is a [No Name]
+    local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+    -- buffer is a directory
+    local directory = vim.fn.isdirectory(data.file) == 1
+
+    if not directory and not no_name then
+        return
+    end
+
+    if directory then
+        -- change to the directory
+        vim.cmd.cd(data.file)
+
+        -- open the tree
+        require("nvim-tree.api").tree.open()
+    else
+        -- open the tree, find the file but don't focus it
+        require("nvim-tree.api").tree.toggle({ focus = false, find_file = true, })
+    end
+
+end
+
+autocmd({ "VimEnter" }, { callback = open_nvimtree_for_nonamebuf_and_directory })
