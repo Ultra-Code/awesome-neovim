@@ -89,7 +89,7 @@ g.mouse = "a"
 wo.wrap = true
 
 -- Line wrap (number of cols)
-o.textwidth = 117
+o.textwidth = 80
 
 -- Highlight matching brace
 g.showmatch = true
@@ -154,9 +154,15 @@ wo.list = true
 vim.opt.listchars = { tab = "••", trail = "•", extends = "»", precedes = "«" }
 
 -- Enable folding
-wo.foldmethod = "indent"
+vim.wo.foldmethod = "expr"
 
-wo.foldlevel = 99
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- diable folding at startup
+vim.wo.foldenable = false
+
+-- set the number of screen lines above which a fold is displayed closed
+vim.wo.foldminlines = 5
 
 -- Remove Trailing whitespaces in all files
 autocmd({ "BufWritePre" }, { pattern = { "*" }, command = [[%s/\s\+$//e]] })
