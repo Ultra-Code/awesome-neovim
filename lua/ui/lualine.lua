@@ -1,5 +1,5 @@
 local function total_num_lines()
-    return vim.fn.expand(vim.fn.line("$"))
+    return vim.api.nvim_buf_line_count(0);
 end
 
 require("lualine").setup({
