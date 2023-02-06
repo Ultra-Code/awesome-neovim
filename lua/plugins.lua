@@ -74,6 +74,7 @@ require("paq")({
     "hrsh7th/cmp-buffer", -- nvim-cmp source for buffer words
     "hrsh7th/cmp-nvim-lua", -- nvim-cmp source for nvim lua
     "hrsh7th/cmp-emoji", -- nvim-cmp source for emoji
+    "hrsh7th/cmp-cmdline", --nvim-cmp source for vim's cmdline.
 
     -- Auto pairs
     { "windwp/nvim-autopairs" },
