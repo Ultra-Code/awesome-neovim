@@ -100,7 +100,6 @@ cmp.setup({
         { name = "nvim_lua" },
         { name = "emoji" },
         { name = "neorg" },
-        { name = "cmdline" },
     }),
 })
 
