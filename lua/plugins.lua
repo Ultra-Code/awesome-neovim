@@ -89,10 +89,9 @@ require("paq")({
 
     -- === UI === --
     -- A Neovim File explorer
-    { "kyazdani42/nvim-tree.lua" },
+    { "nvim-tree/nvim-tree.lua" },
 
     -- == Icons == --
     -- Glyphs and Icons for neovim
-    -- Plug 'ryanoasis/vim-devicons'
-    { "kyazdani42/nvim-web-devicons" },
+    { "nvim-tree/nvim-web-devicons" },
 })
