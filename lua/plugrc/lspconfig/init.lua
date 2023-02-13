@@ -35,7 +35,7 @@ end
 -- lsp-install
 local function setup_servers()
     local lsp_servers = {
-        "sumneko_lua",
+        "lua_ls",
         "clangd",
         "cssls",
         "html",
@@ -61,7 +61,7 @@ local function setup_servers()
             config.filetypes = clangd_settings.filetypes
         end
 
-        if server == "sumneko_lua" then
+        if server == "lua_ls" then
             local lua_settings = settings.lua_settings
             config.cmd = lua_settings.cmd
             config.settings = lua_settings.settings
