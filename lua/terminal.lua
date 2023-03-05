@@ -1,4 +1,4 @@
-local autocmd = vim.api.nvim_create_autocmd -- create autocmd
+local autocmd = vim.api.nvim_create_autocmd   -- create autocmd
 local autogroup = vim.api.nvim_create_augroup -- create autocmd group
 
 -- open new split panes to right and below

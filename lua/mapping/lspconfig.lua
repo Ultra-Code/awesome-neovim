@@ -54,7 +54,6 @@ autocmd({ 'LspAttach' }, {
                     buffer = bufnr,
                     callback = vim.lsp.buf.clear_references,
                 })
-
             end
             local disable_highlight = function()
                 vim.lsp.buf.clear_references()
@@ -104,6 +103,5 @@ autocmd({ 'LspAttach' }, {
         map("n", "<localleader>rd", function()
             print("Language server " .. (vim.lsp.buf.server_ready() and "is ready" or "is not ready"))
         end, opts)
-
     end,
 })

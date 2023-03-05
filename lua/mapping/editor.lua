@@ -53,7 +53,6 @@ autocmd({ "BufEnter", "BufWinEnter" }, {
                 reload(module_name)
                 vim.notify("!Reloaded Nvim Module " .. module_name .. ".lua!", vim.log.levels.INFO)
             end
-
         end, { buffer = true })
 
         -- reload all nvim configuration modules

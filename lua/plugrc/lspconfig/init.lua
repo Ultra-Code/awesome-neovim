@@ -82,7 +82,6 @@ local function setup_servers()
             null_ls.builtins.diagnostics.zsh,
         },
     })
-
 end
 
 setup_servers()

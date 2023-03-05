@@ -1,9 +1,9 @@
-local o = vim.o -- set editor global-local editor options
-local wo = vim.wo -- set window-local editor options
-local g = vim.go -- set global editor editor options
-local fn = vim.fn -- invoke vim-functions in lua
+local o = vim.o                               -- set editor global-local editor options
+local wo = vim.wo                             -- set window-local editor options
+local g = vim.go                              -- set global editor editor options
+local fn = vim.fn                             -- invoke vim-functions in lua
 local autogroup = vim.api.nvim_create_augroup -- create autocmd group
-local autocmd = vim.api.nvim_create_autocmd -- create autocmd
+local autocmd = vim.api.nvim_create_autocmd   -- create autocmd
 
 -- Remap leader key to ,
 -- With a map leader it's possible to do extra key combinations
@@ -201,7 +201,6 @@ local open_nvimtree_for_nonamebuf_and_directory = function(data)
         -- open the tree, find the file but don't focus it
         require("nvim-tree.api").tree.toggle({ focus = false, find_file = true, })
     end
-
 end
 
 autocmd({ "VimEnter" }, { callback = open_nvimtree_for_nonamebuf_and_directory })

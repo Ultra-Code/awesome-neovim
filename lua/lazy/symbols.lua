@@ -19,7 +19,8 @@ local function symbols_setup()
         auto_unfold_hover = true,
         fold_markers = { '', '' },
         wrap = false,
-        keymaps = { -- These keymaps can be a string or a table for multiple keys
+        -- These keymaps can be a string or a table for multiple keys
+        keymaps = {
             close = { "jk", "q" },
             goto_location = "<Cr>",
             focus_location = "o",
