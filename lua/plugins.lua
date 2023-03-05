@@ -29,8 +29,8 @@ require("paq")({
 
     -- === Fuzzy Finder ===
     -- a highly extendable fuzzy finder over lists
-    { "nvim-lua/popup.nvim", opt = true }, -- for Find, Filter, Preview, Pick
-    { "nvim-lua/plenary.nvim" }, -- reusable lua funtions
+    { "nvim-lua/popup.nvim",           opt = true }, -- for Find, Filter, Preview, Pick
+    { "nvim-lua/plenary.nvim" },                     -- reusable lua funtions
     { "nvim-telescope/telescope.nvim", opt = true },
 
     -- === Syntax Plugins ===
@@ -44,7 +44,12 @@ require("paq")({
 
     -- === Preview Plugin ===
     -- === Note Taking Plugin ===
-    { "nvim-neorg/neorg" }, -- neovim note taking tool
+    {
+        "nvim-neorg/neorg",
+        run = function()
+            vim.cmd("Neorg sync-parsers")
+        end,
+    },
 
     -- === Language Specific Plugins ===
     -- == LSP Client ===
@@ -55,7 +60,7 @@ require("paq")({
     -- A pretty diagnostics, references, telescope
     -- results, quickfix and location
     -- list to help you solve all the trouble your code is causing
-    { "folke/trouble.nvim", opt = true },
+    { "folke/trouble.nvim",             opt = true },
 
     --Use Neovim as a language server to inject LSP diagnostics, code actions,
     --and more via Lua
@@ -70,17 +75,17 @@ require("paq")({
     -- Autocompletion plugin
     -- Completion Sources --
     "hrsh7th/cmp-nvim-lsp", -- nvim-cmp source for neovim builtin LSP client
-    "hrsh7th/cmp-path", -- nvim-cmp source for path
-    "hrsh7th/cmp-buffer", -- nvim-cmp source for buffer words
+    "hrsh7th/cmp-path",     -- nvim-cmp source for path
+    "hrsh7th/cmp-buffer",   -- nvim-cmp source for buffer words
     "hrsh7th/cmp-nvim-lua", -- nvim-cmp source for nvim lua
-    "hrsh7th/cmp-emoji", -- nvim-cmp source for emoji
-    "hrsh7th/cmp-cmdline", --nvim-cmp source for vim's cmdline.
+    "hrsh7th/cmp-emoji",    -- nvim-cmp source for emoji
+    "hrsh7th/cmp-cmdline",  --nvim-cmp source for vim's cmdline.
 
     -- Auto pairs
     { "windwp/nvim-autopairs" },
 
     -- === Code Snippets Plugins ===
-    { "L3MON4D3/LuaSnip" }, -- snippets provider for lua
+    { "L3MON4D3/LuaSnip" },     -- snippets provider for lua
     "saadparwaiz1/cmp_luasnip", -- luasnip completion source for nvim-cmp
 
     -- === LSP symbols ===
