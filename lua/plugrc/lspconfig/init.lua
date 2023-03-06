@@ -80,8 +80,8 @@ local function setup_servers()
         "bashls",
     }
 
-     local signature_cfg = require("plugrc.lspconfig.signature")
-     require("lsp_signature").setup(signature_cfg)
+     --local signature_cfg = require("plugrc.lspconfig.signature")
+     --require("lsp_signature").setup(signature_cfg)
 
     for _, server in pairs(lsp_servers) do
         local config = make_config()

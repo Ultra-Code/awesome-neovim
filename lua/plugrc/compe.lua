@@ -102,6 +102,7 @@ cmp.setup({
         { name = "nvim_lua" },
         { name = "emoji" },
         { name = "neorg" },
+        { name = 'nvim_lsp_signature_help' }
     }),
 })
 

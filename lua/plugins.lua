@@ -56,7 +56,7 @@ require("paq")({
     -- Nvim LSP client
     { "neovim/nvim-lspconfig" },
     -- Show function signature when you type
-    { "ray-x/lsp_signature.nvim" },
+    -- { "ray-x/lsp_signature.nvim" },
     -- A pretty diagnostics, references, telescope
     -- results, quickfix and location
     -- list to help you solve all the trouble your code is causing
@@ -74,12 +74,13 @@ require("paq")({
     { "hrsh7th/nvim-cmp" },
     -- Autocompletion plugin
     -- Completion Sources --
-    "hrsh7th/cmp-nvim-lsp", -- nvim-cmp source for neovim builtin LSP client
-    "hrsh7th/cmp-path",     -- nvim-cmp source for path
-    "hrsh7th/cmp-buffer",   -- nvim-cmp source for buffer words
-    "hrsh7th/cmp-nvim-lua", -- nvim-cmp source for nvim lua
-    "hrsh7th/cmp-emoji",    -- nvim-cmp source for emoji
-    "hrsh7th/cmp-cmdline",  --nvim-cmp source for vim's cmdline.
+    "hrsh7th/cmp-nvim-lsp",                -- nvim-cmp source for neovim builtin LSP client
+    "hrsh7th/cmp-path",                    -- nvim-cmp source for path
+    "hrsh7th/cmp-buffer",                  -- nvim-cmp source for buffer words
+    "hrsh7th/cmp-nvim-lua",                -- nvim-cmp source for nvim lua
+    "hrsh7th/cmp-emoji",                   -- nvim-cmp source for emoji
+    "hrsh7th/cmp-cmdline",                 --nvim-cmp source for vim's cmdline.
+    "hrsh7th/cmp-nvim-lsp-signature-help", --cmp-nvim-lsp-signature-help
 
     -- Auto pairs
     { "windwp/nvim-autopairs" },
