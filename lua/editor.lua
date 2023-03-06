@@ -167,20 +167,6 @@ vim.wo.foldminlines = 5
 -- Remove Trailing whitespaces in all files
 autocmd({ "BufWritePre" }, { pattern = { "*" }, command = [[%s/\s\+$//e]] })
 
--- automatically show diagnostics on current line
-autocmd("CursorHold", {
-    callback = function()
-        local opts = {
-            focusable = false,
-            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-            border = "shadow",
-            source = "if_many",
-            severity_sort = true,
-        }
-        vim.diagnostic.open_float(nil, opts)
-    end
-})
-
 local open_nvimtree_for_nonamebuf_and_directory = function(data)
     -- buffer is a [No Name]
     local no_name = data.file == "" and vim.bo[data.buf].buftype == ""

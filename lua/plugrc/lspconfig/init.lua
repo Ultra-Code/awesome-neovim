@@ -1,19 +1,52 @@
-local on_attach = function(client, buffer)
+local autocmd = vim.api.nvim_create_autocmd -- create autocmd
+
+local on_attach = function(client, bufnr)
     _ = client;
-    vim.diagnostic.config({
+    _ = bufnr;
+    -- options from nvim_open_win()| vim.diagnostic.open_float()
+    -- | vim.lsp.util.open_floating_preview()| vim.diagnostic.config()
+    local opts = {
         virtual_text = false,
-        float = { scope = "line", severity_sort = true, source = "if_many" },
-        signs = true,
-        underline = true,
-        update_in_insert = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        focusable = false,
+        float = {
+            source = "if_many",
+            -- "single": A single line box.
+            -- "double": A double line box.
+            -- "rounded": Like "single", but with rounded corners "╭"
+            -- "solid": Adds padding by a single whitespace cell.
+            -- "shadow": A drop shadow effect by blending with the
+            -- "none": No border (default).
+            border = "rounded",
+        },
         severity_sort = true,
+    }
+    vim.diagnostic.config(opts)
+
+    -- automatically show diagnostics on current line
+    autocmd({ "CursorHold", "CursorHoldI" }, {
+        callback = function()
+            vim.diagnostic.open_float(nil, {
+                focus = false,
+            })
+        end
     })
 
-    local function set_option(...)
-        vim.api.nvim_buf_set_option(buffer, ...)
-    end
+    require('lspconfig.ui.windows').default_options = {
+        border = opts.float.border,
+    }
 
-    set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover, {
+            border = opts.float.border,
+        }
+    )
+
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help, {
+            border = opts.float.border,
+        }
+    )
 end
 
 -- config that activates keymaps and enables snippet support
@@ -47,8 +80,8 @@ local function setup_servers()
         "bashls",
     }
 
-    local signature_cfg = require("plugrc.lspconfig.signature")
-    require("lsp_signature").setup(signature_cfg)
+     local signature_cfg = require("plugrc.lspconfig.signature")
+     require("lsp_signature").setup(signature_cfg)
 
     for _, server in pairs(lsp_servers) do
         local config = make_config()
