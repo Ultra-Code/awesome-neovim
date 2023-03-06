@@ -42,6 +42,10 @@ cmp.setup({
             require("luasnip").lsp_expand(args.body)
         end,
     },
+    window = {
+        completion = { border = "rounded" },
+        documentation = { border = "rounded" },
+    },
     formatting = {
         format = function(entry, vim_item)
             -- Kind icons
