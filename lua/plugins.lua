@@ -55,8 +55,6 @@ require("paq")({
     -- == LSP Client ===
     -- Nvim LSP client
     { "neovim/nvim-lspconfig" },
-    -- Show function signature when you type
-    -- { "ray-x/lsp_signature.nvim" },
     -- A pretty diagnostics, references, telescope
     -- results, quickfix and location
     -- list to help you solve all the trouble your code is causing
