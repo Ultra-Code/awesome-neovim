@@ -35,3 +35,27 @@ function _G.reload(module)
         end
     end
 end
+
+local M = {}
+
+-- options from nvim_open_win()| vim.diagnostic.open_float()
+-- | vim.lsp.util.open_floating_preview()| vim.diagnostic.config()
+M.diagnostics_options = {
+    virtual_text = false,
+    float = {
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        focusable = false,
+        focus = false,
+        source = "if_many",
+        -- "single": A single line box.
+        -- "double": A double line box.
+        -- "rounded": Like "single", but with rounded corners "╭"
+        -- "solid": Adds padding by a single whitespace cell.
+        -- "shadow": A drop shadow effect by blending with the
+        -- "none": No border (default).
+        border = "rounded",
+    },
+    update_in_insert = false,
+    severity_sort = true,
+}
+return M;

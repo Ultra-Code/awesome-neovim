@@ -1,52 +1,11 @@
-local autocmd = vim.api.nvim_create_autocmd -- create autocmd
+local diagnostics_options = require("utils").diagnostics_options;
 
 local on_attach = function(client, bufnr)
     _ = client;
     _ = bufnr;
-    -- options from nvim_open_win()| vim.diagnostic.open_float()
-    -- | vim.lsp.util.open_floating_preview()| vim.diagnostic.config()
-    local opts = {
-        virtual_text = false,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        focusable = false,
-        float = {
-            source = "if_many",
-            -- "single": A single line box.
-            -- "double": A double line box.
-            -- "rounded": Like "single", but with rounded corners "╭"
-            -- "solid": Adds padding by a single whitespace cell.
-            -- "shadow": A drop shadow effect by blending with the
-            -- "none": No border (default).
-            border = "rounded",
-        },
-        severity_sort = true,
-    }
-    vim.diagnostic.config(opts)
-
-    -- automatically show diagnostics on current line
-    autocmd({ "CursorHold", "CursorHoldI" }, {
-        callback = function()
-            vim.diagnostic.open_float(nil, {
-                focus = false,
-            })
-        end
-    })
-
     require('lspconfig.ui.windows').default_options = {
-        border = opts.float.border,
+        border = diagnostics_options.float.border,
     }
-
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-        vim.lsp.handlers.hover, {
-            border = opts.float.border,
-        }
-    )
-
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-        vim.lsp.handlers.signature_help, {
-            border = opts.float.border,
-        }
-    )
 end
 
 -- config that activates keymaps and enables snippet support
