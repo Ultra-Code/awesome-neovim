@@ -22,15 +22,14 @@ require("paq")({
     -- === Status Line ===
     -- Status bar plugin
     -- A blazing fast and easy to configure neovim statusline
-    { "hoob3rt/lualine.nvim" },
+    { "nvim-lualine/lualine.nvim" },
     -- Tabline
     -- A snazzy buffer line (with minimal tab integration) for Neovim
     { "akinsho/bufferline.nvim" },
 
     -- === Fuzzy Finder ===
     -- a highly extendable fuzzy finder over lists
-    { "nvim-lua/popup.nvim",           opt = true }, -- for Find, Filter, Preview, Pick
-    { "nvim-lua/plenary.nvim" },                     -- reusable lua funtions
+    { "nvim-lua/plenary.nvim",         opt = true }, -- reusable lua funtions
     { "nvim-telescope/telescope.nvim", opt = true },
 
     -- === Syntax Plugins ===
@@ -49,6 +48,7 @@ require("paq")({
         run = function()
             vim.cmd("Neorg sync-parsers")
         end,
+        opt = true
     },
 
     -- === Language Specific Plugins ===
@@ -93,7 +93,7 @@ require("paq")({
 
     -- === UI === --
     -- A Neovim File explorer
-    { "nvim-tree/nvim-tree.lua" },
+    { "nvim-tree/nvim-tree.lua",       opt = true },
 
     -- == Icons == --
     -- Glyphs and Icons for neovim
