@@ -3,10 +3,12 @@ require("utils")
 local opt = { silent = true }
 
 local function telescopesetup()
-    vim.cmd([[
-    packadd popup.nvim
-    packadd telescope.nvim
-    ]])
+    if not package.loaded["plenary"] then
+        vim.cmd([[ packadd plenary.nvim ]])
+    end
+    if not package.loaded["telescope"] then
+        vim.cmd([[ packadd telescope.nvim ]])
+    end
 
     local actions = require("telescope.actions")
     require("telescope").setup {

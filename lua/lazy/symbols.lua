@@ -1,7 +1,9 @@
 require("utils")
 
 local function symbols_setup()
+  if not package.loaded["symbols-outline"] then
     vim.cmd([[ packadd symbols-outline.nvim ]])
+  end
 
     local symbols_outline_opts = {
         highlight_hovered_item = true,
