@@ -1,3 +1,22 @@
+local disabled_built_ins = {
+    "gzip",
+    "health",
+    "man",
+    "matchit",
+    "matchparen",
+    "netrwPlugin",
+    "rplugin",
+    "shada",
+    "spellfile",
+    "tarPlugin",
+    "tohtml",
+    "tutor",
+    "zipPlugin",
+}
+
+for index = 1, #disabled_built_ins do
+    vim.g["loaded_" .. disabled_built_ins[index]] = true
+end
 local o = vim.o                               -- set editor global-local editor options
 local wo = vim.wo                             -- set window-local editor options
 local g = vim.go                              -- set global editor editor options
