@@ -6,9 +6,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
--- setup editor options -> syntax -> autocmds -> mappings
-require("config")
-
 require("lazy").setup({
     spec = {
         { import = "plugins" },
