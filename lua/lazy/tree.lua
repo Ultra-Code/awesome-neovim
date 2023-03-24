@@ -297,14 +297,11 @@ autocmd({ "VimEnter" }, {
 })
 
 map("n", "<leader>n", function()
+    local TRUE = 1
+-- help NvimTreeRequired autocmd in nvim_tree_events_startup section
+    if vim.g.NvimTreeRequired  ~= TRUE then
     tree_setup()
+    end
     return require("nvim-tree.api").tree.toggle({ focus = false, find_file = true })
-end
-, opt)
-
-map("n", "<leader>nc", function()
-    tree_setup()
-    return require("nvim-tree.api").tree.close()
-    --vim.cmd([[NvimTreeFindFileToggle]])
 end
 , opt)
