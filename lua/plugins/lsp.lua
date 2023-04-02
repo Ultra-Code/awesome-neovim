@@ -30,6 +30,13 @@ return {
         opts = {
             -- LSP Server Settings
             servers = {
+                -- cssls = {},
+                -- html = {},
+                -- jsonls = {},
+                -- tailwindcss = {},
+                -- tsserver = {},
+                -- volar = {},
+                -- bashls = {},
                 clangd = {
                     cmd = {
                         "clangd",
@@ -41,14 +48,7 @@ return {
                     },
                     filetypes = { "c", "cpp" }, -- we don't want objective-c and objective-cpp!
                 },
-                cssls = {},
-                html = {},
-                jsonls = {},
-                tailwindcss = {},
-                tsserver = {},
-                volar = {},
                 zls = {},
-                bashls = {},
                 lua_ls = {
                     cmd = {
                         "lua-language-server",
@@ -79,23 +79,21 @@ return {
             -- you can do any additional lsp server setup here
             setup = {
                 lua_ls = function(server, opts)
-                    require("neodev").setup()
                     require("lspconfig")[server].setup(opts)
                 end
                 -- example to setup with typescript.nvim
                 -- tsserver = function(_, opts)
                 --   require("typescript").setup({ server = opts })
-                --   return true
                 -- end,
-                -- Specify * to use this function as a fallback for any server
-                -- ["*"] = function(server, opts) end,
             },
         },
         ---@param opts PluginLspOpts
         config = function(_, opts)
             local on_attach = function(client, bufnr)
                 _ = client;
-                _ = bufnr;
+                if vim.filetype.match({ buf = bufnr }) == "lua" then
+                    require("neodev").setup()
+                end
                 -- require('lspconfig.ui.windows').default_options = {
                 --     border = diagnostics_options.float.border,
                 -- }
@@ -105,10 +103,6 @@ return {
             local function setup(server, server_config)
                 if opts.setup[server] then
                     if opts.setup[server](server, server_config) then
-                        return
-                    end
-                elseif opts.setup["*"] then
-                    if opts.setup["*"](server, server_config) then
                         return
                     end
                 end
