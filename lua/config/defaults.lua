@@ -51,10 +51,10 @@ return {
     -- icons used by other plugins
     icons = {
         diagnostics = {
-            Error = " ",
-            Warn = " ",
-            Hint = " ",
-            Info = " ",
+            Error = " ",--🅴
+            Warn = " ", --🆆
+            Hint = " ", --🅸
+            Info = " ", --🅷
         },
         git = {
             add          = { text = '│' }, --" ","▎"
@@ -107,7 +107,7 @@ return {
     ---@type table
     diagnostics_options = {
         virtual_text = {
-            severity = vim.diagnostic.severity.ERROR or vim.diagnostic.severity.WARN,
+            severity = vim.diagnostic.severity.ERROR,
             source = "if_many",
         },
         float = {
