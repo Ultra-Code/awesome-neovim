@@ -163,12 +163,12 @@ return {
             {
                 "<leader>ss",
                 telescope_builtin("lsp_document_symbols"),
-                desc = "Goto Symbol",
+                desc = "List Symbols (current buffer)",
             },
             {
                 "<leader>sS",
                 telescope_builtin("lsp_workspace_symbols"),
-                desc = "Goto Symbol (Workspace)",
+                desc = "List Symbols (Workspace)",
             },
             {
                 "<leader>sr",
