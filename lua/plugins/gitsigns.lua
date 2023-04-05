@@ -19,6 +19,9 @@ return {
                 row = 0,
                 col = 1
             },
+            --disable gitsigns using trouble for :Gitsigns setqflist or
+            --:Gitsigns seqloclist by default if installed
+            trouble            = false,
             on_attach          = function(bufnr)
                 local gs = package.loaded.gitsigns
 
