@@ -148,16 +148,48 @@ autocmd({ 'LspAttach' }, {
             map("n", "<localleader>gD", vim.lsp.buf.declaration, opts)
         end
         if client.server_capabilities.definitionProvider then
-            map("n", "<localleader>gd", vim.lsp.buf.definition, opts)
+            map("n", "<localleader>gd",
+                function()
+                    if package.loaded["trouble"] then
+                        vim.cmd [[Trouble lsp_definitions]]
+                    else
+                        vim.lsp.buf.definition()
+                    end
+                end
+                , opts)
         end
         if client.server_capabilities.typeDefinitionProvider then
-            map("n", "<localleader>td", vim.lsp.buf.type_definition, opts)
+            map("n", "<localleader>td",
+                function()
+                    if package.loaded["trouble"] then
+                        vim.cmd [[Trouble lsp_type_definitions]]
+                    else
+                        vim.lsp.buf.type_definition()
+                    end
+                end
+                , opts)
         end
         if client.server_capabilities.implementationProvider then
-            map("n", "<localleader>gi", vim.lsp.buf.implementation, opts)
+            map("n", "<localleader>gi",
+                function()
+                    if package.loaded["trouble"] then
+                        vim.cmd [[Trouble lsp_implementations]]
+                    else
+                        vim.lsp.buf.implementation()
+                    end
+                end,
+                opts)
         end
         if client.server_capabilities.referencesProvider then
-            map("n", "<localleader>gr", vim.lsp.buf.references, opts)
+            map("n", "<localleader>gr",
+                function()
+                    if package.loaded["trouble"] then
+                        vim.cmd [[Trouble lsp_references]]
+                    else
+                        vim.lsp.buf.references({})
+                    end
+                end
+                , opts)
         end
         if client.server_capabilities.documentHighlightProvider then
             local bufnr = vim.api.nvim_get_current_buf()
