@@ -1,26 +1,19 @@
+local defaults = require("config.defaults")
 return {
     -- git signs
     {
         "lewis6991/gitsigns.nvim",
         event = { "BufReadPre", "BufNewFile" },
         opts = {
-            signs              = {
-                add = { text = "▎" },
-                change = { text = "▎" },
-                delete = { text = "" },
-                topdelete = { text = "" },
-                changedelete = { text = "▎" },
-                untracked = { text = "▎" },
-            },
+            signs              = defaults.icons.git,
             signcolumn         = true,  -- Toggle with `:Gitsigns toggle_signs`
             numhl              = false, -- Toggle with `:Gitsigns toggle_numhl`
             linehl             = false, -- Toggle with `:Gitsigns toggle_linehl`
             word_diff          = false, -- Toggle with `:Gitsigns toggle_word_diff`
             current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-            -- TODO: use defaults.diagnostics option for styles and borders
             -- Options passed to nvim_open_win
             preview_config     = {
-                border = 'shadow',
+                border = defaults.diagnostics_options.float.border,
                 style = 'minimal',
                 relative = 'cursor',
                 row = 0,

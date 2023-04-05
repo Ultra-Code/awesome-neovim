@@ -57,9 +57,12 @@ return {
             Info = " ",
         },
         git = {
-            added = " ",
-            modified = " ",
-            removed = " ",
+            add          = { text = '│' }, --" ","▎"
+            change       = { text = '!' }, --" ",
+            delete       = { text = '_' }, --" ",""
+            topdelete    = { text = '‾' },
+            changedelete = { text = '~' },
+            untracked    = { text = '┆' },
         },
         kinds = {
             Array = " ",
@@ -103,7 +106,10 @@ return {
     -- | vim.lsp.util.open_floating_preview()| vim.diagnostic.config()
     ---@type table
     diagnostics_options = {
-        virtual_text = false,
+        virtual_text = {
+            severity = vim.diagnostic.severity.ERROR or vim.diagnostic.severity.WARN,
+            source = "if_many",
+        },
         float = {
             close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
             focusable = false,

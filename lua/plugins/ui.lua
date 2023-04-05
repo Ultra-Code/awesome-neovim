@@ -130,7 +130,6 @@ return {
         build = function()
             vim.cmd("TSUpdate")
         end,
-        ---@type TSConfig
         opts = {
             ensure_installed = {
                 "cpp",
@@ -166,7 +165,6 @@ return {
             },
             autopairs = { enable = true },
         },
-        ---@param opts TSConfig
         config = function(_, opts)
             require("nvim-treesitter.configs").setup(opts)
         end,
