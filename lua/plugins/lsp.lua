@@ -1,6 +1,6 @@
 -- local diagnostics_options = require("config.defaults").diagnostics_options
 return {
-    { "folke/neodev.nvim", lazy = true, ft = "lua", opts = { pathStrict = true } },
+    { "folke/neodev.nvim", event = "VeryLazy", opts = { pathStrict = true } },
     {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
@@ -79,6 +79,7 @@ return {
             -- you can do any additional lsp server setup here
             setup = {
                 lua_ls = function(server, opts)
+                    require("neodev").setup()
                     require("lspconfig")[server].setup(opts)
                 end
                 -- example to setup with typescript.nvim
@@ -91,9 +92,9 @@ return {
         config = function(_, opts)
             local on_attach = function(client, bufnr)
                 _ = client;
-                if vim.filetype.match({ buf = bufnr }) == "lua" then
-                    require("neodev").setup()
-                end
+                _ = bufnr;
+                -- if vim.filetype.match({ buf = bufnr }) == "lua" then
+                -- end
                 -- require('lspconfig.ui.windows').default_options = {
                 --     border = diagnostics_options.float.border,
                 -- }
