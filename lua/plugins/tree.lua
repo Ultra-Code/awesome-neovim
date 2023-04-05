@@ -288,7 +288,7 @@ return {
                     open_file = {
                         --closes the explorer when opening a file.
                         --It will also disable preventing a buffer overriding the tree.
-                        quit_on_open = false,
+                        quit_on_open = true,
                         --resizes the tree when opening a file
                         resize_window = false,
                         --window picker configuration
