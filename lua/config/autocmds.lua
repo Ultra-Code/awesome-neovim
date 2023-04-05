@@ -80,7 +80,7 @@ autocmd("FileType", {
 
 local diagnostics_options = require("config.defaults").diagnostics_options
 -- automatically show diagnostics on current line
-autocmd({ "CursorHold", "CursorHoldI" }, {
+autocmd({ "CursorHold" }, {
     callback = function()
         vim.diagnostic.open_float(nil, diagnostics_options.float)
     end
