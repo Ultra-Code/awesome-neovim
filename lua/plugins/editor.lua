@@ -108,7 +108,16 @@ return {
     -- which-key
     {
         "folke/which-key.nvim",
-        event = "VeryLazy",
+        cmd = { "WhichKey" },
+        keys = {
+            {
+                "<leader>k",
+                function()
+                    vim.cmd [[WhichKey]]
+                end,
+                desc = "WhichKey"
+            },
+        },
         opts = {
             plugins = {
                 marks = true,     -- shows a list of your marks on ' and `
@@ -116,7 +125,7 @@ return {
                 -- the presets plugin, adds help for a bunch of default keybindings in Neovim
                 -- No actual key bindings are created
                 spelling = {
-                    enabled = true,  -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+                    enabled = true,   -- enabling this will show WhichKey when pressing z= to select spelling suggestions
                     suggestions = 20, -- how many suggestions should be shown in the list?
                 },
                 presets = {
