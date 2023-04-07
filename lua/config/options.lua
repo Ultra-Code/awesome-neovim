@@ -1,4 +1,5 @@
 local opt = vim.opt
+local opt_global = vim.opt_global
 local fn = vim.fn -- invoke vim-functions in lua
 
 vim.g.mapleader = [[ ]]
@@ -7,17 +8,17 @@ vim.g.maplocalleader = [[\]]
 -- Set clipboard to the +  registers only
 -- if you want to use the * also add ,unnamed
 if fn.has("clipboard") == 1 then
-    vim.opt.clipboard:append({ "unnamedplus" })
+    opt.clipboard:append({ "unnamedplus" })
 end
 
-vim.opt.termguicolors = true
+opt.termguicolors = true
 
 -- Show line numbers
 opt.number = true
 
 -- open new split panes to right and below
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+opt.splitright = true
+opt.splitbelow = true
 
 -- Show the line number relative to the line with the cursor in front of each line.
 opt.relativenumber = true
@@ -32,7 +33,7 @@ opt.writebackup = true
 opt.backup = true
 
 --List of directories for the backup file
-vim.opt_global.backupdir = { "/tmp//" }
+opt_global.backupdir = { "/tmp//" }
 
 -- tells neovim how backups are done
 opt.backupcopy = "auto"
@@ -57,25 +58,25 @@ opt.updatetime = 100
 opt.timeoutlen = 500
 
 -- don't give |ins-completion-menu| messages.
-vim.opt.shortmess:append({ c = true, W = true, I = true })
+opt.shortmess:append({ c = true, W = true, I = true })
 
 -- always merge sign column and number column into one
 opt.signcolumn = "yes"
 
 -- Don't let autocomplete affect usual typing habits
-vim.opt_global.completeopt = { "menu", "menuone", "noselect" }
+opt_global.completeopt = { "menu", "menuone", "noselect" }
 
-vim.opt.conceallevel = 3     -- Hide * markup for bold and italic
-vim.opt.concealcursor = "nc" --Sets the modes in which text in the cursor line can also be concealed.
+opt.conceallevel = 3     -- Hide * markup for bold and italic
+opt.concealcursor = "nc" --Sets the modes in which text in the cursor line can also be concealed.
 
-vim.opt.cursorline = true    -- Enable highlighting of the current line
+opt.cursorline = true    -- Enable highlighting of the current line
 
-vim.opt.pumblend = 10        -- Popup blend
-vim.opt.pumheight = 10       -- Maximum number of entries in a popup
+opt.pumblend = 10        -- Popup blend
+opt.pumheight = 10       -- Maximum number of entries in a popup
 
-vim.opt.scrolloff = 3        -- Minimal number of screen lines to keep above and below the cursor.
+opt.scrolloff = 3        -- Minimal number of screen lines to keep above and below the cursor.
 -- The minimal number of screen columns to keep to the left and to the right of the cursor if 'nowrap' is set.
-vim.opt.sidescrolloff = 9
+opt.sidescrolloff = 9
 
 -- This option allows you to switch between multiple buffers
 opt.hidden = true -- without saving a changed buffer
@@ -97,17 +98,17 @@ opt.showmatch = true
 opt.complete = "kspell"
 
 -- Enable spell checking for español y ingles--
-vim.opt.spelllang = { "en" } --"en,es"
+opt.spelllang = { "en" } --"en,es"
 
 -- Show best nine spell checking candidates at most
-vim.opt_global.spellsuggest = { "best", "9" }
+opt_global.spellsuggest = { "best", "9" }
 
 -- When a word is CamelCased, assume "Cased" is a separate word: every upper-case character
 -- in a word that comes after a lower case character indicates the start of a new word.
 opt.spelloptions = "camel"
 
 -- make diff mode always open in vertical split
-vim.opt_global.diffopt:append({ "vertical" })
+opt_global.diffopt:append({ "vertical" })
 
 -- Use visual bell (no beeping)
 opt.visualbell = true
@@ -153,20 +154,20 @@ opt.lazyredraw = true
 opt.list = true
 
 -- Unprintable chars mapping
-vim.opt.listchars = { tab = "••", trail = "•", extends = "»", precedes = "«", eol = "↴" }
+opt.listchars = { tab = "••", trail = "•", extends = "»", precedes = "«", eol = "↴" }
 
 -- Enable folding
-vim.opt.foldmethod = "expr"
+opt.foldmethod = "expr"
 
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- diable folding at startup
-vim.opt.foldenable = false
+opt.foldenable = false
 
 -- set the number of screen lines above which a fold is displayed closed
-vim.opt.foldminlines = 5
+opt.foldminlines = 5
 
-if vim.fn.has("nvim-0.9.0") == 1 then
-    vim.opt.splitkeep = "screen"
-    vim.opt.shortmess:append { C = true }
+if fn.has("nvim-0.9.0") == 1 then
+    opt.splitkeep = "screen"
+    opt.shortmess:append { C = true }
 end
