@@ -176,7 +176,7 @@ return {
                 desc = "List LSP references for word under the cursor",
             },
             {
-                "<leader>sR",
+                "<leader>R",
                 telescope_builtin("resume"),
                 desc = "Resume"
             },
