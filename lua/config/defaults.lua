@@ -57,7 +57,7 @@ return {
     ---@type table
     diagnostics_options = {
         virtual_text = {
-            severity = vim.diagnostic.severity.ERROR,
+            severity = vim.diagnostic.severity.WARN,
             source = "if_many", -- prefix = "●"
         },
         float = {
