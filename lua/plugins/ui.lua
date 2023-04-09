@@ -131,26 +131,20 @@ return {
             vim.cmd("TSUpdate")
         end,
         opts = {
-            ensure_installed = {
-                "cpp",
-                "zig",
-                "nix",
-                "jsonc",
-                "lua",
-                "vue",
-                "typescript",
-                "scss",
-                "html",
-                "norg",
-                "glsl",
-                "vim",
-            },
-            -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+            -- A list of parser names, or "all" (the 1st five listed parsers should always be installed)
+            -- For web dev "jsonc", "typescript", "css", "html", "vue",
+            ensure_installed = { "c", "lua", "vim", "vimdoc", "cpp", "zig", "norg", "bash", "glsl" },
+            -- Install parsers synchronously (only applied to `ensure_installed`)
+            sync_install = false,
+            -- Automatically install missing parsers when entering buffer
+            -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+            auto_install = true,
             ignore_install = {}, -- List of parsers to ignore installing
             highlight = {
                 enable = true,   -- false will disable the whole extension
                 disable = {},    -- list of language that will be disabled
             },
+            --Incremental selection based on the named nodes from the grammar.
             incremental_selection = {
                 enable = true,
                 keymaps = {
@@ -160,6 +154,7 @@ return {
                     node_decremental = "<bs>",
                 },
             },
+            --Indentation based on treesitter for the = operator.
             indent = {
                 enable = true,
             },
