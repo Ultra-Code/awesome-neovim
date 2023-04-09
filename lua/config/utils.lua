@@ -52,23 +52,39 @@ M.check_if_cmd_exist = function(cmds)
     return result
 end
 
----@param silent boolean?
+---@param editor_variable? boolean?
 ---@param values? {[1]:any, [2]:any}
-function M.toggle(option, silent, values)
+---@param option string
+function M.toggle(option, editor_variable, values)
     if values then
-        if vim.opt_local[option]:get() == values[1] then
-            vim.opt_local[option] = values[2]
+        if not editor_variable then
+            if vim.opt_local[option]:get() == values[1] then
+                vim.opt_local[option] = values[2]
+            else
+                vim.opt_local[option] = values[1]
+            end
+            vim.notify("Set option " .. option .. " to " .. vim.opt_local[option]:get(), vim.log.levels.INFO)
         else
-            vim.opt_local[option] = values[1]
+            local bufnr = vim.api.nvim_get_current_buf()
+            if vim.b[bufnr][option] == values[1] then
+                vim.b[bufnr][option] = values[2]
+            else
+                --if option is unset or nil
+                vim.b[bufnr][option] = values[1]
+            end
+            --:h debug.getinfo() or lua_getinfo() to get information about a function
+            vim.notify(
+                "Set variable " .. option .. " to " .. tostring(vim.b[bufnr][option]), vim.log.levels.INFO)
         end
-        vim.notify("Set " .. option .. " to " .. vim.opt_local[option]:get(), vim.log.levels.INFO)
-    end
-    vim.opt_local[option] = not vim.opt_local[option]:get()
-    if not silent then
-        if vim.opt_local[option]:get() then
-            vim.notify("Enabled " .. option, vim.log.levels.INFO)
+    else
+        if not editor_variable then
+            vim.opt_local[option] = not vim.opt_local[option]:get()
+            vim.notify("Set option " .. option .. " to " .. vim.opt_local[option]:get(), vim.log.levels.INFO)
         else
-            vim.notify("Disabled " .. option, vim.log.levels.INFO)
+            local bufnr = vim.api.nvim_get_current_buf()
+            vim.b[bufnr][option] = not vim.b[bufnr][option] and true or false
+            vim.notify("Set variable " .. option .. " to " .. tostring(vim.b[bufnr][option]),
+                vim.log.levels.INFO)
         end
     end
 end
@@ -108,9 +124,9 @@ end
 function M.on_attach(on_attach)
     vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
-            local buffer = args.buf
+            local bufnr = args.buf
             local client = vim.lsp.get_client_by_id(args.data.client_id)
-            on_attach(client, buffer)
+            on_attach(client, bufnr)
         end,
     })
 end
