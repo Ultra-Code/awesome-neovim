@@ -40,7 +40,9 @@ require("lazy").setup({
                 "man",
                 "shada",
                 "spellfile",
-
+                "health",
+                "editorconfig",
+                "nvim"
             },
         },
     },
