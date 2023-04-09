@@ -3,7 +3,7 @@ return {
     -- Onedark colorscheme
     {
         "navarasu/onedark.nvim",
-        event = "VimEnter",
+        event = "BufEnter",
         config = function(_, opts)
             require("onedark").setup(opts)
             require("onedark").load()
