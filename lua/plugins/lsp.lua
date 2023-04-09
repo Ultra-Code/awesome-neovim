@@ -18,6 +18,19 @@ return {
                                 },
                             }),
                             null_ls.builtins.diagnostics.zsh,
+                            null_ls.builtins.diagnostics.shellcheck.with({
+                                filetypes = { "zsh", "bash", "sh" },
+                            }),
+                            null_ls.builtins.diagnostics.glslc.with({
+                                extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0
+                            }),
+                            null_ls.builtins.code_actions.shellcheck.with({
+                                filetypes = { "zsh", "bash", "sh" },
+                            }),
+                            null_ls.builtins.code_actions.gitsigns,
+                            null_ls.builtins.hover.printenv.with({
+                                filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
+                            })
                         },
                     }
                 end,
@@ -36,7 +49,9 @@ return {
                 -- tailwindcss = {},
                 -- tsserver = {},
                 -- volar = {},
-                -- bashls = {},
+                bashls = {
+                    filetypes = { "zsh", "bash", "sh" },
+                },
                 clangd = {
                     cmd = {
                         "clangd",
