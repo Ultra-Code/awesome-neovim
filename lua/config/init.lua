@@ -1,3 +1,6 @@
+--Enable the new |lua-loader| that byte-compiles and caches lua files.
+vim.loader.enable()
+
 -- Load editor options
 require("config.options")
 
