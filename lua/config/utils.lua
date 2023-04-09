@@ -1,10 +1,10 @@
 local M = {}
 
 function _G.dump(...)
-    vim.pretty_print(...);
+    vim.print(...);
 end
 
-function _G.reloadAllModules()
+function M.reload_all()
     for name, _ in pairs(package.loaded) do
         if name:match("^lazy")
             or name:match("^mapping")
@@ -23,7 +23,7 @@ function _G.reloadAllModules()
     dofile(vim.env.MYVIMRC)
 end
 
-function _G.reload(module)
+function M.reload_one(module)
     for name, _ in pairs(package.loaded) do
         if name:match("^" .. module) then
             package.loaded[name] = nil
