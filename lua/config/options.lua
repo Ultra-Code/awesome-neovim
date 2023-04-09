@@ -2,6 +2,7 @@ local opt = vim.opt
 local opt_global = vim.opt_global
 local fn = vim.fn -- invoke vim-functions in lua
 
+vim.g.editorconfig = false
 vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[\]]
 
@@ -159,15 +160,10 @@ opt.listchars = { tab = "••", trail = "•", extends = "»", precedes = "«"
 -- Enable folding
 opt.foldmethod = "expr"
 
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- diable folding at startup
 opt.foldenable = false
 
 -- set the number of screen lines above which a fold is displayed closed
 opt.foldminlines = 5
-
-if fn.has("nvim-0.9.0") == 1 then
-    opt.splitkeep = "screen"
-    opt.shortmess:append { C = true }
-end
