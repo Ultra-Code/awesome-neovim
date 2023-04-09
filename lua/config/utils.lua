@@ -63,7 +63,7 @@ function M.toggle(option, editor_variable, values)
             else
                 vim.opt_local[option] = values[1]
             end
-            vim.notify("Set option " .. option .. " to " .. vim.opt_local[option]:get(), vim.log.levels.INFO)
+            vim.notify("set editor option " .. option .. " to " .. vim.opt_local[option]:get(), vim.log.levels.INFO)
         else
             local bufnr = vim.api.nvim_get_current_buf()
             if vim.b[bufnr][option] == values[1] then
@@ -73,18 +73,16 @@ function M.toggle(option, editor_variable, values)
                 vim.b[bufnr][option] = values[1]
             end
             --:h debug.getinfo() or lua_getinfo() to get information about a function
-            vim.notify(
-                "Set variable " .. option .. " to " .. tostring(vim.b[bufnr][option]), vim.log.levels.INFO)
+            vim.notify("set option " .. option .. " to " .. tostring(vim.b[bufnr][option]), vim.log.levels.INFO)
         end
     else
         if not editor_variable then
             vim.opt_local[option] = not vim.opt_local[option]:get()
-            vim.notify("Set option " .. option .. " to " .. vim.opt_local[option]:get(), vim.log.levels.INFO)
+            vim.notify("set editor option " .. option .. " to " .. vim.opt_local[option]:get(), vim.log.levels.INFO)
         else
             local bufnr = vim.api.nvim_get_current_buf()
             vim.b[bufnr][option] = not vim.b[bufnr][option] and true or false
-            vim.notify("Set variable " .. option .. " to " .. tostring(vim.b[bufnr][option]),
-                vim.log.levels.INFO)
+            vim.notify("set option " .. option .. " to " .. tostring(vim.b[bufnr][option]), vim.log.levels.INFO)
         end
     end
 end
