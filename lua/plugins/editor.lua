@@ -3,24 +3,75 @@ return {
 
     -- auto pairs
     {
-        "echasnovski/mini.pairs",
+        "windwp/nvim-autopairs",
         event = "VeryLazy",
         config = function(_, opts)
-            require("mini.pairs").setup(opts)
-        end,
+            require("nvim-autopairs").setup(opts)
+        end
     },
     -- comments
     {
-        "echasnovski/mini.comment",
+        "numToStr/Comment.nvim",
         event = "VeryLazy",
-        opts = {
-            hooks = {
-                pre = function()
-                end,
-            },
-        },
         config = function(_, opts)
-            require("mini.comment").setup(opts)
+            require('Comment').setup(opts)
+        end
+    },
+    --Neovim motion on speed
+    {
+        "phaazon/hop.nvim",
+        keys = {
+            { "f", mode = { "n", "x", "o" }, desc = "hop improved f" },
+            { "F", mode = { "n", "x", "o" }, desc = "hop improved F" },
+            { "t", mode = { "n", "x", "o" }, desc = "hop improved t" },
+            { "T", mode = { "n", "x", "o" }, desc = "hop improved T" },
+            {
+                "<leader>hw",
+                function()
+                    require 'hop'.hint_words()
+                end,
+                desc = "hop word"
+            },
+            {
+                "<leader>h2",
+                function()
+                    require 'hop'.hint_char2()
+                end,
+                desc = "hop 2 char hint"
+            },
+            {
+                "<leader>h1",
+                function()
+                    require 'hop'.hint_char1()
+                end,
+                desc = "hop 1 char hint"
+            },
+            {
+                "<leader>h/",
+                function()
+                    require 'hop'.hint_patterns()
+                end,
+                desc = "hop pattern hint"
+            }
+        },
+        config = function()
+            -- place this in one of your configuration file(s)
+            local mode = { "n", "x", "o" }
+            local hop = require('hop')
+            local directions = require('hop.hint').HintDirection
+            vim.keymap.set(mode, 'f', function()
+                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+            end, { remap = true })
+            vim.keymap.set(mode, 'F', function()
+                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+            end, { remap = true })
+            vim.keymap.set(mode, 't', function()
+                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+            end, { remap = true })
+            vim.keymap.set(mode, 'T', function()
+                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+            end, { remap = true })
+            require("hop").setup()
         end,
     },
     -- library used by other plugins
@@ -109,16 +160,6 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        cmd = { "WhichKey" },
-        keys = {
-            {
-                "<leader>k",
-                function()
-                    vim.cmd [[WhichKey]]
-                end,
-                desc = "WhichKey"
-            },
-        },
         opts = {
             plugins = {
                 marks = true,     -- shows a list of your marks on ' and `
@@ -156,7 +197,7 @@ return {
                 ["]"] = { name = "+next" },
                 ["["] = { name = "+prev" },
                 ["<leader><tab>"] = { name = "+tabs" },
-                ["<leader>b"] = { name = "+buffer" },
+                ["<leader>b"] = { name = "+buffer/BufferLine" },
                 ["<leader>c"] = { name = "+code" },
                 ["<leader>f"] = { name = "+file/find" },
                 ["<leader>g"] = { name = "+git" },
@@ -166,6 +207,8 @@ return {
                 ["<leader>u"] = { name = "+ui" },
                 ["<leader>w"] = { name = "+windows" },
                 ["<leader>x"] = { name = "+diagnostics/quickfix" },
+                ["<leader>h"] = { name = "+gitsigns/hop" },
+                ["<localleader>"] = { name = "<localleader>" },
             }
             wk.register(keymaps)
         end,
