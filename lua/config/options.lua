@@ -157,7 +157,7 @@ opt.lazyredraw = false
 opt.list = true
 
 -- Unprintable chars mapping
-opt.listchars = { tab = "••", trail = "•", extends = "»", precedes = "«", eol = "↴" }
+opt.listchars = { tab = "••", trail = "•", extends = "»", precedes = "«" } -- eol = "↴"
 
 -- Enable folding
 opt.foldmethod = "expr"

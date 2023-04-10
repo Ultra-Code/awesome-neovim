@@ -1,16 +1,11 @@
-local map = function(mode, lhs, rhs, opts)
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    mode = mode == nil and { "n" } or type(mode) == "string" and { mode } or mode
-    vim.keymap.set(mode, lhs, rhs, opts)
-end
+local utils = require("config.utils")
+local map = utils.map
 
 local opt = { remap = true }
-local utils = require("config.utils")
 
 vim.cmd [[ cabbrev ht tab help]] --map("c","h","tab help")
 
--- search selected region on current line
+-- search visually selected region on current line
 map("v", "//", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opt)
 
 -- Map jk to ESC
@@ -19,15 +14,15 @@ map({ "i", "v" }, "jk", "<ESC>", { remap = false, nowait = true })
 map("n", "B", "m`0i<CR><ESC>``i", opt) -- J(join) B(BackJoin): move text after cursor to next line
 
 -- keep pasting over the same thing, ie. delete content and paste something in it place
-map("n", "<leader>p", [[m`0"_DP``]], opt)
-map("v", "<leader>p", [[m`"_dP``]], opt)
+map("n", "<leader>p", [[m`0"_DP``]], opt, "keep pasting overwriting text")
+map("v", "<leader>p", [[m`"_dP``]], opt, "keep pasting over the same thing")
 
 -- delete content without clobbering registers
-map("n", "<leader>d", [["_dd]], opt)
-map("v", "<leader>d", [["_d]], opt)
+map("n", "<leader>d", [["_dd]], opt, "delete content without clobbering registers")
+map("v", "<leader>d", [["_d]], opt, "delete content without clobbering registers")
 
 -- Switch CWD to the directory of the open buffer
-map({ "n", "v", "o" }, "<leader>cd", "<cmd>cd %:p:h<cr>:pwd<cr>", opt)
+map({ "n", "v", "o" }, "<leader>cd", "<cmd>cd %:p:h<cr>:pwd<cr>", opt, "switch to cwd")
 
 -- === Moving around, tabs, windows and buffers === --
 -- To use `ALT+{h,j,k,l}` to navigate windows from any mode
@@ -55,24 +50,24 @@ else
     map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" }) -- move back to the previous buffer in the buffer list
     map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })     -- move forward to the next buffer in the buffer list
 end
-map("n", "<leader>bb", "<cmd>b#<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>`", "<cmd>b#<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>b1", "<cmd>bfirst<cr>", opt)                          -- move to the first buffer in the buffer list
-map("n", "<leader>b9", "<cmd>blast<cr>", opt)                           -- move to the last buffer in the buffer list
-map("n", "<leader>bd", "<cmd>bdelete<cr>", opt)                         -- Close the current buffer
-map("n", "<leader>bo", "<cmd>%bdelete<bar>edit#<bar>bdelete#<cr>", opt) -- Close all buffers except current
-map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New File" })          -- new file
+map("n", "<leader>bb", "<cmd>b#<cr>", { desc = "Switch to Previous Buffer" })
+map("n", "<leader>`", "<cmd>b#<cr>", { desc = "Switch to Previous Buffer" })
+map("n", "<leader>b1", "<cmd>bfirst<cr>", opt, "goto first buffer")      -- move to the first buffer in the buffer list
+map("n", "<leader>b9", "<cmd>blast<cr>", opt, "goto last buffer")        -- move to the last buffer in the buffer list
+map("n", "<leader>bd", "<cmd>bdelete<cr>", opt, "delete current buffer") -- Close the current buffer
+map("n", "<leader>bo", "<cmd>%bdelete<bar>edit#<bar>bdelete#<cr>", opt)  -- Close all buffers except current
+map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New File" })           -- new file
 
 -- Useful mappings for managing tabs
-map(mode, "<leader>t1", "<cmd>tabfirst<cr>", opt)
-map(mode, "<leader>t9", "<cmd>tablast<cr>", opt)
-map(mode, "<leader>td", "<cmd>tabclose<cr>", opt)
-map(mode, "<leader>tn", "<cmd>tabnew<cr>", opt)
-map(mode, "<leader>to", "<cmd>tabonly<cr>", opt)
+map(mode, "<leader>t1", "<cmd>tabfirst<cr>", opt, "goto first tab")
+map(mode, "<leader>t9", "<cmd>tablast<cr>", opt, "goto last tab")
+map(mode, "<leader>td", "<cmd>tabclose<cr>", opt, "close tab")
+map(mode, "<leader>tn", "<cmd>tabnew<cr>", opt, "new tab")
+map(mode, "<leader>to", "<cmd>tabonly<cr>", opt, "close all tabs except current")
 --TODO: tabmove should take an input
-map(mode, "<leader>tm", "<cmd>tabmove<cr>", opt)
-map(mode, "<leader>]t", "<cmd>tabnext<cr>", opt)
-map(mode, "<leader>[t", "<cmd>tabprevious<cr>", opt)
+map(mode, "<leader>tm", "<cmd>tabmove<cr>", opt, "move tab")
+map(mode, "<leader>]t", "<cmd>tabnext<cr>", opt, "goto next tab")
+map(mode, "<leader>[t", "<cmd>tabprevious<cr>", opt, "goto previous tab")
 
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })

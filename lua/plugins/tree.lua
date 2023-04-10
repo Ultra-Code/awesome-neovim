@@ -12,7 +12,8 @@ return {
                     require("nvim-tree.api").tree.toggle({ focus = true, find_file = true, })
                 end,
                 mode = "n",
-                silent = true
+                silent = true,
+                desc = "toggle tree"
             },
         },
         init = function()

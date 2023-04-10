@@ -63,9 +63,10 @@ function M.toggle(option, editor_variable, values)
             else
                 vim.opt_local[option] = values[1]
             end
-            vim.notify("set editor option " .. option .. " to " .. vim.opt_local[option]:get(), vim.log.levels.INFO, {
-                title = "toggle editor option",
-            })
+            vim.notify("set editor option " .. option .. " to " .. tostring(vim.opt_local[option]:get()),
+                vim.log.levels.INFO, {
+                    title = "toggle editor option",
+                })
         else
             local bufnr = vim.api.nvim_get_current_buf()
             if vim.b[bufnr][option] == values[1] then
@@ -82,9 +83,10 @@ function M.toggle(option, editor_variable, values)
     else
         if not editor_variable then
             vim.opt_local[option] = not vim.opt_local[option]:get()
-            vim.notify("set editor option " .. option .. " to " .. vim.opt_local[option]:get(), vim.log.levels.INFO, {
-                title = "toggle editor option",
-            })
+            vim.notify("set editor option " .. option .. " to " .. tostring(vim.opt_local[option]:get()),
+                vim.log.levels.INFO, {
+                    title = "toggle editor option",
+                })
         else
             local bufnr = vim.api.nvim_get_current_buf()
             vim.b[bufnr][option] = not vim.b[bufnr][option] and true or false
@@ -145,6 +147,23 @@ function M.has(plugin)
         local plugin_name = vim.split(plugin, ".", { plain = true, trimempty = true })
         return package.loaded[plugin_name[1]] ~= nil
     end
+end
+
+---@param description? string
+---@param opt table
+local function mdesc(opt, description)
+    return vim.tbl_extend("force", opt, { desc = description })
+end
+
+---@param mode string|table
+---@param lhs string
+---@param rhs string|function
+---@param opts? table
+---@param desc? string
+M.map = function(mode, lhs, rhs, opts, desc)
+    opts = opts and opts or {}
+    opts = mdesc(opts, desc)
+    vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 return M;
