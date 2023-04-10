@@ -259,6 +259,16 @@ return {
                     -- Whether to show the destination of the symlink.
                     symlink_destination = true,
                 },
+                diagnostics = {
+                    enable = true,
+                    show_on_dirs = true,
+                    show_on_open_dirs = true,
+                    debounce_delay = 50,
+                    severity = {
+                        min = vim.diagnostic.severity.INFO,
+                        max = vim.diagnostic.severity.ERROR,
+                    },
+                },
                 --filtering options
                 filters = {
                     --do not show dotfiles: files starting with a `.`
