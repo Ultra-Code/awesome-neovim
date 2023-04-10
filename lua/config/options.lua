@@ -85,6 +85,8 @@ opt.hidden = true -- without saving a changed buffer
 -- Automatically enable mouse usage
 opt.mouse = "a"
 
+opt.mousemoveevent = true -- enable mouse move event
+
 -- enable line wrap
 opt.wrap = false
 
@@ -142,14 +144,14 @@ opt.expandtab = true
 opt.confirm = true
 
 -- Command line height
-opt.cmdheight = 1
+opt.cmdheight = 0
 
 -- Auto-write all file changes
 opt.autowriteall = true
 
 --When this option is set, the screen will not be redrawn while executing
 --macros, registers and other commands that have not been typed
-opt.lazyredraw = true
+opt.lazyredraw = false
 
 -- Display unprintable characters f12 - switches
 opt.list = true
