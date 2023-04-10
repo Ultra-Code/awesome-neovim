@@ -8,6 +8,7 @@ end
 local opt = { remap = true }
 local utils = require("config.utils")
 
+vim.cmd [[ cabbrev ht tab help]] --map("c","h","tab help")
 
 -- search selected region on current line
 map("v", "//", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opt)
@@ -43,7 +44,7 @@ map("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
 local mode = { "n", "v", "o" }
 
 -- buffers
-if package.loaded["bufferline.nvim"] then
+if utils.has("bufferline.nvim") then
     map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
     map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
     map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
@@ -59,7 +60,7 @@ map("n", "<leader>`", "<cmd>b#<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>b1", "<cmd>bfirst<cr>", opt)                          -- move to the first buffer in the buffer list
 map("n", "<leader>b9", "<cmd>blast<cr>", opt)                           -- move to the last buffer in the buffer list
 map("n", "<leader>bd", "<cmd>bdelete<cr>", opt)                         -- Close the current buffer
-map("n", "<leader>bo", "<cmd>%bdelete<bar>edit#<bar>bdelete#<cr>", opt) -- Close all the buffers
+map("n", "<leader>bo", "<cmd>%bdelete<bar>edit#<bar>bdelete#<cr>", opt) -- Close all buffers except current
 map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New File" })          -- new file
 
 -- Useful mappings for managing tabs
@@ -105,7 +106,14 @@ map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- save file
-map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+map({ "i", "v", "n", "s" }, "<C-s>", function()
+    vim.cmd [[w]]
+end, { desc = "Save file" })
+
+-- quit
+map("n", "<C-q>", function()
+    vim.cmd [[qall]]
+end, { desc = "Quit all" })
 
 -- === Terminal === "
 -- Mapping to open terminal emulator in nvim
@@ -144,15 +152,7 @@ local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>uc", function() utils.toggle("conceallevel", false, { 0, conceallevel }) end,
     { desc = "Toggle Conceal" })
 
--- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-
--- highlights under cursor
-if vim.fn.has("nvim-0.9.0") == 1 then
-    map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
-end
-
-if not package.loaded["trouble"] then
+if not utils.has("trouble.nvim") then
     map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
     map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 end
