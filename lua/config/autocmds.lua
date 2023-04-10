@@ -104,7 +104,7 @@ utils.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr }
 
     if client.server_capabilities.hoverProvider then
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, mdesc(opts,"get hover info"))
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, mdesc(opts, "get hover info"))
     end
     if client.server_capabilities.signatureHelpProvider then
         map("n", "<localleader>k", vim.lsp.buf.signature_help, mdesc(opts, "get fn signature help"))
@@ -116,7 +116,7 @@ utils.on_attach(function(client, bufnr)
     if client.server_capabilities.definitionProvider then
         map("n", "<localleader>gd",
             function()
-                if package.loaded["trouble"] then
+                if utils.has("trouble.nvim") then
                     vim.cmd [[Trouble lsp_definitions]]
                 else
                     vim.lsp.buf.definition()
@@ -127,7 +127,7 @@ utils.on_attach(function(client, bufnr)
     if client.server_capabilities.typeDefinitionProvider then
         map("n", "<localleader>td",
             function()
-                if package.loaded["trouble"] then
+                if utils.has("trouble.nvim") then
                     vim.cmd [[Trouble lsp_type_definitions]]
                 else
                     vim.lsp.buf.type_definition()
@@ -138,7 +138,7 @@ utils.on_attach(function(client, bufnr)
     if client.server_capabilities.implementationProvider then
         map("n", "<localleader>gi",
             function()
-                if package.loaded["trouble"] then
+                if utils.has("trouble.nvim") then
                     vim.cmd [[Trouble lsp_implementations]]
                 else
                     vim.lsp.buf.implementation()
@@ -149,7 +149,7 @@ utils.on_attach(function(client, bufnr)
     if client.server_capabilities.referencesProvider then
         map("n", "<localleader>gr",
             function()
-                if package.loaded["trouble"] then
+                if utils.has("trouble.nvim") then
                     vim.cmd [[Trouble lsp_references]]
                 else
                     vim.lsp.buf.references({})
