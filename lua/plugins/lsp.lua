@@ -17,7 +17,9 @@ return {
                                     "--inconclusive",
                                 },
                             }),
-                            null_ls.builtins.diagnostics.zsh,
+                            null_ls.builtins.diagnostics.zsh.with({
+                                filetypes = { "zsh", "bash" }
+                            }),
                             null_ls.builtins.diagnostics.shellcheck.with({
                                 filetypes = { "zsh", "bash", "sh" },
                             }),
