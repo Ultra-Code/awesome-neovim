@@ -2,7 +2,7 @@ local opt = vim.opt
 local opt_global = vim.opt_global
 local fn = vim.fn -- invoke vim-functions in lua
 
-vim.g.editorconfig = false
+vim.g.editorconfig = true
 vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[\]]
 
@@ -91,7 +91,7 @@ opt.mousemoveevent = true -- enable mouse move event
 opt.wrap = false
 
 -- Maximum width (number of cols) of text that is being inserted
-opt.textwidth = 80
+opt.textwidth = 120
 
 -- Highlight matching brace
 opt.showmatch = true
