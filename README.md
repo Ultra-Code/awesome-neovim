@@ -3,7 +3,7 @@
 This repo it to make setting up of [neovim][nvim] >= 0.9 a breeze.
 The setup is powered by [💤 lazy.nvim][lazy-nvim]
 
->For the previous config setup with paq.nvim checkout [paq-branch][https://github.com/Ultra-Code/awesome-neovim/tree/paq]
+__NOTE__ For the previous config setup with paq.nvim checkout [paq-branch][paq-nvim-branch]
 
 
 ## ✨ Features Supported
@@ -21,7 +21,7 @@ The setup is powered by [💤 lazy.nvim][lazy-nvim]
 ![Awesome-NeoVim with Zig]()
 ![Awesome-NeoVim with Lua]()
 
-## Requirement
+## ⚡️ Requirement
 - Neovim >= **0.9.0** (needs to be built with **LuaJIT**)
 - git >= **2.40.0** (gitsigns ...)
 - tree-sitter >= **0.20.8** (to enable automatically installing missing parsers when entering buffers)
@@ -33,7 +33,7 @@ The setup is powered by [💤 lazy.nvim][lazy-nvim]
 > its required [lsp server configuration](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)
 and installing the server and other accompanying tools for development like linters, static analysers, formatter
 
-## Repo structure
+## 📂 Directory structure
 ```text
     📂 ~/.config/nvim
     ├── 📂 ftplugin
@@ -86,10 +86,10 @@ lazy.nvim configuration
 
 ## 🚀 Getting Started
 
-You can find this config **awesome-neovim** [here][awesome-neovim]
+You can find **awesome-neovim** [here][awesome-nvim]
 
 <details><summary>Follow the steps below to use
-[awesome nvim][awesome-neovim]</summary>
+[awesome nvim][awesome-nvim]</summary>
 
 - fork this repo into your account
 
@@ -120,12 +120,12 @@ You can find this config **awesome-neovim** [here][awesome-neovim]
 ---
 
 
-### For information on how to use [lazy.nvim][lazy-nvim]
+### ⚙️  For information on how to use [lazy.nvim][lazy-nvim]
 
 You can throughly go through configuration and if more clarification is required
 read [lazy's][lazy-nvim] README
 
-### for help using the various plugins and extensions
+ **for help using the various plugins and extensions**
 
 ```zsh
 :help local-addtions
@@ -133,11 +133,13 @@ read [lazy's][lazy-nvim] README
 
 to view the help pages and instruction manual on the various extensions
 
----
+
+
 
 [awesome-nvim]: https://github.com/Ultra-Code/awesome-neovim
 [lazy-nvim]: https://github.com/folke/lazy.nvim
 [nvim]: https://github.com/neovim/neovim/
+[paq-nvim-branch]: https://github.com/Ultra-Code/awesome-neovim/tree/paq
 
 >>Big ShoutOuts to the Creators of Neovim.
 >Another to all the creators of the various neovim extensions.
