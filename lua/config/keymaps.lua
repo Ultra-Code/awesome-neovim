@@ -139,12 +139,12 @@ map("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 map("n", "<leader>us", function() utils.toggle("spell") end, { desc = "Toggle Spelling" })
 map("n", "<leader>uw", function() utils.toggle("wrap") end, { desc = "Toggle Word Wrap" })
 map("n", "<leader>ul", function()
-    utils.toggle("relativenumber", true)
+    utils.toggle("relativenumber")
     utils.toggle("number")
 end, { desc = "Toggle Line Numbers" })
 
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-map("n", "<leader>uc", function() utils.toggle("conceallevel", false, { 0, conceallevel }) end,
+map("n", "<leader>uc", function() utils.toggle("conceallevel", nil, { 0, conceallevel }) end,
     { desc = "Toggle Conceal" })
 
 if not utils.has("trouble.nvim") then
