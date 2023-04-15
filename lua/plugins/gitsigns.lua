@@ -28,7 +28,7 @@ return {
 
                 local function map(mode, l, r, opts)
                     opts = opts and vim.tbl_extend("force", opts, { buffer = bufnr }) or {}
-                    vim.keymap.set(mode, l, r, { buffer = bufnr })
+                    vim.keymap.set(mode, l, r, opts)
                 end
 
                 -- Navigation
@@ -49,19 +49,15 @@ return {
                 -- Actions
                 map({ "n", "v" }, "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "stage hunks" })
                 map({ "n", "v" }, "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>", { desc = "reset hunks" })
-                map("n", "<leader>hS", gs.stage_buffer, { desc = "stage buffer" })
-                map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "unstage hunk" })
-                map("n", "<leader>hR", gs.reset_buffer, { desc = "reset buffer" })
-                map("n", "<leader>hp", gs.preview_hunk, { desc = "preview hunk" })
-                map("n", "<leader>hb", function()
-                    gs.blame_line({ full = true })
-                end, { desc = "blame line" })
-                map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "toggle line blame" })
-                map("n", "<leader>hd", gs.diffthis, { desc = "diff this" })
-                map("n", "<leader>hD", function()
-                    gs.diffthis("~")
-                end, { desc = "diff entire buffer" })
-                map("n", "<leader>td", gs.toggle_deleted, { desc = "toggle deleted" })
+                map("n", "<leader>hS", function() gs.stage_buffer() end, { desc = "stage buffer" })
+                map("n", "<leader>hu", function() gs.undo_stage_hunk() end, { desc = "unstage hunk" })
+                map("n", "<leader>hR", function() gs.reset_buffer() end, { desc = "reset buffer" })
+                map("n", "<leader>hp", function() gs.preview_hunk() end, { desc = "preview hunk" })
+                map("n", "<leader>hb", function() gs.blame_line({ full = true }) end, { desc = "blame line" })
+                map("n", "<leader>tb", function() gs.toggle_current_line_blame() end, { desc = "toggle line blame" })
+                map("n", "<leader>hd", function() gs.diffthis() end, { desc = "diff this" })
+                map("n", "<leader>hD", function() gs.diffthis("~") end, { desc = "diff entire buffer" })
+                map("n", "<leader>td", function() gs.toggle_deleted() end, { desc = "toggle deleted" })
 
                 -- Text object
                 map({ "o", "x" }, "ih", "<cmd><C-U>Gitsigns select_hunk<CR>", { desc = "select hunks" })
