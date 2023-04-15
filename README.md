@@ -86,16 +86,16 @@ and installing the server and other accompanying tools for development like lint
     └──  README.md
 ```
 
-`ftplugin` directory contains files for setting options or mappings specific to filetypes
+`ftplugin` directory contains files for setting `options` or `mappings` specific to filetypes
 
-`lua/config` directory contains editor autocmds, keymaps, options, defaults, syntax files, utils fn's and
-lazy.nvim configuration
+`lua/config` directory contains editor `autocmds`, `keymaps`, `options`, `defaults`, `syntax files`, `utils fn's` and
+`lazy.nvim` configuration
 
-`lua/plugins` directory contains all plugins configurations and their mappings
+`lua/plugins` directory contains all `plugins` configurations and their `mappings`
 
-`.editorconfig` file for editor formatting options
+`.editorconfig` file for editor `formatting` options
 
-`init` file for initializing editor
+`init` initializing/start point for nvim editor
 
 
 ---
