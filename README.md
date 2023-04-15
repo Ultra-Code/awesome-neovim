@@ -26,7 +26,7 @@ The setup is powered and managed by [💤 lazy.nvim][lazy-nvim] plugin manager
 
 ### ⚡ Zig
 ![Zig with error](https://user-images.githubusercontent.com/22438427/232250532-21b2ba11-b432-4efd-929a-d252e9d4b992.png)
-![Zig struct hovered](ttps://user-images.githubusercontent.com/22438427/232250572-aaca84c6-98de-4632-b863-357a7748dfcb.png)
+![Zig struct hovered](https://user-images.githubusercontent.com/22438427/232250572-aaca84c6-98de-4632-b863-357a7748dfcb.png)
 
 ### 󰢱 Lua
 ![Lua with with errors](https://user-images.githubusercontent.com/22438427/232250603-e33108ab-235b-42f6-b12a-478ac259d93e.png)
@@ -105,7 +105,7 @@ lazy.nvim configuration
 
 You can find **awesome-neovim** [here][awesome-nvim]
 
-<details><summary>Follow the steps below to use <b>awesome-neovim<b> </summary>
+<details><summary>Follow the steps below to use <b>awesome-neovim</b> </summary>
 
 - fork this repo into your account
 
