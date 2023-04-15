@@ -52,7 +52,7 @@ M.check_if_cmd_exist = function(cmds)
     return result
 end
 
----@param editor_variable? boolean?
+---@param editor_variable? {global: boolean}
 ---@param values? {[1]:any, [2]:any}
 ---@param option string
 function M.toggle(option, editor_variable, values)
@@ -68,17 +68,29 @@ function M.toggle(option, editor_variable, values)
                     title = "toggle editor option",
                 })
         else
-            local bufnr = vim.api.nvim_get_current_buf()
-            if vim.b[bufnr][option] == values[1] then
-                vim.b[bufnr][option] = values[2]
+            if not editor_variable.global then
+                local bufnr = vim.api.nvim_get_current_buf()
+                if vim.b[bufnr][option] == values[1] then
+                    vim.b[bufnr][option] = values[2]
+                else
+                    --if option is unset or nil
+                    vim.b[bufnr][option] = values[1]
+                end
+                --:h debug.getinfo() or lua_getinfo() to get information about a function
+                vim.notify("set option " .. option .. " to " .. tostring(vim.b[bufnr][option]), vim.log.levels.INFO, {
+                    title = "toggle local option",
+                })
             else
-                --if option is unset or nil
-                vim.b[bufnr][option] = values[1]
+                if vim.g[option] == values[1] then
+                    vim.g[option] = values[2]
+                else
+                    --if option is unset or nil
+                    vim.g[option] = values[1]
+                end
+                vim.notify("set global option " .. option .. " to " .. tostring(vim.g[option]), vim.log.levels.INFO, {
+                    title = "toggle global option",
+                })
             end
-            --:h debug.getinfo() or lua_getinfo() to get information about a function
-            vim.notify("set option " .. option .. " to " .. tostring(vim.b[bufnr][option]), vim.log.levels.INFO, {
-                title = "toggle local option",
-            })
         end
     else
         if not editor_variable then
@@ -88,11 +100,18 @@ function M.toggle(option, editor_variable, values)
                     title = "toggle editor option",
                 })
         else
-            local bufnr = vim.api.nvim_get_current_buf()
-            vim.b[bufnr][option] = not vim.b[bufnr][option] and true or false
-            vim.notify("set option " .. option .. " to " .. tostring(vim.b[bufnr][option]), vim.log.levels.INFO, {
-                title = "toggle local option",
-            })
+            if not editor_variable.global then
+                local bufnr = vim.api.nvim_get_current_buf()
+                vim.b[bufnr][option] = not vim.b[bufnr][option] and true or false
+                vim.notify("set option " .. option .. " to " .. tostring(vim.b[bufnr][option]), vim.log.levels.INFO, {
+                    title = "toggle local option",
+                })
+            else
+                vim.g[option] = not vim.g[option]
+                vim.notify("set global option " .. option .. " to " .. tostring(vim.g[option]), vim.log.levels.INFO, {
+                    title = "toggle global option",
+                })
+            end
         end
     end
 end

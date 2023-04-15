@@ -184,7 +184,7 @@ utils.on_attach(function(client, bufnr)
             })
         end
         map("n", "<localleader>uh", function()
-            utils.toggle("highlight", true, { enable_highlight, disable_highlight })
+            utils.toggle("highlight", {}, { enable_highlight, disable_highlight })
             vim.b[vim.fn.bufnr()]["highlight"]()
         end, opts, "toggle document highlight")
     end
@@ -196,11 +196,11 @@ utils.on_attach(function(client, bufnr)
     end
     if client.server_capabilities.documentFormattingProvider then
         map("n", "<localleader>uf", function()
-            utils.toggle("autoformat", true)
+            utils.toggle("autoformat", { global = true })
             autocmd("BufWritePre", {
                 group = augroup("LspFormat"),
                 callback = function()
-                    if vim.b[vim.fn.bufnr()]["autoformat"] then
+                    if vim.g["autoformat"] then
                         vim.lsp.buf.format({ async = true })
                     end
                 end,
