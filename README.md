@@ -112,7 +112,7 @@ You can find **awesome-neovim** [here][awesome-nvim]
   GitHub [how to fork a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
 
 
-- Make a backup of your current Neovim files at $XDG_CONFIG_HOME/nvim and $XDG_DATA_HOME/nvim:
+- Make a backup of your current Neovim files at `$XDG_CONFIG_HOME/nvim` and `$XDG_DATA_HOME/nvim`:
 
   ```sh
   mv ~/.config/nvim ~/.config/nvim.bak
