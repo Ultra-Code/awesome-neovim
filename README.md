@@ -109,7 +109,7 @@ You can find **awesome-neovim** [here][awesome-nvim]
 
 - fork this repo into your account
 
-  github [how to fork a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+  GitHub [how to fork a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
 
 
 - Make a backup of your current Neovim files:
@@ -137,7 +137,7 @@ You can find **awesome-neovim** [here][awesome-nvim]
 ---
 
 
-### ⚙️  For information on how to use [lazy.nvim][lazy-nvim]
+## ⚙️  For information on how to use [lazy.nvim][lazy-nvim]
 
 You can thoroughly go through awesome-neovim configuration and if
 more clarification is required read [lazy's][lazy-nvim] README
@@ -156,9 +156,8 @@ To view the help pages and instruction manual on the various extensions
 [nvim]: https://github.com/neovim/neovim/
 [paq-nvim-branch]: https://github.com/Ultra-Code/awesome-neovim/tree/paq
 
-### 👏 Credit
-- Huge credit to [*@folke*](https://github.com/folke), I learnt a lot from his
-lazy config [repo](https://github.com/LazyVim/LazyVim)
+## 👏 Credit
+- *Huge credit to* [_@folke_](https://github.com/folke), *I learnt a lot from his lazy config* [repo](https://github.com/LazyVim/LazyVim)
 - *Big Shout Out to the creators of the various plugins which make nvim terrific*
 - *Another to all the creators of the various neovim extensions.*
 
