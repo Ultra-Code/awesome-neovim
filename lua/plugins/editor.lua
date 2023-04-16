@@ -14,7 +14,7 @@ return {
         "numToStr/Comment.nvim",
         event = "VeryLazy",
         config = function(_, opts)
-            require('Comment').setup(opts)
+            require("Comment").setup(opts)
         end
     },
     --Neovim motion on speed
@@ -28,52 +28,55 @@ return {
             {
                 "<leader>hw",
                 function()
-                    require 'hop'.hint_words()
+                    require "hop".hint_words()
                 end,
                 desc = "hop word"
             },
             {
                 "<leader>h2",
                 function()
-                    require 'hop'.hint_char2()
+                    require "hop".hint_char2()
                 end,
                 desc = "hop 2 char hint"
             },
             {
                 "<leader>h1",
                 function()
-                    require 'hop'.hint_char1()
+                    require "hop".hint_char1()
                 end,
                 desc = "hop 1 char hint"
             },
             {
                 "<leader>h/",
                 function()
-                    require 'hop'.hint_patterns()
+                    require "hop".hint_patterns()
                 end,
                 desc = "hop pattern hint"
             }
         },
         config = function()
             local mode = { "n", "x", "o" }
-            local hop = require('hop')
-            local directions = require('hop.hint').HintDirection
+            local hop = require("hop")
+            local directions = require("hop.hint").HintDirection
 
             local echo = vim.api.nvim_echo
             local noop = function()
             end
-            vim.keymap.set(mode, 'f', function()
+            vim.keymap.set(mode, "f", function()
                 --disable nvim_echo temporarily
                 vim.api.nvim_echo = noop
                 hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
             end, { remap = true })
-            vim.keymap.set(mode, 'F', function()
+            vim.keymap.set(mode, "F", function()
+                vim.api.nvim_echo = noop
                 hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
             end, { remap = true })
-            vim.keymap.set(mode, 't', function()
+            vim.keymap.set(mode, "t", function()
+                vim.api.nvim_echo = noop
                 hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
             end, { remap = true })
-            vim.keymap.set(mode, 'T', function()
+            vim.keymap.set(mode, "T", function()
+                vim.api.nvim_echo = noop
                 hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
             end, { remap = true })
 
@@ -91,7 +94,7 @@ return {
     -- todo comments
     {
         "folke/todo-comments.nvim",
-        event = { "BufReadPost", "BufNewFile" },
+        event = "VeryLazy",
         cmd = { "TodoTrouble", "TodoTelescope" },
         config = true,
         -- stylua: ignore
