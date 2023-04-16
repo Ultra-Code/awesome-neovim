@@ -25,8 +25,8 @@ The setup is powered and managed by [💤 lazy.nvim][lazy-nvim] plugin manager
 ![c++ with errors](https://user-images.githubusercontent.com/22438427/232250501-06f54292-46ad-44e7-945b-6d0ddb655621.png)
 
 ### ⚡ Zig
-![Zig with error](https://user-images.githubusercontent.com/22438427/232250532-21b2ba11-b432-4efd-929a-d252e9d4b992.png)
-![Zig struct hovered](https://user-images.githubusercontent.com/22438427/232250572-aaca84c6-98de-4632-b863-357a7748dfcb.png)
+![Zig(onedark colorscheme) with error](https://user-images.githubusercontent.com/22438427/232316211-99bbe5cf-ccf3-4727-a7ae-79cb889e4cad.png)
+![Zig(onedark colorscheme) struct hovered](https://user-images.githubusercontent.com/22438427/232316227-5b01cbe5-6ddf-41f7-a257-e9a2c5d08d3a.png)
 
 ### 󰢱 Lua
 ![Lua with with errors](https://user-images.githubusercontent.com/22438427/232250603-e33108ab-235b-42f6-b12a-478ac259d93e.png)
