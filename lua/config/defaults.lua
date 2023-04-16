@@ -61,7 +61,7 @@ return {
             source = "if_many", -- prefix = "●"
         },
         float = {
-            relative = "mouse",
+            relative = "cursor",
             close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
             focusable = false,
             focus = false,
