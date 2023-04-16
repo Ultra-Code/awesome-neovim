@@ -139,7 +139,7 @@ You can find **awesome-neovim** [here][awesome-nvim]
 
 ### ⚙️  For information on how to use [lazy.nvim][lazy-nvim]
 
-You can throughly go through awesome-neovim configuration and if
+You can thoroughly go through awesome-neovim configuration and if
 more clarification is required read [lazy's][lazy-nvim] README
 
  **for help using the various plugins and extensions**
@@ -148,7 +148,7 @@ more clarification is required read [lazy's][lazy-nvim] README
 :help local-addtions
 ```
 
-to view the help pages and instruction manual on the various extensions
+To view the help pages and instruction manual on the various extensions
 
 
 [awesome-nvim]: https://github.com/Ultra-Code/awesome-neovim
@@ -156,7 +156,10 @@ to view the help pages and instruction manual on the various extensions
 [nvim]: https://github.com/neovim/neovim/
 [paq-nvim-branch]: https://github.com/Ultra-Code/awesome-neovim/tree/paq
 
->>Big ShoutOuts to the Creators of Neovim.
->Another to all the creators of the various neovim extensions.
->And Last but not the least __God Bless The Vim && Neovim Community for this
->hyperextensible and hackable text editor__
+### 👏 Credit
+- Huge credit to [*@folke*](https://github.com/folke), I learnt a lot from his
+lazy config [repo](https://github.com/LazyVim/LazyVim)
+- *Big Shout Out to the creators of the various plugins which make nvim terrific*
+- *Another to all the creators of the various neovim extensions.*
+
+>And Last but not the least __God Bless The Vim && Neovim Community for this hyperextensible and hackable text editor__
