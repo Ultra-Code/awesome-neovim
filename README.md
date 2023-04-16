@@ -32,8 +32,8 @@ The setup is powered and managed by [💤 lazy.nvim][lazy-nvim] plugin manager
 ![Lua with with errors](https://user-images.githubusercontent.com/22438427/232250603-e33108ab-235b-42f6-b12a-478ac259d93e.png)
 ![Lua with preview definition](https://user-images.githubusercontent.com/22438427/232250636-0500c2c7-04db-4438-b9b9-5e04a2f2ac02.png)
 
-<!-- ### 🚀 Startup Time -->
-
+### 🚀 Startup Time
+![startup time with zig](https://user-images.githubusercontent.com/22438427/232324710-31e6eff9-15a6-4968-9998-503e7dc55cdf.png)
 
 ## ⚡️ Requirement
 - Neovim >= **0.9.0** (needs to be built with **LuaJIT**)
