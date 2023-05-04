@@ -100,6 +100,7 @@ return {
                 map('n', 'y', api.fs.copy.filename, opts('Copy Name'))
                 map('n', 'Y', api.fs.copy.relative_path, opts('Copy Relative Path'))
                 map('n', 'gy', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
+                map('n','d',api.fs.remove,opts('Delete'))
                 map('n', 'D', api.fs.trash, opts('Trash'))
                 map('n', 'p', api.fs.paste, opts('Paste'))
                 map('n', 'x', api.fs.cut, opts('Cut'))
