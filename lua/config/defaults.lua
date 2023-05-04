@@ -2,10 +2,10 @@ return {
     -- icons used by other plugins
     icons = {
         diagnostics = {
-            Error = "", --🅴," "
-            Warn = "", --🆆," "
-            Hint = "", --🅸," "
-            Info = "", --🅷," ","﫠"
+            Error = "󰅚 ", --🅴," ""󰢃 "
+            Warn = "󰀪 ", --🆆," "
+            Hint = "󰌶", --🅸,"" "󰛩 "
+            Info = " ", --🅷," ","󰗡 "
         },
         git = {
             add          = { text = '│' }, --" ","▎"
@@ -18,38 +18,38 @@ return {
         kinds = {
             Array = " ",
             Boolean = " ",
-            Class = " ", --"ﴯ",
-            Color = " ", --"",
+            Class = " ", --"󰠱 ",
+            Color = "  ", --"󰏘 ", "󰸌 "
             Constant = " ",
             Constructor = "",
             Copilot = " ",
             Enum = " ",
             EnumMember = "",
             Event = " ", --"",
-            Field = " ",
-            File = "",
-            Folder = " ",
-            Function = "",
+            Field = "󰄶 ", --"󰘻 ","󰄷 "
+            File = "󰈙", -- 󰷈 󱪗 󱪝
+            Folder = "  ", --󰉋  
+            Function = "󰊕", --"󰡱 "
             Interface = " ", --"",
-            Keyword = "",
-            Method = " ",
+            Keyword = "󰌋 ", --"󱕵"
+            Method = "󰆧 ",
             Module = " ",
             Namespace = " ",
             Null = " ",
             Number = " ",
             Object = " ",
-            Operator = " ", --"",
-            Package = " ",
-            Property = " ", --" ",
+            Operator = " ", --"󰆕",
+            Package = "󰏗 ",
+            Property = " ", --" ",󱉯
             Reference = " ", --"",
             Snippet = " ",
             String = " ",
             Struct = " ", --" ",
-            Text = " ", --" ",
+            Text = "󰊄 ", --" ",󰚞
             TypeParameter = " ",
             Unit = " ", --"",
-            Value = "",
-            Variable = "﬚ ",
+            Value = "󰎠",
+            Variable = "󰘛 ",
         },
     },
     -- options from nvim_open_win()| vim.diagnostic.open_float()
