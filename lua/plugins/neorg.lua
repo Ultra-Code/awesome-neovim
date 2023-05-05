@@ -12,7 +12,7 @@ return {
                 ["core.keybinds"] = {               -- Configure core.keybinds
                     config = {
                         default_keybinds = true,    -- Generate the default keybinds
-                        neorg_leader = "<Leader>o", -- This is the default if unspecified
+                        neorg_leader = "<LocalLeader>n", -- default neorg mapleader
                     },
                 },
                 ["core.concealer"] = {},
