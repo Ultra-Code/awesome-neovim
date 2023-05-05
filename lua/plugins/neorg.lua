@@ -15,8 +15,8 @@ return {
                         neorg_leader = "<Leader>o", -- This is the default if unspecified
                     },
                 },
-                ["core.norg.concealer"] = {},
-                ["core.norg.dirman"] = {
+                ["core.concealer"] = {},
+                ["core.dirman"] = {
                     config = {
                         -- Define your workspaces here!
                         workspaces = {
@@ -25,7 +25,7 @@ return {
                         },
                     },
                 },
-                ["core.norg.completion"] = {
+                ["core.completion"] = {
                     config = {
                         engine = "nvim-cmp",
                     },
