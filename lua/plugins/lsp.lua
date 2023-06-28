@@ -52,7 +52,7 @@ return {
                 -- tsserver = {},
                 -- volar = {},
                 bashls = {
-                    filetypes = { "zsh", "bash", "sh" },
+                    filetypes = { "bash", "sh" },
                 },
                 clangd = {
                     cmd = {
