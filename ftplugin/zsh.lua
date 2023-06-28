@@ -1,1 +1,1 @@
-vim.opt_local.filetype = "bash"
+vim.opt_local.filetype = "zsh"

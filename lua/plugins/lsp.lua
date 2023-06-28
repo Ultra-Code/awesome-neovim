@@ -18,16 +18,16 @@ return {
                                 },
                             }),
                             null_ls.builtins.diagnostics.zsh.with({
-                                filetypes = { "zsh", "bash" }
+                                filetypes = { "zsh" }
                             }),
                             null_ls.builtins.diagnostics.shellcheck.with({
-                                filetypes = { "zsh", "bash", "sh" },
+                                filetypes = { "bash", "sh" },
                             }),
                             null_ls.builtins.diagnostics.glslc.with({
                                 extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0
                             }),
                             null_ls.builtins.code_actions.shellcheck.with({
-                                filetypes = { "zsh", "bash", "sh" },
+                                filetypes = { "bash", "sh" },
                             }),
                             null_ls.builtins.code_actions.gitsigns,
                             null_ls.builtins.hover.printenv.with({
