@@ -47,7 +47,9 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        event = "VeryLazy",
+        keys = {
+            { "<LocalLeader>tsto", desc = "Enable Treesitter textobjects" },
+        },
         opts = {
             textobjects = {
                 select = {
