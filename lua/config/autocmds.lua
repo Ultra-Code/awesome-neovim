@@ -100,7 +100,7 @@ utils.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr }
 
     if client.server_capabilities.hoverProvider then
-        map('n', 'K', vim.lsp.buf.hover, opts, "get hover info")
+        map("n", "K", vim.lsp.buf.hover, opts, "get hover info")
     end
     if client.server_capabilities.signatureHelpProvider then
         map("n", "<localleader>k", vim.lsp.buf.signature_help, opts, "get fn signature help")
@@ -163,14 +163,14 @@ utils.on_attach(function(client, bufnr)
         vim.api.nvim_set_hl(0, "LspRefDiffTexterenceWrite", {
             link = "WildMenu"
         })
-        local doc_highlight = augroup('lsp_document_highlight')
+        local doc_highlight = augroup("lsp_document_highlight")
         local enable_highlight = function()
-            autocmd({ 'CursorHold', 'CursorHoldI' }, {
+            autocmd({ "CursorHold", "CursorHoldI" }, {
                 group = doc_highlight,
                 buffer = bufnr,
                 callback = vim.lsp.buf.document_highlight,
             })
-            autocmd('CursorMoved', {
+            autocmd("CursorMoved", {
                 group = doc_highlight,
                 buffer = bufnr,
                 callback = vim.lsp.buf.clear_references,
@@ -230,7 +230,7 @@ utils.on_attach(function(client, bufnr)
     map("n", "[d", vim.diagnostic.goto_prev, opts, "goto previous diagnostics")
     map("n", "]d", vim.diagnostic.goto_next, opts, "goto next diagnostics")
     map("n", "<localleader>sl", vim.diagnostic.setloclist, opts, "set loclist")
-    map('n', '<localleader>of', vim.diagnostic.open_float, opts, "open float")
+    map("n", "<localleader>of", vim.diagnostic.open_float, opts, "open float")
 
     map("n", "<localleader>wf", function()
         vim.print(vim.lsp.buf.list_workspace_folders())

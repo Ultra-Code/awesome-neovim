@@ -31,9 +31,9 @@ return {
             cmp.setup.cmdline(":", {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
-                    { name = 'path' }
+                    { name = "path" }
                 }, {
-                    { name = 'cmdline' }
+                    { name = "cmdline" }
                 })
             })
         end,
@@ -83,7 +83,7 @@ return {
                 mapping = cmp.mapping.preset.insert({
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                    ["<C-Space>"] = cmp.mapping.complete({ TriggerOnly = 'triggerOnly' }),
+                    ["<C-Space>"] = cmp.mapping.complete({ TriggerOnly = "triggerOnly" }),
                     ["<C-n>"] = cmp.mapping.select_next_item(),
                     ["<C-p>"] = cmp.mapping.select_prev_item(),
                     ["<C-e>"] = cmp.mapping({
@@ -121,7 +121,7 @@ return {
                     { name = "nvim_lua" },
                     { name = "emoji" },
                     { name = "neorg" },
-                    { name = 'nvim_lsp_signature_help' }
+                    { name = "nvim_lsp_signature_help" }
                 }),
             }
         end

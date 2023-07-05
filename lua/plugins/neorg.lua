@@ -8,10 +8,10 @@ return {
         end,
         opts = {
             load = {
-                ["core.defaults"] = {},             -- Tells neorg to load the module called core.defaults with no extra data
-                ["core.keybinds"] = {               -- Configure core.keybinds
+                ["core.defaults"] = {},                  -- Tells neorg to load the module called core.defaults with no extra data
+                ["core.keybinds"] = {                    -- Configure core.keybinds
                     config = {
-                        default_keybinds = true,    -- Generate the default keybinds
+                        default_keybinds = true,         -- Generate the default keybinds
                         neorg_leader = "<LocalLeader>n", -- default neorg mapleader
                     },
                 },
