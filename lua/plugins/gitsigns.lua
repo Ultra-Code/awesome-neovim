@@ -14,8 +14,8 @@ return {
             -- Options passed to nvim_open_win
             preview_config     = {
                 border = defaults.diagnostics_options.float.border,
-                style = 'minimal',
-                relative = 'cursor',
+                style = "minimal",
+                relative = "cursor",
                 row = 0,
                 col = 1
             },
@@ -32,19 +32,19 @@ return {
                 end
 
                 -- Navigation
-                map("n", "]c",
+                map("n", "]h",
                     function()
                         if vim.wo.diff then return "]c" end
                         vim.schedule(function() gs.next_hunk() end)
                         return "<Ignore>"
-                    end, { expr = true })
+                    end, { expr = true, desc = "next hunk" })
 
-                map("n", "[c",
+                map("n", "[h",
                     function()
                         if vim.wo.diff then return "[c" end
                         vim.schedule(function() gs.prev_hunk() end)
                         return "<Ignore>"
-                    end, { expr = true })
+                    end, { expr = true, desc = "previous hunk" })
 
                 -- Actions
                 map({ "n", "v" }, "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "stage hunks" })
