@@ -47,8 +47,12 @@ return {
                     end, { expr = true, desc = "previous hunk" })
 
                 -- Actions
-                map({ "n", "v" }, "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "stage hunks" })
-                map({ "n", "v" }, "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>", { desc = "reset hunks" })
+                map("n", "<leader>hs", gs.stage_hunk, { desc = "stage hunks" })
+                map("v", "<leader>hs", function() gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end,
+                    { desc = "stage hunks" })
+                map("n", "<leader>hr", gs.reset_hunk, { desc = "reset hunks" })
+                map("v", "<leader>hr", function() gs.reset_hunk { vim.fn.line("."), vim.fn.line("v") } end,
+                    { desc = "reset hunks" })
                 map("n", "<leader>hS", function() gs.stage_buffer() end, { desc = "stage buffer" })
                 map("n", "<leader>hu", function() gs.undo_stage_hunk() end, { desc = "unstage hunk" })
                 map("n", "<leader>hR", function() gs.reset_buffer() end, { desc = "reset buffer" })
