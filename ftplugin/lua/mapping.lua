@@ -9,18 +9,18 @@ end, { buffer = true, desc = "reload current lua file" })
 
 -- reload a particular module
 map("n", "<localleader>rm", function()
-    local module_name = vim.fn.input({
-        prompt = "\nEnter the name of the module you want to reload\n:",
-        default = "",
+    vim.ui.input({
+        prompt = "Enter the name of the module you want to reload:",
+        default = nil,
         completion = "file",
-        cancelreturn = "input cancelled",
-    })
-    if module_name == "" then
-        return
-    else
-        utils.reload_one(module_name)
-        vim.notify("!Reloaded Nvim Module " .. module_name .. ".lua!", vim.log.levels.INFO)
-    end
+    }, function(module_name)
+        if module_name == "" then
+            return
+        else
+            utils.reload_one(module_name)
+            vim.notify("!Reloaded Nvim Module " .. module_name .. ".lua!", vim.log.levels.INFO)
+        end
+    end)
 end, { buffer = true, desc = "reload a particular lua module" })
 
 -- reload all nvim configuration modules
