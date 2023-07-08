@@ -14,7 +14,6 @@ end
 local telescope_builtin = function(builtin, opts)
     local params = { builtin = builtin, opts = opts or {} }
 
-
     return function()
         builtin = params.builtin
         opts = params.opts
@@ -50,115 +49,115 @@ return {
             {
                 "<leader>,",
                 telescope_builtin("buffers", { show_all_buffers = true }),
-                desc = "Switch Buffer"
+                desc = "Switch Buffer",
             },
             {
                 "<leader>fb",
                 telescope_builtin("buffers"),
-                desc = "Buffers"
+                desc = "Buffers",
             },
             {
                 "<leader>:",
                 telescope_builtin("command_history"),
-                desc = "Command History"
+                desc = "Command History",
             },
             -- find
             {
                 "<leader><space>",
                 telescope_builtin("files"),
-                desc = "Find Files (root dir)"
+                desc = "Find Files (root dir)",
             },
             {
                 "<leader>ff",
                 telescope_builtin("files"),
-                desc = "Find Files (root dir)"
+                desc = "Find Files (root dir)",
             },
             {
                 "<leader>fr",
                 telescope_builtin("oldfiles"),
-                desc = "Recent"
+                desc = "Recent",
             },
             -- git
             {
                 "<leader>gc",
                 telescope_builtin("git_commits"),
-                desc = "commits"
+                desc = "commits",
             },
             {
                 "<leader>gs",
                 telescope_builtin("git_status"),
-                desc = "status"
+                desc = "status",
             },
             -- search
             {
                 "<leader>sa",
                 telescope_builtin("autocommands"),
-                desc = "Auto Commands"
+                desc = "Auto Commands",
             },
             {
                 "<leader>sb",
                 telescope_builtin("current_buffer_fuzzy_find"),
-                desc = "Buffer"
+                desc = "Buffer",
             },
             {
                 "<leader>sc",
                 telescope_builtin("command_history"),
-                desc = "Command History"
+                desc = "Command History",
             },
             {
                 "<leader>sC",
                 telescope_builtin("commands"),
-                desc = "Commands"
+                desc = "Commands",
             },
             {
                 "<leader>/",
                 telescope_builtin("live_grep"),
-                desc = "Find in Files (Grep)"
+                desc = "Find in Files (Grep)",
             },
             {
                 "<leader>sg",
                 telescope_builtin("live_grep"),
-                desc = "Grep (root dir)"
+                desc = "Grep (root dir)",
             },
             {
                 "<leader>sh",
                 telescope_builtin("help_tags"),
-                desc = "Help Pages"
+                desc = "Help Pages",
             },
             {
                 "<leader>sH",
                 telescope_builtin("highlights"),
-                desc = "Search Highlight Groups"
+                desc = "Search Highlight Groups",
             },
             {
                 "<leader>sk",
                 telescope_builtin("keymaps"),
-                desc = "Key Maps"
+                desc = "Key Maps",
             },
             {
                 "<leader>sM",
                 telescope_builtin("man_pages"),
-                desc = "Man Pages"
+                desc = "Man Pages",
             },
             {
                 "<leader>sm",
                 telescope_builtin("marks"),
-                desc = "Jump to Mark"
+                desc = "Jump to Mark",
             },
             {
                 "<leader>so",
                 telescope_builtin("vim_options"),
-                desc = "Options"
+                desc = "Options",
             },
             {
                 "<leader>sw",
                 telescope_builtin("grep_string"),
-                desc = "Word (root dir)"
+                desc = "Word (root dir)",
             },
             {
                 "<leader>uC",
                 telescope_builtin("colorscheme", { enable_preview = true }),
-                desc = "Colorscheme with preview"
+                desc = "Colorscheme with preview",
             },
             {
                 "<leader>ss",
@@ -178,17 +177,17 @@ return {
             {
                 "<leader>R",
                 telescope_builtin("resume"),
-                desc = "Resume"
+                desc = "Resume",
             },
             {
                 "<leader>sd",
                 telescope_builtin("diagnostics", { bufnr = 0 }),
-                desc = "Lists Diagnostics for the current buffer"
+                desc = "Lists Diagnostics for the current buffer",
             },
             {
                 "<leader>sD",
                 telescope_builtin("diagnostics"),
-                desc = "Lists all Diagnostics for all open buffers"
+                desc = "Lists all Diagnostics for all open buffers",
             },
         },
         opts = function()
@@ -234,21 +233,39 @@ return {
                     },
                     vimgrep_arguments = (function()
                         if is_git_repo() then
-                            return { "git", "grep", "--full-name", "--line-number", "--column", "--extended-regexp",
+                            return {
+                                "git",
+                                "grep",
+                                "--full-name",
+                                "--line-number",
+                                "--column",
+                                "--extended-regexp",
                                 "--ignore-case",
-                                "--no-color", "--recursive", "--recurse-submodules", "-I" }
+                                "--no-color",
+                                "--recursive",
+                                "--recurse-submodules",
+                                "-I",
+                            }
                         else
                             return {
-                                "grep", "--extended-regexp", "--color=never", "--with-filename", "--line-number",
+                                "grep",
+                                "--extended-regexp",
+                                "--color=never",
+                                "--with-filename",
+                                "--line-number",
                                 "-b", -- grep doesn't support a `--column` option :(
-                                "--ignore-case", "--recursive", "--no-messages", "--exclude-dir=*cache*",
+                                "--ignore-case",
+                                "--recursive",
+                                "--no-messages",
+                                "--exclude-dir=*cache*",
                                 "--exclude-dir=*.git",
-                                "--exclude=.*", "--binary-files=without-match"
+                                "--exclude=.*",
+                                "--binary-files=without-match",
                             }
                         end
-                    end)()
+                    end)(),
                 },
             }
-        end
+        end,
     },
 }

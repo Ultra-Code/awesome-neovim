@@ -17,7 +17,6 @@ autocmd({ "TermOpen" }, {
     end,
 })
 
-
 -- Highlight on yank
 autocmd("TextYankPost", {
     group = augroup("highlight_yank"),
@@ -88,7 +87,7 @@ local diagnostics_options = require("config.defaults").diagnostics_options
 autocmd({ "CursorHold" }, {
     callback = function()
         vim.diagnostic.open_float(nil, diagnostics_options.float)
-    end
+    end,
 })
 
 -- Remove Trailing whitespaces in all files
@@ -110,58 +109,50 @@ utils.on_attach(function(client, bufnr)
         map("n", "<localleader>gD", vim.lsp.buf.declaration, opts, "goto buffer declaration")
     end
     if client.server_capabilities.definitionProvider then
-        map("n", "<localleader>gd",
-            function()
-                if utils.has("trouble.nvim") then
-                    vim.cmd [[Trouble lsp_definitions]]
-                else
-                    vim.lsp.buf.definition()
-                end
+        map("n", "<localleader>gd", function()
+            if utils.has("trouble.nvim") then
+                vim.cmd([[Trouble lsp_definitions]])
+            else
+                vim.lsp.buf.definition()
             end
-            , opts, "goto buffer definition")
+        end, opts, "goto buffer definition")
     end
     if client.server_capabilities.typeDefinitionProvider then
-        map("n", "<localleader>td",
-            function()
-                if utils.has("trouble.nvim") then
-                    vim.cmd [[Trouble lsp_type_definitions]]
-                else
-                    vim.lsp.buf.type_definition()
-                end
+        map("n", "<localleader>td", function()
+            if utils.has("trouble.nvim") then
+                vim.cmd([[Trouble lsp_type_definitions]])
+            else
+                vim.lsp.buf.type_definition()
             end
-            , opts, "goto type definition")
+        end, opts, "goto type definition")
     end
     if client.server_capabilities.implementationProvider then
-        map("n", "<localleader>gi",
-            function()
-                if utils.has("trouble.nvim") then
-                    vim.cmd [[Trouble lsp_implementations]]
-                else
-                    vim.lsp.buf.implementation()
-                end
-            end,
-            opts, "goto type implementation")
+        map("n", "<localleader>gi", function()
+            if utils.has("trouble.nvim") then
+                vim.cmd([[Trouble lsp_implementations]])
+            else
+                vim.lsp.buf.implementation()
+            end
+        end, opts, "goto type implementation")
     end
     if client.server_capabilities.referencesProvider then
-        map("n", "<localleader>gr",
-            function()
-                if utils.has("trouble.nvim") then
-                    vim.cmd [[Trouble lsp_references]]
-                else
-                    vim.lsp.buf.references({})
-                end
+        map("n", "<localleader>gr", function()
+            if utils.has("trouble.nvim") then
+                vim.cmd([[Trouble lsp_references]])
+            else
+                vim.lsp.buf.references({})
             end
-            , opts, "goto type references")
+        end, opts, "goto type references")
     end
     if client.server_capabilities.documentHighlightProvider then
         vim.api.nvim_set_hl(0, "LspReferenceRead", {
-            link = "DiffText"
+            link = "DiffText",
         })
         vim.api.nvim_set_hl(0, "LspReferenceText", {
-            link = "IncSearch"
+            link = "IncSearch",
         })
         vim.api.nvim_set_hl(0, "LspRefDiffTexterenceWrite", {
-            link = "WildMenu"
+            link = "WildMenu",
         })
         local doc_highlight = augroup("lsp_document_highlight")
         local enable_highlight = function()
@@ -180,7 +171,7 @@ utils.on_attach(function(client, bufnr)
             vim.lsp.buf.clear_references()
             vim.api.nvim_clear_autocmds({
                 buffer = bufnr,
-                group = doc_highlight
+                group = doc_highlight,
             })
         end
         map("n", "<localleader>uh", function()
@@ -238,5 +229,4 @@ utils.on_attach(function(client, bufnr)
     map("n", "<localleader>rd", function()
         print("Language server " .. (vim.lsp.buf.server_ready() and "is ready" or "is not ready"))
     end, opts, "check if lsp is ready")
-end
-)
+end)

@@ -18,7 +18,7 @@ return {
                                 },
                             }),
                             null_ls.builtins.diagnostics.zsh.with({
-                                filetypes = { "zsh" }
+                                filetypes = { "zsh" },
                             }),
                             null_ls.builtins.diagnostics.shellcheck.with({
                                 filetypes = { "bash", "sh" },
@@ -33,7 +33,7 @@ return {
                             null_ls.builtins.hover.printenv.with({
                                 filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
                             }),
-                            null_ls.builtins.formatting.stylua
+                            null_ls.builtins.formatting.stylua,
                         },
                     }
                 end,
@@ -62,7 +62,7 @@ return {
                         "--clang-tidy",
                         "-j=5",
                         "--malloc-trim",
-                        "--offset-encoding=utf-16"
+                        "--offset-encoding=utf-16",
                     },
                     filetypes = { "c", "cpp" }, -- we don't want objective-c and objective-cpp!
                 },
@@ -99,7 +99,7 @@ return {
                 lua_ls = function(server, opts)
                     require("neodev").setup()
                     require("lspconfig")[server].setup(opts)
-                end
+                end,
                 -- example to setup with typescript.nvim
                 -- tsserver = function(_, opts)
                 --   require("typescript").setup({ server = opts })
@@ -109,15 +109,14 @@ return {
         ---@param opts PluginLspOpts
         config = function(_, opts)
             local on_attach = function(client, bufnr)
-                _ = client;
-                _ = bufnr;
+                _ = client
+                _ = bufnr
                 -- if vim.filetype.match({ buf = bufnr }) == "lua" then
                 -- end
                 -- require('lspconfig.ui.windows').default_options = {
                 --     border = diagnostics_options.float.border,
                 -- }
             end
-
 
             local function setup(server, server_config)
                 if opts.setup[server] then
@@ -129,7 +128,8 @@ return {
             end
 
             local servers = opts.servers
-            local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+            local capabilities =
+                require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
             for server, _ in pairs(servers) do
                 local server_config = vim.tbl_deep_extend("force", {
@@ -140,5 +140,5 @@ return {
                 setup(server, server_config)
             end
         end,
-    }
+    },
 }

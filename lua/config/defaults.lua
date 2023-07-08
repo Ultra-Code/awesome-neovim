@@ -8,12 +8,12 @@ return {
             Info = " ", --🅷," ","󰗡 "
         },
         git = {
-            add          = { text = "│" }, --" ","▎"
-            change       = { text = "!" }, --" ",
-            delete       = { text = "_" }, --" ",""
-            topdelete    = { text = "‾" },
+            add = { text = "│" }, --" ","▎"
+            change = { text = "!" }, --" ",
+            delete = { text = "_" }, --" ",""
+            topdelete = { text = "‾" },
             changedelete = { text = "~" },
-            untracked    = { text = "┆" },
+            untracked = { text = "┆" },
         },
         kinds = {
             Array = " ",
@@ -25,9 +25,9 @@ return {
             Copilot = " ",
             Enum = " ",
             EnumMember = "",
-            Event = " ",   --"",
-            Field = "󰄶 ",  --"󰘻 ","󰄷 "
-            File = "󰈙",    -- 󰷈 󱪗 󱪝
+            Event = " ", --"",
+            Field = "󰄶 ", --"󰘻 ","󰄷 "
+            File = "󰈙", -- 󰷈 󱪗 󱪝
             Folder = "  ", --󰉋  
             Function = "󰊕", --"󰡱 "
             Interface = " ", --"",
@@ -76,5 +76,5 @@ return {
         },
         update_in_insert = false,
         severity_sort = true,
-    }
+    },
 }

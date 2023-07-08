@@ -1,12 +1,13 @@
 local M = {}
 
 function _G.dump(...)
-    vim.print(...);
+    vim.print(...)
 end
 
 function M.reload_all()
     for name, _ in pairs(package.loaded) do
-        if name:match("^lazy")
+        if
+            name:match("^lazy")
             or name:match("^mapping")
             or name:match("^plugrc")
             or name:match("^ui")
@@ -58,16 +59,16 @@ end
 function M.toggle(option, editor_variable, values)
     if values then
         if not editor_variable then
-            if vim.deep_equal(vim.opt_local[option]:get(), values[1])
-            then
+            if vim.deep_equal(vim.opt_local[option]:get(), values[1]) then
                 vim.opt_local[option] = values[2]
             else
                 vim.opt_local[option] = values[1]
             end
-            vim.notify("set editor option " .. option .. " to " .. tostring(vim.opt_local[option]:get()),
-                vim.log.levels.INFO, {
-                    title = "toggle editor option",
-                })
+            vim.notify(
+                "set editor option " .. option .. " to " .. tostring(vim.opt_local[option]:get()),
+                vim.log.levels.INFO,
+                { title = "toggle editor option" }
+            )
         else
             if not editor_variable.global then
                 local bufnr = vim.api.nvim_get_current_buf()
@@ -96,10 +97,13 @@ function M.toggle(option, editor_variable, values)
     else
         if not editor_variable then
             vim.opt_local[option] = not vim.opt_local[option]:get()
-            vim.notify("set editor option " .. option .. " to " .. tostring(vim.opt_local[option]:get()),
-                vim.log.levels.INFO, {
+            vim.notify(
+                "set editor option " .. option .. " to " .. tostring(vim.opt_local[option]:get()),
+                vim.log.levels.INFO,
+                {
                     title = "toggle editor option",
-                })
+                }
+            )
         else
             if not editor_variable.global then
                 local bufnr = vim.api.nvim_get_current_buf()
@@ -186,4 +190,4 @@ M.map = function(mode, lhs, rhs, opts, desc)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-return M;
+return M

@@ -9,11 +9,11 @@ return {
             {
                 "<leader>n",
                 function()
-                    require("nvim-tree.api").tree.toggle({ focus = true, find_file = true, })
+                    require("nvim-tree.api").tree.toggle({ focus = true, find_file = true })
                 end,
                 mode = "n",
                 silent = true,
-                desc = "toggle tree"
+                desc = "toggle tree",
             },
         },
         init = function()
@@ -24,10 +24,14 @@ return {
                 pattern = "NvimTree_*",
                 callback = function()
                     local layout = vim.api.nvim_call_function("winlayout", {})
-                    if layout[1] == "leaf" and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree" and layout[3] == nil then
+                    if
+                        layout[1] == "leaf"
+                        and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree"
+                        and layout[3] == nil
+                    then
                         vim.cmd("confirm quit")
                     end
-                end
+                end,
             })
 
             autocmd({ "VimEnter" }, {
@@ -42,7 +46,6 @@ return {
                         return
                     end
 
-
                     local api = require("nvim-tree.api")
 
                     if directory then
@@ -52,9 +55,9 @@ return {
                         api.tree.open()
                     else
                         -- open the tree, find the file but don't focus it
-                        api.tree.toggle({ focus = false, find_file = true, })
+                        api.tree.toggle({ focus = false, find_file = true })
                     end
-                end
+                end,
             })
         end,
         config = function(_, opts)
@@ -123,7 +126,6 @@ return {
                 map("n", ".", api.node.run.cmd, opts("Run File Command"))
                 map("n", "s", api.node.run.system, opts("Run System"))
 
-
                 map("n", "bmv", api.marks.bulk.move, opts("Move Bookmarked"))
                 map("n", "m", api.marks.toggle, opts("Toggle Bookmark"))
 
@@ -133,14 +135,12 @@ return {
                 map("n", "C", api.tree.toggle_git_clean_filter, opts("Toggle Git Clean"))
                 map("n", "I", api.tree.toggle_gitignore_filter, opts("Toggle Git Ignore"))
 
-
                 map("n", "]e", api.node.navigate.diagnostics.next, opts("Next Diagnostic"))
                 map("n", "[e", api.node.navigate.diagnostics.prev, opts("Prev Diagnostic"))
 
                 map("n", "F", api.live_filter.clear, opts("Clean Filter"))
                 map("n", "f", api.live_filter.start, opts("Filter"))
                 -- END_DEFAULT_ON_ATTACH
-
 
                 --Example of mappings with a custom action_cb
                 -- map('n', 'P', function()

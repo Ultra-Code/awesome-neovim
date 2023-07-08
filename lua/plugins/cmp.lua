@@ -7,12 +7,12 @@ return {
         dependencies = {
             -- Autocompletion plugin
             -- Completion Sources --
-            { "hrsh7th/cmp-nvim-lsp",                lazy = true }, -- nvim-cmp source for neovim builtin LSP client
-            { "hrsh7th/cmp-path",                    lazy = true }, -- nvim-cmp source for path
-            { "hrsh7th/cmp-buffer",                  lazy = true }, -- nvim-cmp source for buffer words
-            { "hrsh7th/cmp-nvim-lua",                lazy = true }, -- nvim-cmp source for nvim lua
-            { "hrsh7th/cmp-emoji",                   lazy = true }, -- nvim-cmp source for emoji
-            { "hrsh7th/cmp-cmdline",                 lazy = true }, --nvim-cmp source for vim's cmdline.
+            { "hrsh7th/cmp-nvim-lsp", lazy = true }, -- nvim-cmp source for neovim builtin LSP client
+            { "hrsh7th/cmp-path", lazy = true }, -- nvim-cmp source for path
+            { "hrsh7th/cmp-buffer", lazy = true }, -- nvim-cmp source for buffer words
+            { "hrsh7th/cmp-nvim-lua", lazy = true }, -- nvim-cmp source for nvim lua
+            { "hrsh7th/cmp-emoji", lazy = true }, -- nvim-cmp source for emoji
+            { "hrsh7th/cmp-cmdline", lazy = true }, --nvim-cmp source for vim's cmdline.
             { "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true }, --cmp-nvim-lsp-signature-help
         },
         config = function(_, opts)
@@ -31,25 +31,24 @@ return {
             cmp.setup.cmdline(":", {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
-                    { name = "path" }
+                    { name = "path" },
                 }, {
-                    { name = "cmdline" }
-                })
+                    { name = "cmdline" },
+                }),
             })
         end,
         opts = function()
             local has_words_before = function()
                 local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0 and
-                    vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+                return col ~= 0
+                    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
             end
 
             local cmp = require("cmp")
             local luasnip = require("luasnip")
             -- local diagnostics_options = require("config.defaults").diagnostics_options
 
-            return
-            {
+            return {
                 snippet = {
                     expand = function(args)
                         -- For `luasnip` user.
@@ -121,9 +120,9 @@ return {
                     { name = "nvim_lua" },
                     { name = "emoji" },
                     { name = "neorg" },
-                    { name = "nvim_lsp_signature_help" }
+                    { name = "nvim_lsp_signature_help" },
                 }),
             }
-        end
-    }
+        end,
+    },
 }

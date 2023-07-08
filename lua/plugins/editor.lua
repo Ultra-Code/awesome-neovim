@@ -7,7 +7,7 @@ return {
         event = "VeryLazy",
         config = function(_, opts)
             require("nvim-autopairs").setup(opts)
-        end
+        end,
     },
     -- comments
     {
@@ -15,7 +15,7 @@ return {
         event = "VeryLazy",
         config = function(_, opts)
             require("Comment").setup(opts)
-        end
+        end,
     },
     --Neovim motion on speed
     {
@@ -28,31 +28,31 @@ return {
             {
                 "<leader>hw",
                 function()
-                    require "hop".hint_words()
+                    require("hop").hint_words()
                 end,
-                desc = "hop word"
+                desc = "hop word",
             },
             {
                 "<leader>h2",
                 function()
-                    require "hop".hint_char2()
+                    require("hop").hint_char2()
                 end,
-                desc = "hop 2 char hint"
+                desc = "hop 2 char hint",
             },
             {
                 "<leader>h1",
                 function()
-                    require "hop".hint_char1()
+                    require("hop").hint_char1()
                 end,
-                desc = "hop 1 char hint"
+                desc = "hop 1 char hint",
             },
             {
                 "<leader>h/",
                 function()
-                    require "hop".hint_patterns()
+                    require("hop").hint_patterns()
                 end,
-                desc = "hop pattern hint"
-            }
+                desc = "hop pattern hint",
+            },
         },
         config = function()
             local mode = { "n", "x", "o" }
@@ -60,8 +60,7 @@ return {
             local directions = require("hop.hint").HintDirection
 
             local echo = vim.api.nvim_echo
-            local noop = function()
-            end
+            local noop = function() end
             vim.keymap.set(mode, "f", function()
                 --disable nvim_echo temporarily
                 vim.api.nvim_echo = noop
@@ -88,7 +87,7 @@ return {
         end,
     },
     -- library used by other plugins
-    { "nvim-lua/plenary.nvim",       lazy = true },
+    { "nvim-lua/plenary.nvim", lazy = true },
     { "nvim-tree/nvim-web-devicons", lazy = true }, -- Glyphs and Icons for neovim
 
     -- todo comments
@@ -111,10 +110,10 @@ return {
         "folke/trouble.nvim",
         cmd = { "TroubleToggle", "Trouble" },
         keys = {
-            { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
+            { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
             { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-            { "<leader>xL", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
-            { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
+            { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
+            { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
             {
                 "[q",
                 function()
@@ -143,30 +142,30 @@ return {
             -- key mappings for actions in the trouble list
             -- map to {} to remove a mapping, for example: close = {},
             action_keys = {
-                close = "q",                  -- close the list
-                cancel = "<esc>",             -- cancel the preview and get back to your last window / buffer / cursor
-                refresh = "r",                -- manually refresh
-                jump = { "<cr>", "<tab>" },   -- jump to the diagnostic or open / close folds
-                open_split = { "<c-x>" },     -- open buffer in new split
-                open_vsplit = { "<c-v>" },    -- open buffer in new vsplit
-                open_tab = { "<c-t>" },       -- open buffer in new tab
-                jump_close = { "o" },         -- jump to the diagnostic and close the list
-                toggle_mode = "m",            -- toggle between "workspace" and "document" diagnostics mode
-                toggle_preview = "P",         -- toggle auto_preview
-                hover = "K",                  -- opens a small poup with the full multiline message
-                preview = "p",                -- preview the diagnostic location
+                close = "q", -- close the list
+                cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
+                refresh = "r", -- manually refresh
+                jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
+                open_split = { "<c-x>" }, -- open buffer in new split
+                open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+                open_tab = { "<c-t>" }, -- open buffer in new tab
+                jump_close = { "o" }, -- jump to the diagnostic and close the list
+                toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
+                toggle_preview = "P", -- toggle auto_preview
+                hover = "K", -- opens a small poup with the full multiline message
+                preview = "p", -- preview the diagnostic location
                 close_folds = { "zM", "zm" }, -- close all folds
-                open_folds = { "zR", "zr" },  -- open all folds
+                open_folds = { "zR", "zr" }, -- open all folds
                 toggle_fold = { "zA", "za" }, -- toggle fold of current file
-                previous = "k",               -- preview item
-                next = "j",                   -- next item
+                previous = "k", -- preview item
+                next = "j", -- next item
             },
-            auto_open = false,                -- automatically open the list when you have diagnostics
-            auto_close = true,                -- automatically close the list when you have no diagnostics
+            auto_open = false, -- automatically open the list when you have diagnostics
+            auto_close = true, -- automatically close the list when you have no diagnostics
             -- automatyically preview the location of the diagnostic. <esc> to close preview and go back to last window
             auto_preview = true,
             auto_fold = false, -- automatically fold a file trouble list at creation
-            use_diagnostic_signs = true
+            use_diagnostic_signs = true,
         },
     },
     -- which-key
@@ -175,22 +174,22 @@ return {
         event = "VeryLazy",
         opts = {
             plugins = {
-                marks = true,     -- shows a list of your marks on ' and `
+                marks = true, -- shows a list of your marks on ' and `
                 registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
                 -- the presets plugin, adds help for a bunch of default keybindings in Neovim
                 -- No actual key bindings are created
                 spelling = {
-                    enabled = true,   -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+                    enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
                     suggestions = 20, -- how many suggestions should be shown in the list?
                 },
                 presets = {
-                    operators = true,    -- adds help for operators like d, y, ...
-                    motions = true,      -- adds help for motions
+                    operators = true, -- adds help for operators like d, y, ...
+                    motions = true, -- adds help for motions
                     text_objects = true, -- help for text objects triggered after entering an operator
-                    windows = true,      -- default bindings on <c-w>
-                    nav = true,          -- misc bindings to work with windows
-                    z = true,            -- bindings for folds, spelling and others prefixed with z
-                    g = true,            -- bindings for prefixed with g
+                    windows = true, -- default bindings on <c-w>
+                    nav = true, -- misc bindings to work with windows
+                    z = true, -- bindings for folds, spelling and others prefixed with z
+                    g = true, -- bindings for prefixed with g
                 },
             },
             -- add operators that will trigger motion and text object completion

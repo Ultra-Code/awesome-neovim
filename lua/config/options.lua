@@ -67,15 +67,15 @@ opt.signcolumn = "yes"
 -- Don't let autocomplete affect usual typing habits
 opt_global.completeopt = { "menu", "menuone", "noselect" }
 
-opt.conceallevel = 3     -- Hide * markup for bold and italic
+opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.concealcursor = "nc" --Sets the modes in which text in the cursor line can also be concealed.
 
-opt.cursorline = true    -- Enable highlighting of the current line
+opt.cursorline = true -- Enable highlighting of the current line
 
-opt.pumblend = 10        -- Popup blend
-opt.pumheight = 10       -- Maximum number of entries in a popup
+opt.pumblend = 10 -- Popup blend
+opt.pumheight = 10 -- Maximum number of entries in a popup
 
-opt.scrolloff = 3        -- Minimal number of screen lines to keep above and below the cursor.
+opt.scrolloff = 3 -- Minimal number of screen lines to keep above and below the cursor.
 -- The minimal number of screen columns to keep to the left and to the right of the cursor if 'nowrap' is set.
 opt.sidescrolloff = 9
 

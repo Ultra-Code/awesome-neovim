@@ -6,7 +6,7 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         keys = {
             { "<c-space>", desc = "Increment selection" },
-            { "<bs>",      desc = "Decrement selection", mode = "x" },
+            { "<bs>", desc = "Decrement selection", mode = "x" },
         },
         build = function()
             vim.cmd("TSUpdate")
@@ -22,8 +22,8 @@ return {
             auto_install = true,
             ignore_install = {}, -- List of parsers to ignore installing
             highlight = {
-                enable = true,   -- false will disable the whole extension
-                disable = {},    -- list of language that will be disabled
+                enable = true, -- false will disable the whole extension
+                disable = {}, -- list of language that will be disabled
             },
             --Incremental selection based on the named nodes from the grammar.
             incremental_selection = {
@@ -74,7 +74,7 @@ return {
                     -- mapping query_strings to modes.
                     selection_modes = {
                         ["@parameter.outer"] = "v", -- charwise
-                        ["@function.outer"] = "V",  -- linewise
+                        ["@function.outer"] = "V", -- linewise
                         ["@class.outer"] = "<c-v>", -- blockwise
                     },
                     -- If you set this to `true` (default is `false`) then any textobject is
@@ -136,7 +136,7 @@ return {
                     },
                     goto_previous = {
                         ["[f"] = "@conditional.outer",
-                    }
+                    },
                 },
                 lsp_interop = {
                     enable = true,
@@ -150,7 +150,7 @@ return {
             },
         },
         config = function(_, opts)
-            local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+            local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 
             -- Repeat movement with ; and ,
             -- ensure ; goes forward and , goes backward regardless of the last direction
@@ -170,7 +170,7 @@ return {
             -- vim.keymap.set({ "n", "x", "o" }, "<end>", function()
             --   ts_repeat_move.repeat_last_move({forward = true, start = false})
             -- end)
-            require "nvim-treesitter.configs".setup(opts)
-        end
-    }
+            require("nvim-treesitter.configs").setup(opts)
+        end,
+    },
 }

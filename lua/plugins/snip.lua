@@ -12,14 +12,26 @@ return {
                 silent = true,
                 mode = "i",
             },
-            { "<tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
-            { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+            {
+                "<tab>",
+                function()
+                    require("luasnip").jump(1)
+                end,
+                mode = "s",
+            },
+            {
+                "<s-tab>",
+                function()
+                    require("luasnip").jump(-1)
+                end,
+                mode = { "i", "s" },
+            },
         },
         build = (not jit.os:find("Windows"))
-            and "echo -e 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
+                and "echo -e 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
             or nil,
         dependencies = {
-            { "saadparwaiz1/cmp_luasnip",     lazy = true }, -- luasnip completion source for nvim-cmp
+            { "saadparwaiz1/cmp_luasnip", lazy = true }, -- luasnip completion source for nvim-cmp
             { "rafamadriz/friendly-snippets", lazy = true },
             config = function()
                 require("luasnip.loaders.from_vscode").lazy_load()

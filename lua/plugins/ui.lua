@@ -5,9 +5,7 @@ return {
     {
         "rcarriga/nvim-notify",
         lazy = true,
-        opts = {
-            timeout = 3000,
-        }
+        opts = { timeout = 3000 },
     },
     {
         "folke/noice.nvim",
@@ -25,7 +23,7 @@ return {
                 hover = {
                     enabled = false,
                     view = nil, -- when nil, use defaults from documentation
-                    opts = {},  -- merged with defaults from documentation
+                    opts = {}, -- merged with defaults from documentation
                 },
                 signature = {
                     enabled = false,
@@ -33,10 +31,10 @@ return {
                         enabled = false,
                         trigger = false, -- Automatically show signature help when typing a trigger character from the LSP
                         luasnip = false, -- Will open signature help when jumping to Luasnip insert nodes
-                        throttle = 50,   -- Debounce lsp signature help request by 50ms
+                        throttle = 50, -- Debounce lsp signature help request by 50ms
                     },
-                    view = nil,          -- when nil, use defaults from documentation
-                    opts = {},           -- merged with defaults from documentation
+                    view = nil, -- when nil, use defaults from documentation
+                    opts = {}, -- merged with defaults from documentation
                 },
                 message = {
                     -- Messages shown by lsp servers
@@ -62,11 +60,11 @@ return {
             presets = {
                 -- you can enable a preset by setting it to true, or a table that will override the preset config
                 -- you can also add custom presets that you can enable/disable with enabled=true
-                bottom_search = false,         -- use a classic bottom cmdline for search
-                command_palette = true,        -- position the cmdline and popupmenu together
+                bottom_search = false, -- use a classic bottom cmdline for search
+                command_palette = true, -- position the cmdline and popupmenu together
                 long_message_to_split = false, -- long messages will be sent to a split
-                inc_rename = false,            -- enables an input dialog for inc-rename.nvim
-                lsp_doc_border = false,        -- add a border to hover docs and signature help
+                inc_rename = false, -- enables an input dialog for inc-rename.nvim
+                lsp_doc_border = false, -- add a border to hover docs and signature help
             },
         },
     },
@@ -77,16 +75,16 @@ return {
         event = "VeryLazy",
         keys = {
             -- pick a buffer to view from the buffer list
-            { "<leader>bs",  "<cmd>BufferLinePick<CR>",                  desc = "select buffer" },
+            { "<leader>bs", "<cmd>BufferLinePick<CR>", desc = "select buffer" },
             -- pick a buffer to closes from the buffer list
-            { "<leader>bc",  "<cmd>BufferLinePickClose<CR>",             desc = "close selected buffer" },
-            { "<leader>bcl", "<cmd>BufferLineCloseLeft<CR>",             desc = "close buffers to the left" },
-            { "<leader>bcr", "<cmd>BufferLineCloseRight<CR>",            desc = "close buffers to the right" },
-            { "<leader>bcu", "<cmd>BufferLineGroupClose ungrouped<CR>",  desc = "close ungrouped buffers" },
-            { "<leader>bcp", "<cmd>BufferLineGroupClose pinned<CR>",     desc = "close pinned buffers" },
-            { "<leader>bp",  "<Cmd>BufferLineTogglePin<CR>",             desc = "Toggle pin" },
-            { "<leader>bP",  "<Cmd>BufferLineGroupToggle pinned<CR>",    desc = "Toggle displaying pinned buffers" },
-            { "<leader>bU",  "<Cmd>BufferLineGroupToggle ungrouped<CR>", desc = "Toggle displaying ungrouped buffers" },
+            { "<leader>bc", "<cmd>BufferLinePickClose<CR>", desc = "close selected buffer" },
+            { "<leader>bcl", "<cmd>BufferLineCloseLeft<CR>", desc = "close buffers to the left" },
+            { "<leader>bcr", "<cmd>BufferLineCloseRight<CR>", desc = "close buffers to the right" },
+            { "<leader>bcu", "<cmd>BufferLineGroupClose ungrouped<CR>", desc = "close ungrouped buffers" },
+            { "<leader>bcp", "<cmd>BufferLineGroupClose pinned<CR>", desc = "close pinned buffers" },
+            { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+            { "<leader>bP", "<Cmd>BufferLineGroupToggle pinned<CR>", desc = "Toggle displaying pinned buffers" },
+            { "<leader>bU", "<Cmd>BufferLineGroupToggle ungrouped<CR>", desc = "Toggle displaying ungrouped buffers" },
         },
         opts = {
             options = {
@@ -106,17 +104,17 @@ return {
                 hover = {
                     enabled = true,
                     delay = 200,
-                    reveal = { "close" }
+                    reveal = { "close" },
                 },
-                show_buffer_icons = true,       --| false, -- disable filetype icons for buffers
+                show_buffer_icons = true, --| false, -- disable filetype icons for buffers
                 show_buffer_close_icons = true, --| false,
-                show_close_icon = true,         --| false,
-                show_tab_indicators = true,     --| false,
-                persist_buffer_sort = true,     -- whether or not custom sorted buffers should persist
+                show_close_icon = true, --| false,
+                show_tab_indicators = true, --| false,
+                persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
                 -- can also be a table containing 2 custom separators
                 -- [focused and unfocused]. eg: { '|', '|' }
-                separator_style = "slant",     --| "thick" | "thin" | { 'any', 'any' },
-                enforce_regular_tabs = false,  --| true,
+                separator_style = "slant", --| "thick" | "thin" | { 'any', 'any' },
+                enforce_regular_tabs = false, --| true,
                 always_show_bufferline = true, --| false,
                 diagnostics = "nvim_lsp",
                 --- count is an integer representing total count of errors
@@ -132,15 +130,15 @@ return {
                 end,
                 groups = {
                     options = {
-                        toggle_hidden_on_enter = true -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
+                        toggle_hidden_on_enter = true, -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
                     },
                     items = {
                         {
-                            name = "Tests",                                -- Mandatory
+                            name = "Tests", -- Mandatory
                             highlight = { underline = true, sp = "blue" }, -- Optional
-                            priority = 2,                                  -- determines where it will appear relative to other groups (Optional)
-                            icon = "",                                  -- Optional
-                            matcher = function(buf)                        -- Mandatory
+                            priority = 2, -- determines where it will appear relative to other groups (Optional)
+                            icon = "", -- Optional
+                            matcher = function(buf) -- Mandatory
                                 return buf.name:match("%_test") or buf.name:match("%_spec")
                             end,
                         },
@@ -154,11 +152,11 @@ return {
                             separator = { -- Optional
                                 -- style = require('bufferline.groups').separator.tab
                             },
-                        }
-                    }
-                }
+                        },
+                    },
+                },
             },
-        }
+        },
     },
 
     -- statusline
@@ -167,7 +165,7 @@ return {
         event = "VeryLazy",
         opts = function()
             local function total_num_lines()
-                return vim.api.nvim_buf_line_count(0);
+                return vim.api.nvim_buf_line_count(0)
             end
 
             return {
@@ -181,11 +179,13 @@ return {
                         { "mode", separator = { left = "" }, right_padding = 2 },
                     },
                     lualine_b = { "branch", "diff" },
-                    lualine_c = { {
-                        "filename",
-                        file_status = true, -- displays file status (readonly status, modified status)
-                        path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
-                    } },
+                    lualine_c = {
+                        {
+                            "filename",
+                            file_status = true, -- displays file status (readonly status, modified status)
+                            path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+                        },
+                    },
                     lualine_x = { "encoding", "fileformat" },
                     lualine_y = { "filetype", total_num_lines },
                     lualine_z = {

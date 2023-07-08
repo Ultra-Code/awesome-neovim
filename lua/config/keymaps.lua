@@ -3,7 +3,7 @@ local map = utils.map
 
 local opt = { remap = true }
 
-vim.cmd [[ cabbrev ht tab help]] --map("c","h","tab help")
+vim.cmd([[ cabbrev ht tab help]]) --map("c","h","tab help")
 
 -- search visually selected region on current line
 map("v", "//", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opt)
@@ -48,15 +48,15 @@ else
     map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
     map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
     map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" }) -- move back to the previous buffer in the buffer list
-    map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })     -- move forward to the next buffer in the buffer list
+    map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" }) -- move forward to the next buffer in the buffer list
 end
 map("n", "<leader>bb", "<cmd>b#<cr>", { desc = "Switch to Previous Buffer" })
 map("n", "<leader>`", "<cmd>b#<cr>", { desc = "Switch to Previous Buffer" })
-map("n", "<leader>b1", "<cmd>bfirst<cr>", opt, "goto first buffer")      -- move to the first buffer in the buffer list
-map("n", "<leader>b9", "<cmd>blast<cr>", opt, "goto last buffer")        -- move to the last buffer in the buffer list
+map("n", "<leader>b1", "<cmd>bfirst<cr>", opt, "goto first buffer") -- move to the first buffer in the buffer list
+map("n", "<leader>b9", "<cmd>blast<cr>", opt, "goto last buffer") -- move to the last buffer in the buffer list
 map("n", "<leader>bd", "<cmd>bdelete<cr>", opt, "delete current buffer") -- Close the current buffer
-map("n", "<leader>bo", "<cmd>%bdelete<bar>edit#<bar>bdelete#<cr>", opt)  -- Close all buffers except current
-map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New File" })           -- new file
+map("n", "<leader>bo", "<cmd>%bdelete<bar>edit#<bar>bdelete#<cr>", opt) -- Close all buffers except current
+map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "New File" }) -- new file
 
 -- Useful mappings for managing tabs
 map(mode, "<leader>t1", "<cmd>tabfirst<cr>", opt, "goto first tab")
@@ -102,12 +102,12 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- save file
 map({ "i", "v", "n", "s" }, "<C-s>", function()
-    vim.cmd [[w]]
+    vim.cmd([[w]])
 end, { desc = "Save file" })
 
 -- quit
 map("n", "<C-q>", function()
-    vim.cmd [[qall]]
+    vim.cmd([[qall]])
 end, { desc = "Quit all" })
 
 -- === Terminal === "
@@ -122,7 +122,6 @@ end)
 -- mapping to close terminal emulator
 map("t", "<M-t>", [[<C-\><C-n>:bd!<CR>]])
 
-
 -- better up/down
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -136,22 +135,26 @@ map("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 -- toggle options
 -- === Spell checking === "
 --vim.cmd [[set spell!]] also works
-map("n", "<leader>us", function() utils.toggle("spell") end, { desc = "Toggle Spelling" })
-map("n", "<leader>uw", function() utils.toggle("wrap") end, { desc = "Toggle Word Wrap" })
+map("n", "<leader>us", function()
+    utils.toggle("spell")
+end, { desc = "Toggle Spelling" })
+map("n", "<leader>uw", function()
+    utils.toggle("wrap")
+end, { desc = "Toggle Word Wrap" })
 map("n", "<leader>ul", function()
     utils.toggle("relativenumber")
     utils.toggle("number")
 end, { desc = "Toggle Line Numbers" })
 
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-map("n", "<leader>uc", function() utils.toggle("conceallevel", nil, { 0, conceallevel }) end,
-    { desc = "Toggle Conceal" })
+map("n", "<leader>uc", function()
+    utils.toggle("conceallevel", nil, { 0, conceallevel })
+end, { desc = "Toggle Conceal" })
 map("n", "<leader>ue", function()
-    utils.toggle("listchars", nil,
-        {
-            { tab = [[→→]], trail = "•", extends = "»", precedes = "«" },
-            { tab = [[→→]], trail = "•", extends = "»", precedes = "«", eol = "↴" }
-        })
+    utils.toggle("listchars", nil, {
+        { tab = [[→→]], trail = "•", extends = "»", precedes = "«" },
+        { tab = [[→→]], trail = "•", extends = "»", precedes = "«", eol = "↴" },
+    })
 end, { desc = "Toggle EOL" })
 if not utils.has("trouble.nvim") then
     map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
