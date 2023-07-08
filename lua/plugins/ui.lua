@@ -34,20 +34,13 @@ return {
                 },
                 --NOTE: install parsers for markdown and markdown_inline to see markdown documentation
                 hover = {
-                    enabled = true,
+                    enabled = false,
                 },
                 signature = {
-                    enabled = true,
-                    auto_open = {
-                        enabled = true,
-                        trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
-                        luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
-                        throttle = 50, -- Debounce lsp signature help request by 50ms
-                    },
+                    enabled = false,
                 },
                 message = {
-                    -- Messages shown by lsp servers
-                    enabled = true,
+                    enabled = true, -- Messages shown by lsp servers
                 },
             },
             health = {
