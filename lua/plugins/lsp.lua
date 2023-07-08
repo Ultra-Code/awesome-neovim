@@ -32,7 +32,8 @@ return {
                             null_ls.builtins.code_actions.gitsigns,
                             null_ls.builtins.hover.printenv.with({
                                 filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
-                            })
+                            }),
+                            null_ls.builtins.formatting.stylua
                         },
                     }
                 end,
