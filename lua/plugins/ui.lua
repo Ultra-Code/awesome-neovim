@@ -5,6 +5,15 @@ return {
     {
         "rcarriga/nvim-notify",
         lazy = true,
+        keys = {
+            {
+                "<leader>un",
+                function()
+                    require("notify").dismiss({ silent = true, pending = true })
+                end,
+                desc = "Clear notifications",
+            },
+        },
         opts = { timeout = 3000 },
     },
     {
@@ -12,6 +21,9 @@ return {
         event = "VeryLazy",
         opts = {
             lsp = {
+                progress = {
+                    enabled = false,
+                },
                 override = {
                     -- override the default lsp markdown formatter with Noice
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -20,38 +32,22 @@ return {
                     -- override cmp documentation with Noice (needs the other options to work)
                     ["cmp.entry.get_documentation"] = true,
                 },
+                --NOTE: install parsers for markdown and markdown_inline to see markdown documentation
                 hover = {
-                    enabled = false,
-                    view = nil, -- when nil, use defaults from documentation
-                    opts = {}, -- merged with defaults from documentation
+                    enabled = true,
                 },
                 signature = {
-                    enabled = false,
+                    enabled = true,
                     auto_open = {
-                        enabled = false,
-                        trigger = false, -- Automatically show signature help when typing a trigger character from the LSP
-                        luasnip = false, -- Will open signature help when jumping to Luasnip insert nodes
+                        enabled = true,
+                        trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
+                        luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
                         throttle = 50, -- Debounce lsp signature help request by 50ms
                     },
-                    view = nil, -- when nil, use defaults from documentation
-                    opts = {}, -- merged with defaults from documentation
                 },
                 message = {
                     -- Messages shown by lsp servers
                     enabled = true,
-                    view = "notify",
-                    opts = {},
-                },
-                -- defaults for hover and signature help
-                documentation = {
-                    view = "hover",
-                    opts = {
-                        lang = "markdown",
-                        replace = true,
-                        render = "plain",
-                        format = { "{message}" },
-                        win_options = { concealcursor = "n", conceallevel = 3 },
-                    },
                 },
             },
             health = {
