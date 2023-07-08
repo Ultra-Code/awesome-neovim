@@ -103,27 +103,18 @@ utils.on_attach(function(client, bufnr)
     end
     if client.server_capabilities.signatureHelpProvider then
         map("n", "<localleader>k", vim.lsp.buf.signature_help, opts, "get fn signature help")
-        map("i", "<localleader>K", vim.lsp.buf.signature_help, opts, "get fn signature help")
     end
     if client.server_capabilities.declarationProvider then
-        map("n", "<localleader>gD", vim.lsp.buf.declaration, opts, "goto buffer declaration")
+        map("n", "<localleader>gD", vim.lsp.buf.declaration, opts, "goto declaration")
     end
     if client.server_capabilities.definitionProvider then
         map("n", "<localleader>gd", function()
-            if utils.has("trouble.nvim") then
-                vim.cmd([[Trouble lsp_definitions]])
-            else
-                vim.lsp.buf.definition()
-            end
-        end, opts, "goto buffer definition")
+            vim.lsp.buf.definition()
+        end, opts, "goto definition")
     end
     if client.server_capabilities.typeDefinitionProvider then
-        map("n", "<localleader>td", function()
-            if utils.has("trouble.nvim") then
-                vim.cmd([[Trouble lsp_type_definitions]])
-            else
-                vim.lsp.buf.type_definition()
-            end
+        map("n", "<localleader>gt", function()
+            vim.lsp.buf.type_definition()
         end, opts, "goto type definition")
     end
     if client.server_capabilities.implementationProvider then
