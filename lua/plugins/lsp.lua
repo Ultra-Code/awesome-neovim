@@ -82,6 +82,7 @@ return {
                             diagnostics = {
                                 -- Get the language server to recognize the `vim` global
                                 globals = { "vim" },
+                                neededFileStatus = { ["codestyle-check"] = "Opened" },
                             },
                             workspace = {
                                 -- Make the server aware of Neovim runtime files
@@ -89,6 +90,10 @@ return {
                                 -- This feature causes the lsp to use the "environment emulation" feature to suggest
                                 -- applying a library/framework when a certain keyword or filename has been found
                                 checkThirdParty = false,
+                            },
+                            -- disable lua_ls default formater since I use stylua
+                            format = {
+                                enable = false,
                             },
                         },
                     },
