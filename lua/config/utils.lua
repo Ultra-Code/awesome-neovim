@@ -58,7 +58,8 @@ end
 function M.toggle(option, editor_variable, values)
     if values then
         if not editor_variable then
-            if vim.opt_local[option]:get() == values[1] then
+            if vim.deep_equal(vim.opt_local[option]:get(), values[1])
+            then
                 vim.opt_local[option] = values[2]
             else
                 vim.opt_local[option] = values[1]

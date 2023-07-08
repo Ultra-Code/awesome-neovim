@@ -146,7 +146,13 @@ end, { desc = "Toggle Line Numbers" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>uc", function() utils.toggle("conceallevel", nil, { 0, conceallevel }) end,
     { desc = "Toggle Conceal" })
-
+map("n", "<leader>ue", function()
+    utils.toggle("listchars", nil,
+        {
+            { tab = [[→→]], trail = "•", extends = "»", precedes = "«" },
+            { tab = [[→→]], trail = "•", extends = "»", precedes = "«", eol = "↴" }
+        })
+end, { desc = "Toggle EOL" })
 if not utils.has("trouble.nvim") then
     map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
     map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
