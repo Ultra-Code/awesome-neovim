@@ -26,6 +26,14 @@ return {
                             null_ls.builtins.diagnostics.glslc.with({
                                 extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0
                             }),
+                            null_ls.builtins.diagnostics.mypy.with({
+                                extra_args = {
+                                    "--strict",
+                                    "--disallow-any-unimported",
+                                    "--no-implicit-optional",
+                                    "--warn-unused-ignores",
+                                },
+                            }),
                             null_ls.builtins.code_actions.shellcheck.with({
                                 filetypes = { "bash", "sh" },
                             }),
@@ -67,6 +75,7 @@ return {
                     filetypes = { "c", "cpp" }, -- we don't want objective-c and objective-cpp!
                 },
                 zls = {},
+                pylsp = {},
                 lua_ls = {
                     cmd = {
                         "lua-language-server",
@@ -82,7 +91,6 @@ return {
                             diagnostics = {
                                 -- Get the language server to recognize the `vim` global
                                 globals = { "vim" },
-                                neededFileStatus = { ["codestyle-check"] = "Opened" },
                             },
                             workspace = {
                                 -- Make the server aware of Neovim runtime files
