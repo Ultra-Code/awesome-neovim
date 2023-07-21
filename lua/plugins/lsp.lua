@@ -26,6 +26,8 @@ return {
                             null_ls.builtins.diagnostics.glslc.with({
                                 extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0
                             }),
+                            null_ls.builtins.diagnostics.ruff,
+                            null_ls.builtins.diagnostics.pylint,
                             null_ls.builtins.diagnostics.mypy.with({
                                 extra_args = {
                                     "--strict",
@@ -34,6 +36,7 @@ return {
                                     "--warn-unused-ignores",
                                 },
                             }),
+                            null_ls.builtins.formatting.black,
                             null_ls.builtins.code_actions.shellcheck.with({
                                 filetypes = { "bash", "sh" },
                             }),
@@ -75,7 +78,7 @@ return {
                     filetypes = { "c", "cpp" }, -- we don't want objective-c and objective-cpp!
                 },
                 zls = {},
-                pylsp = {},
+                jedi_language_server = {},
                 lua_ls = {
                     cmd = {
                         "lua-language-server",
