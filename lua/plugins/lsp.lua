@@ -37,6 +37,8 @@ return {
                                 },
                             }),
                             null_ls.builtins.formatting.black,
+                            null_ls.builtins.formatting.ruff,
+                            null_ls.builtins.formatting.isort,
                             null_ls.builtins.code_actions.shellcheck.with({
                                 filetypes = { "bash", "sh" },
                             }),
