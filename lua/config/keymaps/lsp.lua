@@ -2,7 +2,7 @@ local autocmd = vim.api.nvim_create_autocmd -- create autocmd
 local utils = require("config.utils")
 local map = utils.map
 local augroup = utils.augroup
--- TODO: make sure all relevant provider in zig lsp capabilities are captured
+
 -- map the following keys after the language server attaches to a buffer
 -- See `:help vim.lsp.*` for doc mentation on any of the below functions
 -- :lua =vim.lsp.get_active_clients()[1].server_capabilities to get capabilities of lsp attached to buffer
@@ -18,13 +18,27 @@ utils.on_attach(function(client, bufnr)
             end
         end, opts, "get hover info")
     end
+    if client.server_capabilities.semanticTokensProvider then
+        map("n", "<localleader>us", function()
+            utils.toggle("enable_semantic_tokens", { global = true }, nil)
+            if vim.g["enable_semantic_tokens"] then
+                vim.lsp.semantic_tokens.start(bufnr, client.id)
+            else
+                vim.lsp.semantic_tokens.stop(bufnr, client.id)
+            end
+        end, opts, "toggle semantic token highlighting")
+    end
     if client.server_capabilities.signatureHelpProvider then
         map("n", "<localleader>k", vim.lsp.buf.signature_help, opts, "get fn signature help")
     end
     if client.server_capabilities.declarationProvider then
         map("n", "<localleader>gD", vim.lsp.buf.declaration, opts, "goto declaration")
     end
+    if client.server_capabilities.completionProvider then
+        vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+    end
     if client.server_capabilities.definitionProvider then
+        vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
         map("n", "<localleader>gd", function()
             if utils.has("lspsaga.nvim") then
                 vim.cmd([[Lspsaga goto_definition]])
@@ -193,13 +207,13 @@ utils.on_attach(function(client, bufnr)
 
     if utils.has("lspsaga.nvim") then
         map("n", "<localleader>wd", function()
-            vim.cmd([[Lspsaga show_workspace_diagnostics]]) --can use ++normal to show like trouble
+            vim.cmd([[Lspsaga show_workspace_diagnostics]]) --can use ++normal to show in loclist
         end, opts, "workspace diagnostics")
         map("n", "<localleader>bd", function()
-            vim.cmd([[Lspsaga show_buf_diagnostics]]) --can use ++normal to show like trouble
+            vim.cmd([[Lspsaga show_buf_diagnostics]])
         end, opts, "workspace diagnostics")
         map("n", "<localleader>wo", function()
-            vim.cmd([[Lspsaga outline]]) --TODO: find way to showein float
+            vim.cmd([[Lspsaga outline]])
         end, opts, "workspace outline")
     end
     map("n", "<localleader>sl", vim.diagnostic.setloclist, opts, "set loclist")

@@ -5,6 +5,9 @@ local opt = { remap = true }
 
 vim.cmd([[ cabbrev ht tab help]]) --map("c","h","tab help")
 
+map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
+map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
+
 -- search visually selected region on current line
 map("v", "//", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opt)
 
@@ -163,6 +166,3 @@ map("n", "<leader>ue", function()
         { tab = [[→→]], trail = "•", extends = "»", precedes = "«", eol = "↴" },
     })
 end, { desc = "Toggle EOL" })
-
-map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
-map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
