@@ -199,12 +199,6 @@ return {
                     mappings = {
                         i = {
                             ["<C-[>"] = actions.close,
-                            ["<c-t>"] = function(...)
-                                return require("trouble.providers.telescope").open_with_trouble(...)
-                            end,
-                            ["<a-t>"] = function(...)
-                                return require("trouble.providers.telescope").open_selected_with_trouble(...)
-                            end,
                             ["<a-i>"] = function()
                                 telescope_builtin("find_files", { no_ignore = true })()
                             end,

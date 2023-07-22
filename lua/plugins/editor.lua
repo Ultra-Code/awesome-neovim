@@ -94,78 +94,14 @@ return {
     {
         "folke/todo-comments.nvim",
         event = "VeryLazy",
-        cmd = { "TodoTrouble", "TodoTelescope" },
+        cmd = {  "TodoTelescope", "TodoLocList" },
         config = true,
         -- stylua: ignore
         keys = {
             { "]t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
             { "[t",         function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-            { "<leader>xt", "<cmd>TodoTrouble<cr>",                              desc = "Todo (Trouble)" },
-            { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>",      desc = "Todo/Fix/Fixme (Trouble)" },
-            { "<leader>st", "<cmd>TodoTelescope<cr>",                            desc = "Todo" },
-        },
-    },
-    -- better diagnostics list and others
-    {
-        "folke/trouble.nvim",
-        cmd = { "TroubleToggle", "Trouble" },
-        keys = {
-            { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-            { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-            { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-            { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
-            {
-                "[q",
-                function()
-                    if require("trouble").is_open() then
-                        require("trouble").previous({ skip_groups = true, jump = true })
-                    else
-                        vim.cmd.cprev()
-                    end
-                end,
-                desc = "Previous trouble/quickfix item",
-            },
-            {
-                "]q",
-                function()
-                    if require("trouble").is_open() then
-                        require("trouble").next({ skip_groups = true, jump = true })
-                    else
-                        vim.cmd.cnext()
-                    end
-                end,
-                desc = "Next trouble/quickfix item",
-            },
-        },
-        opts = {
-            mode = "document_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
-            -- key mappings for actions in the trouble list
-            -- map to {} to remove a mapping, for example: close = {},
-            action_keys = {
-                close = "q", -- close the list
-                cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
-                refresh = "r", -- manually refresh
-                jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
-                open_split = { "<c-x>" }, -- open buffer in new split
-                open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
-                open_tab = { "<c-t>" }, -- open buffer in new tab
-                jump_close = { "o" }, -- jump to the diagnostic and close the list
-                toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
-                toggle_preview = "P", -- toggle auto_preview
-                hover = "K", -- opens a small poup with the full multiline message
-                preview = "p", -- preview the diagnostic location
-                close_folds = { "zM", "zm" }, -- close all folds
-                open_folds = { "zR", "zr" }, -- open all folds
-                toggle_fold = { "zA", "za" }, -- toggle fold of current file
-                previous = "k", -- preview item
-                next = "j", -- next item
-            },
-            auto_open = false, -- automatically open the list when you have diagnostics
-            auto_close = true, -- automatically close the list when you have no diagnostics
-            -- automatyically preview the location of the diagnostic. <esc> to close preview and go back to last window
-            auto_preview = true,
-            auto_fold = false, -- automatically fold a file trouble list at creation
-            use_diagnostic_signs = true,
+            { "<leader>tt", "<cmd>TodoTelescope<cr>",                            desc = "List Todo in Telescope" },
+            { "<leader>tl", "<cmd>TodoLocList<cr>",                            desc = "List Todo in LocList" },
         },
     },
     -- which-key

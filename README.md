@@ -54,7 +54,7 @@ and installing the server and other accompanying tools for development like lint
     📂 ~/.config/nvim
     ├── 📂 ftplugin
     │  └── 📂 lua
-    │  │   └──  trouble.lua
+    │  │   └──  mapping.lua
     │  ├──  gitcommit.lua
     │  ├──  help.lua
     │  └──  zsh.lua

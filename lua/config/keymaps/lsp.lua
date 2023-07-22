@@ -56,8 +56,6 @@ utils.on_attach(function(client, bufnr)
         map("n", "<localleader>gi", function()
             if utils.has("lspsaga.nvim") then
                 vim.cmd([[Lspsaga finder imp+def]])
-            elseif utils.has("trouble.nvim") then
-                vim.cmd([[Trouble lsp_implementations]])
             else
                 vim.lsp.buf.implementation()
             end
@@ -67,8 +65,6 @@ utils.on_attach(function(client, bufnr)
         map("n", "<localleader>gr", function()
             if utils.has("lspsaga.nvim") then
                 vim.cmd([[Lspsaga finder ref]])
-            elseif utils.has("trouble.nvim") then
-                vim.cmd([[Trouble lsp_references]])
             else
                 vim.lsp.buf.references({})
             end
