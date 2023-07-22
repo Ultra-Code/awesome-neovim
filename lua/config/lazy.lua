@@ -14,17 +14,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
     spec = {
-        { import = "plugins.cmp" },
-        { import = "plugins.colorscheme" },
-        { import = "plugins.editor" },
-        { import = "plugins.gitsigns" },
-        { import = "plugins.lsp" },
-        { import = "plugins.neorg" },
-        { import = "plugins.snip" },
-        { import = "plugins.telescope" },
-        { import = "plugins.tree" },
-        { import = "plugins.treesitter" },
-        { import = "plugins.ui" },
+        { import = "plugins" },
     },
     defaults = {
         lazy = false,
