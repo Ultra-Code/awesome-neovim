@@ -152,11 +152,11 @@ return {
                 ["<leader>gh"] = { name = "+hunks" },
                 ["<leader>q"] = { name = "+quit/session" },
                 ["<leader>s"] = { name = "+search" },
-                ["<leader>u"] = { name = "+ui" },
+                ["<leader>u"] = { name = "+ui/toggle" },
                 ["<leader>w"] = { name = "+windows" },
                 ["<leader>x"] = { name = "+diagnostics/quickfix" },
                 ["<leader>h"] = { name = "+gitsigns/hop" },
-                ["<localleader>"] = { name = "<localleader>" },
+                ["<localleader>u"] = { name = "+toggle" },
             }
             wk.register(keymaps)
         end,
