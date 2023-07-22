@@ -193,6 +193,9 @@ utils.on_attach(function(client, bufnr)
         map("n", "<localleader>wd", function()
             vim.cmd([[Lspsaga show_workspace_diagnostics]]) --can use ++normal to show like trouble
         end, opts, "workspace diagnostics")
+        map("n", "<localleader>bd", function()
+            vim.cmd([[Lspsaga show_buf_diagnostics]]) --can use ++normal to show like trouble
+        end, opts, "workspace diagnostics")
         map("n", "<localleader>wo", function()
             vim.cmd([[Lspsaga outline]]) --TODO: find way to showein float
         end, opts, "workspace outline")
