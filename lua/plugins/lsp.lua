@@ -1,4 +1,4 @@
--- local diagnostics_options = require("config.defaults").diagnostics_options
+local float = require("config.defaults").diagnostics_options.float
 return {
     {
         "neovim/nvim-lspconfig",
@@ -10,6 +10,11 @@ return {
                 event = "LspAttach",
                 opts = {
                     bind = true,
+                    max_height = float.max_height,
+                    max_width = float.max_width,
+                    handler_opts = {
+                        border = float.border,
+                    },
                 },
                 config = function(_, opts)
                     require("lsp_signature").setup(opts)
@@ -140,9 +145,9 @@ return {
                 _ = bufnr
                 -- if vim.filetype.match({ buf = bufnr }) == "lua" then
                 -- end
-                -- require('lspconfig.ui.windows').default_options = {
-                --     border = diagnostics_options.float.border,
-                -- }
+                require("lspconfig.ui.windows").default_options = {
+                    border = float.border,
+                }
             end
 
             local function setup(server, server_config)
@@ -171,6 +176,13 @@ return {
     {
         "nvimdev/lspsaga.nvim",
         event = "LspAttach",
-        config = true,
+        opts = {
+            ui = {
+                border = float.border,
+            },
+            outline = {
+                layout = "float",
+            },
+        },
     },
 }
