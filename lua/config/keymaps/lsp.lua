@@ -2,8 +2,10 @@ local autocmd = vim.api.nvim_create_autocmd -- create autocmd
 local utils = require("config.utils")
 local map = utils.map
 local augroup = utils.augroup
+-- TODO: make sure all relevant provider in zig lsp capabilities are captured
 -- map the following keys after the language server attaches to a buffer
 -- See `:help vim.lsp.*` for doc mentation on any of the below functions
+-- :lua =vim.lsp.get_active_clients()[1].server_capabilities to get capabilities of lsp attached to buffer
 utils.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr }
 
@@ -183,7 +185,7 @@ utils.on_attach(function(client, bufnr)
     end, opts, "goto previous diagnostics")
     map("n", "]d", function()
         if utils.has("lspsaga.nvim") then
-            vim.cmd([[Lspsaga diangostic_jump_next]])
+            vim.cmd([[Lspsaga diagnostic_jump_next]])
         else
             vim.diagnostic.goto_next()
         end
