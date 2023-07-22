@@ -85,7 +85,8 @@ opt.hidden = true -- without saving a changed buffer
 -- Automatically enable mouse usage
 opt.mouse = "a"
 
-opt.mousemoveevent = true -- enable mouse move event
+-- enable mouse move event
+opt.mousemoveevent = false
 
 -- enable line wrap
 opt.wrap = false

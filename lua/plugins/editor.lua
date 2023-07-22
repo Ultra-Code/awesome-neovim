@@ -225,26 +225,4 @@ return {
             wk.register(keymaps)
         end,
     },
-    -- add symbols-outline
-    {
-        "simrat39/symbols-outline.nvim",
-        cmd = "SymbolsOutline",
-        keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
-        opts = {
-            keymaps = {
-                close = { "jk", "q" },
-                goto_location = "<Cr>",
-                focus_location = "o",
-                hover_symbol = "<C-space>",
-                toggle_preview = "p",
-                rename_symbol = "r",
-                code_actions = "a",
-                fold = "zf",
-                unfold = "zu",
-                fold_all = "zC",
-                unfold_all = "zO",
-                fold_reset = "zR",
-            },
-        },
-    },
 }
