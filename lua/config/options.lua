@@ -2,7 +2,7 @@ local opt = vim.opt
 local opt_global = vim.opt_global
 local fn = vim.fn -- invoke vim-functions in lua
 
-vim.g.editorconfig = true
+vim.g.editorconfig = false
 vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[\]]
 

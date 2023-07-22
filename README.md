@@ -93,8 +93,6 @@ and installing the server and other accompanying tools for development like lint
 
 `lua/plugins` directory contains all `plugins` configurations and their `mappings`
 
-`.editorconfig` file for editor `formatting` options
-
 `init` initializing/start point for nvim editor
 
 
