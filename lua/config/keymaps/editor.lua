@@ -113,11 +113,15 @@ end, { desc = "Quit all" })
 -- === Terminal === "
 -- Mapping to open terminal emulator in nvim
 -- open terminal on alt+t
-map("n", "<M-t>", function()
-    vim.cmd([[
+map({ "n", "t" }, "<M-t>", function()
+    if utils.has("lspsaga.nvim") then
+        vim.cmd([[Lspsaga term_toggle]])
+    else
+        vim.cmd([[
         split term://zsh
         resize 15
     ]])
+    end
 end)
 -- mapping to close terminal emulator
 map("t", "<M-t>", [[<C-\><C-n>:bd!<CR>]])

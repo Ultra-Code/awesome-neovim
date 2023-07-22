@@ -190,4 +190,8 @@ M.map = function(mode, lhs, rhs, opts, desc)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+M.augroup = function(name)
+    return vim.api.nvim_create_augroup(name, { clear = true })
+end
+
 return M

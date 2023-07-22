@@ -1,10 +1,20 @@
 -- local diagnostics_options = require("config.defaults").diagnostics_options
 return {
-    { "folke/neodev.nvim", event = "VeryLazy", opts = { pathStrict = true } },
     {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
+            { "folke/neodev.nvim", ft = "lua", opts = { pathStrict = true } },
+            {
+                "ray-x/lsp_signature.nvim",
+                event = "LspAttach",
+                opts = {
+                    bind = true,
+                },
+                config = function(_, opts)
+                    require("lsp_signature").setup(opts)
+                end,
+            },
             {
                 "jose-elias-alvarez/null-ls.nvim",
                 opts = function()
@@ -42,7 +52,6 @@ return {
                             null_ls.builtins.code_actions.shellcheck.with({
                                 filetypes = { "bash", "sh" },
                             }),
-                            null_ls.builtins.code_actions.gitsigns,
                             null_ls.builtins.hover.printenv.with({
                                 filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
                             }),
@@ -158,5 +167,10 @@ return {
                 setup(server, server_config)
             end
         end,
+    },
+    {
+        "nvimdev/lspsaga.nvim",
+        event = "LspAttach",
+        config = true,
     },
 }

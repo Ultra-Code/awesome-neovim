@@ -13,7 +13,6 @@ return {
             { "hrsh7th/cmp-nvim-lua", lazy = true }, -- nvim-cmp source for nvim lua
             { "hrsh7th/cmp-emoji", lazy = true }, -- nvim-cmp source for emoji
             { "hrsh7th/cmp-cmdline", lazy = true }, --nvim-cmp source for vim's cmdline.
-            { "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true }, --cmp-nvim-lsp-signature-help
         },
         config = function(_, opts)
             local cmp = require("cmp")
@@ -120,7 +119,6 @@ return {
                     { name = "nvim_lua" },
                     { name = "emoji" },
                     { name = "neorg" },
-                    { name = "nvim_lsp_signature_help" },
                 }),
             }
         end,
