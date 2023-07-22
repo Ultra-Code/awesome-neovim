@@ -56,16 +56,16 @@ return {
     -- | vim.lsp.util.open_floating_preview()| vim.diagnostic.config()
     ---@type table
     diagnostics_options = {
-        virtual_text = {
-            severity = { min = vim.diagnostic.severity.WARN, max = vim.diagnostic.severity.ERROR },
-            source = "if_many", -- prefix = "●"
-        },
+        virtual_text = false,
+        -- virtual_text = {
+        --     severity = { min = vim.diagnostic.severity.WARN, max = vim.diagnostic.severity.ERROR },
+        --     source = "if_many",
+        --     spacing = 0,
+        --     prefix = "●",
+        -- },
         float = {
+            --nvim_open_win() options
             relative = "cursor",
-            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-            focusable = false,
-            focus = false,
-            source = "if_many",
             -- "single": A single line box.
             -- "double": A double line box.
             -- "rounded": Like "single", but with rounded corners "╭"
@@ -73,8 +73,18 @@ return {
             -- "shadow": A drop shadow effect by blending with the
             -- "none": No border (default).
             border = "shadow",
+            -- vim.lsp.util.open_floating_preview()
+            max_width = math.floor(vim.o.columns * 0.75),
+            max_height = math.floor(vim.o.lines * 0.6),
+            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+            focusable = false,
+            focus = false,
+            -- vim.diagnostic.open_float()
+            source = "if_many",
+            severity_sort = true,
         },
         update_in_insert = false,
+        -- This affects the order in which signs and virtual text are displayed
         severity_sort = true,
     },
 }
