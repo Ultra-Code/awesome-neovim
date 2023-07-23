@@ -27,20 +27,13 @@ return {
                     return {
                         diagnostics_format = "#{m} (#{s})",
                         sources = {
+                            -- cpp
                             null_ls.builtins.diagnostics.cppcheck.with({
                                 extra_args = {
                                     "--inconclusive",
                                 },
                             }),
-                            null_ls.builtins.diagnostics.zsh.with({
-                                filetypes = { "zsh" },
-                            }),
-                            null_ls.builtins.diagnostics.shellcheck.with({
-                                filetypes = { "bash", "sh" },
-                            }),
-                            null_ls.builtins.diagnostics.glslc.with({
-                                extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0
-                            }),
+                            -- python
                             null_ls.builtins.diagnostics.ruff,
                             null_ls.builtins.diagnostics.pylint,
                             null_ls.builtins.diagnostics.mypy.with({
@@ -54,13 +47,26 @@ return {
                             null_ls.builtins.formatting.black,
                             null_ls.builtins.formatting.ruff,
                             null_ls.builtins.formatting.isort,
+                            -- lua
+                            null_ls.builtins.diagnostics.selene,
+                            null_ls.builtins.formatting.stylua,
+                            -- shell
+                            null_ls.builtins.diagnostics.zsh.with({
+                                filetypes = { "zsh" },
+                            }),
+                            null_ls.builtins.diagnostics.shellcheck.with({
+                                filetypes = { "bash", "sh" },
+                            }),
                             null_ls.builtins.code_actions.shellcheck.with({
                                 filetypes = { "bash", "sh" },
                             }),
                             null_ls.builtins.hover.printenv.with({
                                 filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
                             }),
-                            null_ls.builtins.formatting.stylua,
+                            -- opengl
+                            null_ls.builtins.diagnostics.glslc.with({
+                                extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0
+                            }),
                         },
                     }
                 end,
