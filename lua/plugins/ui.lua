@@ -88,7 +88,7 @@ return {
                 },
                 --NOTE: install parsers for markdown and markdown_inline to see markdown documentation
                 hover = {
-                    enabled = false,
+                    enabled = true,
                 },
                 signature = {
                     enabled = false,
