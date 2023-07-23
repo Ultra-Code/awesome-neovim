@@ -1,5 +1,5 @@
 base: lua51
-name: vim
+name: neovim
 globals:
   after_each:
     args:
