@@ -21,8 +21,7 @@ map("n", "<leader>p", [[m`0"_DP``]], opt, "keep pasting overwriting text")
 map("v", "<leader>p", [[m`"_dP``]], opt, "keep pasting over the same thing")
 
 -- delete content without clobbering registers
-map("n", "<leader>d", [["_dd]], opt, "delete content without clobbering registers")
-map("v", "<leader>d", [["_d]], opt, "delete content without clobbering registers")
+map({ "n", "v" }, "<leader>d", [["_d]], { remap = false }, "delete content without clobbering registers")
 
 -- Switch CWD to the directory of the open buffer
 map({ "n", "v", "o" }, "<leader>cd", "<cmd>cd %:p:h<cr>:pwd<cr>", opt, "switch to cwd")
