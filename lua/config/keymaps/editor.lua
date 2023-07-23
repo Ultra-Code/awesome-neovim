@@ -43,13 +43,13 @@ local mode = { "n", "v", "o" }
 
 -- buffers
 if utils.has("bufferline.nvim") then
-    map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-    map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+    map("n", "<A-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+    map("n", "<A-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
     map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
     map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 else
-    map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-    map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+    map("n", "<A-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+    map("n", "<A-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
     map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" }) -- move back to the previous buffer in the buffer list
     map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" }) -- move forward to the next buffer in the buffer list
 end
