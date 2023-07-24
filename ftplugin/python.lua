@@ -1,2 +1,2 @@
 -- match textwidth with black
-vim.opt_local.textwidth = 88
+vim.opt_local.textwidth = 99
