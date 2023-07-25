@@ -14,7 +14,20 @@ return {
         opts = {
             -- A list of parser names, or "all" (the 1st five listed parsers should always be installed)
             -- For web dev "jsonc", "typescript", "css", "html", "vue",
-            ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "cpp", "zig", "norg", "bash", "glsl" },
+            ensure_installed = {
+                "c",
+                "lua",
+                "vim",
+                "vimdoc",
+                "query",
+                "cpp",
+                "zig",
+                "norg",
+                "bash",
+                "glsl",
+                "markdown",
+                "markdown_inline",
+            },
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,
             -- Automatically install missing parsers when entering buffer
