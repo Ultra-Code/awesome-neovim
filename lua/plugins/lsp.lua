@@ -5,9 +5,10 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             { "folke/neodev.nvim", ft = "lua", opts = { pathStrict = true } },
+            --TODO: enable inline hint with 0.10 release
             {
                 "ray-x/lsp_signature.nvim",
-                event = "LspAttach",
+                event = "VeryLazy",
                 opts = {
                     bind = true,
                     max_height = float.max_height,
