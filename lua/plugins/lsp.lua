@@ -3,79 +3,6 @@ return {
     {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
-        dependencies = {
-            { "folke/neodev.nvim", ft = "lua", opts = { pathStrict = true } },
-            --TODO: enable inline hint with 0.10 release
-            {
-                "ray-x/lsp_signature.nvim",
-                event = "VeryLazy",
-                opts = {
-                    bind = true,
-                    max_height = float.max_height,
-                    max_width = float.max_width,
-                    handler_opts = {
-                        border = float.border,
-                    },
-                },
-                config = function(_, opts)
-                    require("lsp_signature").setup(opts)
-                end,
-            },
-            {
-                "jose-elias-alvarez/null-ls.nvim",
-                opts = function()
-                    local null_ls = require("null-ls")
-                    return {
-                        diagnostics_format = "#{m} (#{s})",
-                        sources = {
-                            -- cpp
-                            null_ls.builtins.diagnostics.cppcheck.with({
-                                extra_args = {
-                                    "--inconclusive",
-                                },
-                            }),
-                            -- python
-                            null_ls.builtins.diagnostics.ruff,
-                            null_ls.builtins.diagnostics.pylint,
-                            null_ls.builtins.diagnostics.mypy.with({
-                                extra_args = {
-                                    "--strict",
-                                    "--disallow-any-unimported",
-                                    "--no-implicit-optional",
-                                    "--warn-unused-ignores",
-                                },
-                            }),
-                            null_ls.builtins.formatting.black,
-                            null_ls.builtins.formatting.ruff,
-                            null_ls.builtins.formatting.isort,
-                            -- lua
-                            null_ls.builtins.diagnostics.selene,
-                            null_ls.builtins.formatting.stylua,
-                            -- shell
-                            null_ls.builtins.diagnostics.zsh.with({
-                                filetypes = { "zsh" },
-                            }),
-                            null_ls.builtins.diagnostics.shellcheck.with({
-                                filetypes = { "bash", "sh" },
-                            }),
-                            null_ls.builtins.code_actions.shellcheck.with({
-                                filetypes = { "bash", "sh" },
-                            }),
-                            null_ls.builtins.hover.printenv.with({
-                                filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
-                            }),
-                            -- opengl
-                            null_ls.builtins.diagnostics.glslc.with({
-                                extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0
-                            }),
-                        },
-                    }
-                end,
-                config = function(_, opts)
-                    require("null-ls").setup(opts)
-                end,
-            },
-        },
         ---@class PluginLspOpts
         opts = {
             -- LSP Server Settings
@@ -136,7 +63,7 @@ return {
             -- you can do any additional lsp server setup here
             setup = {
                 lua_ls = function(server, opts)
-                    require("neodev").setup()
+                    -- require("neodev").setup()
                     require("lspconfig")[server].setup(opts)
                 end,
                 -- example to setup with typescript.nvim
@@ -191,5 +118,77 @@ return {
                 layout = "float",
             },
         },
+    },
+    { "folke/neodev.nvim", event = "LspAttach", opts = { pathStrict = true } },
+    --TODO: enable inline hint with 0.10 release
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "LspAttach",
+        opts = {
+            bind = true,
+            max_height = float.max_height,
+            max_width = float.max_width,
+            handler_opts = {
+                border = float.border,
+            },
+        },
+        config = function(_, opts)
+            require("lsp_signature").setup(opts)
+        end,
+    },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        event = "LspAttach",
+        opts = function()
+            local null_ls = require("null-ls")
+            return {
+                diagnostics_format = "#{m} (#{s})",
+                sources = {
+                    -- cpp
+                    null_ls.builtins.diagnostics.cppcheck.with({
+                        extra_args = {
+                            "--inconclusive",
+                        },
+                    }),
+                    -- python
+                    null_ls.builtins.diagnostics.ruff,
+                    null_ls.builtins.diagnostics.pylint,
+                    null_ls.builtins.diagnostics.mypy.with({
+                        extra_args = {
+                            "--strict",
+                            "--disallow-any-unimported",
+                            "--no-implicit-optional",
+                            "--warn-unused-ignores",
+                        },
+                    }),
+                    null_ls.builtins.formatting.black,
+                    null_ls.builtins.formatting.ruff,
+                    null_ls.builtins.formatting.isort,
+                    -- lua
+                    null_ls.builtins.diagnostics.selene,
+                    null_ls.builtins.formatting.stylua,
+                    -- shell
+                    null_ls.builtins.diagnostics.zsh.with({
+                        filetypes = { "zsh" },
+                    }),
+                    null_ls.builtins.diagnostics.shellcheck.with({
+                        filetypes = { "bash", "sh" },
+                    }),
+                    null_ls.builtins.code_actions.shellcheck.with({
+                        filetypes = { "bash", "sh" },
+                    }),
+                    null_ls.builtins.hover.printenv.with({
+                        filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
+                    }),
+                    -- opengl
+                    null_ls.builtins.diagnostics.glslc.with({
+                        extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0
+                    }),
+                },
+            }
+        end,
+        config = function(_, opts)
+            require("null-ls").setup(opts)
+        end,
     },
 }
