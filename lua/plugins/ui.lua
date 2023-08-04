@@ -2,7 +2,7 @@ return {
     -- indent guides for Neovim
     {
         "lukas-reineke/indent-blankline.nvim",
-        event = { "BufReadPost", "BufNewFile" },
+        event = { "BufReadPre", "BufNewFile" },
         opts = {
             -- char = "▏",
             char = "│",
@@ -26,7 +26,6 @@ return {
     -- active indent guide and indent text objects
     {
         "echasnovski/mini.indentscope",
-        version = false, -- wait till new 0.7.0 release to put it back on semver
         event = { "BufReadPre", "BufNewFile" },
         opts = {
             -- symbol = "▏",
@@ -115,7 +114,7 @@ return {
     -- A snazzy buffer line (with minimal tab integration) for Neovim
     {
         "akinsho/bufferline.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPost", "BufNewFile" },
         keys = {
             -- pick a buffer to view from the buffer list
             { "<leader>bs", "<cmd>BufferLinePick<CR>", desc = "select buffer" },
@@ -205,7 +204,7 @@ return {
     -- statusline
     {
         "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPost", "BufNewFile" },
         opts = function()
             local function total_num_lines()
                 return vim.api.nvim_buf_line_count(0)
