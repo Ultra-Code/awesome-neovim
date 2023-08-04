@@ -3,7 +3,7 @@ return {
     {
         "catppuccin/nvim",
         name = "catppuccin",
-        event = "VimEnter",
+        event = {"BufReadPre","BufNewFile"},
         opts = {
             flavour = "frappe", -- latte, frappe, macchiato, mocha
             background = {
@@ -82,7 +82,7 @@ return {
     {
         "navarasu/onedark.nvim",
         lazy = true,
-        -- event = "VimEnter",
+        -- event = {"BufReadPre","BufNewFile"},
         config = function(_, opts)
             require("onedark").setup(opts)
             require("onedark").load()
