@@ -3,7 +3,19 @@ return {
     {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
-        ---@class PluginLspOpts
+        dependencies = {
+            {
+                "ray-x/lsp_signature.nvim",
+                opts = {
+                    bind = true,
+                    max_height = float.max_height,
+                    max_width = float.max_width,
+                    handler_opts = {
+                        border = float.border,
+                    },
+                },
+            },
+        },
         opts = {
             -- LSP Server Settings
             servers = {
@@ -13,9 +25,9 @@ return {
                 -- tailwindcss = {},
                 -- tsserver = {},
                 -- volar = {},
-                bashls = {
-                    filetypes = { "bash", "sh" },
-                },
+                -- bashls = {
+                --     filetypes = { "bash", "sh" },
+                -- },
                 clangd = {
                     cmd = {
                         "clangd",
@@ -63,7 +75,6 @@ return {
             -- you can do any additional lsp server setup here
             setup = {
                 lua_ls = function(server, opts)
-                    -- require("neodev").setup()
                     require("lspconfig")[server].setup(opts)
                 end,
                 -- example to setup with typescript.nvim
@@ -72,7 +83,6 @@ return {
                 -- end,
             },
         },
-        ---@param opts PluginLspOpts
         config = function(_, opts)
             local on_attach = function(client, bufnr)
                 _ = client
@@ -121,21 +131,6 @@ return {
     },
     { "folke/neodev.nvim", event = "LspAttach", opts = { pathStrict = true } },
     --TODO: enable inline hint with 0.10 release
-    {
-        "ray-x/lsp_signature.nvim",
-        event = "LspAttach",
-        opts = {
-            bind = true,
-            max_height = float.max_height,
-            max_width = float.max_width,
-            handler_opts = {
-                border = float.border,
-            },
-        },
-        config = function(_, opts)
-            require("lsp_signature").setup(opts)
-        end,
-    },
     {
         "jose-elias-alvarez/null-ls.nvim",
         event = "LspAttach",
@@ -186,9 +181,6 @@ return {
                     }),
                 },
             }
-        end,
-        config = function(_, opts)
-            require("null-ls").setup(opts)
         end,
     },
 }
