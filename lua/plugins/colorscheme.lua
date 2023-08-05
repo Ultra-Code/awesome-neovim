@@ -5,7 +5,7 @@ return {
         name = "catppuccin",
         event = {"BufReadPre","BufNewFile"},
         opts = {
-            flavour = "frappe", -- latte, frappe, macchiato, mocha
+            flavour = "macchiato", -- latte, frappe, macchiato, mocha
             background = {
                 -- :h background
                 light = "latte",
