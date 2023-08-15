@@ -40,6 +40,7 @@ return {
                     filetypes = { "c", "cpp" }, -- we don't want objective-c and objective-cpp!
                 },
                 zls = {},
+                rust_analyzer = {},
                 jedi_language_server = {},
                 lua_ls = {
                     cmd = {
