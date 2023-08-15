@@ -4,7 +4,7 @@ return {
     -- A Neovim File explorer
     {
         "nvim-tree/nvim-tree.lua",
-        cmd = "Tree",
+        cmd = "NvimTreeToggle",
         keys = {
             {
                 "<leader>n",
