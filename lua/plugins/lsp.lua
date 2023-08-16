@@ -5,6 +5,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             {
+                --TODO: enable inline hint with 0.10 release
                 "ray-x/lsp_signature.nvim",
                 opts = {
                     bind = true,
@@ -131,7 +132,6 @@ return {
         },
     },
     { "folke/neodev.nvim", event = "LspAttach", opts = { pathStrict = true } },
-    --TODO: enable inline hint with 0.10 release
     {
         "jose-elias-alvarez/null-ls.nvim",
         event = "LspAttach",
