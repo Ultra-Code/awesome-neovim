@@ -41,7 +41,16 @@ return {
                     filetypes = { "c", "cpp" }, -- we don't want objective-c and objective-cpp!
                 },
                 zls = {},
-                rust_analyzer = {},
+                rust_analyzer = {
+                    settings = {
+                        ["rust-analyzer"] = {
+                            check = {
+                                command = "clippy",
+                                features = "all",
+                            },
+                        },
+                    },
+                },
                 jedi_language_server = {},
                 lua_ls = {
                     cmd = {
