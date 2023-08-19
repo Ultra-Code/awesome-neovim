@@ -7,6 +7,13 @@ return {
             Hint = "󰌶", --🅸,"" "󰛩 "
             Info = " ", --🅷," ","󰗡 "
         },
+        debugger = {
+            DapBreakpoint = " ", --breakpoints
+            DapBreakpointCondition = " ", --conditional breakpoints
+            DapLogPoint = " ", --log points
+            DapStopped = " ", --indicate where the debugee is stopped
+            DapBreakpointRejected = " ", --indicate breakpoints rejected by the debug
+        },
         git = {
             add = { text = "│" }, --" ","▎"
             change = { text = "!" }, --" ",
