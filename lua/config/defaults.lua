@@ -4,14 +4,14 @@ return {
         diagnostics = {
             Error = "󰅚 ", --🅴," ""󰢃 "
             Warn = "󰀪 ", --🆆," "
-            Hint = "󰌶", --🅸,"" "󰛩 "
+            Hint = "󰌶", --🅸," " "󰛩 "
             Info = " ", --🅷," ","󰗡 "
         },
         debugger = {
-            DapBreakpoint = " ", --breakpoints
+            DapBreakpoint = " ", --▶️breakpoints
             DapBreakpointCondition = " ", --conditional breakpoints
             DapLogPoint = " ", --log points
-            DapStopped = " ", --indicate where the debugee is stopped
+            DapStopped = " ", --🟥indicate where the debugee is stopped
             DapBreakpointRejected = " ", --indicate breakpoints rejected by the debug
         },
         git = {
