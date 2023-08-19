@@ -140,7 +140,11 @@ return {
             },
         },
     },
-    { "folke/neodev.nvim", event = "LspAttach", opts = { pathStrict = true } },
+    {
+        "folke/neodev.nvim",
+        event = "LspAttach",
+        opts = { pathStrict = true, library = { plugins = { "nvim-dap-ui" }, types = true } },
+    },
     {
         "jose-elias-alvarez/null-ls.nvim",
         event = "LspAttach",
