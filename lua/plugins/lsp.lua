@@ -146,7 +146,7 @@ return {
         opts = { pathStrict = true, library = { plugins = { "nvim-dap-ui" }, types = true } },
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "Ultra-Code/null-ls.nvim",
         event = "LspAttach",
         opts = function()
             local null_ls = require("null-ls")
