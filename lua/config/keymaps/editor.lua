@@ -116,7 +116,8 @@ end, { desc = "Quit all" })
 -- Mapping to open terminal emulator in nvim
 -- open terminal on alt+t
 map({ "n", "t" }, "<M-t>", function()
-    if utils.has("lspsaga.nvim") then
+    -- Checks whether an lsp is attached to the current buffer and is ready.
+    if vim.lsp.buf.server_ready() and utils.has("lspsaga.nvim") then
         vim.cmd([[Lspsaga term_toggle]])
     else
         vim.cmd([[
