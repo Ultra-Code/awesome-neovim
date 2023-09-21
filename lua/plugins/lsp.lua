@@ -56,7 +56,7 @@ return {
                     cmd = {
                         "lua-language-server",
                         "-E",
-                        "/usr/share/lua-language-server/main.lua",
+                        "$HOME/tools/lua-language-server/main.lua",
                     },
                     settings = {
                         Lua = {
