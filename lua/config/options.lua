@@ -70,7 +70,7 @@ opt.undofile = true
 opt.undolevels = 30000
 
 -- You will have bad experience for diagnostic messages when it's default 4000.
-opt.updatetime = 100
+opt.updatetime = 1000
 
 -- Time in milliseconds to wait for a mapped sequence to complete.
 opt.timeoutlen = 500
