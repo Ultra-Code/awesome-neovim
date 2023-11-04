@@ -16,6 +16,11 @@ return {
                     },
                 },
             },
+            {
+                "folke/neodev.nvim",
+                ft = "lua",
+                opts = { pathStrict = true, library = { plugins = { "nvim-dap-ui" }, types = true } },
+            },
         },
         opts = {
             -- LSP Server Settings
@@ -139,11 +144,6 @@ return {
                 layout = "float",
             },
         },
-    },
-    {
-        "folke/neodev.nvim",
-        event = "LspAttach",
-        opts = { pathStrict = true, library = { plugins = { "nvim-dap-ui" }, types = true } },
     },
     {
         "Ultra-Code/null-ls.nvim",
