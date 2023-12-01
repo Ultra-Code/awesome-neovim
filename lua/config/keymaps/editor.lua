@@ -120,7 +120,7 @@ map({ "n", "t" }, "<M-t>", function()
     -- if vim.lsp.buf.server_ready() and utils.has("lspsaga.nvim") then
     --     vim.cmd([[Lspsaga term_toggle]])
     -- else
-        vim.cmd([[
+    vim.cmd([[
         split term://zsh
         resize 15
     ]])
@@ -155,9 +155,19 @@ map("n", "<leader>ul", function()
     utils.toggle("number")
 end, { desc = "Toggle Line Numbers" })
 
-local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>uc", function()
-    utils.toggle("conceallevel", nil, { 0, conceallevel })
+    local disable_conceal = 0
+    local enable_conceal = 3
+    local conceallevel = vim.o.conceallevel > 0 and disable_conceal or enable_conceal
+
+    local filetype = vim.filetype.match({ buf = 0 })
+
+    if filetype == "norg" and utils.has("neorg") then
+        utils.toggle("conceallevel", nil, { 0, conceallevel })
+        vim.cmd([[Neorg toggle-concealer]])
+    else
+        utils.toggle("conceallevel", nil, { 0, conceallevel })
+    end
 end, { desc = "Toggle Conceal" })
 
 map("n", "<leader>ue", function()
