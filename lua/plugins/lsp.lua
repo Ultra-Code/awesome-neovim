@@ -146,7 +146,7 @@ return {
         },
     },
     {
-        "Ultra-Code/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         event = { "BufReadPre", "BufNewFile" },
         opts = function()
             local null_ls = require("null-ls")
