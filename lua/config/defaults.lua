@@ -85,6 +85,7 @@ return {
             max_height = math.floor(vim.o.lines * 0.6),
             close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
             focusable = false,
+            zindex = 3,
             focus = false,
             -- vim.diagnostic.open_float()
             source = "if_many",
