@@ -34,6 +34,10 @@ return {
                 -- bashls = {
                 --     filetypes = { "bash", "sh" },
                 -- },
+                phan = {},
+                phpactor = {},
+                -- TODO: fix psalm, lsp should be started with --language-server
+                psalm = {},
                 clangd = {
                     cmd = {
                         "clangd",
@@ -176,6 +180,11 @@ return {
                     -- lua
                     null_ls.builtins.diagnostics.selene,
                     null_ls.builtins.formatting.stylua,
+                    -- php
+                    null_ls.builtins.diagnostics.php,
+                    null_ls.builtins.diagnostics.phpstan,
+                    -- psalm doesn't attach to buffer check null_ls
+                    null_ls.builtins.diagnostics.psalm,
                     -- shell
                     null_ls.builtins.diagnostics.zsh.with({
                         filetypes = { "zsh" },
