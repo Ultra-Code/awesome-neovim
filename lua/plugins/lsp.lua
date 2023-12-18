@@ -183,6 +183,7 @@ return {
                     null_ls.builtins.diagnostics.php,
                     null_ls.builtins.diagnostics.phpstan,
                     null_ls.builtins.diagnostics.psalm,
+                    null_ls.builtins.formatting.phpcsfixer,
                     -- shell
                     null_ls.builtins.diagnostics.zsh.with({
                         filetypes = { "zsh" },
