@@ -206,7 +206,7 @@ return {
                         {
                             elements = {
                                 -- Elements can be strings or table with id and size keys.
-                                { id = "scopes", size = 0.25 },
+                                { id = "scopes", size = 0.4 },
                                 "breakpoints",
                                 "stacks",
                                 "watches",
@@ -217,7 +217,7 @@ return {
                         {
                             elements = {
                                 "repl",
-                                "console",
+                                -- "console",
                             },
                             size = 0.25, -- 25% of total lines
                             position = "bottom",
@@ -280,6 +280,12 @@ return {
                 name = "lldb",
             }
 
+            dap.adapters.gdb = {
+                type = "executable",
+                command = "gdb",
+                args = { "-i", "dap" },
+            }
+
             dap.configurations.cpp = {
                 {
                     name = "Launch",
@@ -305,12 +311,16 @@ return {
 
             dap.configurations.c = dap.configurations.cpp
             dap.configurations.zig = {
-                vim.tbl_extend("force", dap.configurations.cpp[1], {
+                {
+                    name = "Launch",
+                    type = "gdb",
+                    request = "launch",
                     program = function()
                         return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/zig-out/bin/", "file")
                     end,
-                }),
-                unpack(dap.configurations.cpp, 2, #dap.configurations.cpp),
+                    cwd = "${workspaceFolder}",
+                    console = "integratedTerminal",
+                },
             }
 
             dap.configurations.rust = {
