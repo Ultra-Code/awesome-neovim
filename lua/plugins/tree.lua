@@ -195,7 +195,7 @@ return {
                 sort = {
                     sorter = "name",
                     -- Sort folders before files. Has no effect when |nvim-tree.sort.sorter| is a function
-                    folders_first = true,
+                    folders_first = false,
                     -- Sort files before folders. Has no effect when |nvim-tree.sort.sorter| is a
                     -- function. If set to `true` it overrides |nvim-tree.sort.folders_first|                   folders_first = true,
                     files_first = false,
