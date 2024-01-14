@@ -34,9 +34,9 @@ return {
                 -- bashls = {
                 --     filetypes = { "bash", "sh" },
                 -- },
+                nushell = {},
                 phan = {},
                 phpactor = {},
-                psalm = {},
                 clangd = {
                     cmd = {
                         "clangd",
@@ -188,15 +188,17 @@ return {
                     null_ls.builtins.diagnostics.zsh.with({
                         filetypes = { "zsh" },
                     }),
-                    -- null_ls.builtins.diagnostics.shellcheck.with({
-                    --     filetypes = { "bash", "sh" },
-                    -- }),
-                    -- null_ls.builtins.code_actions.shellcheck.with({
-                    --     filetypes = { "bash", "sh" },
-                    -- }),
                     null_ls.builtins.hover.printenv.with({
                         filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
                     }),
+                    null_ls.builtins.diagnostics.shellcheck.with({
+                        filetypes = { "bash", "sh" },
+                    }),
+                    null_ls.builtins.code_actions.shellcheck.with({
+                        filetypes = { "bash", "sh" },
+                    }),
+                    -- Docker
+                    null_ls.builtins.diagnostics.hadolint,
                     -- opengl
                     null_ls.builtins.diagnostics.glslc.with({
                         extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0
