@@ -117,14 +117,10 @@ end, { desc = "Quit all" })
 -- open terminal on alt+t
 map({ "n", "t" }, "<M-t>", function()
     -- Checks whether an lsp is attached to the current buffer and is ready.
-    -- if vim.lsp.buf.server_ready() and utils.has("lspsaga.nvim") then
-    --     vim.cmd([[Lspsaga term_toggle]])
-    -- else
-    vim.cmd([[
+        vim.cmd([[
         split term://zsh
         resize 15
     ]])
-    -- end
 end)
 -- mapping to close terminal emulator
 map("t", "<M-t>", [[<C-\><C-n>:bd!<CR>]])

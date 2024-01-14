@@ -11,11 +11,7 @@ utils.on_attach(function(client, bufnr)
 
     if client.server_capabilities.hoverProvider then
         map("n", "K", function()
-            if utils.has("lspsaga.nvim") then
-                vim.cmd([[Lspsaga hover_doc]])
-            else
-                vim.lsp.buf.hover()
-            end
+            vim.lsp.buf.hover()
         end, opts, "get hover info")
     end
     if client.server_capabilities.semanticTokensProvider then
