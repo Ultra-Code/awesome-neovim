@@ -11,11 +11,7 @@ utils.on_attach(function(client, bufnr)
 
     if client.server_capabilities.hoverProvider then
         map("n", "K", function()
-            if utils.has("lspsaga.nvim") then
-                vim.cmd([[Lspsaga hover_doc]])
-            else
-                vim.lsp.buf.hover()
-            end
+            vim.lsp.buf.hover()
         end, opts, "get hover info")
     end
     if client.server_capabilities.semanticTokensProvider then
@@ -157,11 +153,7 @@ utils.on_attach(function(client, bufnr)
     end
     if client.server_capabilities.renameProvider then
         map("n", "<localleader>rn", function()
-            if utils.has("lspsaga.nvim") then
-                vim.cmd([[Lspsaga rename]])
-            else
-                vim.lsp.buf.rename()
-            end
+            vim.lsp.buf.rename()
         end, opts, "rename symbol")
 
         if utils.has("lspsaga.nvim") then

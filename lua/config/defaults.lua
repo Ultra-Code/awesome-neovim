@@ -4,8 +4,15 @@ return {
         diagnostics = {
             Error = "󰅚 ", --🅴," ""󰢃 "
             Warn = "󰀪 ", --🆆," "
-            Hint = "󰌶", --🅸,"" "󰛩 "
+            Hint = "󰌶", --🅸," " "󰛩 "
             Info = " ", --🅷," ","󰗡 "
+        },
+        debugger = {
+            DapBreakpoint = " ", --▶️breakpoints
+            DapBreakpointCondition = " ", --conditional breakpoints
+            DapLogPoint = " ", --log points
+            DapStopped = " ", --🟥indicate where the debugee is stopped
+            DapBreakpointRejected = " ", --indicate breakpoints rejected by the debug
         },
         git = {
             add = { text = "│" }, --" ","▎"
@@ -78,6 +85,7 @@ return {
             max_height = math.floor(vim.o.lines * 0.6),
             close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
             focusable = false,
+            zindex = 3,
             focus = false,
             -- vim.diagnostic.open_float()
             source = "if_many",

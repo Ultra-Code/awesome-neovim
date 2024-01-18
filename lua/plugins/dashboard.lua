@@ -25,31 +25,31 @@ return {
                 shortcut = {
                     {
                         icon = " ", --
-                        desc = "Files",
+                        desc = " Files",
                         group = "Label",
                         key = "f",
                         action = "Telescope find_files",
                     },
                     {
-                        desc = " Find text",
+                        desc = "  Find text",
                         group = "@property",
                         key = "g",
                         action = "Telescope live_grep ",
                     },
                     {
-                        desc = " New file",
+                        desc = "  New file",
                         group = "Macro",
                         key = "n",
                         action = "NvimTreeToggle",
                     },
                     {
-                        desc = " Config",
+                        desc = "  Config",
                         group = "DiagnosticHint",
                         key = "c",
                         action = "e $MYVIMRC ",
                     },
                     {
-                        desc = " Quit",
+                        desc = "  Quit",
                         group = "Number",
                         key = "q",
                         action = "qa",

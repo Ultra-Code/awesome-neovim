@@ -3,6 +3,9 @@ return {
     -- Nvim Treesitter configurations and abstraction layer
     {
         "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            { "nushell/tree-sitter-nu" },
+        },
         event = { "BufReadPost", "BufNewFile" },
         keys = {
             { "<c-space>", desc = "Increment selection" },
