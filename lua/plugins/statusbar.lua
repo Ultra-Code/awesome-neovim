@@ -101,7 +101,7 @@ return {
 
             return {
                 options = {
-                    theme = "catppuccin", -- "onedark" "auto",
+                    theme = "onedark", -- "auto", "catppuccin",
                     component_separators = "|",
                     section_separators = { left = "", right = "" },
                 },

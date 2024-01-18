@@ -89,3 +89,8 @@ autocmd({ "CursorHold" }, {
 
 -- Remove Trailing whitespaces in all files
 autocmd({ "BufWritePre" }, { pattern = { "*" }, command = [[%s/\s\+$//e]] })
+
+-- Remove Trailing windows carriage return in all files
+if vim.fn.has("win64") == 1 or vim.fn.has("wsl") == 1 then
+    autocmd({ "BufWritePre" }, { pattern = { "*" }, command = [[%s/\r$//e]] })
+end

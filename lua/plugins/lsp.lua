@@ -16,6 +16,11 @@ return {
                     },
                 },
             },
+            {
+                "folke/neodev.nvim",
+                ft = "lua",
+                opts = { pathStrict = true, library = { plugins = { "nvim-dap-ui" }, types = true } },
+            },
         },
         opts = {
             -- LSP Server Settings
@@ -29,6 +34,9 @@ return {
                 -- bashls = {
                 --     filetypes = { "bash", "sh" },
                 -- },
+                nushell = {},
+                phan = {},
+                phpactor = {},
                 clangd = {
                     cmd = {
                         "clangd",
@@ -140,10 +148,9 @@ return {
             },
         },
     },
-    { "folke/neodev.nvim", event = "LspAttach", opts = { pathStrict = true } },
     {
-        "jose-elias-alvarez/null-ls.nvim",
-        event = "LspAttach",
+        "nvimtools/none-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
         opts = function()
             local null_ls = require("null-ls")
             return {
@@ -172,9 +179,17 @@ return {
                     -- lua
                     null_ls.builtins.diagnostics.selene,
                     null_ls.builtins.formatting.stylua,
+                    -- php
+                    null_ls.builtins.diagnostics.php,
+                    null_ls.builtins.diagnostics.phpstan,
+                    null_ls.builtins.diagnostics.psalm,
+                    null_ls.builtins.formatting.phpcsfixer,
                     -- shell
                     null_ls.builtins.diagnostics.zsh.with({
                         filetypes = { "zsh" },
+                    }),
+                    null_ls.builtins.hover.printenv.with({
+                        filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
                     }),
                     null_ls.builtins.diagnostics.shellcheck.with({
                         filetypes = { "bash", "sh" },
@@ -182,9 +197,8 @@ return {
                     null_ls.builtins.code_actions.shellcheck.with({
                         filetypes = { "bash", "sh" },
                     }),
-                    null_ls.builtins.hover.printenv.with({
-                        filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
-                    }),
+                    -- Docker
+                    null_ls.builtins.diagnostics.hadolint,
                     -- opengl
                     null_ls.builtins.diagnostics.glslc.with({
                         extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0

@@ -8,25 +8,23 @@ vim.g.maplocalleader = [[\]]
 
 -- Set clipboard to the +  registers only
 -- if you want to use the * also add ,unnamed
-if fn.has("clipboard") == 1 then
-    --clipboard for WSL
-    if fn.has("wsl") == 1 then
-        vim.g.clipboard = {
-            name = "WslClipboard",
-            copy = {
-                ["+"] = "clip.exe",
-                ["*"] = "clip.exe",
-            },
-            paste = {
-                ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-                ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-            },
-            cache_enabled = 0,
-        }
-        opt.clipboard:append({ "unnamedplus" })
-    else
-        opt.clipboard:append({ "unnamedplus" })
-    end
+-- Also enable clipboard for WSL
+if fn.has("wsl") == 1 then
+    vim.g.clipboard = {
+        name = "WslClipboard",
+        copy = {
+            ["+"] = "clip.exe",
+            ["*"] = "clip.exe",
+        },
+        paste = {
+            ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        },
+        cache_enabled = 0,
+    }
+    opt.clipboard:append({ "unnamedplus" })
+else
+    opt.clipboard:append({ "unnamedplus" })
 end
 
 opt.termguicolors = true
