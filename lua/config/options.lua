@@ -117,7 +117,7 @@ opt.showmatch = true
 opt.complete = "kspell"
 
 -- Enable spell checking for español y ingles--
-opt.spelllang = { "en" } --"en,es"
+opt.spelllang = { "en,fr" } --"en,es"
 
 -- Show best nine spell checking candidates at most
 opt_global.spellsuggest = { "best", "9" }
