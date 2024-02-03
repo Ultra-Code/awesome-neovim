@@ -47,3 +47,5 @@ globals:
     any: true
   vim:
     any: true
+  bit:
+    any: true
