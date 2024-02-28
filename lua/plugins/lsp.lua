@@ -163,7 +163,6 @@ return {
                         },
                     }),
                     -- python
-                    null_ls.builtins.diagnostics.ruff,
                     null_ls.builtins.diagnostics.pylint,
                     null_ls.builtins.diagnostics.mypy.with({
                         extra_args = {
@@ -174,15 +173,11 @@ return {
                         },
                     }),
                     null_ls.builtins.formatting.black,
-                    null_ls.builtins.formatting.ruff,
                     null_ls.builtins.formatting.isort,
                     -- lua
                     null_ls.builtins.diagnostics.selene,
                     null_ls.builtins.formatting.stylua,
                     -- php
-                    null_ls.builtins.diagnostics.php,
-                    null_ls.builtins.diagnostics.phpstan,
-                    null_ls.builtins.diagnostics.psalm,
                     null_ls.builtins.formatting.phpcsfixer,
                     -- shell
                     null_ls.builtins.diagnostics.zsh.with({
@@ -190,12 +185,6 @@ return {
                     }),
                     null_ls.builtins.hover.printenv.with({
                         filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
-                    }),
-                    null_ls.builtins.diagnostics.shellcheck.with({
-                        filetypes = { "bash", "sh" },
-                    }),
-                    null_ls.builtins.code_actions.shellcheck.with({
-                        filetypes = { "bash", "sh" },
                     }),
                     -- Docker
                     null_ls.builtins.diagnostics.hadolint,
