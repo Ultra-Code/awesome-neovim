@@ -9,7 +9,7 @@ local augroup = utils.augroup
 utils.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr }
 
-    if client.server_capabilities.inlayHintProvider then
+    if vim.version.gt(vim.version(), { 0, 9, 0 }) and client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint.enable(true)
     end
     if client.server_capabilities.hoverProvider then
