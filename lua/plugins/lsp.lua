@@ -5,12 +5,14 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             {
-                --TODO: enable inline hint with 0.10 release
                 "ray-x/lsp_signature.nvim",
                 opts = {
                     bind = true,
                     max_height = float.max_height,
                     max_width = float.max_width,
+                    hint_inline = function ()
+                        return true
+                    end,
                     handler_opts = {
                         border = float.border,
                     },
