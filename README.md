@@ -3,6 +3,7 @@
 This repo it to make setting up of [neovim][nvim] >= 0.9 a breeze.
 The setup is powered and managed by [💤 lazy.nvim][lazy-nvim] plugin manager
 
+>If you like [_**helix**_](https://github.com/helix-editor/helix), which I am drifting to gradually, check out my [_**helix config**_][awesome-helix]
 
 ## ✨ Features Supported
 - ⚡ zig, 󰙱 C ,  C++, 󰢱 lua and all other language compilers
@@ -48,7 +49,7 @@ and installing the server and other accompanying tools for development like lint
 
 
 ## 📂 Directory structure
-```text
+```
     📂 ~/.config/nvim
     ├── 📂 ftplugin
     │  └── 📂 lua
@@ -150,7 +151,7 @@ To view the help pages and instruction manual on the various extensions
 [awesome-nvim]: https://github.com/Ultra-Code/awesome-neovim
 [lazy-nvim]: https://github.com/folke/lazy.nvim
 [nvim]: https://github.com/neovim/neovim/
-[paq-nvim-branch]: https://github.com/Ultra-Code/awesome-neovim/tree/paq
+[awesome-helix]: https://github.com/Ultra-Code/awesome-helix
 
 ## 👏 Credit
 - *Huge credit to* [_@folke_](https://github.com/folke), *I learnt a lot from his lazy config* [repo](https://github.com/LazyVim/LazyVim)
