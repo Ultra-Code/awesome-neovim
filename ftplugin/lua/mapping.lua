@@ -24,7 +24,7 @@ map("n", "<localleader>rm", function()
 end, { buffer = true, desc = "reload a particular lua module" })
 
 -- reload all nvim configuration modules
-map("n", "<localleader>ra", function()
-    utils.reload_all()
-    vim.notify("!Reloaded All Nvim Modules!", vim.log.levels.INFO)
-end, { buffer = true, desc = "reload all modules" })
+-- map("n", "<localleader>ra", function()
+--     utils.reload_all()
+--     vim.notify("!Reloaded All Nvim Modules!", vim.log.levels.INFO)
+-- end, { buffer = true, desc = "reload all modules" })

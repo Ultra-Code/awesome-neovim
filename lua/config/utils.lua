@@ -6,19 +6,16 @@ end
 
 function M.reload_all()
     for name, _ in pairs(package.loaded) do
-        if
-            name:match("^lazy")
-            or name:match("^mapping")
-            or name:match("^plugrc")
-            or name:match("^ui")
-            or name:match("^editor")
-            or name:match("^plugins")
-            or name:match("^syntax")
-            or name:match("^terminal")
-            or name:match("^utils")
-        then
+        if name:match("^config") or name:match("^plugins") then
             package.loaded[name] = nil
         end
+    end
+        -- Reload after/ directory
+    local glob = vim.fn.stdpath('config') .. '/ftplugin/**/*.lua'
+    local ftplugin_lua_filepaths = vim.fn.glob(glob, true, true)
+
+    for _, filepath in ipairs(ftplugin_lua_filepaths) do
+        dofile(filepath)
     end
 
     dofile(vim.env.MYVIMRC)
