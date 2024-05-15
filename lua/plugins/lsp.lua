@@ -19,7 +19,10 @@ return {
             {
                 "folke/neodev.nvim",
                 ft = "lua",
-                opts = { pathStrict = true, library = { plugins = { "nvim-dap-ui" }, types = true } },
+                opts = {
+                    pathStrict = true,
+                    library = { plugins = { "nvim-dap-ui" }, types = true },
+                },
             },
         },
         opts = {
@@ -80,15 +83,17 @@ return {
                             },
                             workspace = {
                                 -- Make the server aware of Neovim runtime files
-                                library = vim.api.nvim_get_runtime_file("", true),
+                                library = vim.api.nvim_get_runtime_file(
+                                    "",
+                                    true
+                                ),
                                 -- This feature causes the lsp to use the "environment emulation" feature to suggest
                                 -- applying a library/framework when a certain keyword or filename has been found
                                 checkThirdParty = false,
                             },
                             -- disable lua_ls default formater since I use stylua
-                            format = {
-                                enable = false,
-                            },
+                            format = { enable = false },
+                            hint = { enable = true, setType = true },
                         },
                     },
                 },
@@ -125,8 +130,9 @@ return {
             end
 
             local servers = opts.servers
-            local capabilities =
-                require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+            local capabilities = require("cmp_nvim_lsp").default_capabilities(
+                vim.lsp.protocol.make_client_capabilities()
+            )
 
             for server, _ in pairs(servers) do
                 local server_config = vim.tbl_deep_extend("force", {

@@ -9,7 +9,10 @@ local augroup = utils.augroup
 utils.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr }
 
-    if vim.version.gt(vim.version(), { 0, 9, 0 }) and client.server_capabilities.inlayHintProvider then
+    if
+        vim.version.gt(vim.version(), { 0, 9, 0 })
+        and client.server_capabilities.inlayHintProvider
+    then
         vim.lsp.inlay_hint.enable(true)
     end
     if client.server_capabilities.hoverProvider then
@@ -28,10 +31,22 @@ utils.on_attach(function(client, bufnr)
         end, opts, "toggle semantic token highlighting")
     end
     if client.server_capabilities.signatureHelpProvider then
-        map("n", "<localleader>k", vim.lsp.buf.signature_help, opts, "get fn signature help")
+        map(
+            "n",
+            "<localleader>k",
+            vim.lsp.buf.signature_help,
+            opts,
+            "get fn signature help"
+        )
     end
     if client.server_capabilities.declarationProvider then
-        map("n", "<localleader>gD", vim.lsp.buf.declaration, opts, "goto declaration")
+        map(
+            "n",
+            "<localleader>gD",
+            vim.lsp.buf.declaration,
+            opts,
+            "goto declaration"
+        )
     end
     if client.server_capabilities.completionProvider then
         vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -116,12 +131,22 @@ utils.on_attach(function(client, bufnr)
             })
         end
         map("n", "<localleader>uh", function()
-            utils.toggle("highlight", {}, { enable_highlight, disable_highlight })
+            utils.toggle(
+                "highlight",
+                {},
+                { enable_highlight, disable_highlight }
+            )
             vim.b[vim.fn.bufnr()]["highlight"]()
         end, opts, "toggle document highlight")
     end
     if client.server_capabilities.documentSymbolProvider then
-        map("n", "<localleader>ds", vim.lsp.buf.document_symbol, opts, "document symbols")
+        map(
+            "n",
+            "<localleader>ds",
+            vim.lsp.buf.document_symbol,
+            opts,
+            "document symbols"
+        )
     end
     if client.server_capabilities.codeActionProvider then
         map({ "n", "v" }, "<localleader>ca", function()
@@ -182,7 +207,13 @@ utils.on_attach(function(client, bufnr)
         end, opts, "outgoing calls")
     end
     if client.server_capabilities.workspaceSymbolProvider then
-        map("n", "<localleader>ws", vim.lsp.buf.workspace_symbol, opts, "list workspace symbols")
+        map(
+            "n",
+            "<localleader>ws",
+            vim.lsp.buf.workspace_symbol,
+            opts,
+            "list workspace symbols"
+        )
     end
 
     map("n", "[d", function()
@@ -218,6 +249,9 @@ utils.on_attach(function(client, bufnr)
         vim.print(vim.lsp.buf.list_workspace_folders())
     end, opts, "list workspace folders")
     map("n", "<localleader>rd", function()
-        print("Language server " .. (vim.lsp.buf.server_ready() and "is ready" or "is not ready"))
+        print(
+            "Language server "
+                .. (vim.lsp.buf.server_ready() and "is ready" or "is not ready")
+        )
     end, opts, "check if lsp is ready")
 end)

@@ -9,7 +9,10 @@ return {
             {
                 "<leader>n",
                 function()
-                    require("nvim-tree.api").tree.toggle({ focus = true, find_file = true })
+                    require("nvim-tree.api").tree.toggle({
+                        focus = true,
+                        find_file = true,
+                    })
                 end,
                 mode = "n",
                 silent = true,
@@ -20,13 +23,19 @@ return {
             local autocmd = vim.api.nvim_create_autocmd
 
             autocmd("BufEnter", {
-                group = vim.api.nvim_create_augroup("NvimTreeClose", { clear = true }),
+                group = vim.api.nvim_create_augroup(
+                    "NvimTreeClose",
+                    { clear = true }
+                ),
                 pattern = "NvimTree_*",
                 callback = function()
                     local layout = vim.api.nvim_call_function("winlayout", {})
                     if
                         layout[1] == "leaf"
-                        and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree"
+                        and vim.api.nvim_buf_get_option(
+                            vim.api.nvim_win_get_buf(layout[2]),
+                            "filetype"
+                        ) == "NvimTree"
                         and layout[3] == nil
                     then
                         vim.cmd("confirm quit")
@@ -44,7 +53,8 @@ return {
                     -- open nvim-tree for noname buffers and directory
                     callback = function(args)
                         -- buffer is a [No Name]
-                        local no_name = args.file == "" and vim.bo[args.buf].buftype == ""
+                        local no_name = args.file == ""
+                            and vim.bo[args.buf].buftype == ""
                         -- buffer is a directory
                         local directory = vim.fn.isdirectory(args.file) == 1
 
@@ -75,7 +85,13 @@ return {
                 local api = require("nvim-tree.api")
 
                 local function opts(desc)
-                    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+                    return {
+                        desc = "nvim-tree: " .. desc,
+                        buffer = bufnr,
+                        noremap = true,
+                        silent = true,
+                        nowait = true,
+                    }
                 end
                 local map = vim.keymap.set
 
@@ -91,43 +107,118 @@ return {
                 map("n", "q", api.tree.close, opts("Close"))
                 map("n", "R", api.tree.reload, opts("Refresh"))
                 map("n", "S", api.tree.search_node, opts("Search"))
-                map("n", "U", api.tree.toggle_custom_filter, opts("Toggle Hidden"))
-                map("n", "H", api.tree.toggle_hidden_filter, opts("Toggle Dotfiles"))
+                map(
+                    "n",
+                    "U",
+                    api.tree.toggle_custom_filter,
+                    opts("Toggle Hidden")
+                )
+                map(
+                    "n",
+                    "H",
+                    api.tree.toggle_hidden_filter,
+                    opts("Toggle Dotfiles")
+                )
                 map("n", "W", api.tree.collapse_all, opts("Collapse"))
 
-                map("n", "<C-e>", api.node.open.replace_tree_buffer, opts("Open: In Place"))
+                map(
+                    "n",
+                    "<C-e>",
+                    api.node.open.replace_tree_buffer,
+                    opts("Open: In Place")
+                )
                 map("n", "<CR>", api.node.open.edit, opts("Open"))
                 map("n", "o", api.node.open.edit, opts("Open"))
-                map("n", "O", api.node.open.no_window_picker, opts("Open: No Window Picker"))
+                map(
+                    "n",
+                    "O",
+                    api.node.open.no_window_picker,
+                    opts("Open: No Window Picker")
+                )
 
                 map("n", "<C-k>", api.node.show_info_popup, opts("File Info"))
 
-                map("n", "<C-r>", api.fs.rename_sub, opts("Rename: Omit Filename"))
+                map(
+                    "n",
+                    "<C-r>",
+                    api.fs.rename_sub,
+                    opts("Rename: Omit Filename")
+                )
                 map("n", "e", api.fs.rename_basename, opts("Rename: Basename"))
                 map("n", "r", api.fs.rename, opts("Rename File"))
                 map("n", "a", api.fs.create, opts("Create File"))
                 map("n", "c", api.fs.copy.node, opts("Copy File"))
                 map("n", "y", api.fs.copy.filename, opts("Copy Name"))
-                map("n", "Y", api.fs.copy.relative_path, opts("Copy Relative Path"))
-                map("n", "gy", api.fs.copy.absolute_path, opts("Copy Absolute Path"))
+                map(
+                    "n",
+                    "Y",
+                    api.fs.copy.relative_path,
+                    opts("Copy Relative Path")
+                )
+                map(
+                    "n",
+                    "gy",
+                    api.fs.copy.absolute_path,
+                    opts("Copy Absolute Path")
+                )
                 map("n", "d", api.fs.remove, opts("Delete"))
                 map("n", "D", api.fs.trash, opts("Trash"))
                 map("n", "p", api.fs.paste, opts("Paste"))
                 map("n", "x", api.fs.cut, opts("Cut"))
 
-                map("n", "<C-v>", api.node.open.vertical, opts("Open: Vertical Split"))
-                map("n", "<C-x>", api.node.open.horizontal, opts("Open: Horizontal Split"))
+                map(
+                    "n",
+                    "<C-v>",
+                    api.node.open.vertical,
+                    opts("Open: Vertical Split")
+                )
+                map(
+                    "n",
+                    "<C-x>",
+                    api.node.open.horizontal,
+                    opts("Open: Horizontal Split")
+                )
                 map("n", "<C-t>", api.node.open.tab, opts("Open: New Tab"))
 
-                map("n", "<BS>", api.node.navigate.parent_close, opts("Close Directory"))
+                map(
+                    "n",
+                    "<BS>",
+                    api.node.navigate.parent_close,
+                    opts("Close Directory")
+                )
 
                 map("n", "<Tab>", api.node.open.preview, opts("Open Preview"))
 
-                map("n", ">", api.node.navigate.sibling.next, opts("Next Sibling"))
-                map("n", "<", api.node.navigate.sibling.prev, opts("Previous Sibling"))
-                map("n", "J", api.node.navigate.sibling.last, opts("Last Sibling"))
-                map("n", "K", api.node.navigate.sibling.first, opts("First Sibling"))
-                map("n", "P", api.node.navigate.parent, opts("Parent Directory"))
+                map(
+                    "n",
+                    ">",
+                    api.node.navigate.sibling.next,
+                    opts("Next Sibling")
+                )
+                map(
+                    "n",
+                    "<",
+                    api.node.navigate.sibling.prev,
+                    opts("Previous Sibling")
+                )
+                map(
+                    "n",
+                    "J",
+                    api.node.navigate.sibling.last,
+                    opts("Last Sibling")
+                )
+                map(
+                    "n",
+                    "K",
+                    api.node.navigate.sibling.first,
+                    opts("First Sibling")
+                )
+                map(
+                    "n",
+                    "P",
+                    api.node.navigate.parent,
+                    opts("Parent Directory")
+                )
                 map("n", "-", api.tree.change_root_to_parent, opts("Up"))
 
                 map("n", ".", api.node.run.cmd, opts("Run File Command"))
@@ -138,12 +229,37 @@ return {
 
                 map("n", "[c", api.node.navigate.git.prev, opts("Prev Git"))
                 map("n", "]c", api.node.navigate.git.next, opts("Next Git"))
-                map("n", "B", api.tree.toggle_no_buffer_filter, opts("Toggle No Buffer"))
-                map("n", "C", api.tree.toggle_git_clean_filter, opts("Toggle Git Clean"))
-                map("n", "I", api.tree.toggle_gitignore_filter, opts("Toggle Git Ignore"))
+                map(
+                    "n",
+                    "B",
+                    api.tree.toggle_no_buffer_filter,
+                    opts("Toggle No Buffer")
+                )
+                map(
+                    "n",
+                    "C",
+                    api.tree.toggle_git_clean_filter,
+                    opts("Toggle Git Clean")
+                )
+                map(
+                    "n",
+                    "I",
+                    api.tree.toggle_gitignore_filter,
+                    opts("Toggle Git Ignore")
+                )
 
-                map("n", "]e", api.node.navigate.diagnostics.next, opts("Next Diagnostic"))
-                map("n", "[e", api.node.navigate.diagnostics.prev, opts("Prev Diagnostic"))
+                map(
+                    "n",
+                    "]e",
+                    api.node.navigate.diagnostics.next,
+                    opts("Next Diagnostic")
+                )
+                map(
+                    "n",
+                    "[e",
+                    api.node.navigate.diagnostics.prev,
+                    opts("Prev Diagnostic")
+                )
 
                 map("n", "F", api.live_filter.clear, opts("Clean Filter"))
                 map("n", "f", api.live_filter.start, opts("Filter"))
@@ -262,7 +378,13 @@ return {
                     -- Number of spaces for an each tree nesting level. Minimum 1.
                     indent_width = 2,
                     -- A list of filenames that gets highlighted with `NvimTreeSpecialFile`.
-                    special_files = { "Cargo.toml", "Makefile", "README.md", "build.zig", "build.zig.zon" },
+                    special_files = {
+                        "Cargo.toml",
+                        "Makefile",
+                        "README.md",
+                        "build.zig",
+                        "build.zig.zon",
+                    },
                     -- Whether to show the destination of the symlink.
                     symlink_destination = true,
                     -- Enable file highlight for git attributes using `NvimTreeGit*` highlight groups.

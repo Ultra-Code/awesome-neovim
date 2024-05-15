@@ -83,7 +83,12 @@ return {
             -- vim.lsp.util.open_floating_preview()
             max_width = math.floor(vim.o.columns * 0.84),
             max_height = math.floor(vim.o.lines * 0.6),
-            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+            close_events = {
+                "BufLeave",
+                "CursorMoved",
+                "InsertEnter",
+                "FocusLost",
+            },
             focusable = false,
             zindex = 3,
             focus = false,
