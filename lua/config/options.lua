@@ -90,12 +90,13 @@ opt.cursorline = true -- Enable highlighting of the current line
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 
-opt.scrolloff = 3 -- Minimal number of screen lines to keep above and below the cursor.
+opt.scrolloff = 0 -- Minimal number of screen lines to keep above and below the cursor.
 -- The minimal number of screen columns to keep to the left and to the right of the cursor if 'nowrap' is set.
-opt.sidescrolloff = 9
+opt.sidescrolloff = 0
 
 -- This option allows you to switch between multiple buffers
-opt.hidden = true -- without saving a changed buffer
+-- without saving a changed buffer
+opt.hidden = false
 
 -- Automatically enable mouse usage
 opt.mouse = "a"
@@ -104,10 +105,19 @@ opt.mouse = "a"
 opt.mousemoveevent = false
 
 -- enable line wrap
-opt.wrap = false
+opt.wrap = true
 
+-- Wrap-broken line prefix
+opt.showbreak = [[>>>\ \ \ ]]
 -- Maximum width (number of cols) of text that is being inserted
-opt.textwidth = 120
+opt.textwidth = 0
+opt.wrapmargin = 0
+-- wrap long lines at a character in 'breakat' rather
+-- than at the last character that fits on the screen
+opt.linebreak = true
+opt.breakindent = true
+vim.opt_local.columns = 80
+-- opt_global.formatoptions:append({ "a" })
 
 -- Highlight matching brace
 opt.showmatch = true
