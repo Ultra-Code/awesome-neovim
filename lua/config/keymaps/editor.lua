@@ -116,11 +116,8 @@ end, { desc = "Quit all" })
 -- Mapping to open terminal emulator in nvim
 -- open terminal on alt+t
 map({ "n", "t" }, "<M-t>", function()
-    -- Checks whether an lsp is attached to the current buffer and is ready.
-        vim.cmd([[
-        split term://zsh
-        resize 15
-    ]])
+    vim.cmd.split({ "term://" .. vim.env.SHELL })
+    vim.cmd.resize({ 15 })
 end)
 -- mapping to close terminal emulator
 map("t", "<M-t>", [[<C-\><C-n>:bd!<CR>]])
