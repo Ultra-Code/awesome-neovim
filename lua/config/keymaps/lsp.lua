@@ -9,6 +9,9 @@ local augroup = utils.augroup
 utils.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr }
 
+    if client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint.enable(true)
+    end
     if client.server_capabilities.hoverProvider then
         map("n", "K", function()
             vim.lsp.buf.hover()
