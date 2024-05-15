@@ -31,22 +31,25 @@ return {
                 -- tailwindcss = {},
                 -- tsserver = {},
                 -- volar = {},
-                -- bashls = {
-                --     filetypes = { "bash", "sh" },
-                -- },
-                nushell = {},
+                bashls = {
+                    filetypes = { "bash", "sh" },
+                },
+                mojo = {},
+                -- use pylsp-mypy for mypy
+                -- use python-lsp-ruff for ruff
+                -- use pylsp-inlay-hints for inlay hints
+                pylsp = {},
                 phan = {},
                 phpactor = {},
+                psalm = {},
                 clangd = {
                     cmd = {
                         "clangd",
-                        "--query-driver=/usr/bin/clang++",
                         "--clang-tidy",
                         "-j=5",
                         "--malloc-trim",
-                        "--offset-encoding=utf-16",
                     },
-                    filetypes = { "c", "cpp" }, -- we don't want objective-c and objective-cpp!
+                    filetypes = { "c" }, -- "cpp"
                 },
                 zls = {},
                 rust_analyzer = {
@@ -59,7 +62,6 @@ return {
                         },
                     },
                 },
-                jedi_language_server = {},
                 lua_ls = {
                     cmd = {
                         "lua-language-server",
@@ -162,27 +164,11 @@ return {
                             "--inconclusive",
                         },
                     }),
-                    -- python
-                    null_ls.builtins.diagnostics.ruff,
-                    null_ls.builtins.diagnostics.pylint,
-                    null_ls.builtins.diagnostics.mypy.with({
-                        extra_args = {
-                            "--strict",
-                            "--disallow-any-unimported",
-                            "--no-implicit-optional",
-                            "--warn-unused-ignores",
-                        },
-                    }),
-                    null_ls.builtins.formatting.black,
-                    null_ls.builtins.formatting.ruff,
-                    null_ls.builtins.formatting.isort,
                     -- lua
                     null_ls.builtins.diagnostics.selene,
                     null_ls.builtins.formatting.stylua,
                     -- php
-                    null_ls.builtins.diagnostics.php,
                     null_ls.builtins.diagnostics.phpstan,
-                    null_ls.builtins.diagnostics.psalm,
                     null_ls.builtins.formatting.phpcsfixer,
                     -- shell
                     null_ls.builtins.diagnostics.zsh.with({
@@ -191,17 +177,12 @@ return {
                     null_ls.builtins.hover.printenv.with({
                         filetypes = { "zsh", "bash", "sh", "dosbatch", "ps1" },
                     }),
-                    null_ls.builtins.diagnostics.shellcheck.with({
-                        filetypes = { "bash", "sh" },
-                    }),
-                    null_ls.builtins.code_actions.shellcheck.with({
-                        filetypes = { "bash", "sh" },
-                    }),
                     -- Docker
                     null_ls.builtins.diagnostics.hadolint,
                     -- opengl
                     null_ls.builtins.diagnostics.glslc.with({
-                        extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0
+                        -- use opengl instead of vulkan1.0
+                        extra_args = { "--target-env=opengl" },
                     }),
                 },
             }
