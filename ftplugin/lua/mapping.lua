@@ -18,7 +18,10 @@ map("n", "<localleader>rm", function()
             return
         else
             utils.reload_one(module_name)
-            vim.notify("!Reloaded Nvim Module " .. module_name .. ".lua!", vim.log.levels.INFO)
+            vim.notify(
+                "!Reloaded Nvim Module " .. module_name .. ".lua!",
+                vim.log.levels.INFO
+            )
         end
     end)
 end, { buffer = true, desc = "reload a particular lua module" })

@@ -200,22 +200,36 @@ return {
                         i = {
                             ["<C-[>"] = actions.close,
                             ["<a-i>"] = function()
-                                telescope_builtin("find_files", { no_ignore = true })()
+                                telescope_builtin(
+                                    "find_files",
+                                    { no_ignore = true }
+                                )()
                             end,
                             ["<a-h>"] = function()
-                                telescope_builtin("find_files", { hidden = true })()
+                                telescope_builtin(
+                                    "find_files",
+                                    { hidden = true }
+                                )()
                             end,
                             ["<C-Down>"] = function(...)
-                                return require("telescope.actions").cycle_history_next(...)
+                                return require("telescope.actions").cycle_history_next(
+                                    ...
+                                )
                             end,
                             ["<C-Up>"] = function(...)
-                                return require("telescope.actions").cycle_history_prev(...)
+                                return require("telescope.actions").cycle_history_prev(
+                                    ...
+                                )
                             end,
                             ["<C-f>"] = function(...)
-                                return require("telescope.actions").preview_scrolling_down(...)
+                                return require("telescope.actions").preview_scrolling_down(
+                                    ...
+                                )
                             end,
                             ["<C-b>"] = function(...)
-                                return require("telescope.actions").preview_scrolling_up(...)
+                                return require("telescope.actions").preview_scrolling_up(
+                                    ...
+                                )
                             end,
                         },
                         n = {

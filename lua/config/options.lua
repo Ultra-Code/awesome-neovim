@@ -183,7 +183,8 @@ opt.list = true
 
 -- Unprintable chars mapping
 -- {tab = "••"|">~",eol = "↴"|"¶"|"$", nbsp = "␣"|"%", space = "_" }
-opt.listchars = { tab = [[→→]], trail = "•", extends = "»", precedes = "«" }
+opt.listchars =
+    { tab = [[→→]], trail = "•", extends = "»", precedes = "«" }
 
 -- Enable folding
 opt.foldmethod = "expr"

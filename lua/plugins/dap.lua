@@ -27,14 +27,20 @@ return {
             {
                 "<leader>dC",
                 function()
-                    require("dap").set_breakpoint(vim.fn.input("[Condition] > "))
+                    require("dap").set_breakpoint(
+                        vim.fn.input("[Condition] > ")
+                    )
                 end,
                 desc = "Conditional Breakpoint",
             },
             {
                 "<leader>dL",
                 function()
-                    require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+                    require("dap").set_breakpoint(
+                        nil,
+                        nil,
+                        vim.fn.input("Log point message: ")
+                    )
                 end,
                 silent = true,
                 desc = "Set Breakpoint",
@@ -174,7 +180,11 @@ return {
                 "rcarriga/nvim-dap-ui",
                 lazy = true,
                 opts = {
-                    icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
+                    icons = {
+                        expanded = "▾",
+                        collapsed = "▸",
+                        current_frame = "▸",
+                    },
                     mappings = {
                         -- Use a table to apply multiple mappings
                         expand = { "<CR>", "<2-LeftMouse>" },
@@ -292,7 +302,11 @@ return {
                     type = "lldb",
                     request = "launch",
                     program = function()
-                        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                        return vim.fn.input(
+                            "Path to executable: ",
+                            vim.fn.getcwd() .. "/",
+                            "file"
+                        )
                     end,
                     cwd = "${workspaceFolder}",
                     stopOnEntry = false,
@@ -316,7 +330,11 @@ return {
                     type = "gdb",
                     request = "launch",
                     program = function()
-                        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/zig-out/bin/", "file")
+                        return vim.fn.input(
+                            "Path to executable: ",
+                            vim.fn.getcwd() .. "/zig-out/bin/",
+                            "file"
+                        )
                     end,
                     cwd = "${workspaceFolder}",
                     console = "integratedTerminal",
@@ -327,12 +345,14 @@ return {
                 vim.tbl_deep_extend("force", dap.configurations.cpp[1], {
                     initCommands = function()
                         -- Find out where to look for the pretty printer Python module
-                        local rustc_sysroot = vim.fn.trim(vim.fn.system("rustc --print sysroot"))
+                        local rustc_sysroot =
+                            vim.fn.trim(vim.fn.system("rustc --print sysroot"))
 
                         local script_import = 'command script import "'
                             .. rustc_sysroot
                             .. '/lib/rustlib/etc/lldb_lookup.py"'
-                        local commands_file = rustc_sysroot .. "/lib/rustlib/etc/lldb_commands"
+                        local commands_file = rustc_sysroot
+                            .. "/lib/rustlib/etc/lldb_commands"
 
                         local commands = {}
                         local file = io.open(commands_file, "r")
@@ -402,7 +422,11 @@ return {
                 },
             }
             dap.adapters.nlua = function(callback, config)
-                callback({ type = "server", host = config.host, port = config.port })
+                callback({
+                    type = "server",
+                    host = config.host,
+                    port = config.port,
+                })
             end
 
             dap.configurations.lua = {
