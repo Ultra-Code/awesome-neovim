@@ -3,8 +3,6 @@
 This repo it to make setting up of [neovim][nvim] >= 0.9 a breeze.
 The setup is powered and managed by [💤 lazy.nvim][lazy-nvim] plugin manager
 
->__NOTE__ For the previous config setup with paq.nvim checkout [paq-branch][paq-nvim-branch]
-
 
 ## ✨ Features Supported
 - ⚡ zig, 󰙱 C ,  C++, 󰢱 lua and all other language compilers
