@@ -13,12 +13,12 @@ if fn.has("wsl") == 1 then
     vim.g.clipboard = {
         name = "WslClipboard",
         copy = {
-            ["+"] = "clip.exe",
-            ["*"] = "clip.exe",
+            ["+"] = "/mnt/c/WINDOWS/system32/clip.exe",
+            ["*"] = "/mnt/c/WINDOWS/system32/clip.exe",
         },
         paste = {
-            ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-            ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            ["+"] = '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            ["*"] = '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
         },
         cache_enabled = 0,
     }
@@ -90,10 +90,6 @@ opt.cursorline = true -- Enable highlighting of the current line
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 
-opt.scrolloff = 0 -- Minimal number of screen lines to keep above and below the cursor.
--- The minimal number of screen columns to keep to the left and to the right of the cursor if 'nowrap' is set.
-opt.sidescrolloff = 0
-
 -- This option allows you to switch between multiple buffers
 -- without saving a changed buffer
 opt.hidden = false
@@ -108,16 +104,19 @@ opt.mousemoveevent = false
 opt.wrap = true
 
 -- Wrap-broken line prefix
-opt.showbreak = [[>>>\ \ \ ]]
--- Maximum width (number of cols) of text that is being inserted
-opt.textwidth = 0
-opt.wrapmargin = 0
--- wrap long lines at a character in 'breakat' rather
--- than at the last character that fits on the screen
+opt.showbreak = [[↪ ]]
+
+-- wrap long lines at a character in `breakat`
 opt.linebreak = true
+
+--wrapped line will continue visually indented
 opt.breakindent = true
-vim.opt_local.columns = 80
--- opt_global.formatoptions:append({ "a" })
+
+-- Maximum width (number of cols) of text that is being inserted
+opt.textwidth = 80
+
+-- set to +1 to highlight column after textwidth
+-- opt.colorcolumn = "+1"
 
 -- Highlight matching brace
 opt.showmatch = true
