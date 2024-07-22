@@ -65,7 +65,13 @@ autocmd("FileType", {
         -- nvim_create_autocmd's callback receives a table argument with fields
         -- event = {id,event,group?,match,buf,file,data(arbituary data)}
         vim.bo[event.buf].buflisted = false
-        map("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true }, "close some filetype windows with <q>")
+        map(
+            "n",
+            "q",
+            "<cmd>close<cr>",
+            { buffer = event.buf, silent = true },
+            "close some filetype windows with <q>"
+        )
     end,
 })
 
@@ -94,3 +100,22 @@ autocmd({ "BufWritePre" }, { pattern = { "*" }, command = [[%s/\s\+$//e]] })
 if vim.fn.has("win64") == 1 or vim.fn.has("wsl") == 1 then
     autocmd({ "BufWritePre" }, { pattern = { "*" }, command = [[%s/\r$//e]] })
 end
+
+-- Enable auto formating at textwidth
+autocmd({ "FileType" }, {
+    group = augroup("FormatOptions"),
+    pattern = { "*" },
+    -- INFO: https://stackoverflow.com/questions/16030639/vim-formatoptions-or/16035812#16035812
+    -- https://stackoverflow.com/questions/76259118/neovim-vim-optremove-doesnt-actually-change-the-option
+    callback = function()
+        vim.opt.formatoptions = {
+            t = true,
+            c = true,
+            r = true,
+            o = true,
+            q = true,
+            ["]"] = true,
+            j = true,
+        }
+    end,
+})

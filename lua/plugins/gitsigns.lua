@@ -26,7 +26,13 @@ return {
                 local gs = package.loaded.gitsigns
 
                 local function map(mode, l, r, opts)
-                    opts = opts and vim.tbl_extend("force", opts, { buffer = bufnr }) or {}
+                    opts = opts
+                            and vim.tbl_extend(
+                                "force",
+                                opts,
+                                { buffer = bufnr }
+                            )
+                        or {}
                     vim.keymap.set(mode, l, r, opts)
                 end
 
@@ -89,7 +95,12 @@ return {
                 end, { desc = "toggle deleted" })
 
                 -- Text object
-                map({ "o", "x" }, "ih", "<cmd><C-U>Gitsigns select_hunk<CR>", { desc = "select hunks" })
+                map(
+                    { "o", "x" },
+                    "ih",
+                    "<cmd><C-U>Gitsigns select_hunk<CR>",
+                    { desc = "select hunks" }
+                )
             end,
         },
     },

@@ -8,19 +8,55 @@ return {
             -- pick a buffer to view from the buffer list
             { "<leader>bs", "<cmd>BufferLinePick<CR>", desc = "select buffer" },
             -- pick a buffer to closes from the buffer list
-            { "<leader>bc", "<cmd>BufferLinePickClose<CR>", desc = "close selected buffer" },
-            { "<leader>bcl", "<cmd>BufferLineCloseLeft<CR>", desc = "close buffers to the left" },
-            { "<leader>bcr", "<cmd>BufferLineCloseRight<CR>", desc = "close buffers to the right" },
-            { "<leader>bcu", "<cmd>BufferLineGroupClose ungrouped<CR>", desc = "close ungrouped buffers" },
-            { "<leader>bcp", "<cmd>BufferLineGroupClose pinned<CR>", desc = "close pinned buffers" },
-            { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-            { "<leader>bP", "<Cmd>BufferLineGroupToggle pinned<CR>", desc = "Toggle displaying pinned buffers" },
-            { "<leader>bU", "<Cmd>BufferLineGroupToggle ungrouped<CR>", desc = "Toggle displaying ungrouped buffers" },
+            {
+                "<leader>bc",
+                "<cmd>BufferLinePickClose<CR>",
+                desc = "close selected buffer",
+            },
+            {
+                "<leader>bcl",
+                "<cmd>BufferLineCloseLeft<CR>",
+                desc = "close buffers to the left",
+            },
+            {
+                "<leader>bcr",
+                "<cmd>BufferLineCloseRight<CR>",
+                desc = "close buffers to the right",
+            },
+            {
+                "<leader>bcu",
+                "<cmd>BufferLineGroupClose ungrouped<CR>",
+                desc = "close ungrouped buffers",
+            },
+            {
+                "<leader>bcp",
+                "<cmd>BufferLineGroupClose pinned<CR>",
+                desc = "close pinned buffers",
+            },
+            {
+                "<leader>bp",
+                "<Cmd>BufferLineTogglePin<CR>",
+                desc = "Toggle pin",
+            },
+            {
+                "<leader>bP",
+                "<Cmd>BufferLineGroupToggle pinned<CR>",
+                desc = "Toggle displaying pinned buffers",
+            },
+            {
+                "<leader>bU",
+                "<Cmd>BufferLineGroupToggle ungrouped<CR>",
+                desc = "Toggle displaying ungrouped buffers",
+            },
         },
         opts = {
             options = {
                 numbers = function(opts)
-                    return string.format("%s|%s", opts.id, opts.raise(opts.ordinal))
+                    return string.format(
+                        "%s|%s",
+                        opts.id,
+                        opts.raise(opts.ordinal)
+                    )
                 end,
                 max_name_length = 18,
                 max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
@@ -53,10 +89,16 @@ return {
                 --- diagnostics_dict is a dictionary from error level ("error", "warning" or "info")to number of errors for each level.
                 --- this should return a string
                 --- Don't get too fancy as this function will be executed a lot
-                diagnostics_indicator = function(count, level, diagnostics_dict, context)
+                diagnostics_indicator = function(
+                    count,
+                    level,
+                    diagnostics_dict,
+                    context
+                )
                     _ = context
                     _ = diagnostics_dict
-                    local icon = level:match("error") and " " or (level:match("warning") and " " or "")
+                    local icon = level:match("error") and " "
+                        or (level:match("warning") and " " or "")
                     return " " .. icon .. count
                 end,
                 groups = {
@@ -70,7 +112,8 @@ return {
                             priority = 2, -- determines where it will appear relative to other groups (Optional)
                             icon = "", -- Optional
                             matcher = function(buf) -- Mandatory
-                                return buf.name:match("%_test") or buf.name:match("%_spec")
+                                return buf.name:match("%_test")
+                                    or buf.name:match("%_spec")
                             end,
                         },
                         {
@@ -78,7 +121,8 @@ return {
                             highlight = { undercurl = true, sp = "green" },
                             auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
                             matcher = function(buf)
-                                return buf.name:match("%.md") or buf.name:match("%.txt")
+                                return buf.name:match("%.md")
+                                    or buf.name:match("%.txt")
                             end,
                             separator = { -- Optional
                                 -- style = require('bufferline.groups').separator.tab
@@ -107,7 +151,11 @@ return {
                 },
                 sections = {
                     lualine_a = {
-                        { "mode", separator = { left = "" }, right_padding = 2 },
+                        {
+                            "mode",
+                            separator = { left = "" },
+                            right_padding = 2,
+                        },
                     },
                     lualine_b = { "branch", "diff" },
                     lualine_c = {
@@ -120,7 +168,11 @@ return {
                     lualine_x = { "encoding", "fileformat" },
                     lualine_y = { "filetype", total_num_lines },
                     lualine_z = {
-                        { "location", separator = { right = "" }, left_padding = 2 },
+                        {
+                            "location",
+                            separator = { right = "" },
+                            left_padding = 2,
+                        },
                     },
                 },
             }

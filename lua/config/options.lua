@@ -13,12 +13,12 @@ if fn.has("wsl") == 1 then
     vim.g.clipboard = {
         name = "WslClipboard",
         copy = {
-            ["+"] = "clip.exe",
-            ["*"] = "clip.exe",
+            ["+"] = "/mnt/c/WINDOWS/system32/clip.exe",
+            ["*"] = "/mnt/c/WINDOWS/system32/clip.exe",
         },
         paste = {
-            ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-            ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            ["+"] = '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            ["*"] = '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
         },
         cache_enabled = 0,
     }
@@ -90,12 +90,9 @@ opt.cursorline = true -- Enable highlighting of the current line
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 
-opt.scrolloff = 3 -- Minimal number of screen lines to keep above and below the cursor.
--- The minimal number of screen columns to keep to the left and to the right of the cursor if 'nowrap' is set.
-opt.sidescrolloff = 9
-
 -- This option allows you to switch between multiple buffers
-opt.hidden = true -- without saving a changed buffer
+-- without saving a changed buffer
+opt.hidden = false
 
 -- Automatically enable mouse usage
 opt.mouse = "a"
@@ -104,10 +101,22 @@ opt.mouse = "a"
 opt.mousemoveevent = false
 
 -- enable line wrap
-opt.wrap = false
+opt.wrap = true
+
+-- Wrap-broken line prefix
+opt.showbreak = [[↪ ]]
+
+-- wrap long lines at a character in `breakat`
+opt.linebreak = true
+
+--wrapped line will continue visually indented
+opt.breakindent = true
 
 -- Maximum width (number of cols) of text that is being inserted
-opt.textwidth = 120
+opt.textwidth = 80
+
+-- set to +1 to highlight column after textwidth
+-- opt.colorcolumn = "+1"
 
 -- Highlight matching brace
 opt.showmatch = true
@@ -174,7 +183,8 @@ opt.list = true
 
 -- Unprintable chars mapping
 -- {tab = "••"|">~",eol = "↴"|"¶"|"$", nbsp = "␣"|"%", space = "_" }
-opt.listchars = { tab = [[→→]], trail = "•", extends = "»", precedes = "«" }
+opt.listchars =
+    { tab = [[→→]], trail = "•", extends = "»", precedes = "«" }
 
 -- Enable folding
 opt.foldmethod = "expr"

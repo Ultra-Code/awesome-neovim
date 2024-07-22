@@ -19,11 +19,13 @@ require("lazy").setup({
     defaults = {
         lazy = false,
     },
-    checker = { enabled = false }, -- automatically check for plugin updates
+    -- automatically check for plugin updates
+    checker = { enabled = false },
     change_detection = {
         -- automatically check for config file changes and reload the ui
         enabled = true,
-        notify = false, -- get a notification when changes are found
+        -- get a notification when changes are found
+        notify = false,
     },
     performance = {
         cache = {
@@ -32,15 +34,24 @@ require("lazy").setup({
         rtp = {
             -- disable some rtp plugins
             disabled_plugins = {
-                "gzip", -- Vim plugin for editing compressed files.
-                "tarPlugin", -- tarPlugin.vim -- a Vim plugin for browsing tarfiles
-                "tohtml", -- Vim plugin for converting a syntax highlighted file to HTML.
-                "zipPlugin", -- zipPlugin.vim: Handles browsing zipfiles
-                "netrwPlugin", -- netrwPlugin.vim: Handles file transfer and remote directory listing across a network
-                "rplugin", -- support of plugins written in other languages
-                -- "spellfile",   -- Vim plugin for downloading spell files
-                -- "matchit",  -- matchit.vim: (global plugin) Extended "%" matching
-                -- "matchparen", -- Vim plugin for showing matching parens
+                -- Vim plugin for editing compressed files.
+                "gzip",
+                -- tarPlugin.vim -- a Vim plugin for browsing tarfiles
+                "tarPlugin",
+                -- Vim plugin for converting a syntax highlighted file to HTML.
+                "tohtml",
+                -- zipPlugin.vim: Handles browsing zipfiles
+                "zipPlugin",
+                -- netrwPlugin.vim: Handles file transfer and remote directory listing across a network
+                -- support of plugins written in other languages
+                "netrwPlugin",
+                "rplugin",
+                -- Vim plugin for downloading spell files
+                -- "spellfile",
+                -- matchit.vim: (global plugin) Extended "%" matching
+                -- "matchit",
+                -- Vim plugin for showing matching parens
+                -- "matchparen",
                 -- "tutor",
                 -- "man",
                 -- "shada",

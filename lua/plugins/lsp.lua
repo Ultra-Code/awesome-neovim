@@ -5,12 +5,14 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             {
-                --TODO: enable inline hint with 0.10 release
                 "ray-x/lsp_signature.nvim",
                 opts = {
                     bind = true,
                     max_height = float.max_height,
                     max_width = float.max_width,
+                    hint_inline = function()
+                        return vim.version.gt(vim.version(), { 0, 9, 0 })
+                    end,
                     handler_opts = {
                         border = float.border,
                     },
@@ -19,7 +21,10 @@ return {
             {
                 "folke/neodev.nvim",
                 ft = "lua",
-                opts = { pathStrict = true, library = { plugins = { "nvim-dap-ui" }, types = true } },
+                opts = {
+                    pathStrict = true,
+                    library = { plugins = { "nvim-dap-ui" }, types = true },
+                },
             },
         },
         opts = {
@@ -31,22 +36,25 @@ return {
                 -- tailwindcss = {},
                 -- tsserver = {},
                 -- volar = {},
-                -- bashls = {
-                --     filetypes = { "bash", "sh" },
-                -- },
-                nushell = {},
+                bashls = {
+                    filetypes = { "bash", "sh" },
+                },
+                mojo = {},
+                -- use pylsp-mypy for mypy
+                -- use python-lsp-ruff for ruff
+                -- use pylsp-inlay-hints for inlay hints
+                pylsp = {},
                 phan = {},
                 phpactor = {},
+                psalm = {},
                 clangd = {
                     cmd = {
                         "clangd",
-                        "--query-driver=/usr/bin/clang++",
                         "--clang-tidy",
                         "-j=5",
                         "--malloc-trim",
-                        "--offset-encoding=utf-16",
                     },
-                    filetypes = { "c", "cpp" }, -- we don't want objective-c and objective-cpp!
+                    filetypes = { "c" }, -- "cpp"
                 },
                 zls = {},
                 rust_analyzer = {
@@ -59,7 +67,6 @@ return {
                         },
                     },
                 },
-                jedi_language_server = {},
                 lua_ls = {
                     cmd = {
                         "lua-language-server",
@@ -78,15 +85,17 @@ return {
                             },
                             workspace = {
                                 -- Make the server aware of Neovim runtime files
-                                library = vim.api.nvim_get_runtime_file("", true),
+                                library = vim.api.nvim_get_runtime_file(
+                                    "",
+                                    true
+                                ),
                                 -- This feature causes the lsp to use the "environment emulation" feature to suggest
                                 -- applying a library/framework when a certain keyword or filename has been found
                                 checkThirdParty = false,
                             },
                             -- disable lua_ls default formater since I use stylua
-                            format = {
-                                enable = false,
-                            },
+                            format = { enable = false },
+                            hint = { enable = true, setType = true },
                         },
                     },
                 },
@@ -123,8 +132,9 @@ return {
             end
 
             local servers = opts.servers
-            local capabilities =
-                require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+            local capabilities = require("cmp_nvim_lsp").default_capabilities(
+                vim.lsp.protocol.make_client_capabilities()
+            )
 
             for server, _ in pairs(servers) do
                 local server_config = vim.tbl_deep_extend("force", {
@@ -162,6 +172,7 @@ return {
                             "--inconclusive",
                         },
                     }),
+          
                     -- python
                     null_ls.builtins.diagnostics.pylint,
                     null_ls.builtins.diagnostics.mypy.with({
@@ -174,10 +185,14 @@ return {
                     }),
                     null_ls.builtins.formatting.black,
                     null_ls.builtins.formatting.isort,
+
                     -- lua
                     null_ls.builtins.diagnostics.selene,
                     null_ls.builtins.formatting.stylua,
                     -- php
+
+                    null_ls.builtins.diagnostics.phpstan,
+
                     null_ls.builtins.formatting.phpcsfixer,
                     -- shell
                     null_ls.builtins.diagnostics.zsh.with({
@@ -190,7 +205,8 @@ return {
                     null_ls.builtins.diagnostics.hadolint,
                     -- opengl
                     null_ls.builtins.diagnostics.glslc.with({
-                        extra_args = { "--target-env=opengl" }, -- use opengl instead of vulkan1.0
+                        -- use opengl instead of vulkan1.0
+                        extra_args = { "--target-env=opengl" },
                     }),
                 },
             }
