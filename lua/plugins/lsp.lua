@@ -73,6 +73,17 @@ return {
                         "-E",
                         "/usr/share/lua-language-server/main.lua",
                     },
+                    on_init = function(client)
+                        if client.workspace_folders then
+                            local path = client.workspace_folders[1].name
+                            if
+                                vim.uv.fs_stat(path .. "/.luarc.json")
+                                or vim.uv.fs_stat(path .. "/.luarc.jsonc")
+                            then
+                                return
+                            end
+                        end
+                    end,
                     settings = {
                         Lua = {
                             runtime = {
@@ -85,10 +96,7 @@ return {
                             },
                             workspace = {
                                 -- Make the server aware of Neovim runtime files
-                                library = vim.api.nvim_get_runtime_file(
-                                    "",
-                                    true
-                                ),
+                                library = vim.env.VIMRUNTIME,
                                 -- This feature causes the lsp to use the "environment emulation" feature to suggest
                                 -- applying a library/framework when a certain keyword or filename has been found
                                 checkThirdParty = false,
@@ -105,10 +113,6 @@ return {
                 lua_ls = function(server, opts)
                     require("lspconfig")[server].setup(opts)
                 end,
-                -- example to setup with typescript.nvim
-                -- tsserver = function(_, opts)
-                --   require("typescript").setup({ server = opts })
-                -- end,
             },
         },
         config = function(_, opts)
